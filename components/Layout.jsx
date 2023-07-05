@@ -6,7 +6,6 @@ export const Layout = ({ children, pagina }) => {
   return (
     <div>
       <Head>
-        <title>GuitarLA - {pagina}</title>
         <meta name='description' content='Stitio web de venta de guitarras' />
         <meta name='author' content='Sunrize Studios' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
