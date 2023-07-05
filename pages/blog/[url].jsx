@@ -28,7 +28,7 @@ export const EntradaBlog = ({ entrada }) => {
 };
 
 export async function getStaticPaths() {
-  const url = `${process.env.API_URl}/api/blogs/?populate=*`;
+  const url = `${process.env.STRAPI_URL}/api/blogs/?populate=*`;
   const respuesta = await fetch(url);
   const entradas = await respuesta.json();
 
@@ -43,7 +43,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { url } }) {
-  const urlBlog = `${process.env.API_URl}/api/blogs/?filters[url][$eq]=${url}&populate=*`;
+  const urlBlog = `${process.env.STRAPI_URL}/api/blogs/?filters[url][$eq]=${url}&populate=*`;
   const respuesta = await fetch(urlBlog);
   const entrada = await respuesta.json();
 
@@ -55,7 +55,7 @@ export async function getStaticProps({ params: { url } }) {
 }
 
 /*export async function getServerSideProps({ query: { id } }) {
-  const resupuesta = await fetch(`${process.env.API_URl}/api/blogs/${id}?populate=*`);
+  const resupuesta = await fetch(`${process.env.STRAPI_URL}/api/blogs/${id}?populate=*`);
   const entrada = await resupuesta.json();
   return {
     props: { entrada: entrada ? entrada : null },

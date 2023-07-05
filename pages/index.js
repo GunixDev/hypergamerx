@@ -4,7 +4,7 @@ import { Entrada } from "@/components/Entrada";
 import { Layout } from "@/components/Layout";
 
 export async function getStaticProps() {
-  const resupuesta = await fetch(`${process.env.API_URl}/api/blogs?populate=*`);
+  const resupuesta = await fetch(`${process.env.STRAPI_URL}/api/blogs?populate=*`);
   const entradas = await resupuesta.json();
 
   return {
