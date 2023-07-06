@@ -44,7 +44,7 @@ export async function getStaticProps() {
 
 export default function Home({ entradas }) {
   return (
-    <Layout pagina='inicio'>
+    <Layout>
       <main className='w-4/5 mx-auto flex flex-col mb-10'>
         <p className='text-6xl font-bold first-line:mt-8 text-left mt-14'>
           La fuente definitiva de noticias y curiosidades sobre videojuegos.

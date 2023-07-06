@@ -14,8 +14,8 @@ export const EntradaBlog = ({ entrada }) => {
             <p className='text-xl text-slate-500'>{entrada.data[0].attributes.resumen}</p>
           </div>
           <Image
-            width={800}
-            height={600}
+            width={1000}
+            height={800}
             src={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
             alt={`imagen blog ${entrada.data[0].attributes.titulo}`}
             className='my-8 w-auto h-auto mx-auto'
