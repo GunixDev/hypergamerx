@@ -33,7 +33,7 @@ function features(titulo, descripcion, icono) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const resupuesta = await fetch(`${process.env.STRAPI_URL}/api/blogs?populate=*`);
   const entradas = await resupuesta.json();
 

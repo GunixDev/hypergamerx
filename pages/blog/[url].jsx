@@ -6,12 +6,18 @@ import { Layout } from "@/components/Layout";
 export const EntradaBlog = ({ entrada }) => {
   if (entrada && entrada.data && entrada.data[0]) {
     return (
-      <Layout pagina={entrada.data[0].attributes.titulo}>
+      <Layout
+        titulo={entrada.data[0].attributes.titulo}
+        descripcion={entrada.data[0].attributes.Resumen}
+        imagen={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
+        keywords={entrada.data[0].attributes.keywords}>
         <div className='w-2/3 m-auto my-10'>
           <div>
-            <p className='text-5xl text-slate-400 font-bold'>{entrada.data[0].attributes.titulo}</p>
-            <h3 className='text-slate-500 my-2'>{FormatearFecha(entrada.data[0].attributes.publishedAt)}</h3>
-            <p className='text-xl text-slate-500'>{entrada.data[0].attributes.resumen}</p>
+            <p className='text-5xl text-slate-400 font-bold work'>{entrada.data[0].attributes.titulo}</p>
+            <h3 className='text-slate-500 my-4 text-sm'>
+              Publicado: {FormatearFecha(entrada.data[0].attributes.publishedAt)}
+            </h3>
+            <p className='text-xl text-slate-500'>{entrada.data[0].attributes.Resumen}</p>
           </div>
           <Image
             width={1000}
