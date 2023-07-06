@@ -14,12 +14,12 @@ export const EntradaBlog = ({ entrada }) => {
             <p className='text-xl text-slate-500'>{entrada.data[0].attributes.resumen}</p>
           </div>
           <Image
-            layout='responsive'
             width={800}
             height={600}
             src={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
             alt={`imagen blog ${entrada.data[0].attributes.titulo}`}
-            className='my-8'
+            className='my-8 w-auto h-auto mx-auto'
+            priority
           />
           <p>{entrada.data[0].attributes.contenido}</p>
         </div>

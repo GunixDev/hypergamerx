@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
+import Script from "next/script";
 
 export const Layout = ({ children, pagina }) => {
   return (
-    <div>
+    <>
       <Head>
         <title>{pagina}</title>
         <meta name='description' content='Stitio web de venta de guitarras' />
@@ -22,22 +23,6 @@ export const Layout = ({ children, pagina }) => {
         <meta property='og:image' content={`https://www.hypergamerx.com/${pagina}`} />
         <meta property='og:site_name' content='HyperGamerX' />
         <link rel='icon' href='/logo.ico' type='image/png' />
-        <script
-          async
-          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870727283452147'
-          crossOrigin='anonymous'></script>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.CLIENT_GOOGLE_A_KEY}`}></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${process.env.CLIENT_GOOGLE_A_KEY}');
-      console.log('Google Analytics gtag config executed');
-    `,
-          }}
-        />
       </Head>
       <nav className='bg-gray-800 font-sans'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -63,6 +48,24 @@ export const Layout = ({ children, pagina }) => {
           <p className='text-gray-400'>&copy; 2023 HyperGamerX.</p>
         </div>
       </footer>
-    </div>
+      <Script
+        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870727283452147'
+        strategy='lazyOnload'
+        crossOrigin='anonymous'
+      />
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.CLIENT_GOOGLE_A_KEY}`}
+        strategy='lazyOnload'
+      />
+      <Script id='google-analytics-config'>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.CLIENT_GOOGLE_A_KEY}');
+          console.log('Google Analytics gtag config executed');
+        `}
+      </Script>
+    </>
   );
 };

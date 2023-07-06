@@ -1,8 +1,4 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import { Entrada } from "@/components/Entrada";
 import { Layout } from "@/components/Layout";
-import { Articulos } from "@/components/ArticulosView";
 import { Articulos_version1 } from "@/components/ArticulosView";
 import { BsFillLightningChargeFill, BsFillGrid1X2Fill, BsFillHeartFill, BsChatDotsFill } from "react-icons/bs";
 
