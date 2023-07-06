@@ -1,26 +1,29 @@
 import Image from "next/image";
 import { FormatearFecha } from "@/utils/Formatear_Fecha";
 import ErrorPage from "next/error";
+import { Layout } from "@/components/Layout";
 
 export const EntradaBlog = ({ entrada }) => {
   if (entrada && entrada.data && entrada.data[0]) {
     return (
-      <div>
-        <div>
-          <h1>Entrada de Blog</h1>
-          <p>{entrada.data[0].attributes.titulo}</p>
-          <p>{entrada.data[0].attributes.resumen}</p>
+      <Layout pagina={entrada.data[0].attributes.titulo}>
+        <div className='w-2/3 m-auto my-10'>
+          <div>
+            <p className='text-5xl text-slate-400 font-bold'>{entrada.data[0].attributes.titulo}</p>
+            <h3 className='text-slate-500 my-2'>{FormatearFecha(entrada.data[0].attributes.publishedAt)}</h3>
+            <p className='text-xl text-slate-500'>{entrada.data[0].attributes.resumen}</p>
+          </div>
+          <Image
+            layout='responsive'
+            width={800}
+            height={600}
+            src={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
+            alt={`imagen blog ${entrada.data[0].attributes.titulo}`}
+            className='my-8'
+          />
           <p>{entrada.data[0].attributes.contenido}</p>
         </div>
-        <Image
-          layout='responsive'
-          width={800}
-          height={600}
-          src={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
-          alt={`imagen blog ${entrada.data[0].attributes.titulo}`}
-        />
-        <h3>{FormatearFecha(entrada.data[0].attributes.publishedAt)}</h3>
-      </div>
+      </Layout>
     );
   } else {
     return <ErrorPage statusCode={404} />;
