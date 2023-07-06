@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Analytics } from "@vercel/analytics/react";
 
 export const Layout = ({ children, pagina }) => {
   return (
@@ -58,7 +57,6 @@ export const Layout = ({ children, pagina }) => {
           </div>
         </div>
       </nav>
-      <Analytics />
       {children}
       <footer className='bg-black text-white py-8 w-full font-sans mt-10'>
         <div className='container mx-auto text-center'>
