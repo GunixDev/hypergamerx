@@ -38,7 +38,7 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
           }
         />
         <meta name='twitter:card' content='summary_large_image' />
-        <meta name='twitter:image' content={`https://www.hypergamerx.com/${imagen}`} />
+        <meta name='twitter:image' content={`https://www.hypergamerx.com/logo4.png`} />
         <meta property='og:url' content={titulo ? titulo : "HyperGamerX"} />
         <meta property='og:title' content={titulo ? titulo : "HyperGamerX"} />
         <meta
@@ -49,7 +49,7 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
               : "Descubre las últimas noticias, curiosidades y novedades en el mundo de los videojuegos. Reseñas, avances, análisis, personajes destacados y más. Mantente actualizado con nuestra amplia cobertura de la industria del videojuego y disfruta de contenido exclusivo para los amantes de los juegos."
           }
         />
-        <meta property='og:image' content={`https://www.hypergamerx.com/${imagen}`} />
+        <meta property='og:image' content={`https://www.hypergamerx.com/logo4.png`} />
         <meta property='og:site_name' content='HyperGamerX' />
         <link rel='icon' href='/logo.png' type='image/png' />
       </Head>
