@@ -92,7 +92,6 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${process.env.CLIENT_GOOGLE_A_KEY}');
-          console.log('Google Analytics gtag config executed');
         `}
       </Script>
     </>
