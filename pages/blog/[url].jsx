@@ -45,7 +45,7 @@ export const EntradaBlog = ({ entrada }) => {
 };
 
 export async function getStaticPaths() {
-  const url = `${process.env.STRAPI_URL}/api/blogs?populate=*`;
+  const url = `${process.env.STRAPI_URL}/api/blogs?populate=deep`;
   const respuesta = await fetch(url);
   const entradas = await respuesta.json();
   const paths = entradas.data.map((entrada) => ({
@@ -57,7 +57,7 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params: { url } }) {
-  const urlBlog = `${process.env.STRAPI_URL}/api/blogs/?filters[url][$eq]=${url}&populate=*`;
+  const urlBlog = `${process.env.STRAPI_URL}/api/blogs/?filters[url][$eq]=${url}&populate=deep`;
   const respuesta = await fetch(urlBlog);
   const entrada = await respuesta.json();
   return {
