@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FormatearFecha } from "@/utils/Formatear_Fecha";
 import ErrorPage from "next/error";
 import { Layout } from "@/components/Layout";
+import { Contenido } from "@/components/Contenido";
 
 export const EntradaBlog = ({ entrada }) => {
   if (entrada && entrada.data && entrada.data[0]) {
@@ -24,10 +25,17 @@ export const EntradaBlog = ({ entrada }) => {
             height={800}
             src={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
             alt={`imagen blog ${entrada.data[0].attributes.titulo}`}
-            className='my-8 w-auto h-auto mx-auto'
+            className='my-8 w-auto h-auto mx-auto border-2 border-white'
             priority
           />
           <p>{entrada.data[0].attributes.contenido}</p>
+          <div>
+            {entrada.data[0].attributes.Contenido.map((contenido) => (
+              <div key={contenido.id}>
+                <Contenido contenido={contenido} />
+              </div>
+            ))}
+          </div>
         </div>
       </Layout>
     );

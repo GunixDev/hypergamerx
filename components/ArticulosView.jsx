@@ -7,15 +7,6 @@ import rehypeRaw from "rehype-raw";
 /* eslint-disable react/no-unescaped-entities */
 
 export function Articulos_version1({ entrada }) {
-  const renderers = {
-    text: ({ value }) => {
-      if (value.startsWith("´´") && value.endsWith("´´")) {
-        return <u>{value.substring(2, value.length - 2)}</u>;
-      }
-      return value;
-    },
-  };
-
   return (
     <div className='h-60 w-72 relative group shadow-2xl rounded-xl drop-shadow-lg duration-500'>
       <a href={`/blog/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
@@ -37,9 +28,7 @@ export function Articulos_version1({ entrada }) {
           <ReactMarkdown
             className='text-xs duration-75 text-center text-slate-300 relative opacity-0 m-1 mt-4 group-hover:opacity-100 group-hover:duration-1000 break-words'
             remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
-            components={renderers}
-            allowDangerousHtml>
+            rehypePlugins={[rehypeRaw]}>
             {entrada.attributes.Resumen}
           </ReactMarkdown>
         </div>
