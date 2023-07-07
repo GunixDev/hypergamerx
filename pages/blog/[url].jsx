@@ -25,7 +25,7 @@ export const EntradaBlog = ({ entrada }) => {
             height={800}
             src={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
             alt={`imagen blog ${entrada.data[0].attributes.titulo}`}
-            className='my-8 w-auto h-auto mx-auto border-2 border-white'
+            className='my-8 w-auto h-auto mx-autos'
             priority
           />
           <p>{entrada.data[0].attributes.contenido}</p>
