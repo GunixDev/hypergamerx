@@ -13,7 +13,7 @@ export const Contenido = ({ contenido }) => {
         {contenido.TituloContenido}
       </ReactMarkdown>
 
-      <ReactMarkdown className=' my-4 text-slate-400' remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+      <ReactMarkdown className='my-4 text-slate-400' remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
         {contenido.ContenidoTexto}
       </ReactMarkdown>
 
