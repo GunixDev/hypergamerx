@@ -15,7 +15,7 @@ export const EntradaBlog = ({ entrada, locale }) => {
     );
   }
 
-  if (entrada && entrada.data) {
+  if (entrada && entrada.data[0]) {
     return (
       <Layout
         titulo={entrada.data[0].attributes.titulo}
