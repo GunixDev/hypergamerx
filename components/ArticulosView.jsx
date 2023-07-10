@@ -6,10 +6,10 @@ import rehypeRaw from "rehype-raw";
 
 /* eslint-disable react/no-unescaped-entities */
 
-export function Articulos_version1({ entrada }) {
+export function Articulos_version1({ entrada, locale }) {
   return (
     <div className='h-60 w-72 relative group shadow-2xl rounded-xl drop-shadow-lg duration-500'>
-      <a href={`/blog/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
+      <a href={`/${locale}/blog/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
         <Image
           alt={`imagen blog ${entrada.attributes.titulo}`}
           src={entrada.attributes.imagenprincipal.data.attributes.url}
@@ -21,7 +21,9 @@ export function Articulos_version1({ entrada }) {
         />
 
         <div className='z-40 inline p-2 bg-red-700 w-fit'>
-          <p className='text-xs'>{FormatearFecha(entrada.attributes.publishedAt)}</p>
+          <p className='text-xs' suppressHydrationWarning>
+            {FormatearFecha(entrada.attributes.publishedAt)}
+          </p>
         </div>
         <div className='z-50 relative duration-300 p-3 h-20 bg-gray-950 rounded-b-xl group-hover:h-52'>
           <p className='text-sm text-slate-400 break-words'>{entrada.attributes.titulo}</p>

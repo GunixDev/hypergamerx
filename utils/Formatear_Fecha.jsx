@@ -1,4 +1,7 @@
+import { useRouter } from "next/router";
+
 export const FormatearFecha = (fecha) => {
+  const locale = useRouter();
   const fechaNueva = new Date(fecha);
 
   const opciones = {
@@ -7,5 +10,8 @@ export const FormatearFecha = (fecha) => {
     day: "2-digit",
   };
 
-  return fechaNueva.toLocaleString("es-Es", opciones);
+  // Formatear la fecha en el idioma especificado
+  const fechaFormateada = fechaNueva.toLocaleDateString(locale, opciones);
+
+  return fechaFormateada;
 };

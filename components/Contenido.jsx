@@ -17,7 +17,7 @@ export const Contenido = ({ contenido }) => {
         {contenido.ContenidoTexto}
       </ReactMarkdown>
 
-      {contenido.ContenidoImagen.data == null
+      {contenido.ContenidoImagen == null
         ? null
         : contenido.ContenidoImagen.data.map((imagen) => (
             <Image
