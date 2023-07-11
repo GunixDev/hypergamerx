@@ -1,39 +1,6 @@
-import { Layout } from "@/components/Layout";
-import { Articulos_version1 } from "@/components/ArticulosView";
-import { BsFillLightningChargeFill, BsFillGrid1X2Fill, BsFillHeartFill, BsChatDotsFill } from "react-icons/bs";
-
-function features(titulo, descripcion, icono) {
-  let iconComponent;
-
-  switch (icono) {
-    case "corazon":
-      iconComponent = <BsFillHeartFill />;
-      break;
-    case "rapidez":
-      iconComponent = <BsFillLightningChargeFill />;
-      break;
-    case "diseño":
-      iconComponent = <BsFillGrid1X2Fill />;
-      break;
-    case "chat":
-      iconComponent = <BsChatDotsFill />;
-      break;
-    default:
-      iconComponent = null;
-      break;
-  }
-  return (
-    <div className='group text-slate-400 duration-500 hover:text-slate-50'>
-      <h1 className='sm:mt-10 md:mt-14 md:text-xl sm:text-lg'>
-        <span className='inline-block align-middle sm:mr-1 md:mr-2'>{iconComponent}</span>
-        {titulo}
-      </h1>
-      <h3 className='md:text-lg sm:text-sm text-slate-500 sm:my-3 md:my-5 duration-700 group-hover:text-slate-400'>
-        {descripcion}
-      </h3>
-    </div>
-  );
-}
+import { Layout } from "../components/Layout";
+import { Articulos_version1 } from "../components/ArticulosView";
+import Feature from "../components/Feaure";
 
 export async function getStaticProps({ locale }) {
   const blogurl = `${process.env.STRAPI_URL}/api/blogs?populate=deep&locale=${locale}`;
@@ -47,21 +14,23 @@ export async function getStaticProps({ locale }) {
 }
 
 export default function Home({ blog, index, locale }) {
+  const { Titulo, Resumen, ParrafoTitulo, ParrafoDescripcion, Featureds } = index.data.attributes;
+
   return (
     <Layout>
       <main className='lg:w-4/5 sm:w-11/12 md:w-11/12 mx-auto flex flex-col mb-10'>
         <p className='text-6xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-bold first-line:mt-8 text-left mt-14'>
-          {index.data.attributes.Titulo}
+          {Titulo}
         </p>
-        <p className='text-slate-500 mt-2 md:mt-2 sm:mt-4 xl:mt-6 md:text-xl sm:text-base'>
-          {index.data.attributes.Resumen}
-        </p>
+        <p className='text-slate-500 mt-2 md:mt-2 sm:mt-4 xl:mt-6 md:text-xl sm:text-base'>{Resumen}</p>
         <div className='mt-20'>
-          <p className='sm:text-2xl md:text-3xl mb-5 '>{index.data.attributes.ParrafoTitulo}</p>
-          <p className='text-slate-400 sm:text-sm md:text-lg'>{index.data.attributes.ParrafoDescripcion}</p>
+          <p className='sm:text-2xl md:text-3xl mb-5'>{ParrafoTitulo}</p>
+          <p className='text-slate-400 sm:text-sm md:text-lg'>{ParrafoDescripcion}</p>
           <div className='grid grid-cols-2 sm:gap-5 md:gap-8 mt-10'>
-            {index.data.attributes.Featureds.map((featured) => (
-              <div key={featured.id}>{features(featured.Titulo, featured.Descripcion, featured.Icono)}</div>
+            {Featureds.map((featured) => (
+              <div key={featured.id}>
+                <Feature titulo={featured.Titulo} descripcion={featured.Descripcion} icono={featured.Icono} />
+              </div>
             ))}
           </div>
         </div>

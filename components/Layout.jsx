@@ -70,22 +70,9 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
         </div>
       </footer>
       <Script
-        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870727283452147'
-        strategy='lazyOnload'
-        crossOrigin='anonymous'
-      />
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.CLIENT_GOOGLE_A_KEY}`}
-        strategy='lazyOnload'
-      />
-      <Script id='google-analytics-config'>
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${process.env.CLIENT_GOOGLE_A_KEY}');
-        `}
-      </Script>
+        async
+        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8225968446465041'
+        crossorigin='anonymous'></Script>
     </>
   );
 };
