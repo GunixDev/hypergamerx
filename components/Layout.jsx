@@ -62,7 +62,6 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
           </Link>
         </div>
       </nav>
-
       {children}
       <footer className='bg-black text-white py-8 w-full font-sans mt-10'>
         <div className='container mx-auto text-center'>
@@ -72,7 +71,8 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
       <Script
         async
         src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8225968446465041'
-        crossorigin='anonymous'></Script>
+        crossorigin='anonymous'
+      />
     </>
   );
 };

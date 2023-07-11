@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FormatearFecha } from "@/utils/Formatear_Fecha";
 import ErrorPage from "next/error";
 import { Layout } from "@/components/Layout";
-import { Contenido } from "@/components/Contenido";
+import React from "react";
 
 export const EntradaBlog = ({ entrada, locale }) => {
   if (typeof entrada === "undefined") {
@@ -36,246 +36,39 @@ export const EntradaBlog = ({ entrada, locale }) => {
             src={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
             alt={`imagen blog ${entrada.data[0].attributes.titulo}`}
             className='my-8 w-11/12 h-auto mx-auto'
-            priority
+            loading='lazy'
           />
           <div>
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo1 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo1}</p>
-            )}
+            {[...Array(10).keys()].map((index) => {
+              const subTituloKey = `ContenidoSubTitulo${index + 1}`;
+              const descripcionKey = `ContenidoDescripcion${index + 1}`;
+              const imagenKey = `ContenidoImagen${index + 1}`;
 
-            {typeof entrada.data[0].attributes.ContenidoDescripcion1 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion1}</p>
-            )}
+              const subTitulo = entrada.data[0].attributes[subTituloKey];
+              const descripcion = entrada.data[0].attributes[descripcionKey];
+              const imagenes = entrada.data[0].attributes[imagenKey]?.data || [];
 
-            {entrada.data[0].attributes.ContenidoImagen1 == null ||
-            entrada.data[0].attributes.ContenidoImagen1.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen1.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen1.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
+              if (!subTitulo) return null;
 
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo2 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo2}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion2 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion2}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen2 == null ||
-            entrada.data[0].attributes.ContenidoImagen2.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen2.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen2.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo3 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo3}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion3 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion3}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen3 == null ||
-            entrada.data[0].attributes.ContenidoImagen3.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen3.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen3.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
-
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo4 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo4}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion4 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion4}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen4 == null ||
-            entrada.data[0].attributes.ContenidoImagen4.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen4.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen4.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
-
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo5 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo5}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion5 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion5}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen5 == null ||
-            entrada.data[0].attributes.ContenidoImagen5.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen5.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen5.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo6 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo6}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion6 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion6}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen6 == null ||
-            entrada.data[0].attributes.ContenidoImagen6.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen6.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen6.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
-
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo7 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo7}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion7 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion7}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen7 == null ||
-            entrada.data[0].attributes.ContenidoImagen7.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen7.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen7.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
-
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo8 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo8}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion8 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion8}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen8 == null ||
-            entrada.data[0].attributes.ContenidoImagen8.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen8.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen8.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
-
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo9 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo9}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion9 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion9}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen9 == null ||
-            entrada.data[0].attributes.ContenidoImagen9.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen9.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen9.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
-
-            {typeof entrada.data[0].attributes.ContenidoSubTitulo10 == null ? null : (
-              <p className='text-2xl mt-8 mb-2'>{entrada.data[0].attributes.ContenidoSubTitulo10}</p>
-            )}
-
-            {typeof entrada.data[0].attributes.ContenidoDescripcion10 == null ? null : (
-              <p className='my-2 text-slate-500'>{entrada.data[0].attributes.ContenidoDescripcion10}</p>
-            )}
-
-            {entrada.data[0].attributes.ContenidoImagen10 == null ||
-            entrada.data[0].attributes.ContenidoImagen10.data == null ||
-            typeof entrada.data[0].attributes.ContenidoImagen10.data === "undefined"
-              ? null
-              : entrada.data[0].attributes.ContenidoImagen10.data.map((imagen) => (
-                  <Image
-                    width={1000}
-                    height={800}
-                    src={imagen.attributes.url}
-                    alt={`imagen blog ${imagen.attributes.titulo}`}
-                    className='my-8 w-11/12 h-auto mx-auto'
-                    priority
-                    key={imagen.id}
-                  />
-                ))}
+              return (
+                <React.Fragment key={index}>
+                  <p className='text-2xl mt-8 mb-2'>{subTitulo}</p>
+                  {descripcion && <p className='my-2 text-slate-500'>{descripcion}</p>}
+                  {imagenes.length > 0 &&
+                    imagenes.map((imagen) => (
+                      <Image
+                        key={imagen.id}
+                        width={1000}
+                        height={800}
+                        src={imagen.attributes.url}
+                        alt={`imagen blog ${imagen.attributes.titulo}`}
+                        className='my-8 w-11/12 h-auto mx-auto'
+                        loading='lazy'
+                      />
+                    ))}
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
       </Layout>
@@ -287,7 +80,7 @@ export const EntradaBlog = ({ entrada, locale }) => {
 
 export async function getStaticPaths({ locales }) {
   const locale = locales[0];
-  const url = `${process.env.STRAPI_URL}/api/blogs?locale=en`;
+  const url = `${process.env.STRAPI_URL}/api/blogs?locale=${locale}`;
   const respuesta = await fetch(url);
   const entradas = await respuesta.json();
   const paths = entradas.data.map((entrada) => ({
