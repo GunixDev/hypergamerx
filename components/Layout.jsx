@@ -54,23 +54,15 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
         <link rel='icon' href='/logo.png' type='image/png' />
       </Head>
       <nav className='bg-gray-800 font-sans'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex items-center justify-end h-16'>
-            <div className='flex items-center'>
-              <div className='flex-shrink-0'></div>
-              <div className='hidden md:block'>
-                <div className='ml-10 flex items-baseline space-x-4'>
-                  <Link
-                    href='/'
-                    className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out'>
-                    Inicio
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className='w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end h-16'>
+          <Link
+            href='/'
+            className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out'>
+            Inicio
+          </Link>
         </div>
       </nav>
+
       {children}
       <footer className='bg-black text-white py-8 w-full font-sans mt-10'>
         <div className='container mx-auto text-center'>

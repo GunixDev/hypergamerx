@@ -22,7 +22,7 @@ export const EntradaBlog = ({ entrada, locale }) => {
         descripcion={entrada.data[0].attributes.Resumen}
         imagen={entrada.data[0].attributes.imagenprincipal.data.attributes.url}
         keywords={entrada.data[0].attributes.keywords}>
-        <div className='w-2/3 m-auto my-10'>
+        <div className='sm:w-5/6 md:w-10/12 lg:w-2/3 m-auto my-10'>
           <div>
             <p className='text-5xl text-slate-400 font-bold work'>{entrada.data[0].attributes.titulo}</p>
             <h3 className='text-slate-500 my-4 text-sm' suppressHydrationWarning>
