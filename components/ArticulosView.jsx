@@ -14,10 +14,9 @@ export function Articulos_version1({ entrada, locale }) {
           alt={`imagen blog ${entrada.attributes.titulo}`}
           src={entrada.attributes.imagenprincipal.data.attributes.url}
           sizes='sizes="(min-width: 1em) 3vw,(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 3vw'
-          quality={25}
-          priority={true}
+          quality={10}
           fill={true}
-          className='rounded-xl duration-500 '
+          className='rounded-xl duration-500'
         />
 
         <div className='z-40 inline sm:p-1 xl:p-2 bg-red-700 w-fit'>

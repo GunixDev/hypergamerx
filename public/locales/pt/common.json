@@ -1,0 +1,31 @@
+{
+  "Index": {
+    "Titulo": "A melhor fonte de notícias e curiosidades sobre jogos.",
+    "Resumen": "Você é um jogador apaixonado que quer se manter atualizado com as últimas notícias? Não procure mais, HyperGamerX! Nosso site oferece a melhor experiência para jogadores que procuram acompanhar as últimas tendências.",
+    "ParrafoTitulo": "Tudo ao seu dispor",
+    "ParrafoDescripcion": "Temos muitos recursos incríveis esperando por você em nosso site. De notícias de última hora e curiosidades fascinantes a avaliações imparciais e entrevistas exclusivas, nosso objetivo é proporcionar a você uma experiência excepcional. Mas isso não é tudo. Orgulhamo-nos também de lhe oferecer uma navegação intuitiva e fluida, para que encontre facilmente a informação que procura. Prepare-se para mergulhar em um mundo cheio de conteúdo e descobertas emocionantes, enquanto desfruta de uma experiência de navegação impecável. Bem-vindo à nossa comunidade de amantes de videogames!",
+    "Featureds": {
+      "Featured1": {
+        "FeaturedTitulo": "Conteúdo de alta qualidade",
+        "FeaturedDescripcion": "O HyperGamerX é apoiado por conteúdo de alta qualidade e recursos bem construídos que o mantêm atualizado com tudo o que está acontecendo no mundo dos jogos. Receba notícias rapidamente, descubra tudo o que você precisa saber e muito mais!",
+        "FeaturedIcono": "corazon"
+      },
+      "Featured2": {
+        "FeaturedTitulo": "Fique por dentro do Fast News",
+        "FeaturedDescripcion": "Descubra o que está acontecendo no mundo dos jogos imediatamente com atualizações de notícias em tempo real do HyperGamerX. Garantimos que você se mantenha informado sobre os últimos desenvolvimentos, para que nunca perca nenhum novo anúncio emocionante.",
+        "FeaturedIcono": "rapidez"
+      },
+      "Featured3": {
+        "FeaturedTitulo": "Design atraente e funcional",
+        "FeaturedDescripcion": "Nosso site foi projetado para máxima usabilidade e estética em um único pacote. Nosso design esteticamente agradável facilita a localização rápida do que você precisa, enquanto você navega pelo nosso conteúdo.",
+        "FeaturedIcono": "diseño"
+      },
+      "Featured4": {
+        "FeaturedTitulo": "Nós ouvimos a comunidade",
+        "FeaturedDescripcion": "Valorizamos nossa comunidade e sempre nos esforçamos para garantir que sua opinião seja ouvida. Ouvimos constantemente o feedback dos jogadores, para garantir que oferecemos um serviço que atenda às suas necessidades.",
+        "FeaturedIcono": "chat"
+      }
+    },
+    "Articulos": "Artigos que podem te interessar..."
+  }
+}

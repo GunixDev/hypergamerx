@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import Link from "next/link";
 import { GoogleAnalytics } from "nextjs-google-analytics";
+import { appWithTranslation } from "next-i18next";
 
 function App({ Component, pageProps }) {
   return (
@@ -27,4 +28,4 @@ function App({ Component, pageProps }) {
   );
 }
 
-export default App;
+export default appWithTranslation(App);
