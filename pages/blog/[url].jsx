@@ -38,11 +38,10 @@ export const EntradaBlog = ({ entrada, locale }) => {
             const subTitulo = attributes[subTituloKey];
             const descripcion = attributes[descripcionKey];
             const imagenes = attributes[imagenKey]?.data || [];
-            if (!subTitulo) return null;
             return (
               <React.Fragment key={index}>
-                <p className='text-2xl mt-8 mb-2'>{subTitulo}</p>
-                {descripcion && <p className='my-2 text-slate-500'>{descripcion}</p>}
+                {subTitulo && <p className='text-2xl mt-8 mb-2'>{subTitulo}</p>}
+                {descripcion && <p className='my-6 text-slate-500'>{descripcion}</p>}
                 {imagenes.length > 0 &&
                   imagenes.map((imagen) => (
                     <Image
