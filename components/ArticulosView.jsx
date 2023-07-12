@@ -8,7 +8,7 @@ import rehypeRaw from "rehype-raw";
 
 export function Articulos_version1({ entrada, locale }) {
   return (
-    <div className='sm:h-46 md:h-50 lg:h-56 xl:h-72 sm:w-50 md:w-64 lg:w-72 xl:w-92 relative group shadow-2xl rounded-xl drop-shadow-lg duration-500'>
+    <div className='sm:h-46 md:h-50 lg:h-56 xl:h-64 sm:w-50 md:w-64 lg:w-72 xl:w-88 relative group shadow-2xl rounded-xl drop-shadow-lg duration-500'>
       <a href={`/${locale}/blog/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
         <Image
           alt={`imagen blog ${entrada.attributes.titulo}`}
