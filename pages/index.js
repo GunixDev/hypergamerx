@@ -4,7 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Feature from "@/components/Feaure";
 import Articulos_version1 from "@/components/ArticulosView";
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   const blogurl = `${process.env.STRAPI_URL}/api/blogs?populate=deep&locale=${locale}`;
   const respuesta = await fetch(blogurl);
   const blog = await respuesta.json();
@@ -31,29 +31,14 @@ export default function Home({ blog, locale }) {
           <p className='sm:text-2xl md:text-3xl mb-5'>{t("Index.ParrafoTitulo")}</p>
           <p className='text-slate-400 sm:text-sm md:text-lg'>{t("Index.ParrafoDescripcion")}</p>
           <div className='grid grid-cols-2 sm:gap-5 md:gap-8 mt-10'>
-            <Feature
-              titulo={t("Index.Featureds.Featured1.FeaturedTitulo")}
-              descripcion={t("Index.Featureds.Featured1.FeaturedDescripcion")}
-              icono={t("Index.Featureds.Featured1.FeaturedIcono")}
-            />
-
-            <Feature
-              titulo={t("Index.Featureds.Featured2.FeaturedTitulo")}
-              descripcion={t("Index.Featureds.Featured2.FeaturedDescripcion")}
-              icono={t("Index.Featureds.Featured2.FeaturedIcono")}
-            />
-
-            <Feature
-              titulo={t("Index.Featureds.Featured3.FeaturedTitulo")}
-              descripcion={t("Index.Featureds.Featured3.FeaturedDescripcion")}
-              icono={t("Index.Featureds.Featured3.FeaturedIcono")}
-            />
-
-            <Feature
-              titulo={t("Index.Featureds.Featured4.FeaturedTitulo")}
-              descripcion={t("Index.Featureds.Featured4.FeaturedDescripcion")}
-              icono={t("Index.Featureds.Featured4.FeaturedIcono")}
-            />
+            {[1, 2, 3, 4].map((index) => (
+              <Feature
+                key={index}
+                titulo={t(`Index.Featureds.Featured${index}.FeaturedTitulo`)}
+                descripcion={t(`Index.Featureds.Featured${index}.FeaturedDescripcion`)}
+                icono={t(`Index.Featureds.Featured${index}.FeaturedIcono`)}
+              />
+            ))}
           </div>
         </div>
         <div>
