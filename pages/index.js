@@ -39,14 +39,16 @@ export default function Home({ blog, locale }) {
 
   return (
     <Layout>
-      <main className='lg:w-4/5 sm:w-11/12 md:w-11/12 mx-auto flex flex-col mb-10'>
-        <p className='text-6xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-bold first-line:mt-8 text-left mt-14'>
+      <main className='lg:w-4/5 ls:w-11/12 sm:w-11/12 md:w-11/12 mx-auto flex flex-col mb-10'>
+        <p className=' ls:text-xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-bold first-line:mt-8 text-left mt-14'>
           {t("Index.Titulo")}
         </p>
-        <p className='text-slate-500 mt-2 md:mt-2 sm:mt-4 xl:mt-6 md:text-xl sm:text-base'>{t("Index.Resumen")}</p>
-        <div className='mt-20'>
-          <p className='sm:text-2xl md:text-3xl mb-5'>{t("Index.ParrafoTitulo")}</p>
-          <p className='text-slate-400 sm:text-sm md:text-lg'>{t("Index.ParrafoDescripcion")}</p>
+        <p className='text-slate-500 mt-2 md:mt-2 sm:mt-4 ls:mt-4 xl:mt-6 md:text-xl sm:text-base ls:text-sm'>
+          {t("Index.Resumen")}
+        </p>
+        <div className='mt-20 ls:mt-12 sm:mt-16 md:mt-20'>
+          <p className='ls:text-lg sm:text-2xl md:text-3xl ls:mb-2 sm:mb-5'>{t("Index.ParrafoTitulo")}</p>
+          <p className='text-slate-400 sm:text-sm md:text-lg ls:text-ls'>{t("Index.ParrafoDescripcion")}</p>
           <div className='grid grid-cols-2 sm:gap-5 md:gap-8 mt-10'>
             {[1, 2, 3, 4].map((index) => (
               <Feature
@@ -59,8 +61,10 @@ export default function Home({ blog, locale }) {
           </div>
         </div>
         <div>
-          <h1 className='text-3xl text-slate-400 mt-20 mb-9'>{t("Index.Articulos")}</h1>
-          <div className='grid grid-cols-4 sm:gap-52 md:gap-72 lg:gap-80 xl:gap-96 relative'>
+          <h1 className='ls:max-sm:hidden sm:text-2xl lg:text-3xl text-slate-400 ls:mt-6 ls:mb-6 sm:mt-10 sm:mb-4 lg:mt-20 lg:mb-9'>
+            {t("Index.Articulos")}
+          </h1>
+          <div className='grid grid-cols-3 ls:gap-0 sm:gap-52 md:gap-72 lg:gap-80 xl:gap-96 relative'>
             {blog.data.map((entrada, index) => (
               <Articulos_version1 key={index} entrada={entrada} locale={locale} />
             ))}
