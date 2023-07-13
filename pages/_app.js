@@ -20,9 +20,11 @@ function App({ Component, pageProps }) {
         </div>
       </nav>
       <Component {...pageProps} />
-      <footer className='bg-black text-white py-8 w-full font-sans mt-10'>
-        <div className='container mx-auto text-center'>
-          <p className='text-gray-400'>&copy; 2023 HyperGamerX.</p>
+      <footer className=' text-white bg-gray-900 bg-opacity-70 py-8 w-full font-sans mt-10'>
+        <div className='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
+          <div>
+            <p className='text-gray-400'>&copy; 2023 HyperGamerX.</p>
+          </div>
         </div>
       </footer>
       <Analytics />

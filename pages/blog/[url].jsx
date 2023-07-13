@@ -4,6 +4,7 @@ import ErrorPage from "next/error";
 import { Layout } from "@/components/Layout";
 import React from "react";
 import axios from "axios";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 const STRAPI_URL = process.env.STRAPI_URL;
 
 export const EntradaBlog = ({ entrada, locale }) => {
@@ -83,6 +84,7 @@ export async function getStaticProps({ params: { url }, locale }) {
     props: {
       entrada: entrada,
       locale,
+      ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
