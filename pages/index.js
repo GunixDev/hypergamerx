@@ -6,19 +6,11 @@ import dynamic from "next/dynamic";
 const Articulos_version1 = dynamic(() => import("../components/ArticulosView"), {
   loading: () => <p>Cargando...</p>,
   ssr: false,
-  onError: (error) => {
-    console.error("Error al cargar el componente:", error);
-    return <p>Ocurrió un error al cargar el componente.</p>;
-  },
 });
 
 const Feature = dynamic(() => import("../components/Feaure"), {
   loading: () => <p>Cargando...</p>,
   ssr: false,
-  onError: (error) => {
-    console.error("Error al cargar el componente:", error);
-    return <p>Ocurrió un error al cargar el componente.</p>;
-  },
 });
 
 export async function getStaticProps({ locale }) {
@@ -39,32 +31,34 @@ export default function Home({ blog, locale }) {
 
   return (
     <Layout>
-      <main className='lg:w-4/5 ls:w-11/12 sm:w-11/12 md:w-11/12 mx-auto flex flex-col mb-10'>
-        <p className=' ls:text-xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-bold first-line:mt-8 text-left mt-14'>
-          {t("Index.Titulo")}
-        </p>
-        <p className='text-slate-500 mt-2 md:mt-2 sm:mt-4 ls:mt-4 xl:mt-6 md:text-xl sm:text-base ls:text-sm'>
-          {t("Index.Resumen")}
-        </p>
-        <div className='mt-20 ls:mt-12 sm:mt-16 md:mt-20'>
-          <p className='ls:text-lg sm:text-2xl md:text-3xl ls:mb-2 sm:mb-5'>{t("Index.ParrafoTitulo")}</p>
-          <p className='text-slate-400 sm:text-sm md:text-lg ls:text-ls'>{t("Index.ParrafoDescripcion")}</p>
-          <div className='grid grid-cols-2 sm:gap-5 md:gap-8 mt-10'>
-            {[1, 2, 3, 4].map((index) => (
-              <Feature
-                key={index}
-                titulo={t(`Index.Featureds.Featured${index}.FeaturedTitulo`)}
-                descripcion={t(`Index.Featureds.Featured${index}.FeaturedDescripcion`)}
-                icono={t(`Index.Featureds.Featured${index}.FeaturedIcono`)}
-              />
-            ))}
+      <main className='w-full flex flex-col mb-10'>
+        <div className='lg:w-4/5 ls:w-11/12 sm:w-11/12 md:w-11/12 mx-auto'>
+          <p className=' ls:text-xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-bold first-line:mt-8 text-left mt-14'>
+            {t("Index.Titulo")}
+          </p>
+          <p className='text-slate-500 mt-2 md:mt-2 sm:mt-4 ls:mt-4 xl:mt-6 md:text-xl sm:text-base ls:text-sm'>
+            {t("Index.Resumen")}
+          </p>
+          <div className='mt-20 ls:mt-12 sm:mt-16 md:mt-20'>
+            <p className='ls:text-lg sm:text-2xl md:text-3xl ls:mb-2 sm:mb-5'>{t("Index.ParrafoTitulo")}</p>
+            <p className='text-slate-400 sm:text-sm md:text-lg ls:text-ls'>{t("Index.ParrafoDescripcion")}</p>
+            <div className='grid grid-cols-2 sm:gap-5 md:gap-8 mt-10'>
+              {[1, 2, 3, 4].map((index) => (
+                <Feature
+                  key={index}
+                  titulo={t(`Index.Featureds.Featured${index}.FeaturedTitulo`)}
+                  descripcion={t(`Index.Featureds.Featured${index}.FeaturedDescripcion`)}
+                  icono={t(`Index.Featureds.Featured${index}.FeaturedIcono`)}
+                />
+              ))}
+            </div>
           </div>
         </div>
-        <div>
-          <h1 className='ls:max-sm:hidden sm:text-2xl lg:text-3xl text-slate-400 ls:mt-6 ls:mb-6 sm:mt-10 sm:mb-4 lg:mt-20 lg:mb-9'>
+        <div className='w-11/12 mx-auto'>
+          <h1 className='ls:max-sm:text-lg sm:text-2xl lg:text-3xl text-slate-400 ls:mt-6 ls:mb-6 sm:mt-10 sm:mb-4 lg:mt-20 lg:mb-9'>
             {t("Index.Articulos")}
           </h1>
-          <div className='grid grid-cols-3 ls:gap-0 sm:gap-52 md:gap-72 lg:gap-80 xl:gap-96 relative'>
+          <div className='grid grid-cols-3 gap-4 ls:gap-1 relative'>
             {blog.data.map((entrada, index) => (
               <Articulos_version1 key={index} entrada={entrada} locale={locale} />
             ))}

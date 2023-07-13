@@ -22,6 +22,21 @@ function App({ Component, pageProps }) {
       <Component {...pageProps} />
       <footer className=' text-white bg-gray-900 bg-opacity-70 py-8 w-full font-sans mt-10'>
         <div className='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
+          <div className='text-left'>
+            <h1 className='text-slate-700 ls:max-sm:text-ls'>Terminos y servicios</h1>
+            <div className='ml-6 ls:max-md:text-lss'>
+              <li>Aviso legal y términos de uso</li>
+              <li>Política de Cookies</li>
+              <li>Privacidad</li>
+            </div>
+          </div>
+          <div className='text-left'>
+            <h1 className='text-slate-700 ls:max-sm:text-ls'>Redes Sociales</h1>
+            <div className='ml-6 ls:max-md:text-lss'>
+              <li>Discord</li>
+              <li>Twitter</li>
+            </div>
+          </div>
           <div>
             <p className='text-gray-400'>&copy; 2023 HyperGamerX.</p>
           </div>
