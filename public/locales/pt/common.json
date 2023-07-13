@@ -27,5 +27,8 @@
       }
     },
     "Articulos": "Artigos que podem te interessar..."
+  },
+  "Header": {
+    "Inicio": "Começar"
   }
 }

@@ -3,8 +3,10 @@ import { Analytics } from "@vercel/analytics/react";
 import Link from "next/link";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import { appWithTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next";
 
 function App({ Component, pageProps }) {
+  const { t } = useTranslation("common");
   return (
     <>
       <GoogleAnalytics trackPageViews />
@@ -13,7 +15,7 @@ function App({ Component, pageProps }) {
           <Link
             href='/'
             className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out'>
-            Inicio
+            {t("Header.Inicio")}
           </Link>
         </div>
       </nav>
