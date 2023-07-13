@@ -1,8 +1,25 @@
 import { Layout } from "../components/Layout";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Feature from "@/components/Feaure";
-import Articulos_version1 from "@/components/ArticulosView";
+import dynamic from "next/dynamic";
+
+const Articulos_version1 = dynamic(() => import("../components/ArticulosView"), {
+  loading: () => <p>Cargando...</p>,
+  ssr: false,
+  onError: (error) => {
+    console.error("Error al cargar el componente:", error);
+    return <p>Ocurrió un error al cargar el componente.</p>;
+  },
+});
+
+const Feature = dynamic(() => import("../components/Feaure"), {
+  loading: () => <p>Cargando...</p>,
+  ssr: false,
+  onError: (error) => {
+    console.error("Error al cargar el componente:", error);
+    return <p>Ocurrió un error al cargar el componente.</p>;
+  },
+});
 
 export async function getStaticProps({ locale }) {
   const blogurl = `${process.env.STRAPI_URL}/api/blogs?populate=deep&locale=${locale}`;

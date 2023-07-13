@@ -8,7 +8,7 @@ const icons = {
   chat: <BsChatDotsFill />,
 };
 
-function Feature({ titulo, descripcion, icono }) {
+export default function Feature({ titulo, descripcion, icono }) {
   const iconComponent = icons[icono] || null;
 
   return (
@@ -23,5 +23,3 @@ function Feature({ titulo, descripcion, icono }) {
     </div>
   );
 }
-
-export default Feature;
