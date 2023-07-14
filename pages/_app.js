@@ -33,8 +33,12 @@ function App({ Component, pageProps }) {
           <div className='text-left'>
             <h1 className='text-slate-700 ls:max-sm:text-ls'>Redes Sociales</h1>
             <div className='ml-6 ls:max-md:text-lss'>
-              <li>Discord</li>
-              <li>Twitter</li>
+              <Link href={"https://discord.gg/4uvDcbcgWm"} target='_blank'>
+                Discord
+              </Link>
+              <Link href={"https://twitter.com/HyperGamerX_ES"} target='_blank'>
+                Twitter
+              </Link>
             </div>
           </div>
           <div>
