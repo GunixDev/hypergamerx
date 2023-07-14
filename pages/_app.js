@@ -25,7 +25,9 @@ function App({ Component, pageProps }) {
           <div className='text-left'>
             <h1 className='text-slate-700 ls:max-sm:text-ls'>Terminos y servicios</h1>
             <div className='ml-6 ls:max-md:text-lss'>
-              <li>Aviso legal y términos de uso</li>
+              <li>
+                <Link href={"/terminos-servicios/AvisoLegal"}>Aviso legal y términos de uso</Link>
+              </li>
               <li>Política de Cookies</li>
               <li>Privacidad</li>
             </div>
