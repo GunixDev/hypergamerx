@@ -17,11 +17,11 @@ export const EntradaBlog = ({ entrada, locale }) => {
     <Layout titulo={titulo} descripcion={Resumen} imagen={imagenprincipal.data.attributes.url} keywords={keywords}>
       <div className='sm:w-5/6 md:w-10/12 lg:w-2/3 m-auto my-10'>
         <div>
-          <p className='text-5xl text-slate-400 font-bold work'>{titulo}</p>
-          <h3 className='text-slate-500 my-4 text-sm' suppressHydrationWarning>
+          <h1 className='text-5xl text-slate-400 font-bold work'>{titulo}</h1>
+          <p className='text-slate-500 my-4 text-sm' suppressHydrationWarning>
             {FormatearFecha(attributes.publishedAt)}
-          </h3>
-          <p className='text-xl text-slate-500'>{Resumen}</p>
+          </p>
+          <h2 className='text-xl text-slate-500'>{Resumen}</h2>
         </div>
         <Image
           width={1000}
@@ -41,7 +41,7 @@ export const EntradaBlog = ({ entrada, locale }) => {
             const imagenes = attributes[imagenKey]?.data || [];
             return (
               <React.Fragment key={index}>
-                {subTitulo && <p className='text-2xl mt-8 mb-2'>{subTitulo}</p>}
+                {subTitulo && <h2 className='text-2xl mt-8 mb-2'>{subTitulo}</h2>}
                 {descripcion && <p className='my-6 text-slate-500'>{descripcion}</p>}
                 {imagenes.length > 0 &&
                   imagenes.map((imagen) => (

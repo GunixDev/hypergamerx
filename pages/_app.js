@@ -23,7 +23,7 @@ function App({ Component, pageProps }) {
       <footer className=' text-white bg-gray-900 bg-opacity-70 py-8 w-full font-sans mt-10'>
         <div className='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
           <div className='text-left'>
-            <h1 className='text-slate-700 ls:max-sm:text-ls'>Terminos y servicios</h1>
+            <h3 className='text-slate-700 ls:max-sm:text-ls'>Terminos y servicios</h3>
             <div className='ml-6 ls:max-md:text-lss'>
               <li>
                 <Link href={"/terminos-servicios/AvisoLegal"}>Aviso legal y términos de uso</Link>
@@ -33,7 +33,7 @@ function App({ Component, pageProps }) {
             </div>
           </div>
           <div className='text-left'>
-            <h1 className='text-slate-700 ls:max-sm:text-ls'>Redes Sociales</h1>
+            <h3 className='text-slate-700 ls:max-sm:text-ls'>Redes Sociales</h3>
             <div className='ml-6 ls:max-md:text-lss'>
               <li>
                 <Link href={"https://discord.gg/4uvDcbcgWm"} target='_blank'>
