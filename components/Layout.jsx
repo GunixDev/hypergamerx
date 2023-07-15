@@ -6,13 +6,13 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
   return (
     <>
       <Head>
-        <title>{titulo ? titulo : "HyperGamerX"}</title>
+        <title>{titulo ? titulo : "HyperGamerX: Tu Destino para Noticias de Videojuegos"}</title>
         <meta
           name='description'
           content={
             descripcion
               ? descripcion
-              : "Descubre las últimas noticias, curiosidades y novedades en el mundo de los videojuegos. Reseñas, avances, análisis, personajes destacados y más. Mantente actualizado con nuestra amplia cobertura de la industria del videojuego y disfruta de contenido exclusivo para los amantes de los juegos."
+              : "Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información"
           }
         />
         <meta name='author' content='Sunrize Studios' />
