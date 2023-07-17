@@ -23,18 +23,22 @@ function App({ Component, pageProps }) {
       <footer className=' text-white bg-gray-900 bg-opacity-70 py-8 w-full font-sans mt-10'>
         <div className='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
           <div className='text-left'>
-            <h3 className='text-slate-700 ls:max-sm:text-ls'>Terminos y servicios</h3>
-            <div className='ml-6 ls:max-md:text-lss'>
+            <h3 className='text-slate-700 ls:max-sm:text-xs'>Terminos y servicios</h3>
+            <div className='ml-6 ls:max-md:text-xs'>
               <li>
                 <Link href={"/terminos-servicios/AvisoLegal"}>Aviso legal y términos de uso</Link>
               </li>
-              <li>Política de Cookies</li>
-              <li>Privacidad</li>
+              <li>
+                <Link href={"/terminos-servicios/PoliticaCookies"}>Política de Cookies</Link>
+              </li>
+              <li>
+                <Link href={"/terminos-servicios/Privacidad"}>Privacidad</Link>
+              </li>
             </div>
           </div>
           <div className='text-left'>
-            <h3 className='text-slate-700 ls:max-sm:text-ls'>Redes Sociales</h3>
-            <div className='ml-6 ls:max-md:text-lss'>
+            <h3 className='text-slate-700 ls:max-sm:text-xs'>Redes Sociales</h3>
+            <div className='ml-6 ls:max-md:text-xs'>
               <li>
                 <Link href={"https://discord.gg/4uvDcbcgWm"} target='_blank'>
                   Discord
@@ -48,7 +52,14 @@ function App({ Component, pageProps }) {
             </div>
           </div>
           <div>
-            <p className='text-gray-400'>&copy; 2023 HyperGamerX.</p>
+            <p className='text-gray-400 ls:max-lg:text-xs'>
+              &copy; 2023 HyperGamerX. Creado por
+              <Link href={"https://sunrizestudios.vercel.app/"} target='_blank'>
+                {" "}
+                Sunrize Studios
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </footer>

@@ -41,7 +41,7 @@ export default function Home({ blog, locale }) {
           </p>
           <div className='mt-20 ls:mt-12 sm:mt-16 md:mt-20'>
             <h2 className='ls:text-lg sm:text-2xl md:text-3xl ls:mb-2 sm:mb-5'>{t("Index.ParrafoTitulo")}</h2>
-            <p className='text-slate-400 sm:text-sm md:text-lg ls:text-ls'>{t("Index.ParrafoDescripcion")}</p>
+            <p className='text-slate-400 sm:text-sm md:text-lg ls:text-xs'>{t("Index.ParrafoDescripcion")}</p>
             <div className='grid grid-cols-2 sm:gap-5 md:gap-8 mt-10'>
               {[1, 2, 3, 4].map((index) => (
                 <Feature
