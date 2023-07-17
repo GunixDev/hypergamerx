@@ -28,7 +28,13 @@
     },
     "Articulos": "Artículos que te pueden interesar..."
   },
-  "Header": {
-    "Inicio": "Inicio"
+  "Layout": {
+    "Inicio": "Inicio",
+    "Terminos": "Términos y servicios",
+    "AvisoLegal": "Aviso legal y términos de uso",
+    "PoliticaDeCookies": "Política de Cookies",
+    "Privacidad": "Privacidad",
+    "RedesSociales": "Redes Sociales",
+    "Creado": "Creado por"
   }
 }

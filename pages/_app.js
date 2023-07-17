@@ -15,7 +15,7 @@ function App({ Component, pageProps }) {
           <Link
             href='/'
             className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out'>
-            {t("Header.Inicio")}
+            {t("Layout.Inicio")}
           </Link>
         </div>
       </nav>
@@ -23,21 +23,21 @@ function App({ Component, pageProps }) {
       <footer className=' text-white bg-gray-900 bg-opacity-70 py-8 w-full font-sans mt-10'>
         <div className='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
           <div className='text-left'>
-            <h3 className='text-slate-700 ls:max-sm:text-xs'>Terminos y servicios</h3>
+            <h3 className='text-slate-700 ls:max-sm:text-xs'>{t("Layout.Terminos")}</h3>
             <div className='ml-6 ls:max-md:text-xs'>
               <li>
-                <Link href={"/terminos-servicios/AvisoLegal"}>Aviso legal y términos de uso</Link>
+                <Link href={"/terminos-servicios/AvisoLegal"}>{t("Layout.AvisoLegal")}</Link>
               </li>
               <li>
-                <Link href={"/terminos-servicios/PoliticaCookies"}>Política de Cookies</Link>
+                <Link href={"/terminos-servicios/PoliticaCookies"}>{t("Layout.PoliticaDeCookies")}</Link>
               </li>
               <li>
-                <Link href={"/terminos-servicios/Privacidad"}>Privacidad</Link>
+                <Link href={"/terminos-servicios/Privacidad"}>{t("Layout.Privacidad")}</Link>
               </li>
             </div>
           </div>
           <div className='text-left'>
-            <h3 className='text-slate-700 ls:max-sm:text-xs'>Redes Sociales</h3>
+            <h3 className='text-slate-700 ls:max-sm:text-xs'>{t("Layout.RedesSociales")}</h3>
             <div className='ml-6 ls:max-md:text-xs'>
               <li>
                 <Link href={"https://discord.gg/4uvDcbcgWm"} target='_blank'>
@@ -53,7 +53,7 @@ function App({ Component, pageProps }) {
           </div>
           <div>
             <p className='text-gray-400 ls:max-lg:text-xs'>
-              &copy; 2023 HyperGamerX. Creado por
+              &copy; 2023 HyperGamerX. {t("Layout.Creado")}
               <Link href={"https://sunrizestudios.vercel.app/"} target='_blank'>
                 {" "}
                 Sunrize Studios
