@@ -5,9 +5,11 @@ import { Layout } from "@/components/Layout";
 import React from "react";
 import axios from "axios";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 const STRAPI_URL = process.env.STRAPI_URL;
 
 export const EntradaBlog = ({ entrada, locale }) => {
+  const { t } = useTranslation("common");
   if (!entrada || !entrada.data || !entrada.data[0]) {
     return <ErrorPage statusCode={404} />;
   }
