@@ -47,10 +47,10 @@ export const EntradaBlog = ({ entrada, locale }) => {
       <div className='sm:w-5/6 md:w-10/12 lg:w-2/3 ls:w-11/12 m-auto my-10'>
         <div>
           <h1 className='text-5xl text-slate-400 font-bold work ls:max-sm:text-xl'>{titulo}</h1>
-          <p className='text-slate-500 my-4 text-sm ls:max-sm:text-xs' suppressHydrationWarning>
+          <span className='text-slate-500 my-4 text-sm ls:max-sm:text-xs' suppressHydrationWarning>
             {FormatearFecha(attributes.publishedAt)}
-          </p>
-          <h2 className='text-xl text-slate-500 ls:max-sm:text-sm'>{Resumen}</h2>
+          </span>
+          <p className='text-xl text-slate-500 ls:max-sm:text-sm'>{Resumen}</p>
         </div>
         <Image
           width={1000}
@@ -61,16 +61,33 @@ export const EntradaBlog = ({ entrada, locale }) => {
           loading='lazy'
         />
         <div className='bg-slate-950 p-6 rounded-2xl w-fit'>
-          <p className='text-xl text-center mb-2'>{t("blogs.indice")}</p>
+          <span className='text-xl text-center mb-2'>{t("blogs.indice")}</span>
           {[...Array(10).keys()].map((index) => {
             const subTituloKey = `ContenidoSubTitulo${index + 1}`;
             const subTitulo = attributes[subTituloKey];
             return (
               <React.Fragment key={index}>
                 {subTitulo && (
-                  <Link href={`#subtitulo${index}`} className='text-base mt-1 mb-1 ls:max-sm:text-xs'>
-                    <li>{subTitulo}</li>
-                  </Link>
+                  <>
+                    <Link href={`#subtitulo${index}`} className='text-base ls:max-sm:text-xs'>
+                      <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{subTitulo}</li>
+                    </Link>
+                    {[...Array(3).keys()].map((indexsub) => {
+                      const subTituloKeySub = `ContenidoSubtitulo${index + 1}Sub${indexsub + 1}`;
+                      const subTituloSub = attributes[subTituloKeySub];
+                      return (
+                        <React.Fragment key={indexsub}>
+                          {subTituloSub && (
+                            <Link href={`#subtitulo${index}Sub${indexsub}`} className='text-base ls:max-sm:text-xs'>
+                              <li className='ml-4 text-slate-500 text-sm ls:max-sm:text-xs hover:text-slate-300 duration-300'>
+                                {subTituloSub}
+                              </li>
+                            </Link>
+                          )}
+                        </React.Fragment>
+                      );
+                    })}
+                  </>
                 )}
               </React.Fragment>
             );
@@ -92,6 +109,28 @@ export const EntradaBlog = ({ entrada, locale }) => {
                   </h2>
                 )}
                 {descripcion && <p className='my-6 text-slate-500 ls:max-sm:text-xs'>{descripcion}</p>}
+                {[...Array(3).keys()].map((indexsub) => {
+                  const subTituloKeySub = `ContenidoSubtitulo${index + 1}Sub${indexsub + 1}`;
+                  const subTituloSub = attributes[subTituloKeySub];
+                  const subTituloDescKeySub = `ContenidoSubtitulo${index + 1}Text${indexsub + 1}`;
+                  const subTituloDescSub = attributes[subTituloDescKeySub];
+                  return (
+                    <React.Fragment key={indexsub}>
+                      {subTituloSub && (
+                        <h3
+                          id={`subtitulo${index}Sub${indexsub}`}
+                          className='text-xl ml-4 mt-4 mb-2 ls:max-sm:text-sm text-slate-400'>
+                          {subTituloSub}
+                        </h3>
+                      )}
+                      {subTituloDescSub && (
+                        <p className='text-sm ml-4 mb-4 ls:max-sm:text-xs text-slate-500 break-words'>
+                          {subTituloDescSub}
+                        </p>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
                 {imagenes.length > 0 &&
                   imagenes.map((imagen) => (
                     <Image
