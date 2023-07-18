@@ -61,6 +61,7 @@ export const EntradaBlog = ({ entrada, locale }) => {
           loading='lazy'
         />
         <div className='bg-slate-950 p-6 rounded-2xl w-fit'>
+          <p className='text-xl text-center mb-2'>{t("blogs.indice")}</p>
           {[...Array(10).keys()].map((index) => {
             const subTituloKey = `ContenidoSubTitulo${index + 1}`;
             const subTitulo = attributes[subTituloKey];
