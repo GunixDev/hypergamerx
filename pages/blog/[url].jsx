@@ -8,6 +8,32 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 const STRAPI_URL = process.env.STRAPI_URL;
 
+export async function getStaticPaths({ locales }) {
+  const locale = locales[0];
+  const url = `${STRAPI_URL}/api/blogs?locale=${locale}`;
+  const respuesta = await axios.get(url);
+  const entradas = respuesta.data;
+  const paths = entradas.data.map((entrada) => ({
+    params: { url: entrada.attributes.url },
+  }));
+  return {
+    paths,
+    fallback: "blocking",
+  };
+}
+export async function getStaticProps({ params: { url }, locale }) {
+  const urlBlog = `${STRAPI_URL}/api/blogs?populate=imagenprincipal&populate=ContenidoImagen1&populate=ContenidoImagen2&populate=ContenidoImagen3&populate=ContenidoImagen4&populate=ContenidoImagen5&populate=ContenidoImagen6&populate=ContenidoImagen7&populate=ContenidoImagen8&populate=ContenidoImagen9&populate=ContenidoImagen10&locale=${locale}&filters[url][$eq]=${url}`;
+  const respuesta = await axios.get(urlBlog);
+  const entrada = respuesta.data;
+  return {
+    props: {
+      entrada: entrada,
+      locale,
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
+
 export const EntradaBlog = ({ entrada, locale }) => {
   const { t } = useTranslation("common");
   if (!entrada || !entrada.data || !entrada.data[0]) {
@@ -65,29 +91,5 @@ export const EntradaBlog = ({ entrada, locale }) => {
     </Layout>
   );
 };
-export async function getStaticPaths({ locales }) {
-  const locale = locales[0];
-  const url = `${STRAPI_URL}/api/blogs?locale=${locale}`;
-  const respuesta = await axios.get(url);
-  const entradas = respuesta.data;
-  const paths = entradas.data.map((entrada) => ({
-    params: { url: entrada.attributes.url },
-  }));
-  return {
-    paths,
-    fallback: "blocking",
-  };
-}
-export async function getStaticProps({ params: { url }, locale }) {
-  const urlBlog = `${STRAPI_URL}/api/blogs?populate=imagenprincipal&populate=ContenidoImagen1&populate=ContenidoImagen2&populate=ContenidoImagen3&populate=ContenidoImagen4&populate=ContenidoImagen5&populate=ContenidoImagen6&populate=ContenidoImagen7&populate=ContenidoImagen8&populate=ContenidoImagen9&populate=ContenidoImagen10&locale=${locale}&filters[url][$eq]=${url}`;
-  const respuesta = await axios.get(urlBlog);
-  const entrada = respuesta.data;
-  return {
-    props: {
-      entrada: entrada,
-      locale,
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
-}
+
 export default EntradaBlog;
