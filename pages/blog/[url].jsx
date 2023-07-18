@@ -6,6 +6,7 @@ import React from "react";
 import axios from "axios";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
 const STRAPI_URL = process.env.STRAPI_URL;
 
 export async function getStaticPaths({ locales }) {
@@ -59,6 +60,21 @@ export const EntradaBlog = ({ entrada, locale }) => {
           className='my-8 w-11/12 h-auto mx-auto'
           loading='lazy'
         />
+        <div className='bg-slate-950 p-6 rounded-2xl w-fit'>
+          {[...Array(10).keys()].map((index) => {
+            const subTituloKey = `ContenidoSubTitulo${index + 1}`;
+            const subTitulo = attributes[subTituloKey];
+            return (
+              <React.Fragment key={index}>
+                {subTitulo && (
+                  <Link href={`#subtitulo${index}`} className='text-base mt-1 mb-1 ls:max-sm:text-xs'>
+                    <li>{subTitulo}</li>
+                  </Link>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </div>
         <div>
           {[...Array(10).keys()].map((index) => {
             const subTituloKey = `ContenidoSubTitulo${index + 1}`;
@@ -69,7 +85,11 @@ export const EntradaBlog = ({ entrada, locale }) => {
             const imagenes = attributes[imagenKey]?.data || [];
             return (
               <React.Fragment key={index}>
-                {subTitulo && <h2 className='text-2xl mt-8 mb-2 ls:max-sm:text-base'>{subTitulo}</h2>}
+                {subTitulo && (
+                  <h2 id={`subtitulo${index}`} className='text-2xl mt-8 mb-2 ls:max-sm:text-base'>
+                    {subTitulo}
+                  </h2>
+                )}
                 {descripcion && <p className='my-6 text-slate-500 ls:max-sm:text-xs'>{descripcion}</p>}
                 {imagenes.length > 0 &&
                   imagenes.map((imagen) => (
