@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import Link from "next/link";
-import { GoogleAnalytics } from "nextjs-google-analytics";
 import { appWithTranslation } from "next-i18next";
 import { useTranslation } from "next-i18next";
 
@@ -9,7 +8,6 @@ function App({ Component, pageProps }) {
   const { t } = useTranslation("common");
   return (
     <>
-      <GoogleAnalytics trackPageViews />
       <nav className='bg-gray-800 font-sans'>
         <div className='w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end h-16'>
           <Link
