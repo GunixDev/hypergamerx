@@ -65,10 +65,10 @@ export default function PoliticaCookies() {
           <p className='my-2'>
             <strong>Cookies de rendimiento y análisis:</strong> Además de las cookies necesarias, también utilizamos
             cookies de rendimiento y análisis para recopilar información valiosa sobre cómo los usuarios interactúan con
-            nuestro sitio web. Estas cookies, que incluyen Vercel Analytics y Google Analytics, nos proporcionan datos
-            detallados sobre diversas métricas, como el país de origen de los usuarios, la cantidad de clics realizados,
-            la duración de la visita, la referencia de origen (por ejemplo, Twitter), el sistema operativo utilizado y
-            el navegador utilizado.
+            nuestro sitio web. Estas cookies, que incluyen Vercel Analytics, nos proporcionan datos detallados sobre
+            diversas métricas, como el país de origen de los usuarios, la cantidad de clics realizados, la duración de
+            la visita, la referencia de origen (por ejemplo, Twitter), el sistema operativo utilizado y el navegador
+            utilizado.
           </p>
           <p className='my-2'>
             La información recopilada a través de estas cookies nos brinda una visión profunda sobre cómo los usuarios

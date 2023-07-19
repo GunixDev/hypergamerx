@@ -27,7 +27,7 @@ export default function Privacidad() {
             <strong>Datos de Navegación:</strong> Recopilamos información estándar del registro del servidor, como tu
             dirección IP, tipo de navegador, proveedor de servicios de Internet (ISP), páginas de referencia/salida y
             marcas de fecha/hora. Esta información es recopilada de forma automática por nuestros sistemas y servicios
-            de análisis, incluyendo Vercel Analytics y Google Analytics.
+            de análisis, incluyendo Vercel Analytics.
           </li>
           <li className='my-10'>
             <strong>Datos de Uso:</strong> Recopilamos información sobre cómo utilizas HyperGamerX, incluyendo la
