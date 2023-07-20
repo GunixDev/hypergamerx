@@ -38,6 +38,8 @@
     "Creado": "Criado por"
   },
   "blogs": {
+    "Actualizado": "Atualizado por",
+    "Fechaupdate": "em",
     "indice": "Índice"
   }
 }

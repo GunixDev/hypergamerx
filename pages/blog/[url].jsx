@@ -23,7 +23,7 @@ export async function getStaticPaths({ locales }) {
   };
 }
 export async function getStaticProps({ params: { url }, locale }) {
-  const urlBlog = `${STRAPI_URL}/api/blogs?populate=imagenprincipal&populate=ContenidoImagen1&populate=ContenidoImagen2&populate=ContenidoImagen3&populate=ContenidoImagen4&populate=ContenidoImagen5&populate=ContenidoImagen6&populate=ContenidoImagen7&populate=ContenidoImagen8&populate=ContenidoImagen9&populate=ContenidoImagen10&locale=${locale}&filters[url][$eq]=${url}`;
+  const urlBlog = `${STRAPI_URL}/api/blogs?populate=imagenprincipal&populate=ContenidoImagen1&populate=ContenidoImagen2&populate=ContenidoImagen3&populate=ContenidoImagen4&populate=ContenidoImagen5&populate=ContenidoImagen6&populate=ContenidoImagen7&populate=ContenidoImagen8&populate=ContenidoImagen9&populate=ContenidoImagen10&populate=createdBy&populate=updatedBy&locale=${locale}&filters[url][$eq]=${url}`;
   const respuesta = await axios.get(urlBlog);
   const entrada = respuesta.data;
   return {
@@ -45,13 +45,15 @@ export const EntradaBlog = ({ entrada, locale }) => {
   return (
     <Layout titulo={titulo} descripcion={Resumen} imagen={imagenprincipal.data.attributes.url} keywords={keywords}>
       <div className='sm:w-5/6 md:w-10/12 lg:w-2/3 ls:w-11/12 m-auto my-10'>
-        <div>
-          <h1 className='text-5xl text-slate-400 font-bold work ls:max-sm:text-xl'>{titulo}</h1>
-          <span className='text-slate-500 my-4 text-sm ls:max-sm:text-xs' suppressHydrationWarning>
-            {FormatearFecha(attributes.publishedAt)}
+        <h1 className='text-5xl text-slate-400 font-bold work ls:max-sm:text-xl'>{titulo}</h1>
+        <div className='my-2'>
+          <span className='text-slate-500 text-sm ls:max-sm:text-xs'>
+            {t("blogs.Actualizado")} <strong>{attributes.updatedBy.data.attributes.firstname} </strong>
+            {t("blogs.Fechaupdate")}
+            <strong suppressHydrationWarning> {FormatearFecha(attributes.updatedAt)}</strong>
           </span>
-          <p className='text-xl text-slate-500 ls:max-sm:text-sm'>{Resumen}</p>
         </div>
+        <p className='text-xl text-slate-500 ls:max-sm:text-sm'>{Resumen}</p>
         <Image
           width={1000}
           height={800}
