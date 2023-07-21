@@ -14,7 +14,7 @@ const Feature = dynamic(() => import("../components/Feaure"), {
 });
 
 export async function getStaticProps({ locale }) {
-  const blogurl = `${process.env.STRAPI_URL}/api/blogs?populate=imagenprincipal&locale=${locale}`;
+  const blogurl = `${process.env.STRAPI_URL}/api/blogs?populate[imagenprincipal][fields][0}=url&locale=${locale}`;
   const respuesta = await fetch(blogurl);
   const blog = await respuesta.json();
   return {

@@ -11,7 +11,7 @@ export default function Articulos_version1({ entrada, locale }) {
     <div className='xl:h-64 xl:w-88 lg:w-72 md:h-48 md:w-52 lg:h-56 sm:w-46 sm:h-46 ls:w-28 ls:h-28 relative group shadow-2xl rounded-xl drop-shadow-lg duration-500'>
       <a href={`/${locale}/blog/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
         <Image
-          alt={`imagen blog ${entrada.attributes.titulo}`}
+          alt={`image`}
           src={entrada.attributes.imagenprincipal.data.attributes.url}
           sizes='sizes="(min-width: 1em), 1vw,(max-width: 208px), 3vw,(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 3vw'
           quality={10}

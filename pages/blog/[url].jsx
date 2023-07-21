@@ -23,7 +23,7 @@ export async function getStaticPaths({ locales }) {
   };
 }
 export async function getStaticProps({ params: { url }, locale }) {
-  const urlBlog = `${STRAPI_URL}/api/blogs?populate=imagenprincipal&populate=ContenidoImagen1&populate=ContenidoImagen2&populate=ContenidoImagen3&populate=ContenidoImagen4&populate=ContenidoImagen5&populate=ContenidoImagen6&populate=ContenidoImagen7&populate=ContenidoImagen8&populate=ContenidoImagen9&populate=ContenidoImagen10&populate=createdBy&populate=updatedBy&locale=${locale}&filters[url][$eq]=${url}`;
+  const urlBlog = `${STRAPI_URL}/api/blogs?populate[imagenprincipal][fields][0}=url&populate[ContenidoImagen1][fields][0}=url&populate[ContenidoImagen2][fields][0}=url&populate[ContenidoImagen3][fields][0}=url&populate[ContenidoImagen4][fields][0}=url&populate[ContenidoImagen5][fields][0}=url&populate[ContenidoImagen6][fields][0}=url&populate[ContenidoImagen7][fields][0}=url&populate[ContenidoImagen8][fields][0}=url&populate[ContenidoImagen9][fields][0}=url&populate[ContenidoImagen10][fields][0}=url&populate[createdBy][fields][0]=firstname&populate[updatedBy][fields][0]=firstname&locale=${locale}&filters[url][$eq]=${url}`;
   const respuesta = await axios.get(urlBlog);
   const entrada = respuesta.data;
   return {
@@ -58,7 +58,7 @@ export const EntradaBlog = ({ entrada, locale }) => {
           width={1000}
           height={800}
           src={imagenprincipal.data.attributes.url}
-          alt={`imagen blog ${titulo}`}
+          alt={`image`}
           className='my-8 w-11/12 h-auto mx-auto'
           loading='lazy'
         />
@@ -140,7 +140,7 @@ export const EntradaBlog = ({ entrada, locale }) => {
                       width={1000}
                       height={800}
                       src={imagen.attributes.url}
-                      alt={`imagen blog ${imagen.attributes.titulo}`}
+                      alt={`image`}
                       className='my-8 w-11/12 h-auto mx-auto'
                       loading='lazy'
                     />
