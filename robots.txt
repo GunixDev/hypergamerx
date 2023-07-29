@@ -3,6 +3,5 @@ Disallow: /nogooglebot/
 
 User-agent: *
 Allow: /
-Disallow: /en/terminos-servicios
 
 Sitemap: https://strapi-api-app-cqot.onrender.com/api/sitemap/index.xml
