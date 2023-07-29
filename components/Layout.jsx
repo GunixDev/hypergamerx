@@ -16,7 +16,7 @@ export const Layout = ({ children, titulo, descripcion, imagen, keywords }) => {
         />
         <meta name='author' content='Sunrize Studios' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        html
+        <meta name='robots' content='index, follow'></meta>
         <meta
           name='keywords'
           content={
