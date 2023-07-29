@@ -40,6 +40,12 @@
   "blogs": {
     "Actualizado": "Atualizado por",
     "Fechaupdate": "em",
-    "indice": "Índice"
+    "indice": "Índice",
+    "Estrellas": "Estrelas",
+    "Lanzamineto": "Lançar",
+    "Multijugador": "Multijogador",
+    "Plataformas": "Plataformas",
+    "Si": "Sim",
+    "No": "Não"
   }
 }

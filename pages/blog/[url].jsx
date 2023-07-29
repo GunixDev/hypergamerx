@@ -47,7 +47,7 @@ export const EntradaBlog = ({ entrada, locale }) => {
       <div className='sm:w-5/6 md:w-10/12 lg:w-2/3 ls:w-11/12 m-auto my-10'>
         <h1 className='text-5xl text-slate-400 font-bold work ls:max-sm:text-xl'>{titulo}</h1>
         <div className='my-2'>
-          <span className='text-slate-500 text-sm ls:max-sm:text-xs'>
+          <span className='text-slate-600 text-sm ls:max-sm:text-xs'>
             {t("blogs.Actualizado")} <strong>{attributes.updatedBy.data.attributes.firstname} </strong>
             {t("blogs.Fechaupdate")}
             <strong suppressHydrationWarning> {FormatearFecha(attributes.updatedAt)}</strong>
