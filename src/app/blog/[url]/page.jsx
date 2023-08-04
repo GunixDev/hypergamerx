@@ -6,7 +6,6 @@ import { getListArtiRamdom } from "@/service/blogs";
 import { getListArticulo } from "@/service/blogs";
 import Estrellas from "@/components/Estrellas";
 import { PlataformasUI } from "@/components/comp_resenas/PlataformasUI";
-import { metadata } from "@/app/layout";
 
 export async function generateStaticParams() {
   const url = await fetch(`${STRAPI_URL}/api/blog-datas?[fields][0]=url`);
@@ -16,8 +15,7 @@ export async function generateStaticParams() {
   }));
 }
 
-{
-  /*export const metadata = {
+export const metadata = {
   title: "a",
   description: "Resumen",
   keywords: ["Next.js", "React", "JavaScript"],
@@ -37,8 +35,7 @@ export async function generateStaticParams() {
     publishedTime: "2023-01-01T00:00:00.000Z",
     authors: ["Sunrize Studios"],
   },
-}; */
-}
+};
 
 export default async function Blog({ params }) {
   const articulo = await getListArticulo(params);
@@ -46,24 +43,6 @@ export default async function Blog({ params }) {
 
   const attributes = articulo.attributes;
   const { Titulo, updatedAt, Resumen, videojuegos, Contenidos, ImagenPrincipal, Genero, Keywords } = attributes;
-
-  metadata.keywords = [
-    `${Keywords}`,
-    "HyperGamerX",
-    "videojuegos que son",
-    "videojuegos de decisiones pc",
-    " clases de videojuegos",
-    "videojuegos mas famosos",
-    "generos de videojuegos",
-    "cual es el juego mas famoso del mundo",
-    "videojuegos populares",
-    "Noticias de videojuegos",
-    "Curiosidades de videojuegos",
-    "Últimas novedades en videojuegos",
-    ,
-  ];
-  metadata.title = Titulo;
-  metadata.description = Resumen;
 
   return (
     <div className='sm:w-5/6 md:w-11/12 ls:w-11/12 m-auto my-10'>
