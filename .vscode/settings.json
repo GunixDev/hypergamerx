@@ -6,18 +6,10 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "**/.vercel": true,
         "**/.next": true,
-        "**/.vscode": true,
-        "**/node_modules": true,
-        "**/.eslintrc.json": true,
-        "**/.gitignore": true,
-        "**/jsconfig.json": true,
-        "**/package-lock.json": true,
-        "**/postcss.config.js": true,
-        "postcss.config.js": true,
-        "**/README.md": true,
-        "README.md": true
+        "**/.vercel": true,
+        ".vscode": true,
+        "**/.eslintrc.json": true
     },
     "explorerExclude.backup": {}
 }

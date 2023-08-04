@@ -1,11 +1,9 @@
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
-import { useTranslation } from "next-i18next";
 
 export const Estrellas = ({ cantidad }) => {
-  const { t } = useTranslation("common");
   return (
     <div className='mx-auto ml-3'>
-      <span className='inline-block align-middle  mr-2 text-slate-300'>{t("blogs.Estrellas")}: </span>
+      <span className='inline-block align-middle  mr-2 text-slate-300'>Estrellas: </span>
       {cantidad >= 4.5 ? (
         <>
           <BsStarFill className='inline-block align-middle text-slate-400' />

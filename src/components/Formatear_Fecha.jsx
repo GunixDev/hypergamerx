@@ -1,7 +1,4 @@
-import { useRouter } from "next/router";
-
 export const FormatearFecha = (fecha) => {
-  const locale = useRouter();
   const fechaNueva = new Date(fecha);
 
   const opciones = {
@@ -11,7 +8,7 @@ export const FormatearFecha = (fecha) => {
   };
 
   // Formatear la fecha en el idioma especificado
-  const fechaFormateada = fechaNueva.toLocaleDateString(locale, opciones);
+  const fechaFormateada = fechaNueva.toLocaleDateString("es", opciones);
 
   return fechaFormateada;
 };

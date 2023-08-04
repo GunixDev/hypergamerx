@@ -21,13 +21,11 @@ import {
   SiAmazonfiretv,
   SiOculus,
 } from "react-icons/si";
-import { useTranslation } from "next-i18next";
 
 export function PlataformasUI(plataformas) {
-  const { t } = useTranslation("common");
   return (
     <div className='ml-3'>
-      <span className='align-middle text-slate-300'>{t("blogs.Plataformas")}: </span>
+      <span className='align-middle text-slate-300'>Plataformas: </span>
       <div className='inline-block'>
         {plataformas.Windows ? (
           <span className='inline-block align-middle mx-2 text-slate-400'>
