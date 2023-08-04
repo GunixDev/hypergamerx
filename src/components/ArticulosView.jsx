@@ -5,16 +5,27 @@ import { FormatearFecha } from "./Formatear_Fecha";
 
 export default function Articulos_version1({ entrada }) {
   return (
-    <div className='xl:h-64 xl:w-88 lg:w-72 md:h-48 md:w-52 lg:h-56 sm:w-46 sm:h-46 ls:w-28 ls:h-28 relative group shadow-2xl rounded-xl drop-shadow-lg duration-500'>
+    <div className='xl:h-64 xl:w-88 lg:w-72 md:h-48 md:w-52 lg:h-56 sm:w-46 sm:h-46 ls:w-28 ls:h-28 relative group  rounded-xl  duration-500'>
       <a href={`/blog/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
-        <Image
-          alt={`image`}
-          src={entrada.attributes.ImagenPrincipal.data.attributes.url}
-          sizes='sizes="(min-width: 1em), 1vw,(max-width: 208px), 3vw,(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 3vw'
-          quality={10}
-          fill={true}
-          className='rounded-xl duration-500 ls:max-sm:hidden'
-        />
+        {entrada.attributes.ImagenPrincipal.data !== null ? (
+          <Image
+            alt={`image`}
+            src={entrada.attributes.ImagenPrincipal.data.attributes.url}
+            sizes='sizes="(min-width: 1em), 1vw,(max-width: 208px), 3vw,(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 3vw'
+            quality={10}
+            fill={true}
+            className='rounded-xl duration-500 ls:max-sm:hidden'
+          />
+        ) : (
+          <Image
+            alt={`image`}
+            src={"/logo3.png"}
+            sizes='sizes="(min-width: 1em), 1vw,(max-width: 208px), 3vw,(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 3vw'
+            quality={10}
+            fill={true}
+            className='rounded-xl duration-500 ls:max-sm:hidden'
+          />
+        )}
 
         <div className='z-40 inline ls:max-sm:p-1 p-2 bg-red-700 w-fit ls:max-sm:hidden'>
           <p className='xl:max-2xl:text-sm sm:max-lg:text-xs ls:text-xs' suppressHydrationWarning>
