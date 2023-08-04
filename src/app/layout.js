@@ -45,7 +45,7 @@ export const metadata = {
     siteName: "HyperGamerX",
     images: [
       {
-        url: "https://nextjs.org/og.png",
+        url: "/logo5.png",
         width: 800,
         height: 600,
       },
