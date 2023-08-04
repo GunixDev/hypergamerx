@@ -45,9 +45,9 @@ export const metadata = {
     siteName: "HyperGamerX",
     images: [
       {
-        url: "/logo5.png",
-        width: 800,
-        height: 600,
+        url: "/logo4.png",
+        width: 1200,
+        height: 630,
       },
     ],
     locale: "es_ES",
