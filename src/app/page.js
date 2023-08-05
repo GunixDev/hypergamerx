@@ -1,7 +1,14 @@
 import { getListArtiGeneral } from "../service/blogs";
 import Feature from "@/components/Feaure";
-import Articulos_version1 from "@/components/ArticulosView";
+import dynamic from "next/dynamic";
 
+const Articulos_version1 = dynamic(() => import("../components/ArticulosView"), {
+  loading: () => <p>Cargando...</p>,
+  srr: false,
+  error: () => <p>Error</p>,
+});
+
+// eslint-disable-next-line @next/next/no-async-client-component
 export default async function Home() {
   const blog = await getListArtiGeneral();
   return (

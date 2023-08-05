@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FormatearFecha } from "./Formatear_Fecha";
+import Link from "next/link";
 
 /* eslint-disable react/no-unescaped-entities */
 

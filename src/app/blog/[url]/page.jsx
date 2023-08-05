@@ -6,6 +6,7 @@ import { getListArtiRamdom } from "@/service/blogs";
 import { getListArticulo } from "@/service/blogs";
 import Estrellas from "@/components/Estrellas";
 import { PlataformasUI } from "@/components/comp_resenas/PlataformasUI";
+import dynamic from "next/dynamic";
 
 export async function generateStaticParams() {
   const url = await fetch(`${STRAPI_URL}/api/blog-datas?[fields][0]=url`);
@@ -48,10 +49,16 @@ export async function generateMetadata({ params }) {
       type: "article",
       publishedTime: meta.updatedAt,
       authors: ["Sunrize Studios"],
-      images: [image], // Use the image variable here
+      images: [image],
     },
   };
 }
+
+const Articulos_Random = dynamic(() => import("@/components/ArticulosView2"), {
+  loading: () => <p>Cargando...</p>,
+  srr: false,
+  error: () => <p>Error</p>,
+});
 
 export default async function Blog({ params }) {
   const articulo = await getListArticulo(params);
@@ -210,18 +217,7 @@ export default async function Blog({ params }) {
           <div className=' bg-slate-950 p-5 rounded-2xl mt-10'>
             <h1 className='text-lg font-bold'>Arituclos aleatorios</h1>
             {RamdonArticulos.map((articulos) => {
-              return (
-                <Link key={articulos.id} href={articulos.attributes.url}>
-                  <div className='mt-4 group'>
-                    <p className='text-sm text-slate-400 group-hover:text-slate-200  duration-500'>
-                      {articulos.attributes.Titulo}
-                    </p>
-                    <p className='text-xs mt-1 text-slate-500 group-hover:text-slate-300  duration-500'>
-                      {articulos.attributes.Resumen}
-                    </p>
-                  </div>
-                </Link>
-              );
+              return <Articulos_Random key={articulos.id} entrada={articulos} />;
             })}
           </div>
         </div>
