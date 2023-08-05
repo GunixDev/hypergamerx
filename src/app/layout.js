@@ -29,7 +29,6 @@ export const metadata = {
     "Últimas novedades en videojuegos",
   ],
   authors: [{ name: "Sunrize Studios" }],
-  colorScheme: "dark",
   creator: "Brayan Cordova",
   publisher: "Brayan Cordova",
   formatDetection: {

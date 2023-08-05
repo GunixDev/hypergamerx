@@ -15,27 +15,28 @@ export async function generateStaticParams() {
   }));
 }
 
-export const metadata = {
-  title: "a",
-  description: "Resumen",
-  keywords: ["Next.js", "React", "JavaScript"],
-  openGraph: {
-    title: "HyperGamerX: Tu Destino para Noticias de Videojuegos",
-    description:
-      "Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información",
-    url: "https://www.hypergamerx.com/",
-    images: [
-      {
-        url: "https://nextjs.org/og.png",
-        width: 800,
-        height: 600,
-      },
-    ],
-    type: "article",
-    publishedTime: "2023-01-01T00:00:00.000Z",
-    authors: ["Sunrize Studios"],
-  },
-};
+export async function generateMetadata({ params }) {
+  const url = params.url;
+  const articulometadata = await fetch(
+    `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0]=url&filters[url][$eq]=${url}`,
+  ).then((res) => res.json());
+  const meta = articulometadata.data[0].attributes;
+
+  return {
+    title: meta.Titulo,
+    description: meta.Resumen,
+    keywords: [meta.Keywords],
+    openGraph: {
+      title: meta.Titulo,
+      description: meta.Resumen,
+      url: `https://www.hypergamerx.com/blog/${meta.url}`,
+      type: "article",
+      publishedTime: meta.updatedAt,
+      authors: ["Sunrize Studios"],
+      images: [meta.ImagenPrincipal.data.attributes.url],
+    },
+  };
+}
 
 export default async function Blog({ params }) {
   const articulo = await getListArticulo(params);
