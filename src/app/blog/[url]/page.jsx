@@ -22,10 +22,25 @@ export async function generateMetadata({ params }) {
   ).then((res) => res.json());
   const meta = articulometadata.data[0].attributes;
 
+  const image = meta.ImagenPrincipal.data ? meta.ImagenPrincipal.data.attributes.url : "/logo4.png";
+
   return {
     title: meta.Titulo,
     description: meta.Resumen,
-    keywords: [meta.Keywords],
+    keywords: [
+      `${meta.Keywords}`,
+      "HyperGamerX",
+      "videojuegos que son",
+      "videojuegos de decisiones pc",
+      " clases de videojuegos",
+      "videojuegos mas famosos",
+      "generos de videojuegos",
+      "cual es el juego mas famoso del mundo",
+      "videojuegos populares",
+      "Noticias de videojuegos",
+      "Curiosidades de videojuegos",
+      "Últimas novedades en videojuegos",
+    ],
     openGraph: {
       title: meta.Titulo,
       description: meta.Resumen,
@@ -33,7 +48,7 @@ export async function generateMetadata({ params }) {
       type: "article",
       publishedTime: meta.updatedAt,
       authors: ["Sunrize Studios"],
-      images: [meta.ImagenPrincipal.data.attributes.url],
+      images: [image], // Use the image variable here
     },
   };
 }
