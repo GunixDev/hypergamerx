@@ -110,7 +110,7 @@ export default function Nav() {
       <nav
         className={`sm:max-2xl:bg-gray-800 w-full font-sans duration-500 z-100 ls:max-sm:fixed  ${
           shouldFollow
-            ? "sm:max-2xl:fixed top-0 sm:max-2xl:opacity-20 ls:max-sm:bg-opacity-0 hover:opacity-70"
+            ? "sm:max-2xl:fixed top-0 sm:max-2xl:opacity-20 ls:max-sm:opacity-50 hover:opacity-70"
             : ` opacity-100`
         }`}>
         <div className='w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end h-16 ls:max-sm:hidden'>
@@ -127,7 +127,10 @@ export default function Nav() {
         </div>
         <div className=' mx-auto px-4 flex items-center justify-end h-14 sm:max-2xl:hidden'>
           <button onClick={BotonMovil}>
-            <SlMenu />
+            <span className='inline-block mr-1 align-middle'>
+              <SlMenu />
+            </span>
+            <span className=' text-sm align-middle'>Menu</span>
           </button>
         </div>
       </nav>
