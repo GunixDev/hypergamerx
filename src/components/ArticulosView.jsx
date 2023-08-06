@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Articulos_version1({ entrada }) {
   return (
-    <div className='xl:h-64 xl:w-88 lg:w-72 md:h-48 md:w-52 lg:h-56 sm:w-46 sm:h-46 ls:w-28 ls:h-28 relative group  rounded-xl  duration-500'>
+    <div className='xl:h-64 xl:w-88 lg:w-72 md:h-48 md:w-52 lg:h-56 sm:w-46 sm:h-46 ls:w-28 ls:h-28 relative group  rounded-xl  duration-500 mt-5'>
       <a href={`/blog/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
         {entrada.attributes.ImagenPrincipal.data !== null ? (
           <Image

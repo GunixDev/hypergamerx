@@ -104,7 +104,7 @@ export default function RootLayout({ children }) {
           <div className='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
             <div className='text-left'>
               <h3 className='text-slate-700 ls:max-sm:text-xs'>Terminos y condiciones</h3>
-              <div className='ml-6 ls:max-md:text-xs'>
+              <div className='ml-6 ls:max-md:text-sm'>
                 <ol>
                   <li>
                     <Link href={"/terminos-servicios/AvisoLegal"}>Aviso legal</Link>
@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
             </div>
             <div className='text-left'>
               <h3 className='text-slate-700 ls:max-sm:text-xs'>Redes sociales</h3>
-              <div className='ml-6 ls:max-md:text-xs'>
+              <div className='ml-6 ls:max-md:text-sm'>
                 <ol>
                   <li>
                     <Link href={"https://discord.gg/4uvDcbcgWm"} target='_blank'>
