@@ -24,6 +24,9 @@ module.exports = {
         lss: "0.6rem",
         ls: "0.7rem",
       },
+      zIndex: {
+        100: "100",
+      },
     },
     screens: {
       ls: "360px",
