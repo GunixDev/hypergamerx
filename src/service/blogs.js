@@ -29,3 +29,14 @@ export async function getListArticulo(params) {
   const articulos = await res.json();
   return articulos.data[0];
 }
+
+export async function getListArtiAdmin(url) {
+  const res = await fetch(
+    `${STRAPI_URL}/api/blog-admins?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&filters[url][$ne]=${url}`,
+  );
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  const { data } = await res.json();
+  return data;
+}

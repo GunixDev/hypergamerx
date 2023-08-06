@@ -7,15 +7,14 @@ import Link from "next/link";
 export default function Articulos_version1({ entrada }) {
   return (
     <div className='xl:h-64 xl:w-88 lg:w-72 md:h-48 md:w-52 lg:h-56 sm:w-46 sm:h-46 ls:w-28 ls:h-28 relative group  rounded-xl  duration-500 mt-5'>
-      <a href={`/blog/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
+      <Link href={`/blog/articulos/${entrada.attributes.url}`} className='flex flex-col relative justify-end h-full'>
         {entrada.attributes.ImagenPrincipal.data !== null ? (
           <Image
             alt={`image`}
             src={entrada.attributes.ImagenPrincipal.data.attributes.url}
-            sizes='sizes="(min-width: 1em), 1vw,(max-width: 208px), 3vw,(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 3vw'
             quality={10}
             fill={true}
-            className='rounded-xl duration-500 ls:max-sm:hidden'
+            className='rounded-xl duration-500 ls:max-sm:hidden object-cover'
           />
         ) : (
           <Image
@@ -41,7 +40,7 @@ export default function Articulos_version1({ entrada }) {
             {entrada.attributes.Resumen}
           </p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }

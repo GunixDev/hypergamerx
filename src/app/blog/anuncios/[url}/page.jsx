@@ -7,9 +7,10 @@ import { getListArticulo } from "@/service/blogs";
 import Estrellas from "@/components/Estrellas";
 import { PlataformasUI } from "@/components/comp_resenas/PlataformasUI";
 import dynamic from "next/dynamic";
+import ErrorPage from "@/components/Error.page";
 
 export async function generateStaticParams() {
-  const url = await fetch(`${STRAPI_URL}/api/blog-datas?[fields][0]=url`);
+  const url = await fetch(`${STRAPI_URL}/api/blog-admins?[fields][0]=url`);
   const obtenerurl = await url.json();
   return obtenerurl.data.map((articulo) => ({
     url: articulo.attributes.url,
@@ -19,8 +20,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const url = params.url;
   const articulometadata = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0]=url&filters[url][$eq]=${url}`,
+    `${STRAPI_URL}/api/blog-admins?populate[ImagenPrincipal][fields][0]=url&filters[url][$eq]=${url}`,
   ).then((res) => res.json());
+
+  if (articulometadata.data.length < 1) {
+    return;
+  }
+
   const meta = articulometadata.data[0].attributes;
 
   const image = meta.ImagenPrincipal.data ? meta.ImagenPrincipal.data.attributes.url : "/logo4.png";
@@ -66,10 +72,12 @@ const Articulos_Random = dynamic(() => import("@/components/ArticulosView2"), {
   error: () => <p>Error</p>,
 });
 
-export default async function Blog({ params }) {
+export default async function BlogAdmin({ params }) {
   const articulo = await getListArticulo(params);
+  if (articulo === undefined) {
+    return <ErrorPage />;
+  }
   const RamdonArticulos = await getListArtiRamdom(params.url);
-
   const attributes = articulo.attributes;
   const { Titulo, updatedAt, Resumen, videojuegos, Contenidos, ImagenPrincipal, Genero, Keywords } = attributes;
 

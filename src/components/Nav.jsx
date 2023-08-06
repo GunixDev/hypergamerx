@@ -46,6 +46,9 @@ export default function Nav() {
             <Link href='/' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
               Inicio
             </Link>
+            {/*             <Link href='/' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
+              Anuncios
+            </Link>*/}
           </div>
           <div className='absolute bottom-0'>
             <div className='bg-slate-950 border-y-2 border-slate-900'>
@@ -114,11 +117,12 @@ export default function Nav() {
             : ` opacity-100`
         }`}>
         <div className='w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end h-16 ls:max-sm:hidden'>
-          {/*<Link
-              href='/blog-administrativo'
-              className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out'>
-              Blog Administrativo
-  </Link>*/}
+          {/*          <Link
+            href='/blog/anuncios'
+            className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>
+            Anuncios
+          </Link>*/}
+
           <Link
             href='/'
             className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>
