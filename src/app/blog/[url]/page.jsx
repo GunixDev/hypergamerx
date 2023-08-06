@@ -51,6 +51,12 @@ export async function generateMetadata({ params }) {
       authors: ["Sunrize Studios"],
       images: [image],
     },
+    twitter: {
+      title: meta.Titulo,
+      description: meta.Resumen,
+      creator: "Sunrize Studios",
+      images: [image],
+    },
   };
 }
 

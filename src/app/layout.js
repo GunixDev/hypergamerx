@@ -72,6 +72,13 @@ export const metadata = {
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
+  twitter: {
+    title: "HyperGamerX: Tu Destino para Noticias de Videojuegos",
+    description:
+      "Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información",
+    creator: "Sunrize Studios",
+    images: ["https://www.hypergamerx.com/logo4.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
