@@ -104,15 +104,15 @@ export default function RootLayout({ children }) {
           <div className='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
             <div className='text-left'>
               <h3 className='text-slate-700 ls:max-sm:text-xs'>Terminos y condiciones</h3>
-              <div className='ml-6 ls:max-md:text-sm'>
+              <div className='ml-6 ls:max-md:text-xs'>
                 <ol>
-                  <li>
+                  <li className='m-2'>
                     <Link href={"/terminos-servicios/AvisoLegal"}>Aviso legal</Link>
                   </li>
-                  <li>
+                  <li className='m-2'>
                     <Link href={"/terminos-servicios/PoliticaCookies"}>Politica de Cookies</Link>
                   </li>
-                  <li>
+                  <li className='m-2'>
                     <Link href={"/terminos-servicios/Privacidad"}>Privacidad</Link>
                   </li>
                 </ol>
@@ -120,14 +120,14 @@ export default function RootLayout({ children }) {
             </div>
             <div className='text-left'>
               <h3 className='text-slate-700 ls:max-sm:text-xs'>Redes sociales</h3>
-              <div className='ml-6 ls:max-md:text-sm'>
+              <div className='ml-6 ls:max-md:text-xs'>
                 <ol>
-                  <li>
+                  <li className='m-2'>
                     <Link href={"https://discord.gg/4uvDcbcgWm"} target='_blank'>
                       Discord
                     </Link>
                   </li>
-                  <li>
+                  <li className='m-2'>
                     <Link href={"https://twitter.com/HyperGamerX_ES"} target='_blank'>
                       Twitter
                     </Link>
