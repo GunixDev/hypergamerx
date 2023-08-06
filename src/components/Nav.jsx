@@ -43,7 +43,7 @@ export default function Nav() {
       {Movil ? (
         <div className='fixed z-100 right-0 bg-slate-950 w-10/12  h-full sm:max-2xl:hidden'>
           <div className='mt-14 grid grid-rows-1'>
-            <Link href='/' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800' onClick={setMovil(false)}>
+            <Link href='/' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
               Inicio
             </Link>
           </div>
@@ -56,21 +56,18 @@ export default function Nav() {
                 <div className='grid grid-rows-2'>
                   <Link
                     href={"/terminos-servicios/AvisoLegal"}
-                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'
-                    onClick={setMovil(false)}>
+                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
                     Aviso legal
                   </Link>
 
                   <Link
                     href={"/terminos-servicios/PoliticaCookies"}
-                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'
-                    onClick={setMovil(false)}>
+                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
                     Politica de Cookies
                   </Link>
                   <Link
                     href={"/terminos-servicios/Privacidad"}
-                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'
-                    onClick={setMovil(false)}>
+                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
                     Privacidad
                   </Link>
                 </div>
@@ -85,15 +82,13 @@ export default function Nav() {
                   <Link
                     href={"https://discord.gg/4uvDcbcgWm"}
                     target='_blank'
-                    className='p-4 w-full bg-slate-900 border-y-2 border-slate-800'
-                    onClick={setMovil(false)}>
+                    className='p-4 w-full bg-slate-900 border-y-2 border-slate-800'>
                     Discord
                   </Link>
                   <Link
                     href={"https://twitter.com/HyperGamerX_ES"}
                     target='_blank'
-                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'
-                    onClick={setMovil(false)}>
+                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
                     Twitter
                   </Link>
                 </div>
