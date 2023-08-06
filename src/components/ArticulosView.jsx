@@ -29,7 +29,7 @@ export default function Articulos_version1({ entrada }) {
         )}
 
         <div className='z-40 inline ls:max-sm:p-1 p-2 bg-red-700 w-fit ls:max-sm:hidden'>
-          <p className='xl:max-2xl:text-sm sm:max-lg:text-xs ls:text-xs' suppressHydrationWarning>
+          <p className='xl:max-2xl:text-sm sm:max-lg:text-xs ls:text-xs text-white font-bold' suppressHydrationWarning>
             {FormatearFecha(entrada.attributes.updatedAt)}
           </p>
         </div>
