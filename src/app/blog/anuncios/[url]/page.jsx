@@ -7,6 +7,13 @@ import Estrellas from "@/components/Estrellas";
 import { PlataformasUI } from "@/components/comp_resenas/PlataformasUI";
 import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
+import Indice from "@/components/Indice";
+
+const Articulos_version1 = dynamic(() => import("../../../../components/ArticulosView"), {
+  loading: () => <p>Cargando...</p>,
+  srr: false,
+  error: () => <p>Error</p>,
+});
 
 export async function generateStaticParams() {
   const url = await fetch(`${STRAPI_URL}/api/blog-admins?[fields][0]=url`);
@@ -32,7 +39,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: meta.Titulo,
-    description: meta.Resumen,
+    description: meta.Resumen2,
     keywords: [
       `${meta.Keywords}`,
       "HyperGamerX",
@@ -49,7 +56,7 @@ export async function generateMetadata({ params }) {
     ],
     openGraph: {
       title: meta.Titulo,
-      description: meta.Resumen,
+      description: meta.Resumen2,
       url: `https://www.hypergamerx.com/blog/${meta.url}`,
       type: "article",
       publishedTime: meta.updatedAt,
@@ -58,7 +65,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       title: meta.Titulo,
-      description: meta.Resumen,
+      description: meta.Resumen2,
       creator: "Sunrize Studios",
       images: [image],
     },
@@ -71,7 +78,7 @@ const Articulos_Random = dynamic(() => import("@/components/ArticulosView2"), {
   error: () => <p>Error</p>,
 });
 
-export default async function BlogAdmin({ params }) {
+export default async function AdminBlog({ params }) {
   const articulo = await getListArticuloAdmin(params);
   if (articulo === undefined) {
     return <ErrorPage />;
@@ -81,41 +88,77 @@ export default async function BlogAdmin({ params }) {
   const { Titulo, updatedAt, Resumen2, videojuegos, Contenidos, ImagenPrincipal, Genero, Keywords } = attributes;
 
   return (
-    <div className='sm:w-5/6 md:w-11/12 ls:w-11/12 m-auto my-10'>
+    <div className='md:w-11/12 ls:max-md:w-full m-auto my-10'>
       <div className='grid grid-cols-7 gap-4'>
-        <div className=' col-span-5 relative mx-4'>
-          <h1 className='text-5xl text-slate-400 font-bold work ls:max-sm:text-xl'>{Titulo}</h1>
-          <div className='my-2 text-slate-700'>
-            <span className='text-slate-600 text-sm ls:max-sm:text-xs'>
+        <div className='sm:col-span-5 ls:max-sm:col-span-7 relative mx-4'>
+          <h1 className='md:text-5xl text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>{Titulo}</h1>
+          <div className='md:my-2 ls:max-md:my-0 text-slate-700'>
+            <span className='text-slate-600 md:ext-sm ls:max-md:text-xs'>
               Creado por
               <strong> {attributes.updatedBy.data.attributes.firstname} </strong>
               el dia
               <strong suppressHydrationWarning> {FormatearFecha(updatedAt)}</strong>
             </span>
           </div>
-          <p className='text-sm my-2 text-slate-400'>{Genero}</p>
-          <p className='text-xl text-slate-500 ls:max-sm:text-sm'>{Resumen2}</p>
+          <p className='md:text-sm ls:max-md:text-xs md:my-2 ls:max-md:my-1 text-slate-400'>{Genero}</p>
+          <p className='md:text-xl text-slate-500 ls:max-md:text-xs'>{Resumen2}</p>
+          {Genero === "Reseña de Videojuego" ? (
+            <iframe
+              width='853'
+              height='480'
+              src={videojuegos.data[0].attributes.TrailerVideo}
+              className='w-full my-4'
+              allowFullScreen></iframe>
+          ) : null}
+
           {ImagenPrincipal.data !== null ? (
             <Image
               width={1000}
               height={800}
               src={ImagenPrincipal.data.attributes.url}
               alt={`image`}
-              className='my-10 w-11/12 h-auto mx-auto'
+              className='my-8 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
               loading='lazy'
             />
           ) : null}
+          <Indice Contenidos={Contenidos} />
 
+          <div className='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4 ls:max-sm:hidden'>
+            <span className='md:text-xl ls:max-md:text-base text-center mb-2'>Indice</span>
+            {Contenidos.map((arti) => {
+              return (
+                <div key={arti.id}>
+                  <Link href={`#subtitulo${arti.TituloContenido}`} className='md:text-base ls:max-md:text-xs'>
+                    <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{arti.TituloContenido}</li>
+                  </Link>
+                  {arti.Subbtitulos.map((subtitulo) => {
+                    return (
+                      <Link
+                        key={subtitulo.id}
+                        href={`#subtitulo${arti.TituloContenido}Sub${subtitulo.SubSubTitulo}`}
+                        className='md:text-sm ls:max-sm:text-xs'>
+                        <li className='ml-4 text-slate-500 hover:text-slate-300 duration-300'>
+                          {subtitulo.SubSubTitulo}
+                        </li>
+                      </Link>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
           <div>
             {Contenidos.map((arti) => {
               return (
                 <div key={arti.id} className='my-4'>
-                  <h2 id={`subtitulo${arti.TituloContenido}`} className='text-2xl mt-8 mb-2 ls:max-sm:text-base'>
+                  <h2
+                    id={`subtitulo${arti.TituloContenido}`}
+                    className='md:text-2xl ls:max-sm:text-base  md:max-md:mt-8 md:mb-2 ls:max-md:mb-1'>
                     {arti.TituloContenido}
                   </h2>
                   {arti.Textos.map((texto) => {
                     return (
-                      <p key={texto.id} className='my-6 text-slate-500 ls:max-sm:text-xs'>
+                      <p key={texto.id} className='md:my-6 ls:max-md:my-3 text-slate-500 ls:max-md:text-xs'>
                         {texto.Texto}
                       </p>
                     );
@@ -126,16 +169,16 @@ export default async function BlogAdmin({ params }) {
                       height={800}
                       src={arti.ContenidoImagen.data?.attributes.url}
                       alt={`image`}
-                      className='my-8 w-11/12 h-auto mx-auto border-2 border-white'
+                      className='md:my-8 ls:max-md:my-6 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
                       loading='lazy'
                     />
                   ) : null}
                   {arti.Subbtitulos.map((subtitulo) => {
                     return (
-                      <div key={subtitulo.id} className='my-6 text-slate-500 ls:max-sm:text-xs'>
+                      <div key={subtitulo.id} className='md:my-6 ls:max-md:my-3 text-slate-500 ls:max-sm:text-xs'>
                         <h3
                           id={`subtitulo${arti.TituloContenido}Sub${subtitulo.SubSubTitulo}`}
-                          className='text-xl ml-4 mt-4 mb-2 ls:max-sm:text-sm text-slate-400'>
+                          className='text-xl ml-4 mt-4 mb-2 ls:max-sm:text-sm sm:max-md:text-base text-slate-400'>
                           {subtitulo.SubSubTitulo}
                         </h3>
                         <div className='ml-4'>
@@ -154,7 +197,7 @@ export default async function BlogAdmin({ params }) {
                   })}
                   {arti.Textos2.map((texto2) => {
                     return (
-                      <p key={texto2.id} className='my-6 text-slate-500 ls:max-sm:text-xs'>
+                      <p key={texto2.id} className='my-6 text-slate-500 ls:max-sm:text-xs ls:max-md:text-sm'>
                         {texto2.Texto}
                       </p>
                     );
@@ -164,7 +207,7 @@ export default async function BlogAdmin({ params }) {
             })}
           </div>
         </div>
-        <div className='h-full relative col-span-2'>
+        <div className='h-full relative sm:col-span-2'>
           {Genero === "Reseña de Videojuego" ? (
             <div className='bg-slate-950 p-4 rounded-2xl w-full h-fit'>
               <h1 className='text-2xl text-slate-400 text-center font-bold work ls:max-sm:text-xl'>{Titulo}</h1>
@@ -194,12 +237,20 @@ export default async function BlogAdmin({ params }) {
             </div>
           ) : null}
 
-          <div className=' bg-slate-950 p-5 rounded-2xl mt-10'>
-            <h1 className='text-lg font-bold'>Arituclos aleatorios</h1>
+          <div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
+            <h1 className='md:text-lg font-bold ls:max-md:text-base'>Arituclos aleatorios</h1>
             {RamdonArticulos.map((articulos) => {
               return <Articulos_Random key={articulos.id} entrada={articulos} />;
             })}
           </div>
+        </div>
+      </div>
+      <div className='mx-2 mt-6 sm:hidden'>
+        <h1 className='font-bold text-base my-2'>Arituclos aleatorios</h1>
+        <div className='grid grid-cols-3 gap-1 relative'>
+          {RamdonArticulos.map((articulos) => {
+            return <Articulos_version1 key={articulos.id} entrada={articulos} />;
+          })}
         </div>
       </div>
     </div>
