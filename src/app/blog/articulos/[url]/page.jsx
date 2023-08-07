@@ -8,6 +8,7 @@ import Estrellas from "@/components/Estrellas";
 import { PlataformasUI } from "@/components/comp_resenas/PlataformasUI";
 import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
+import Indice from "@/components/Indice";
 
 export async function generateStaticParams() {
   const url = await fetch(`${STRAPI_URL}/api/blog-datas?[fields][0]=url`);
@@ -115,8 +116,9 @@ export default async function Blog({ params }) {
               loading='lazy'
             />
           ) : null}
+          <Indice Contenidos={Contenidos} />
 
-          <div className='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4'>
+          <div className='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4 ls:max-sm:hidden'>
             <span className='md:text-xl ls:max-md:text-base text-center mb-2'>Indice</span>
             {Contenidos.map((arti) => {
               return (
