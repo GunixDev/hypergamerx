@@ -23,7 +23,7 @@ export default function Articulos_version1({ entrada }) {
             sizes='sizes="(min-width: 1em), 1vw,(max-width: 208px), 3vw,(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 3vw'
             quality={10}
             fill={true}
-            className='rounded-xl duration-500 ls:max-sm:hidden'
+            className='rounded-xl duration-500 ls:max-sm:hidden object-cover'
           />
         )}
 
