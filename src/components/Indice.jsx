@@ -12,7 +12,7 @@ export default function Indice({ Contenidos }) {
   return (
     <div className='sm:hidden bg-slate-950 p-4 rounded-2xl w-fit mt-4'>
       <button onClick={SetIndice}>
-        <h2 className=' align-middle'>
+        <h2 className=' align-middle font-bold text-white'>
           Indice
           <span className='inline-block   ml-2'>{ButtonIndice ? <AiOutlineCaretDown /> : <AiOutlineCaretRight />}</span>
         </h2>
