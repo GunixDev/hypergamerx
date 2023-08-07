@@ -37,7 +37,7 @@ export default function Articulos_version1({ entrada }) {
             {entrada.attributes.Titulo}
           </p>
           <p className='sm:text-xs lg:text-xs md:text-xs xl:text-xs ls:max-lg:hidden duration-75 text-center text-slate-700 relative xl:mt-2 opacity-0  group-hover:opacity-100 group-hover:duration-1000 break-words'>
-            {entrada.attributes.Resumen}
+            {entrada.attributes.Resumen2}
           </p>
         </div>
       </Link>

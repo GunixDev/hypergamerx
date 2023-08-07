@@ -7,7 +7,6 @@ const Articulos_version1 = dynamic(() => import("../../../components/ArticulosVi
   error: () => <p>Error</p>,
 });
 
-// eslint-disable-next-line @next/next/no-async-client-component
 export default async function HomeAdmin() {
   const blog = await getListArtiAdmin();
   return (

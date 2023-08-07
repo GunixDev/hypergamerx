@@ -2,15 +2,14 @@ import { STRAPI_URL } from "@/app/config";
 import Link from "next/link";
 import Image from "next/image";
 import { FormatearFecha } from "@/components/Formatear_Fecha";
-import { getListArtiRamdom } from "@/service/blogs";
-import { getListArticulo } from "@/service/blogs";
+import { getListArticuloAdmin, getListArtiRamdom } from "@/service/blogs";
 import Estrellas from "@/components/Estrellas";
 import { PlataformasUI } from "@/components/comp_resenas/PlataformasUI";
 import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
 
 export async function generateStaticParams() {
-  const url = await fetch(`${STRAPI_URL}/api/blog-admins?[fields][0]=url`);
+  const url = await fetch(`${STRAPI_URL}/api/blog-admins?[fields][0]=url`, { cache: "no-store" });
   const obtenerurl = await url.json();
   return obtenerurl.data.map((articulo) => ({
     url: articulo.attributes.url,
@@ -21,6 +20,7 @@ export async function generateMetadata({ params }) {
   const url = params.url;
   const articulometadata = await fetch(
     `${STRAPI_URL}/api/blog-admins?populate[ImagenPrincipal][fields][0]=url&filters[url][$eq]=${url}`,
+    { cache: "no-store" },
   ).then((res) => res.json());
 
   if (articulometadata.data.length < 1) {
@@ -73,13 +73,13 @@ const Articulos_Random = dynamic(() => import("@/components/ArticulosView2"), {
 });
 
 export default async function BlogAdmin({ params }) {
-  const articulo = await getListArticulo(params);
+  const articulo = await getListArticuloAdmin(params);
   if (articulo === undefined) {
     return <ErrorPage />;
   }
   const RamdonArticulos = await getListArtiRamdom(params.url);
   const attributes = articulo.attributes;
-  const { Titulo, updatedAt, Resumen, videojuegos, Contenidos, ImagenPrincipal, Genero, Keywords } = attributes;
+  const { Titulo, updatedAt, Resumen2, videojuegos, Contenidos, ImagenPrincipal, Genero, Keywords } = attributes;
 
   return (
     <div className='sm:w-5/6 md:w-11/12 ls:w-11/12 m-auto my-10'>
@@ -95,51 +95,18 @@ export default async function BlogAdmin({ params }) {
             </span>
           </div>
           <p className='text-sm my-2 text-slate-400'>{Genero}</p>
-          <p className='text-xl text-slate-500 ls:max-sm:text-sm'>{Resumen}</p>
-          {Genero === "Reseña de Videojuego" ? (
-            <iframe
-              width='853'
-              height='480'
-              src={videojuegos.data[0].attributes.TrailerVideo}
-              className='w-full my-4'
-              allowFullScreen></iframe>
-          ) : null}
-
+          <p className='text-xl text-slate-500 ls:max-sm:text-sm'>{Resumen2}</p>
           {ImagenPrincipal.data !== null ? (
             <Image
               width={1000}
               height={800}
               src={ImagenPrincipal.data.attributes.url}
               alt={`image`}
-              className='my-8 w-11/12 h-auto mx-auto'
+              className='my-10 w-11/12 h-auto mx-auto'
               loading='lazy'
             />
           ) : null}
 
-          <div className='bg-slate-950 p-6 rounded-2xl w-fit mt-4'>
-            <span className='text-xl text-center mb-2'>Indice</span>
-            {Contenidos.map((arti) => {
-              return (
-                <div key={arti.id}>
-                  <Link href={`#subtitulo${arti.TituloContenido}`} className='text-base ls:max-sm:text-xs'>
-                    <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{arti.TituloContenido}</li>
-                  </Link>
-                  {arti.Subbtitulos.map((subtitulo) => {
-                    return (
-                      <Link
-                        key={subtitulo.id}
-                        href={`#subtitulo${arti.TituloContenido}Sub${subtitulo.SubSubTitulo}`}
-                        className='text-base ls:max-sm:text-xs'>
-                        <li className='ml-4 text-slate-500 text-sm ls:max-sm:text-xs hover:text-slate-300 duration-300'>
-                          {subtitulo.SubSubTitulo}
-                        </li>
-                      </Link>
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </div>
           <div>
             {Contenidos.map((arti) => {
               return (
@@ -160,7 +127,7 @@ export default async function BlogAdmin({ params }) {
                       height={800}
                       src={arti.ContenidoImagen.data?.attributes.url}
                       alt={`image`}
-                      className='my-8 w-11/12 h-auto mx-auto'
+                      className='my-8 w-11/12 h-auto mx-auto border-2 border-white'
                       loading='lazy'
                     />
                   ) : null}

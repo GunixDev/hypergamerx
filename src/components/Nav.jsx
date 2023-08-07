@@ -42,13 +42,13 @@ export default function Nav() {
     <>
       {Movil ? (
         <div className='fixed z-100 right-0 bg-slate-950 w-10/12  h-full sm:max-2xl:hidden'>
-          <div className='mt-14 grid grid-rows-1'>
+          <div className='mt-14 grid grid-rows-2'>
             <Link href='/' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
               Inicio
             </Link>
-            {/*             <Link href='/' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
+            <Link href='/blog/anuncios' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
               Anuncios
-            </Link>*/}
+            </Link>
           </div>
           <div className='absolute bottom-0'>
             <div className='bg-slate-950 border-y-2 border-slate-900'>
@@ -116,12 +116,12 @@ export default function Nav() {
             ? "sm:max-2xl:fixed top-0 sm:max-2xl:opacity-20 ls:max-sm:opacity-50 hover:opacity-70"
             : ` opacity-100`
         }`}>
-        <div className='w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end h-16 ls:max-sm:hidden'>
-          {/*          <Link
+        <div className='w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end h-16 ls:max-sm:hidden gap-4'>
+          <Link
             href='/blog/anuncios'
             className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>
             Anuncios
-          </Link>*/}
+          </Link>
 
           <Link
             href='/'
@@ -129,7 +129,7 @@ export default function Nav() {
             Inicio
           </Link>
         </div>
-        <div className=' mx-auto px-4 flex items-center justify-end h-14 sm:max-2xl:hidden'>
+        <div className=' mx-auto px-4 items-center justify-end h-14 hidden ls:max-sm:flex'>
           <button onClick={BotonMovil}>
             <span className='inline-block mr-1 align-middle'>
               <SlMenu />

@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
 
 export async function generateStaticParams() {
-  const url = await fetch(`${STRAPI_URL}/api/blog-datas?[fields][0]=url`);
+  const url = await fetch(`${STRAPI_URL}/api/blog-datas?[fields][0]=url`, { cache: "no-store" });
   const obtenerurl = await url.json();
   return obtenerurl.data.map((articulo) => ({
     url: articulo.attributes.url,
@@ -21,6 +21,7 @@ export async function generateMetadata({ params }) {
   const url = params.url;
   const articulometadata = await fetch(
     `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0]=url&filters[url][$eq]=${url}`,
+    { cache: "no-store" },
   ).then((res) => res.json());
 
   if (articulometadata.data.length < 1) {
@@ -82,20 +83,20 @@ export default async function Blog({ params }) {
   const { Titulo, updatedAt, Resumen, videojuegos, Contenidos, ImagenPrincipal, Genero, Keywords } = attributes;
 
   return (
-    <div className='sm:w-5/6 md:w-11/12 ls:w-11/12 m-auto my-10'>
+    <div className='md:w-11/12 ls:max-md:w-full m-auto my-10'>
       <div className='grid grid-cols-7 gap-4'>
-        <div className=' col-span-5 relative mx-4'>
-          <h1 className='text-5xl text-slate-400 font-bold work ls:max-sm:text-xl'>{Titulo}</h1>
-          <div className='my-2 text-slate-700'>
-            <span className='text-slate-600 text-sm ls:max-sm:text-xs'>
+        <div className='sm:col-span-5 ls:max-sm:col-span-7 relative mx-4'>
+          <h1 className='md:text-5xl text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>{Titulo}</h1>
+          <div className='md:my-2 ls:max-md:my-0 text-slate-700'>
+            <span className='text-slate-600 md:ext-sm ls:max-md:text-xs'>
               Creado por
               <strong> {attributes.updatedBy.data.attributes.firstname} </strong>
               el dia
               <strong suppressHydrationWarning> {FormatearFecha(updatedAt)}</strong>
             </span>
           </div>
-          <p className='text-sm my-2 text-slate-400'>{Genero}</p>
-          <p className='text-xl text-slate-500 ls:max-sm:text-sm'>{Resumen}</p>
+          <p className='md:text-sm ls:max-md:text-xs md:my-2 ls:max-md:my-1 text-slate-400'>{Genero}</p>
+          <p className='md:text-xl text-slate-500 ls:max-md:text-xs'>{Resumen}</p>
           {Genero === "Reseña de Videojuego" ? (
             <iframe
               width='853'
@@ -111,17 +112,17 @@ export default async function Blog({ params }) {
               height={800}
               src={ImagenPrincipal.data.attributes.url}
               alt={`image`}
-              className='my-8 w-11/12 h-auto mx-auto'
+              className='my-8 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
               loading='lazy'
             />
           ) : null}
 
-          <div className='bg-slate-950 p-6 rounded-2xl w-fit mt-4'>
-            <span className='text-xl text-center mb-2'>Indice</span>
+          <div className='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4'>
+            <span className='md:text-xl ls:max-md:text-base text-center mb-2'>Indice</span>
             {Contenidos.map((arti) => {
               return (
                 <div key={arti.id}>
-                  <Link href={`#subtitulo${arti.TituloContenido}`} className='text-base ls:max-sm:text-xs'>
+                  <Link href={`#subtitulo${arti.TituloContenido}`} className='md:text-base ls:max-md:text-xs'>
                     <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{arti.TituloContenido}</li>
                   </Link>
                   {arti.Subbtitulos.map((subtitulo) => {
@@ -129,8 +130,8 @@ export default async function Blog({ params }) {
                       <Link
                         key={subtitulo.id}
                         href={`#subtitulo${arti.TituloContenido}Sub${subtitulo.SubSubTitulo}`}
-                        className='text-base ls:max-sm:text-xs'>
-                        <li className='ml-4 text-slate-500 text-sm ls:max-sm:text-xs hover:text-slate-300 duration-300'>
+                        className='md:text-sm ls:max-sm:text-xs'>
+                        <li className='ml-4 text-slate-500 hover:text-slate-300 duration-300'>
                           {subtitulo.SubSubTitulo}
                         </li>
                       </Link>
@@ -144,12 +145,14 @@ export default async function Blog({ params }) {
             {Contenidos.map((arti) => {
               return (
                 <div key={arti.id} className='my-4'>
-                  <h2 id={`subtitulo${arti.TituloContenido}`} className='text-2xl mt-8 mb-2 ls:max-sm:text-base'>
+                  <h2
+                    id={`subtitulo${arti.TituloContenido}`}
+                    className='md:text-2xl ls:max-sm:text-base  md:max-md:mt-8 md:mb-2 ls:max-md:mb-1'>
                     {arti.TituloContenido}
                   </h2>
                   {arti.Textos.map((texto) => {
                     return (
-                      <p key={texto.id} className='my-6 text-slate-500 ls:max-sm:text-xs'>
+                      <p key={texto.id} className='md:my-6 ls:max-md:my-3 text-slate-500 ls:max-md:text-xs'>
                         {texto.Texto}
                       </p>
                     );
@@ -160,16 +163,16 @@ export default async function Blog({ params }) {
                       height={800}
                       src={arti.ContenidoImagen.data?.attributes.url}
                       alt={`image`}
-                      className='my-8 w-11/12 h-auto mx-auto'
+                      className='md:my-8 ls:max-md:my-6 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
                       loading='lazy'
                     />
                   ) : null}
                   {arti.Subbtitulos.map((subtitulo) => {
                     return (
-                      <div key={subtitulo.id} className='my-6 text-slate-500 ls:max-sm:text-xs'>
+                      <div key={subtitulo.id} className='md:my-6 ls:max-md:my-3 text-slate-500 ls:max-sm:text-xs'>
                         <h3
                           id={`subtitulo${arti.TituloContenido}Sub${subtitulo.SubSubTitulo}`}
-                          className='text-xl ml-4 mt-4 mb-2 ls:max-sm:text-sm text-slate-400'>
+                          className='text-xl ml-4 mt-4 mb-2 ls:max-sm:text-sm sm:max-md:text-base text-slate-400'>
                           {subtitulo.SubSubTitulo}
                         </h3>
                         <div className='ml-4'>
@@ -188,7 +191,7 @@ export default async function Blog({ params }) {
                   })}
                   {arti.Textos2.map((texto2) => {
                     return (
-                      <p key={texto2.id} className='my-6 text-slate-500 ls:max-sm:text-xs'>
+                      <p key={texto2.id} className='my-6 text-slate-500 ls:max-sm:text-xs ls:max-md:text-sm'>
                         {texto2.Texto}
                       </p>
                     );
@@ -198,7 +201,7 @@ export default async function Blog({ params }) {
             })}
           </div>
         </div>
-        <div className='h-full relative col-span-2'>
+        <div className='h-full relative sm:col-span-2'>
           {Genero === "Reseña de Videojuego" ? (
             <div className='bg-slate-950 p-4 rounded-2xl w-full h-fit'>
               <h1 className='text-2xl text-slate-400 text-center font-bold work ls:max-sm:text-xl'>{Titulo}</h1>
@@ -228,8 +231,8 @@ export default async function Blog({ params }) {
             </div>
           ) : null}
 
-          <div className=' bg-slate-950 p-5 rounded-2xl mt-10'>
-            <h1 className='text-lg font-bold'>Arituclos aleatorios</h1>
+          <div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
+            <h1 className='md:text-lg font-bold ls:max-md:text-base'>Arituclos aleatorios</h1>
             {RamdonArticulos.map((articulos) => {
               return <Articulos_Random key={articulos.id} entrada={articulos} />;
             })}
