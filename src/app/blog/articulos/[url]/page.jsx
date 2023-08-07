@@ -18,6 +18,12 @@ export async function generateStaticParams() {
   }));
 }
 
+const Articulos_version1 = dynamic(() => import("../../../../components/ArticulosView"), {
+  loading: () => <p>Cargando...</p>,
+  srr: false,
+  error: () => <p>Error</p>,
+});
+
 export async function generateMetadata({ params }) {
   const url = params.url;
   const articulometadata = await fetch(
@@ -238,6 +244,14 @@ export default async function Blog({ params }) {
               return <Articulos_Random key={articulos.id} entrada={articulos} />;
             })}
           </div>
+        </div>
+      </div>
+      <div className='mx-2 mt-6 sm:hidden'>
+        <h1 className='font-bold text-base my-2'>Arituclos aleatorios</h1>
+        <div className='grid grid-cols-3 gap-1 relative'>
+          {RamdonArticulos.map((articulos) => {
+            return <Articulos_version1 key={articulos.id} entrada={articulos} />;
+          })}
         </div>
       </div>
     </div>
