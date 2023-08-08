@@ -125,7 +125,7 @@ export default async function Blog({ params }) {
           <Indice Contenidos={Contenidos} />
 
           <div className='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4 ls:max-sm:hidden'>
-            <span className='md:text-xl ls:max-md:text-base text-center mb-2'>Indice</span>
+            <span className='md:text-xl ls:max-md:text-base text-center mb-2 text-white font-bold'>Indice</span>
             {Contenidos.map((arti) => {
               return (
                 <div key={arti.id}>

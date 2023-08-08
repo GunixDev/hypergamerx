@@ -124,12 +124,14 @@ export default async function AdminBlog({ params }) {
           <Indice Contenidos={Contenidos} />
 
           <div className='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4 ls:max-sm:hidden'>
-            <span className='md:text-xl ls:max-md:text-base text-center mb-2'>Indice</span>
+            <span className='md:text-xl ls:max-md:text-base text-center mb-2 text-white font-bold'>Indice</span>
             {Contenidos.map((arti) => {
               return (
                 <div key={arti.id}>
                   <Link href={`#subtitulo${arti.TituloContenido}`} className='md:text-base ls:max-md:text-xs'>
-                    <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{arti.TituloContenido}</li>
+                    <ol>
+                      <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{arti.TituloContenido}</li>
+                    </ol>
                   </Link>
                   {arti.Subbtitulos.map((subtitulo) => {
                     return (
@@ -137,9 +139,11 @@ export default async function AdminBlog({ params }) {
                         key={subtitulo.id}
                         href={`#subtitulo${arti.TituloContenido}Sub${subtitulo.SubSubTitulo}`}
                         className='md:text-sm ls:max-sm:text-xs'>
-                        <li className='ml-4 text-slate-500 hover:text-slate-300 duration-300'>
-                          {subtitulo.SubSubTitulo}
-                        </li>
+                        <ol>
+                          <li className='ml-4 text-slate-500 hover:text-slate-300 duration-300'>
+                            {subtitulo.SubSubTitulo}
+                          </li>
+                        </ol>
                       </Link>
                     );
                   })}
@@ -238,7 +242,7 @@ export default async function AdminBlog({ params }) {
           ) : null}
 
           <div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
-            <h1 className='md:text-lg font-bold ls:max-md:text-base'>Arituclos aleatorios</h1>
+            <h1 className='md:text-lg font-bold ls:max-md:text-base text-white font-semibold'>Arituclos aleatorios</h1>
             {RamdonArticulos.map((articulos) => {
               return <Articulos_Random key={articulos.id} entrada={articulos} />;
             })}

@@ -90,7 +90,7 @@ export default function RootLayout({ children }) {
         <footer className=' text-white bg-gray-900 bg-opacity-70 py-8 w-full font-sans mt-10 ls:max-md:hidden'>
           <div className='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
             <div className='text-left'>
-              <h3 className='text-slate-700 ls:max-sm:text-xs'>Terminos y condiciones</h3>
+              <h6 className='text-slate-700 ls:max-sm:text-xs'>Terminos y condiciones</h6>
               <div className='ml-6 ls:max-md:text-xs'>
                 <ol>
                   <li className='m-2'>
