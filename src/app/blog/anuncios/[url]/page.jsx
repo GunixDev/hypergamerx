@@ -54,10 +54,13 @@ export async function generateMetadata({ params }) {
       "Curiosidades de videojuegos",
       "Últimas novedades en videojuegos",
     ],
+    alternates: {
+      canonical: `https://www.hypergamerx.com/blog/anuncios/${meta.url}`,
+    },
     openGraph: {
       title: meta.Titulo,
       description: meta.Resumen2,
-      url: `https://www.hypergamerx.com/blog/${meta.url}`,
+      url: `https://www.hypergamerx.com/blog/anuncios/${meta.url}`,
       type: "article",
       publishedTime: meta.updatedAt,
       authors: ["Sunrize Studios"],

@@ -7,6 +7,12 @@ const Articulos_version1 = dynamic(() => import("../../../components/ArticulosVi
   error: () => <p>Error</p>,
 });
 
+export const metadata = {
+  alternates: {
+    canonical: `https://www.hypergamerx.com/blog/anuncios/`,
+  },
+};
+
 export default async function HomeAdmin() {
   const blog = await getListArtiAdmin();
   return (

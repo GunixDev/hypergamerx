@@ -28,6 +28,9 @@ export const metadata = {
     "Curiosidades de videojuegos",
     "Últimas novedades en videojuegos",
   ],
+  alternates: {
+    canonical: `https://www.hypergamerx.com/`,
+  },
   authors: [{ name: "Sunrize Studios" }],
   creator: "Brayan Cordova",
   publisher: "Brayan Cordova",
