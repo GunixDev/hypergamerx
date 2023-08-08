@@ -9,7 +9,7 @@ const Articulos_version1 = dynamic(() => import("../../../components/ArticulosVi
 
 export const metadata = {
   alternates: {
-    canonical: `https://www.hypergamerx.com/blog/anuncios/`,
+    canonical: `https://www.hypergamerx.com/blog/anuncios`,
   },
 };
 
