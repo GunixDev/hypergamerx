@@ -137,9 +137,9 @@ export default function RootLayout({ children }) {
         <Analytics />
       </body>
       <Script
-        async
         src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8225968446465041'
-        crossorigin='anonymous'
+        crossorigin='anonymous '
+        strategy='lazyOnload'
       />
     </html>
   );

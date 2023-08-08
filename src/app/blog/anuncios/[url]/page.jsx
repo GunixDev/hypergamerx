@@ -118,7 +118,7 @@ export default async function AdminBlog({ params }) {
               src={ImagenPrincipal.data.attributes.url}
               alt={`image`}
               className='my-8 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
-              loading='lazy'
+              priority={true}
             />
           ) : null}
           <Indice Contenidos={Contenidos} />
