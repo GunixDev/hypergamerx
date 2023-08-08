@@ -129,9 +129,9 @@ export default async function AdminBlog({ params }) {
               return (
                 <div key={arti.id}>
                   <Link href={`#subtitulo${arti.TituloContenido}`} className='md:text-base ls:max-md:text-xs'>
-                    <ol>
+                    <ul className=' list-disc ml-4'>
                       <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{arti.TituloContenido}</li>
-                    </ol>
+                    </ul>
                   </Link>
                   {arti.Subbtitulos.map((subtitulo) => {
                     return (
@@ -173,7 +173,7 @@ export default async function AdminBlog({ params }) {
                       height={800}
                       src={arti.ContenidoImagen.data?.attributes.url}
                       alt={`image`}
-                      className='md:my-8 ls:max-md:my-6 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
+                      className='md:my-8 ls:max-md:my-6 md:w-11/12 ls:max-md:w-full h-auto mx-auto border-white border-2'
                       loading='lazy'
                     />
                   ) : null}
@@ -242,7 +242,7 @@ export default async function AdminBlog({ params }) {
           ) : null}
 
           <div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
-            <h1 className='md:text-lg ls:max-md:text-base text-white font-semibold'>Arituclos aleatorios</h1>
+            <h1 className='md:text-lg font-bold ls:max-md:text-base text-white'>Articulos aleatorios</h1>
             {RamdonArticulos.map((articulos) => {
               return <Articulos_Random key={articulos.id} entrada={articulos} />;
             })}
