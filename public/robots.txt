@@ -1,7 +1,0 @@
-User-agent: Googlebot
-Disallow: /nogooglebot/
-
-User-agent: *
-Allow: /
-
-Sitemap: https://strapi-api-app-cqot.onrender.com/api/sitemap/index.xml
