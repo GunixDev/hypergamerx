@@ -130,7 +130,9 @@ export default async function Blog({ params }) {
               return (
                 <div key={arti.id}>
                   <Link href={`#subtitulo${arti.TituloContenido}`} className='md:text-base ls:max-md:text-xs'>
-                    <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{arti.TituloContenido}</li>
+                    <ul className=' list-disc ml-4'>
+                      <li className='text-slate-400 mt-3 hover:text-slate-50 duration-300'>{arti.TituloContenido}</li>
+                    </ul>
                   </Link>
                   {arti.Subbtitulos.map((subtitulo) => {
                     return (
@@ -138,9 +140,11 @@ export default async function Blog({ params }) {
                         key={subtitulo.id}
                         href={`#subtitulo${arti.TituloContenido}Sub${subtitulo.SubSubTitulo}`}
                         className='md:text-sm ls:max-sm:text-xs'>
-                        <li className='ml-4 text-slate-500 hover:text-slate-300 duration-300'>
-                          {subtitulo.SubSubTitulo}
-                        </li>
+                        <ol>
+                          <li className='ml-4 text-slate-500 hover:text-slate-300 duration-300'>
+                            {subtitulo.SubSubTitulo}
+                          </li>
+                        </ol>
                       </Link>
                     );
                   })}

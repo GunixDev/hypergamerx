@@ -242,7 +242,7 @@ export default async function AdminBlog({ params }) {
           ) : null}
 
           <div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
-            <h1 className='md:text-lg font-bold ls:max-md:text-base text-white font-semibold'>Arituclos aleatorios</h1>
+            <h1 className='md:text-lg ls:max-md:text-base text-white font-semibold'>Arituclos aleatorios</h1>
             {RamdonArticulos.map((articulos) => {
               return <Articulos_Random key={articulos.id} entrada={articulos} />;
             })}
