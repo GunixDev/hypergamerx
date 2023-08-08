@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: "/terminos-servicios/",
     },
-    sitemap: "https://strapi-api-app-cqot.onrender.com/api/sitemap/index.xml",
+    sitemap: "https://www.hypergamerx.com/sitemap.xml",
   };
 }

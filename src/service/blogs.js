@@ -1,5 +1,23 @@
 import { STRAPI_URL } from "../app/config";
 
+export async function getListArticulos() {
+  const res = await fetch(`${STRAPI_URL}/api/blog-datas?[fields][0]=url&[fields][1]=updatedAt`);
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  const { data } = await res.json();
+  return data;
+}
+
+export async function getListAdministracion() {
+  const res = await fetch(`${STRAPI_URL}/api/blog-admins?[fields][0]=url&[fields][1]=updatedAt`);
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  const { data } = await res.json();
+  return data;
+}
+
 export async function getListArtiGeneral() {
   const res = await fetch(
     `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt`,
