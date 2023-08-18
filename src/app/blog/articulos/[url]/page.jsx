@@ -111,7 +111,7 @@ export default async function Blog({ params }) {
               width='853'
               height='480'
               src={videojuegos[0].TrailerVideo}
-              className='w-full my-4 h-auto'
+              className='w-full my-4 ls:max-md:h-auto'
               allowFullScreen></iframe>
           ) : null}
 
