@@ -93,7 +93,9 @@ export default async function Blog({ params }) {
     <div className='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>
       <div className='grid grid-cols-7 gap-4'>
         <div className='sm:col-span-5 ls:max-sm:col-span-7 relative mx-4'>
-          <h1 className='md:text-5xl text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>{Titulo}</h1>
+          <h1 className='md:text-5xl md:mt-10 text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>
+            {Titulo}
+          </h1>
           <div className='md:my-2 ls:max-md:my-0 text-slate-700'>
             <span className='text-slate-600 md:ext-sm ls:max-md:text-xs'>
               Creado por
@@ -109,7 +111,7 @@ export default async function Blog({ params }) {
               width='853'
               height='480'
               src={videojuegos[0].TrailerVideo}
-              className='w-full my-4'
+              className='w-full my-4 h-auto'
               allowFullScreen></iframe>
           ) : null}
 
@@ -131,7 +133,7 @@ export default async function Blog({ params }) {
         </div>
         <div className='h-full relative sm:col-span-2'>
           {Genero === "Reseña de Videojuego" ? (
-            <div className='bg-slate-950 p-4 rounded-2xl w-full h-fit'>
+            <div className='bg-slate-950 p-4 rounded-2xl w-full h-fit ls:max-md:hidden'>
               <h1 className='text-2xl text-slate-400 text-center font-bold work ls:max-sm:text-xl'>{Titulo}</h1>
               <Image
                 width={600}
