@@ -105,7 +105,6 @@ body {
   .contenido img {
     margin-top: 10px;
     margin-bottom: 10px;
-    max-width: 90%; /* Hace que la imagen sea flexible */
   }
 
   .ck-table-resized {
@@ -139,10 +138,14 @@ body {
 }
 
 .contenido .table {
-  width: 80%;
-  overflow-x: auto; /* Agrega un desplazamiento horizontal en caso de que la tabla sea demasiado ancha */
-  margin-top: 20px;
+  overflow-x: auto;
   margin-bottom: 20px;
+}
+
+.contenido .table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
 }
 
 .contenido .table th,
@@ -150,16 +153,6 @@ body {
   border: 1px solid #a8a8a8;
   padding: 8px;
   text-align: center;
-  white-space: nowrap; /* Evita el salto de línea en celdas */
-}
-
-.contenido .table table {
-  /* width: 100%; <-- Elimina esta línea */
-  border-collapse: collapse;
-  font-size: 0.8rem; /* Ajusta el tamaño de fuente para dispositivos más pequeños */
-}
-
-.contenido .table td {
   word-break: keep-all;
 }
 
