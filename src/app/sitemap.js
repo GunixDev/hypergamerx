@@ -9,13 +9,13 @@ export default async function sitemap() {
       lastModified: new Date(),
     },
     ...articulos.map((articulo) => ({
-      url: `https://www.hypergamerx.com/blog/articulos/${articulo.attributes.url}`,
-      lastModified: articulo.attributes.updatedAt,
+      url: `https://www.hypergamerx.com/blog/articulos/${articulo.url}`,
+      lastModified: articulo.updatedAt,
     })),
 
     ...administracion.map((articulo) => ({
-      url: `https://www.hypergamerx.com/blog/anuncios/${articulo.attributes.url}`,
-      lastModified: articulo.attributes.updatedAt,
+      url: `https://www.hypergamerx.com/blog/anuncios/${articulo.url}`,
+      lastModified: articulo.updatedAt,
     })),
   ];
   return sitemapEntries;
