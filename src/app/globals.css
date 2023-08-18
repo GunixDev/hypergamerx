@@ -148,6 +148,15 @@ body {
   font-size: 0.8rem;
 }
 
+.contenido .table th {
+  color: white;
+  font-weight: 800;
+}
+
+.contenido .table td {
+  color: rgb(197, 210, 255);
+}
+
 .contenido .table th,
 .contenido .table td {
   border: 1px solid #a8a8a8;
