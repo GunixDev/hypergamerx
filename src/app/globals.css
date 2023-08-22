@@ -43,6 +43,15 @@ body {
   margin-right: auto;
 }
 
+.contenido iframe {
+  width: 90%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .contenido a {
   color: rgb(44, 75, 252);
   text-decoration: underline;
@@ -53,15 +62,15 @@ body {
   margin-bottom: 10px;
 }
 
-.contenido h1 {
+.contenido h2 {
   color: white;
   font-size: 2rem;
   line-height: 2.5rem;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 5px;
 }
 
-.contenido h2 {
+.contenido h3 {
   color: rgb(177, 189, 206);
   font-size: 1.5rem;
   line-height: 2rem;
@@ -70,7 +79,7 @@ body {
   margin-left: 5px;
 }
 
-.contenido h3 {
+.contenido h4 {
   color: rgb(148, 163, 184);
   font-size: 1.2rem;
   line-height: 1.5rem;
@@ -87,17 +96,17 @@ body {
     font-size: 0.8rem;
   }
 
-  .contenido h1 {
+  .contenido h2 {
     font-size: 1.5rem;
     line-height: 2rem;
   }
 
-  .contenido h2 {
+  .contenido h3 {
     font-size: 1.2rem;
     line-height: 1.5rem;
   }
 
-  .contenido h3 {
+  .contenido h4 {
     font-size: 1rem;
     line-height: 1.2rem;
   }

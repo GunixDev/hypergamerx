@@ -1,4 +1,4 @@
-import { STRAPI_URL } from "@/app/config";
+import { STRAPI_URL } from "@/utils/config";
 import Link from "next/link";
 import Image from "next/image";
 import { FormatearFecha } from "@/components/Formatear_Fecha";

@@ -42,12 +42,24 @@ export default function Nav() {
     <>
       {Movil ? (
         <div className='fixed z-100 right-0 bg-slate-950 w-10/12  h-full sm:max-2xl:hidden'>
-          <div className='mt-14 grid grid-rows-2'>
-            <Link href='/' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
+          <div className='mt-14 grid grid-rows-6'>
+            <Link href='/' className='w-full p-3  bg-slate-900 border-y-2 border-slate-800'>
               Inicio
             </Link>
-            <Link href='/blog/anuncios' className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
+            <Link href='/blog/anuncios' className='w-full p-3  bg-slate-900 border-y-2 border-slate-800'>
               Anuncios
+            </Link>
+            <Link href='/blog/noticia' className='w-full p-3 bg-slate-900 border-y-2 border-slate-800'>
+              Noticias
+            </Link>
+            <Link href='/blog/curiosidades' className='w-full p-3  bg-slate-900 border-y-2 border-slate-800'>
+              Curiosidades
+            </Link>
+            <Link href='/blog/resena' className='w-full p-3  bg-slate-900 border-y-2 border-slate-800'>
+              Reseñas
+            </Link>
+            <Link href='/blog/guia' className='w-full p-3  bg-slate-900 border-y-2 border-slate-800'>
+              Guías
             </Link>
           </div>
           <div className='absolute bottom-0'>
@@ -81,7 +93,7 @@ export default function Nav() {
                 Redes sociales
               </button>
               {Redes ? (
-                <div className='grid grid-rows-2'>
+                <div className='grid grid-rows-3'>
                   <Link
                     href={"https://discord.gg/4uvDcbcgWm"}
                     target='_blank'
@@ -93,6 +105,12 @@ export default function Nav() {
                     target='_blank'
                     className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
                     Twitter
+                  </Link>
+                  <Link
+                    href={"https://www.youtube.com/@HyperGamerX1/featured"}
+                    target='_blank'
+                    className='w-full p-4  bg-slate-900 border-y-2 border-slate-800'>
+                    Youtube
                   </Link>
                 </div>
               ) : null}
@@ -117,6 +135,26 @@ export default function Nav() {
             : ` opacity-100`
         }`}>
         <div className='w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end h-16 ls:max-sm:hidden gap-4'>
+          <Link
+            href='/blog/guia'
+            className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>
+            Guías
+          </Link>
+          <Link
+            href='/blog/resena'
+            className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>
+            Reseñas
+          </Link>
+          <Link
+            href='/blog/curiosidades'
+            className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>
+            Curiosidades
+          </Link>
+          <Link
+            href='/blog/noticia'
+            className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>
+            Noticias
+          </Link>
           <Link
             href='/blog/anuncios'
             className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>

@@ -122,6 +122,11 @@ export default function RootLayout({ children }) {
                       Twitter
                     </Link>
                   </li>
+                  <li className='m-2'>
+                    <Link href={"https://www.youtube.com/@HyperGamerX1/featured"} target='_blank'>
+                      Youtube
+                    </Link>
+                  </li>
                 </ol>
               </div>
             </div>
