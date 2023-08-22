@@ -74,6 +74,15 @@ export async function getListArticuloAdmin(params) {
   return articulos.data[0];
 }
 
+export async function getArticuloAdmin(params) {
+  const res = await fetch(
+    `${STRAPI_URL}/api/blog-admins?populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
+    { cache: "no-store" },
+  );
+  const articulos = await res.json();
+  return articulos.data[0];
+}
+
 export async function getArticuloCuriosidades(params) {
   const res = await fetch(
     `${STRAPI_URL}/api/blog-datas?populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[Genero][$eq]=Curiosidades&filters[url][$eq]=${params.url}`,

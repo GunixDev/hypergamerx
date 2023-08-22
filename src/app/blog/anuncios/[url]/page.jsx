@@ -1,11 +1,11 @@
 import { STRAPI_URL } from "@/utils/config";
-import Link from "next/link";
 import Image from "next/image";
 import { FormatearFecha } from "@/components/Formatear_Fecha";
-import { getListArticuloAdmin, getListArtiRamdom } from "@/service/blogs";
+import { getListArtiRamdom } from "@/service/blogs";
+import { getArticuloAdmin } from "@/service/blogs";
 import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
-import Indice2 from "@/components/Indice2";
+import { ContenidoArticulo, Indice2 } from "@/components/ContenidoArticulo";
 
 const Articulos_version1 = dynamic(() => import("../../../../components/ArticulosView"), {
   loading: () => <p>Cargando...</p>,
@@ -80,18 +80,20 @@ const Articulos_Random = dynamic(() => import("@/components/ArticulosView2"), {
 });
 
 export default async function AdminBlog({ params }) {
-  const articulo = await getListArticuloAdmin(params);
+  const articulo = await getArticuloAdmin(params);
   if (articulo === undefined) {
     return <ErrorPage />;
   }
   const RamdonArticulos = await getListArtiRamdom(params.url);
-  const { Titulo, updatedAt, Resumen, videojuegos, Contenidos, ImagenPrincipal, Genero, Keywords } = articulo;
+  const { Titulo, updatedAt, Resumen, Contenidos, ImagenPrincipal } = articulo;
 
   return (
-    <div className='md:w-11/12 ls:max-md:w-full m-auto my-10'>
+    <div className='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>
       <div className='grid grid-cols-7 gap-4'>
         <div className='sm:col-span-5 ls:max-sm:col-span-7 relative mx-4'>
-          <h1 className='md:text-5xl text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>{Titulo}</h1>
+          <h1 className='md:text-5xl md:mt-10 text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>
+            {Titulo}
+          </h1>
           <div className='md:my-2 ls:max-md:my-0 text-slate-700'>
             <span className='text-slate-600 md:ext-sm ls:max-md:text-xs'>
               Creado por
@@ -100,16 +102,8 @@ export default async function AdminBlog({ params }) {
               <strong suppressHydrationWarning> {FormatearFecha(updatedAt)}</strong>
             </span>
           </div>
-          <p className='md:text-sm ls:max-md:text-xs md:my-2 ls:max-md:my-1 text-slate-400'>{Genero}</p>
+          <p className='md:text-sm ls:max-md:text-xs md:my-2 ls:max-md:my-1 text-slate-400'>Curiosidades</p>
           <p className='md:text-xl text-slate-500 ls:max-md:text-xs'>{Resumen}</p>
-          {Genero === "Reseña de Videojuego" ? (
-            <iframe
-              width='853'
-              height='480'
-              src={videojuegos.TrailerVideo}
-              className='w-full my-4'
-              allowFullScreen></iframe>
-          ) : null}
 
           {ImagenPrincipal !== null ? (
             <Image
@@ -118,15 +112,14 @@ export default async function AdminBlog({ params }) {
               src={ImagenPrincipal.url}
               alt={`image`}
               className='my-8 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
-              priority={true}
+              loading='lazy'
             />
           ) : null}
 
           <div className='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4 ls:max-sm:hidden'>
-            <span className='md:text-xl ls:max-md:text-base text-center mb-2 text-white font-bold'>Indice</span>
             <Indice2 apiResponse={Contenidos} />
           </div>
-          <div className='contenido' dangerouslySetInnerHTML={{ __html: Contenidos }} />
+          <ContenidoArticulo apiResponse={Contenidos} />
         </div>
         <div className='h-full relative sm:col-span-2'>
           <div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>

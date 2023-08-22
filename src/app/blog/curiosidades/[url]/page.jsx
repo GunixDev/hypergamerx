@@ -84,7 +84,7 @@ export default async function Blog({ params }) {
     return <ErrorPage />;
   }
   const RamdonArticulos = await getListArtiRamdom(params.url);
-  const { Titulo, updatedAt, Resumen, videojuegos, Contenidos, ImagenPrincipal, Genero, Keywords } = articulo;
+  const { Titulo, updatedAt, Resumen, Contenidos, ImagenPrincipal } = articulo;
   return (
     <div className='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>
       <div className='grid grid-cols-7 gap-4'>
