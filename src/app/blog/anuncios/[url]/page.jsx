@@ -85,7 +85,7 @@ export default async function AdminBlog({ params }) {
     return <ErrorPage />;
   }
   const RamdonArticulos = await getListArtiRamdom(params.url);
-  const { Titulo, updatedAt, Resumen, Contenidos, ImagenPrincipal } = articulo;
+  const { Titulo, updatedAt, Resumen, Contenidos, ImagenPrincipal, Genero } = articulo;
 
   return (
     <div className='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>
@@ -102,7 +102,7 @@ export default async function AdminBlog({ params }) {
               <strong suppressHydrationWarning> {FormatearFecha(updatedAt)}</strong>
             </span>
           </div>
-          <p className='md:text-sm ls:max-md:text-xs md:my-2 ls:max-md:my-1 text-slate-400'>Curiosidades</p>
+          <p className='md:text-sm ls:max-md:text-xs md:my-2 ls:max-md:my-1 text-slate-400'>{Genero}</p>
           <p className='md:text-xl text-slate-500 ls:max-md:text-xs'>{Resumen}</p>
 
           {ImagenPrincipal !== null ? (

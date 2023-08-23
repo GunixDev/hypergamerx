@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function ErrorPage() {
   return (
     <>
@@ -8,6 +9,9 @@ export default function ErrorPage() {
         <div className='text-center'>
           <h6>Error al encontrar la pagina</h6>
           <h5>Verifica que el link este bien puesto</h5>
+          <Link href={"/"} className=' text-red-600 text-lg font-bold'>
+            Regresar
+          </Link>
         </div>
       </div>
     </>
