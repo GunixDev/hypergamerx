@@ -139,11 +139,13 @@ body {
 
 .contenido ul li {
   list-style: inside !important;
+  margin-left: 20px;
 }
 
 .contenido ol li {
   list-style: decimal-leading-zero;
   list-style-position: inside;
+  margin-left: 20px;
 }
 
 .contenido .table {

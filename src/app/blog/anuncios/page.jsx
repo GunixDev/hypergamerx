@@ -1,7 +1,7 @@
 import { getListArtiAdmin } from "@/service/blogs";
 import dynamic from "next/dynamic";
 
-const Articulos_version1 = dynamic(() => import("../../../components/ArticulosView3"), {
+const Articulos_version1 = dynamic(() => import("../../../components/ArticulosView4"), {
   loading: () => <p>Cargando...</p>,
   srr: false,
   error: () => <p>Error</p>,
