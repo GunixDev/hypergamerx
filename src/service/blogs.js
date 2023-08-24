@@ -51,6 +51,7 @@ export async function getListArticulo(params) {
 export async function getListArtiAdmin() {
   const res = await fetch(
     `${STRAPI_URL}/api/blog-admins?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&[fields][4]=Genero`,
+    { cache: "no-store" },
   );
   if (!res.ok) {
     throw new Error("Something went wrong");
