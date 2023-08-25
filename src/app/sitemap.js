@@ -1,9 +1,9 @@
-import { getListArticulos, getListAdministracion } from "@/service/blogs";
+import { getListTodo, getListAnucios } from "@/service/blogslist";
 
 export default async function sitemap() {
-  const articulos = await getListArticulos();
+  const articulos = await getListTodo();
 
-  const administracion = await getListAdministracion();
+  const administracion = await getListAnucios();
   const sitemapEntries = [
     {
       url: "https://www.hypergamerx.com",
