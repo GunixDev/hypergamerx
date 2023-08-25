@@ -54,3 +54,12 @@ export async function getArticuloGuia(params) {
   const articulos = await res.json();
   return articulos.data[0];
 }
+
+export async function getArticuloPreview(params) {
+  const res = await fetch(
+    `${STRAPI_URL}/api/blog-datas?publicationState=preview&filters[publishedAt][$null]=true&populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
+    { cache: "no-store" },
+  );
+  const articulos = await res.json();
+  return articulos.data[0];
+}
