@@ -1,11 +1,12 @@
 import { STRAPI_URL } from "@/utils/config";
 import Image from "next/image";
 import { FormatearFecha } from "@/components/Formatear_Fecha";
-import { getListArtiRamdom, getArticuloAdmin } from "@/service/blogs";
+import { getArticuloAdmin } from "@/service/blogs";
 import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
 import { ContenidoArticulo, Indice2 } from "@/components/ContenidoArticulo";
 import { Suspense } from "react";
+import { getListTodo } from "@/service/blogslist";
 
 const Articulos_version1 = dynamic(() => import("../../../../components/ArticulosView"), {
   loading: () => <p>Cargando...</p>,
@@ -84,7 +85,7 @@ export default async function AdminBlog({ params }) {
   if (articulo === undefined) {
     return <ErrorPage />;
   }
-  const RamdonArticulos = await getListArtiRamdom(params.url);
+  const RamdonArticulos = await getListTodo(params.url);
   const { Titulo, updatedAt, Resumen, Contenidos, ImagenPrincipal, Genero } = articulo;
 
   return (

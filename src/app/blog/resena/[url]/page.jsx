@@ -2,7 +2,6 @@ import { STRAPI_URL } from "@/utils/config";
 import Link from "next/link";
 import Image from "next/image";
 import { FormatearFecha } from "@/components/Formatear_Fecha";
-import { getListArtiRamdom } from "@/service/blogs";
 import { getArticuloReseña } from "@/service/blogs";
 import Estrellas from "@/components/Estrellas";
 import { PlataformasUI } from "@/components/comp_resenas/PlataformasUI";
@@ -10,6 +9,7 @@ import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
 import { ContenidoArticulo, Indice2 } from "@/components/ContenidoArticulo";
 import { Suspense } from "react";
+import { getListTodo } from "@/service/blogslist";
 
 export async function generateStaticParams() {
   const url = await fetch(
@@ -90,7 +90,7 @@ export default async function Blog({ params }) {
   if (articulo === undefined) {
     return <ErrorPage />;
   }
-  const RamdonArticulos = await getListArtiRamdom(params.url);
+  const RamdonArticulos = await getListTodo(params.url);
   const { Titulo, updatedAt, Resumen, videojuegos, Contenidos } = articulo;
   return (
     <div className='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>

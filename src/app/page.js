@@ -1,4 +1,4 @@
-import { getListArtiGeneral } from "../service/blogs";
+import { getListTodo } from "../service/blogslist";
 import Feature from "@/components/Feaure";
 import dynamic from "next/dynamic";
 
@@ -10,7 +10,7 @@ const Articulos_version1 = dynamic(() => import("../components/ArticulosView"), 
 
 // eslint-disable-next-line @next/next/no-async-client-component
 export default async function Home() {
-  const blog = await getListArtiGeneral();
+  const blog = await getListTodo();
   return (
     <main>
       <main className='w-full flex flex-col mb-10'>

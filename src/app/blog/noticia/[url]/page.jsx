@@ -1,12 +1,12 @@
 import { STRAPI_URL } from "@/utils/config";
 import Image from "next/image";
 import { FormatearFecha } from "@/components/Formatear_Fecha";
-import { getListArtiRamdom } from "@/service/blogs";
 import { getArticuloNoticia } from "@/service/blogs";
 import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
 import { ContenidoArticulo, Indice2 } from "@/components/ContenidoArticulo";
 import { Suspense } from "react";
+import { getListTodo } from "@/service/blogslist";
 
 export async function generateStaticParams() {
   const url = await fetch(`${STRAPI_URL}/api/blog-datas?filters[Genero][$eq]=Noticia&[fields][0]=url`);
@@ -84,7 +84,7 @@ export default async function Blog({ params }) {
   if (articulo === undefined) {
     return <ErrorPage />;
   }
-  const RamdonArticulos = await getListArtiRamdom(params.url);
+  const RamdonArticulos = await getListTodo(params.url);
   const { Titulo, updatedAt, Resumen, Contenidos, ImagenPrincipal } = articulo;
   return (
     <div className='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>

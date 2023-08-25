@@ -1,4 +1,4 @@
-import { getListArtiAdmin } from "@/service/blogs";
+import { getListAnucios } from "@/service/blogslist";
 import dynamic from "next/dynamic";
 
 const Articulos_version1 = dynamic(() => import("../../../components/ArticulosView4"), {
@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 export default async function HomeAdmin() {
-  const blog = await getListArtiAdmin();
+  const blog = await getListAnucios();
   return (
     <main>
       <main className='w-full flex flex-col mb-10'>
