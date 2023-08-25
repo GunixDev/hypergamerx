@@ -3,7 +3,7 @@ export default function robots() {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/terminos-servicios/",
+      disallow: ["/terminos-servicios/", "/blog/preview/"],
     },
     sitemap: "https://www.hypergamerx.com/sitemap.xml",
   };
