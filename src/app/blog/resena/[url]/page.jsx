@@ -9,12 +9,10 @@ import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
 import { ContenidoArticulo, Indice2 } from "@/components/ContenidoArticulo";
 import { Suspense } from "react";
-import { getListTodo } from "@/service/blogslist";
+import { getListResena2 } from "@/service/blogslist";
 
 export async function generateStaticParams() {
-  const url = await fetch(
-    `${STRAPI_URL}/api/blog-datas?filters[Genero][$eq]=Rese%C3%B1a%20de%20Videojuego&[fields][0]=url`,
-  );
+  const url = await fetch(`${STRAPI_URL}/api/blog-resenas?[fields][0]=url`);
   const obtenerurl = await url.json();
   return obtenerurl.data.map((articulo) => ({
     url: articulo.url,
@@ -30,7 +28,7 @@ const Articulos_version1 = dynamic(() => import("../../../../components/Articulo
 export async function generateMetadata({ params }) {
   const url = params.url;
   const articulometadata = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0]=url&filters[Genero][$eq]=Rese%C3%B1a%20de%20Videojuego&filters[url][$eq]=${url}`,
+    `${STRAPI_URL}/api/blog-resenas?populate[ImagenPrincipal][fields][0]=url&filters[url][$eq]=${url}`,
   ).then((res) => res.json());
 
   if (articulometadata.data.length < 1) {
@@ -90,7 +88,7 @@ export default async function Blog({ params }) {
   if (articulo === undefined) {
     return <ErrorPage />;
   }
-  const RamdonArticulos = await getListTodo(params.url);
+  const RamdonArticulos = await getListResena2(params.url);
   const { Titulo, updatedAt, Resumen, videojuegos, Contenidos } = articulo;
   return (
     <div className='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>
@@ -150,17 +148,17 @@ export default async function Blog({ params }) {
               </Link>
             </div>
 
-            <div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
+            {/*<div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
               <h1 className='md:text-lg font-bold ls:max-md:text-base text-white'>Articulos aleatorios</h1>
               {RamdonArticulos.map((articulos) => {
                 return <Articulos_Random key={articulos.id} entrada={articulos} />;
               })}
-            </div>
+            </div>*/}
           </div>
         </div>
       </Suspense>
       <div className='mx-2 mt-6 sm:hidden'>
-        <h1 className='font-bold text-base my-2'>Arituclos aleatorios</h1>
+        {/*<h1 className='font-bold text-base my-2'>Arituclos aleatorios</h1>*/}
         <div className='grid grid-cols-3 gap-1 relative'>
           {RamdonArticulos.map((articulos) => {
             return <Articulos_version1 key={articulos.id} entrada={articulos} />;
