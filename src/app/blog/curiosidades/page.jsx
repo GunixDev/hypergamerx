@@ -30,7 +30,7 @@ export default async function HomeAdmin() {
         <div className='w-11/12 mx-auto'>
           <div className='grid grid-cols-3 gap-4 ls:gap-1 relative'>
             {blog.map((entrada, index) => (
-              <Articulos_version1 key={index} entrada={entrada} />
+              <Articulos_version1 key={index} entrada={entrada} Genero={"Curiosidades"} />
             ))}
           </div>
         </div>

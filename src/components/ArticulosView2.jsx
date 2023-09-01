@@ -1,19 +1,8 @@
 import Link from "next/link";
 
-export default function Articulos_Random({ entrada }) {
+export default function Articulos_Random({ entrada, Genero }) {
   return (
-    <Link
-      href={`../${
-        entrada.Genero === "Curiosidades"
-          ? "curiosidades"
-          : entrada.Genero === "Reseña de Videojuego"
-          ? "resena"
-          : entrada.Genero === "Noticia"
-          ? "noticia"
-          : entrada.Genero === "Guia"
-          ? "guia"
-          : null
-      }/${entrada.url}`}>
+    <Link href={`../${Genero}/${entrada.url}`}>
       <div className='mt-4 group'>
         <p className='text-sm ls:max-md:text-xs text-slate-300 font-bold group-hover:text-slate-200  duration-500'>
           {entrada.Titulo}

@@ -1,8 +1,10 @@
-import { getListTodo, getListAnucios } from "@/service/blogslist";
+import { getListCuriosidades, getListGuia, getListNoticia, getListResena, getListAnucios } from "@/service/blogslist";
 
 export default async function sitemap() {
-  const articulos = await getListTodo();
-
+  const curiosidades = await getListCuriosidades();
+  const guias = await getListGuia();
+  const noticias = await getListNoticia();
+  const resenas = await getListResena();
   const administracion = await getListAnucios();
   const sitemapEntries = [
     {
@@ -29,18 +31,23 @@ export default async function sitemap() {
       url: "https://www.hypergamerx.com/anuncios",
       lastModified: new Date(),
     },
-    ...articulos.map((articulo) => ({
-      url: `https://www.hypergamerx.com/blog/${
-        articulo.Genero === "Curiosidades"
-          ? "curiosidades"
-          : articulo.Genero === "Reseña de Videojuego"
-          ? "resena"
-          : articulo.Genero === "Noticia"
-          ? "noticia"
-          : articulo.Genero === "Guia"
-          ? "guia"
-          : null
-      }/${articulo.url}`,
+    ...curiosidades.map((articulo) => ({
+      url: `https://www.hypergamerx.com/blog/curiosidades/${articulo.url}`,
+      lastModified: articulo.updatedAt,
+    })),
+
+    ...guias.map((articulo) => ({
+      url: `https://www.hypergamerx.com/blog/guia/${articulo.url}`,
+      lastModified: articulo.updatedAt,
+    })),
+
+    ...noticias.map((articulo) => ({
+      url: `https://www.hypergamerx.com/blog/noticia/${articulo.url}`,
+      lastModified: articulo.updatedAt,
+    })),
+
+    ...resenas.map((articulo) => ({
+      url: `https://www.hypergamerx.com/blog/resena/${articulo.url}`,
       lastModified: articulo.updatedAt,
     })),
 

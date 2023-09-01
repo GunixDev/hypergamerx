@@ -1,10 +1,10 @@
 import { STRAPI_URL } from "../utils/config";
 
-export async function getListTodo() {
+export async function getListAnucios() {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&[fields][4]=Genero`,
+    `${STRAPI_URL}/api/blog-admins?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&sort[0]=updatedAt:desc`,
     {
-      next: { revalidate: 18000 },
+      next: { revalidate: 28800 },
     },
   );
   if (!res.ok) {
@@ -14,9 +14,9 @@ export async function getListTodo() {
   return data;
 }
 
-export async function getListAnucios() {
+export async function getListAnucios2(params) {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-admins?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&[fields][4]=Genero`,
+    `${STRAPI_URL}/api/blog-admins?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&filters[url][$ne]=${params}`,
     {
       next: { revalidate: 28800 },
     },
@@ -30,7 +30,21 @@ export async function getListAnucios() {
 
 export async function getListGuia() {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&[fields][4]=Genero&filters[Genero][$eq]=Guia`,
+    `${STRAPI_URL}/api/blog-guias?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&sort[0]=updatedAt:desc`,
+    {
+      next: { revalidate: 28800 },
+    },
+  );
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  const { data } = await res.json();
+  return data;
+}
+
+export async function getListGuia2(params) {
+  const res = await fetch(
+    `${STRAPI_URL}/api/blog-guias?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&filters[url][$ne]=${params}`,
     {
       next: { revalidate: 28800 },
     },
@@ -44,7 +58,21 @@ export async function getListGuia() {
 
 export async function getListResena() {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&[fields][4]=Genero&filters[Genero][$eq]=Reseña de Videojuego`,
+    `${STRAPI_URL}/api/blog-resenas?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&sort[0]=updatedAt:desc`,
+    {
+      next: { revalidate: 28800 },
+    },
+  );
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  const { data } = await res.json();
+  return data;
+}
+
+export async function getListResena2(params) {
+  const res = await fetch(
+    `${STRAPI_URL}/api/blog-resenas?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&filters[url][$ne]=${params}`,
     {
       next: { revalidate: 28800 },
     },
@@ -58,7 +86,21 @@ export async function getListResena() {
 
 export async function getListCuriosidades() {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&[fields][4]=Genero&filters[Genero][$eq]=Curiosidades`,
+    `${STRAPI_URL}/api/blog-curiosidades?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&sort[0]=updatedAt:desc`,
+    {
+      next: { revalidate: 28800 },
+    },
+  );
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  const { data } = await res.json();
+  return data;
+}
+
+export async function getListCuriosidades2(params) {
+  const res = await fetch(
+    `${STRAPI_URL}/api/blog-curiosidades?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&filters[url][$ne]=${params}`,
     {
       next: { revalidate: 28800 },
     },
@@ -72,7 +114,21 @@ export async function getListCuriosidades() {
 
 export async function getListNoticia() {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&[fields][4]=Genero&filters[Genero][$eq]=Noticia`,
+    `${STRAPI_URL}/api/blog-noticias?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&[fields][3]=updatedAt&sort[0]=updatedAt:desc`,
+    {
+      next: { revalidate: 28800 },
+    },
+  );
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  const { data } = await res.json();
+  return data;
+}
+
+export async function getListNoticia2(params) {
+  const res = await fetch(
+    `${STRAPI_URL}/api/blog-noticias?populate[ImagenPrincipal][fields][0}=url&[fields][0]=Titulo&[fields][1]=Resumen&[fields][2]=url&filters[url][$ne]=${params}`,
     {
       next: { revalidate: 28800 },
     },

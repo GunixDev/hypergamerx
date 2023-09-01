@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import ErrorPage from "@/components/Error.page";
 import { ContenidoArticulo, Indice2 } from "@/components/ContenidoArticulo";
 import { Suspense } from "react";
-import { getListTodo } from "@/service/blogslist";
+import { getListAnucios2 } from "@/service/blogslist";
 
 const Articulos_version1 = dynamic(() => import("../../../../components/ArticulosView"), {
   loading: () => <p>Cargando...</p>,
@@ -85,7 +85,7 @@ export default async function AdminBlog({ params }) {
   if (articulo === undefined) {
     return <ErrorPage />;
   }
-  const RamdonArticulos = await getListTodo(params.url);
+  const RamdonArticulos = await getListAnucios2(params.url);
   const { Titulo, updatedAt, Resumen, Contenidos, ImagenPrincipal, Genero } = articulo;
 
   return (
@@ -125,19 +125,19 @@ export default async function AdminBlog({ params }) {
           </div>
           <div className='h-full relative sm:col-span-2'>
             <div className=' bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
-              <h1 className='md:text-lg font-bold ls:max-md:text-base text-white'>Articulos aleatorios</h1>
+              <h1 className='md:text-lg font-bold ls:max-md:text-base text-white'>Más artículos de anuncios</h1>
               {RamdonArticulos.map((articulos) => {
-                return <Articulos_Random key={articulos.id} entrada={articulos} />;
+                return <Articulos_Random key={articulos.id} entrada={articulos} Genero='anuncios' />;
               })}
             </div>
           </div>
         </div>
       </Suspense>
       <div className='mx-2 mt-6 sm:hidden'>
-        <h1 className='font-bold text-base my-2'>Arituclos aleatorios</h1>
+        <h1 className='font-bold text-base my-2'>Más artículos de anuncios</h1>
         <div className='grid grid-cols-3 gap-1 relative'>
           {RamdonArticulos.map((articulos) => {
-            return <Articulos_version1 key={articulos.id} entrada={articulos} />;
+            return <Articulos_version1 key={articulos.id} entrada={articulos} Genero='anuncios' />;
           })}
         </div>
       </div>

@@ -4,20 +4,20 @@ import Link from "next/link";
 
 /* eslint-disable react/no-unescaped-entities */
 
-export default function Articulos_version1({ entrada }) {
+export default function Articulos_version1({ entrada, Genero }) {
   return (
     <div className='xl:h-64 xl:w-88 lg:w-72 md:h-48 md:w-52 lg:h-56 sm:w-46 sm:h-46 ls:w-28 ls:h-28 relative group  rounded-xl  duration-500 mt-5'>
       <Link
         href={`/blog/${
-          entrada.Genero === "Curiosidades"
+          Genero === "Curiosidades"
             ? "curiosidades"
-            : entrada.Genero === "Reseña de Videojuego"
+            : Genero === "Reseña de Videojuego"
             ? "resena"
-            : entrada.Genero === "Noticia"
+            : Genero === "Noticia"
             ? "noticia"
-            : entrada.Genero === "Guia"
+            : Genero === "Guia"
             ? "guia"
-            : entrada.Genero === "Anuncio"
+            : Genero === "Anuncio"
             ? "anuncios"
             : null
         }/${entrada.url}`}

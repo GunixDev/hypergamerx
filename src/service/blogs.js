@@ -13,7 +13,7 @@ export async function getArticuloAdmin(params) {
 
 export async function getArticuloCuriosidades(params) {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[Genero][$eq]=Curiosidades&filters[url][$eq]=${params.url}`,
+    `${STRAPI_URL}/api/blog-curiosidades?populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
     {
       next: { revalidate: 18000 },
     },
@@ -24,7 +24,7 @@ export async function getArticuloCuriosidades(params) {
 
 export async function getArticuloNoticia(params) {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[Genero][$eq]=Noticia&filters[url][$eq]=${params.url}`,
+    `${STRAPI_URL}/api/blog-noticias?populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
     {
       next: { revalidate: 18000 },
     },
@@ -35,7 +35,7 @@ export async function getArticuloNoticia(params) {
 
 export async function getArticuloReseña(params) {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[0]=videojuegos&populate[videojuegos][populate][Caratula][fields][0]=url&populate[videojuegos][populate][Plataformas]=deep&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[Genero][$eq]=Rese%C3%B1a%20de%20Videojuego&filters[url][$eq]=${params.url}`,
+    `${STRAPI_URL}/api/blog-resenas?populate[0]=videojuegos&populate[videojuegos][populate][Caratula][fields][0]=url&populate[videojuegos][populate][Plataformas]=deep&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
     {
       next: { revalidate: 18000 },
     },
@@ -46,7 +46,7 @@ export async function getArticuloReseña(params) {
 
 export async function getArticuloGuia(params) {
   const res = await fetch(
-    `${STRAPI_URL}/api/blog-datas?populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[Genero][$eq]=Guia&filters[url][$eq]=${params.url}`,
+    `${STRAPI_URL}/api/blog-guias?populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
     {
       next: { revalidate: 18000 },
     },
