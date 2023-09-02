@@ -14,9 +14,7 @@ export async function getArticuloAdmin(params) {
 export async function getArticuloAdminPreview(params) {
   const res = await fetch(
     `${STRAPI_URL}/api/blog-admins?publicationState=preview&filters[publishedAt][$null]=true&populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
-    {
-      next: { revalidate: 18000 },
-    },
+    { cache: "no-store" },
   );
   const articulos = await res.json();
   return articulos.data[0];
@@ -36,9 +34,7 @@ export async function getArticuloCuriosidades(params) {
 export async function getArticuloCuriosidadesPreview(params) {
   const res = await fetch(
     `${STRAPI_URL}/api/blog-curiosidades?publicationState=preview&filters[publishedAt][$null]=true&populate[videojuegos][fields][0]=Nombre&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
-    {
-      next: { revalidate: 18000 },
-    },
+    { cache: "no-store" },
   );
   const articulos = await res.json();
   return articulos.data[0];

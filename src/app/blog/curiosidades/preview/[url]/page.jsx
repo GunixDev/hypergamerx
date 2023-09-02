@@ -11,6 +11,7 @@ import { getListCuriosidades2 } from "@/service/blogslist";
 export async function generateStaticParams() {
   const url = await fetch(
     `${STRAPI_URL}/api/blog-curiosidades?publicationState=preview&filters[publishedAt][$null]=true&[fields][0]=url`,
+    { cache: "no-store" },
   );
   const obtenerurl = await url.json();
   return obtenerurl.data.map((articulo) => ({
@@ -28,6 +29,7 @@ export async function generateMetadata({ params }) {
   const url = params.url;
   const articulometadata = await fetch(
     `${STRAPI_URL}/api/blog-curiosidades?publicationState=preview&filters[publishedAt][$null]=true&populate[ImagenPrincipal][fields][0]=url&filters[url][$eq]=${url}`,
+    { cache: "no-store" },
   ).then((res) => res.json());
   if (articulometadata.data.length < 1) {
     return;
