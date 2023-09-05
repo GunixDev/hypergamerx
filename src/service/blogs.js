@@ -65,9 +65,7 @@ export async function getArticuloReseña(params) {
 export async function getArticuloReseñaPreview(params) {
   const res = await fetch(
     `${STRAPI_URL}/api/blog-resenas?publicationState=preview&filters[publishedAt][$null]=true&populate[0]=videojuegos&populate[videojuegos][populate][Caratula][fields][0]=url&populate[videojuegos][populate][Plataformas]=deep&populate[ImagenPrincipal][fields][0]=url&populate[createdBy][populate]&populate[updatedBy][populate]&filters[url][$eq]=${params.url}`,
-    {
-      next: { revalidate: 18000 },
-    },
+    { cache: "no-store" },
   );
   const articulos = await res.json();
   return articulos.data[0];
