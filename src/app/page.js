@@ -63,7 +63,7 @@ export default async function Home() {
           </h2>
           <div className='grid grid-cols-3 gap-4 ls:gap-1 relative'>
             {blog.map((entrada, index) => (
-              <Articulos_version1 key={index} entrada={entrada} Genero={curiosidades} />
+              <Articulos_version1 key={index} entrada={entrada} Genero={"noticia"} />
             ))}
           </div>
         </div>
