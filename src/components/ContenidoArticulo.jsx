@@ -51,8 +51,8 @@ const ContenidoArticulo = ({ apiResponse }) => {
 };
 
 const Indice2 = ({ apiResponse }) => {
-  const modifiedHtml = addIdsToHeadings(apiResponse); // Aquí se procesa el HTML
-  const indexLinks = generateIndexLinks(modifiedHtml); // Se usa el HTML procesado
+  const modifiedHtml = addIdsToHeadings(apiResponse);
+  const indexLinks = generateIndexLinks(modifiedHtml);
 
   return (
     <div className='indice'>
