@@ -7,6 +7,10 @@ import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    domains: ['astro.build'],
+    remotePatterns: [{ protocol: 'https' }],
+  },
   site: 'https://hypergamerx.com',
   integrations: [mdx(), sitemap(), tailwind(), preact()],
   output: 'hybrid',

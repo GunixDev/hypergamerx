@@ -1,0 +1,41 @@
+---
+interface Props {
+  image: any;
+  title: any;
+  fileName: any;
+  fecha: any;
+}
+const { image, title, fileName, fecha }: Props = Astro.props;
+import { Image } from 'astro:assets';
+---
+
+<a href={`/blog/${fileName}`}>
+  <div class='grid grid-flow-row-dense'>
+    <div>
+      {
+        image !== null ? (
+          <Image
+            alt={`image`}
+            src={image}
+            widths={[240, 540, 720]}
+            width={870}
+            height={472}
+            class='rounded-t-xl w-full h-16 md:h-36 object-cover group-hover:brightness-50 duration-500'
+          />
+        ) : (
+          <Image
+            alt={`image`}
+            src={'/logo3.png'}
+            width={1280}
+            height={720}
+            class='rounded-xl duration-500 object-cover group-hover:brightness-50  h-16 md:h-36'
+          />
+        )
+      }
+    </div>
+    <div>
+      <p class='text-xs text-blue-600 lg:my-1'>{fecha}</p>
+      <h3 class='text-xs md:text-sm text-slate-400 group-hover:text-slate-100 duration-500'>{title}</h3>
+    </div>
+  </div>
+</a>
