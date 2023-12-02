@@ -33,5 +33,11 @@ export default defineConfig({
       '/blog/descubre-por-que-mario-bros-es-uno-de-los-juegos-mas-iconicos',
     '/blog/curiosidades/los-7-videojuegos-mas-influyentes-de-todos-los-tiempos':
       '/blog/las-7-mejores-semillas-para-minecraft-1-20',
+    '/blog/noticia/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard':
+      '/blog/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard',
+    '/blog/resena/minecraft-java': '/blog/minecraft',
+    '/blog/anuncios/etiquetas-para-los-articulos-y-nuevo-canal-de-youtube': '/',
+    '/blog/anuncios/bienvenidos-a-hyper-gamer-x-1': '/',
+    '/blog/anuncios': '/',
   },
 });
