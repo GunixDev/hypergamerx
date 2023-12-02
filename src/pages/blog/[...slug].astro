@@ -17,6 +17,7 @@ export async function getStaticPaths() {
     props: { entry },
   }));
 }
+
 const { slug } = Astro.params;
 const blogEntrie = await getEntry('blog', slug);
 const entry = blogEntrie?.data;

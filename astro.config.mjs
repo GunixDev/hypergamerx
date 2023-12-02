@@ -9,6 +9,6 @@ import vercel from '@astrojs/vercel/serverless';
 export default defineConfig({
   site: 'https://hypergamerx.com',
   integrations: [mdx(), sitemap(), tailwind(), preact()],
-  output: 'server',
+  output: 'hybrid',
   adapter: vercel(),
 });
