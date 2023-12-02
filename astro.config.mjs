@@ -24,5 +24,14 @@ export default defineConfig({
     '/blog/curiosidades': '/',
     '/blog/noticia/la-hitbox-cambiaran-en-minecraft-1-20-2-snapshot-23w32a':
       '/blog/la-hitbox-cambiaran-en-minecraft-1-20-2-snapshot-23w32a',
+    '/blog/guia/las-7-mejores-semillas-para-minecraft-1-20': '/blog/las-7-mejores-semillas-para-minecraft-1-20',
+    '/blog/guia/como-activar-las-funciones-experimentales-en-minecraft':
+      '/blog/como-activar-las-funciones-experimentales-en-minecraft',
+    '/blog/guia/7-consejos-esenciales-para-sobrevivir-la-primera-noche-en-minecraft':
+      '/blog/7-consejos-esenciales-para-sobrevivir-la-primera-noche-en-minecraft',
+    '/blog/curiosidades/descubre-por-que-mario-bros-es-uno-de-los-juegos-mas-iconicos':
+      '/blog/descubre-por-que-mario-bros-es-uno-de-los-juegos-mas-iconicos',
+    '/blog/curiosidades/los-7-videojuegos-mas-influyentes-de-todos-los-tiempos':
+      '/blog/las-7-mejores-semillas-para-minecraft-1-20',
   },
 });
