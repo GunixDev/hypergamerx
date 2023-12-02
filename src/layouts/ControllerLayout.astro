@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  data: any;
+  collection: string;
+}
+
+const { data, collection } = Astro.props;
+---
+
+<!doctype html>
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Document</title>
+    <meta name='color-scheme' content='light dark' />
+  </head>
+  <body class='bg-gray-950'>
+    <button id='button-view' class='bg-slate-700 px-2'>> {collection}</button>
+    <div id='content' class='flex flex-col p-2 bg-slate-700 w-2/12 hidden'>
+      <h2 class='text-2xl font-bold'>Colecciones</h2>
+      <div>
+        <a class='text-xl p-2 hover:ml-3 duration-300' href='/Controller/blog'>Blog</a>
+      </div>
+      <div>
+        <a class='text-xl p-2 hover:ml-3 duration-300' href='/Controller/videogames'>Videogames</a>
+      </div>
+    </div>
+    <div class='flex flex-grow flex-wrap'>
+      <div class='bg-slate-900 py-2 w-1/5'>
+        <h2 class='font-bold text-3xl text-center'>Lista de datos</h2>
+        <ol class="my-2">
+          {data.map((post:any) => (
+            <li
+              class="w-full bg-slate-950 hover:bg-slate-800 duration-300 p-2 border-slate-800 border-y-2"
+            >
+              <a href={`/Controller/${collection}/${post.slug}`}>{post.data.name}</a>
+            </li>
+          ))}
+        </ol>
+        
+      </div>
+      <div><slot /></div>
+    </div>
+
+    <script>
+      let view = false;
+      const button = document.getElementById('button-view') as HTMLButtonElement;
+      const content = document.getElementById('content') as HTMLDivElement;
+
+      button.addEventListener('click', () => {
+        view = !view;
+        if (view) {
+          content.style.display = 'block';
+        } else {
+          content.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html>

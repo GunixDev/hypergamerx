@@ -1,0 +1,20 @@
+---
+interface Props {
+  file: string;
+  data: any;
+}
+
+const { file, data } = Astro.props;
+const { title, description } = data;
+---
+
+<a href={`../blog/${file}`}>
+  <div class='mt-4 group'>
+    <h2 class='text-sm ls:max-md:text-xs text-slate-300 font-bold group-hover:text-slate-200 duration-500'>
+      {title}
+    </h2>
+    <p class='md:text-xs ls:max-md:hidden mt-1 text-slate-400 font-semibold group-hover:text-slate-300 duration-500'>
+      {description}
+    </p>
+  </div>
+</a>

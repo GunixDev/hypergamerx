@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 33, 47, 77;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 10, 14, 25;
+    --background-end-rgb: 9, 14, 25;
+  }
+}
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-menu-background {
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.contenido {
+  color: rgb(100, 116, 139);
+}
+
+.contenido img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: rgba(175, 176, 250, 0.418);
+  border-width: 2px;
+  border-style: double;
+  max-width: 100%; /* Hace que la imagen sea flexible */
+  display: block; /* Elimina el espacio en blanco debajo de la imagen */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contenido iframe {
+  width: 90%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.contenido a {
+  color: rgb(44, 75, 252);
+  text-decoration: underline;
+}
+
+.contenido p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.contenido h2 {
+  color: white;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.contenido h3 {
+  color: rgb(177, 189, 206);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.contenido h4 {
+  color: rgb(148, 163, 184);
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 12px;
+}
+
+/* Media Query para dispositivos más pequeños */
+@media (max-width: 768px) {
+  .contenido p {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    font-size: 0.8rem;
+  }
+
+  .contenido h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .contenido h3 {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+
+  .contenido h4 {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+
+  .contenido img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  table {
+    width: 100%;
+    overflow-x: auto; /* Agrega un desplazamiento horizontal si la tabla es demasiado ancha */
+  }
+
+  .contenido table colgroup col {
+    width: auto;
+  }
+
+  .contenido table {
+    max-width: 100%; /* Ajustar el ancho máximo de la tabla */
+    overflow-x: auto; /* Agregar desbordamiento horizontal */
+    font-size: 0.6rem;
+  }
+}
+
+.contenido ul li {
+  list-style: inside !important;
+  margin-left: 20px;
+}
+
+.contenido ol li {
+  list-style: decimal-leading-zero;
+  list-style-position: inside;
+  margin-left: 20px;
+}
+
+.contenido table {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.contenido table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.contenido th {
+  color: white;
+  font-weight: 800;
+}
+
+.contenido td {
+  color: rgb(197, 210, 255);
+}
+
+.contenido th,
+.contenido td {
+  border: 1px solid #a8a8a8;
+  padding: 8px;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.contenido tbody tr:nth-child(even) {
+  background-color: rgb(9, 13, 32);
+  transition: 500ms;
+}
+
+.contenido tbody tr:hover {
+  background-color: #151830;
+}

@@ -1,0 +1,36 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  autor?: string;
+  type?: string;
+}
+
+const {
+  title = 'HyperGamerX: Tu Destino para Noticias de Videojuegos',
+  description = 'Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información',
+  image = '/logo4.png',
+  autor = 'Sunrize Studios',
+  type = 'website',
+} = Astro.props;
+---
+
+<html lang='es'>
+  <head>
+    <BaseHead title={title + ` | HyperGamerX`} description={description} image={image} autor={autor} type={type} />
+    <link rel='stylesheet' href='../styles/global.css' />
+  </head>
+  <body>
+    <Nav />
+    <main class="'w-full flex flex-col mb-10'">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

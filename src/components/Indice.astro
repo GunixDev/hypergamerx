@@ -1,0 +1,30 @@
+---
+interface Props {
+  data: any;
+}
+
+const { data } = Astro.props;
+---
+
+<div class='bg-slate-950 rounded-2xl w-fit'>
+  <h2 class='align-middle font-bold text-white text-center text-2xl'>Indice</h2>
+  <div class='grid grid-cols-1'>
+    {
+      data.map((indice: any) => {
+        return indice.depth === 2 ? (
+          <a href={`#${indice.slug}`} class='text-xl text-slate-200 hover:text-slate-300 duration-300 p-1'>
+            <li>{indice.text}</li>
+          </a>
+        ) : indice.depth === 3 ? (
+          <a href={`#${indice.slug}`} class='text-lg ml-9 text-slate-400 hover:text-slate-300 duration-300 p-1'>
+            <li class=' list-none'>{indice.text}</li>
+          </a>
+        ) : indice.depth === 4 ? (
+          <a href={`#${indice.slug}`} class='text-sm ml-11 text-slate-600 hover:text-slate-300 duration-300 p-1'>
+            <li class=' list-none'>{indice.text}</li>
+          </a>
+        ) : null;
+      })
+    }
+  </div>
+</div>

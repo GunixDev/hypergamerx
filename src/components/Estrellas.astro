@@ -1,0 +1,167 @@
+---
+import Star from '../../public/icons/star.svg';
+import StarFill from '../../public/icons/star-fill.svg';
+import StarHalf from '../../public/icons/star-half.svg';
+interface Props {
+  cantidad: number | undefined | null;
+}
+const { cantidad } = Astro.props;
+---
+
+{
+  cantidad && (
+    <div class='mx-auto ml-3'>
+      <span class='inline-block align-middle mr-2 text-slate-300'>Estrellas:</span>
+      <span class='ml-2 align-middle text-slate-400'>{cantidad + '  '}</span>
+      {cantidad >= 4.5 ? (
+        <>
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          {cantidad >= 5 ? (
+            <img
+              src='../../public/icons/star-fill.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          ) : (
+            <img
+              src='../../public/icons/star-half.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          )}
+        </>
+      ) : cantidad >= 3.5 ? (
+        <>
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          {cantidad >= 4 ? (
+            <img
+              src='../../public/icons/star-fill.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          ) : (
+            <img
+              src='../../public/icons/star-half.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          )}
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+        </>
+      ) : cantidad >= 2.5 ? (
+        <>
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          {cantidad >= 3 ? (
+            <img
+              src='../../public/icons/star-fill.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          ) : (
+            <img
+              src='../../public/icons/star-half.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          )}
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+        </>
+      ) : cantidad >= 1.5 ? (
+        <>
+          <img
+            src='../../public/icons/star-fill.svg'
+            class='inline-block align-middle text-slate-400'
+            alt='Star Icon'
+          />
+          {cantidad >= 2 ? (
+            <img
+              src='../../public/icons/star-fill.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          ) : (
+            <img
+              src='../../public/icons/star-half.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          )}
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+        </>
+      ) : cantidad >= 0.5 ? (
+        <>
+          {cantidad >= 1 ? (
+            <img
+              src='../../public/icons/star-fill.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          ) : (
+            <img
+              src='../../public/icons/star-half.svg'
+              class='inline-block align-middle text-slate-400'
+              alt='Star Icon'
+            />
+          )}
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+        </>
+      ) : (
+        <>
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+          <img src='../../public/icons/star.svg' class='inline-block align-middle text-slate-400' alt='Star Icon' />
+        </>
+      )}
+    </div>
+  )
+}

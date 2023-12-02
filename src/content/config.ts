@@ -1,0 +1,82 @@
+import { defineCollection, reference, z } from 'astro:content';
+
+const blogCollection = defineCollection({
+  schema: z.object({
+    isDraft: z.boolean().default(true),
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    updatedDate: z.date().optional(),
+    image: z.string().optional(),
+    video: z.string().optional(),
+    author: z.enum(['Brayan Cordova', 'Anonymous']).default('Anonymous'),
+    genero: z.array(z.enum(['Guia', 'Noticia', 'Curiosidades', 'Reseña de videojuego'])),
+    videojuego: z.array(reference('videogames')).optional(),
+  }),
+});
+
+const videogamesCollection = defineCollection({
+  schema: z.object({
+    name: z.string(),
+    stars: z.number(),
+    DateLaunch: z.date(),
+    LastupdatedDate: z.date().optional(),
+    LastupdatedDateVersion: z.string(),
+    Developer: z.string(),
+    Multijugador: z.boolean(),
+    Trailervideo: z.string().optional(),
+    CoverImage: z.string().optional(),
+    CalifiEdades: z.array(
+      z.enum([
+        'RP - Calificación pendiente',
+        'EC - Para niños pequeños',
+        'E - Para todas las edades',
+        'E10+ - Para mayores de 10 años',
+        'T - Para Adolescentes',
+        'M - Para mayores de 17 años',
+        'AO - Solo para mayores de 18 años',
+        'PEGI 3 - Apto para todos los público',
+        'PEGI 7 - Apto para mayores de 7 años',
+        'PEGI 12 - Apto para mayores de 12 años',
+        'PEGI 16 - Apto para mayores de 16 años',
+        'A - Para todas las edades',
+        'B (12+) - Para mayores de 12 años',
+        'C (15+) - Para mayores de 15 años',
+        'D (17+) - Para mayores de 17 años',
+        'Z (18+) - Solo para mayores de 18 años',
+        'M0 - Apto para todas las edades',
+        'M6 - Apto para mayores de 6 años',
+        'M12 - Apto para mayores de 12 años',
+        'M16 - Apto para mayores de 16 años',
+        'G - Apto para todas las edades',
+        'PG - Guía parental para menores de 13 años',
+        'R13 - Apto para mayores de 13 años',
+        'R15 - Apto para mayores de 15 años',
+        'R16 - Apto para mayores de 16 años',
+        'R18 - Apto para mayores de 18 años',
+      ]),
+    ),
+    Platforms: z.array(
+      z.enum([
+        'Windows',
+        'MacOs',
+        'Linux',
+        'Android',
+        'IOS',
+        'PlayStation 3',
+        'PlayStation 4',
+        'PlayStation 5',
+        'PlayStation Vita',
+        'Xbox 360',
+        'Xbox One',
+        'Nintendo Switch',
+        'Wii U',
+        'Nintendo 3DS',
+        'AmazonFire',
+        'Oculus',
+      ]),
+    ),
+  }),
+});
+
+export const collections = { blog: blogCollection, videogames: videogamesCollection };

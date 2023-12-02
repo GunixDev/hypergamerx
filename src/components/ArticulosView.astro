@@ -1,0 +1,16 @@
+---
+interface Props {
+  file: string;
+  data: any;
+}
+
+const { file, data } = Astro.props;
+const { image, pubDate, title } = data;
+const fileName = file.split('/').pop()?.split('.')[0];
+let fechaFormateada = new Date(pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+import ListArticles from './util/listarticles';
+---
+
+<div class='h-full w-full group duration-500'>
+  <ListArticles image={image} title={title} fileName={fileName} fecha={fechaFormateada} />
+</div>

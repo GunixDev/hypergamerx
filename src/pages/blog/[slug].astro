@@ -1,0 +1,147 @@
+---
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
+import LayoutPrincipal from '../../layouts/LayoutPrincipal.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Indice from '../../components/Indice.astro';
+import ArticulosRamdon from '../../components/ArticulosRamdon.astro';
+import Estrellas from '../../components/Estrellas.astro';
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+const { slug } = Astro.params;
+const blogEntrie = await getEntry('blog', slug);
+const entry = blogEntrie?.data;
+const renderResult = await blogEntrie?.render();
+const Content = renderResult?.Content;
+
+const allPosts = await getCollection('blog', (data) => {
+  return data.slug !== slug && data.data.isDraft !== true;
+});
+
+let resena: undefined | boolean;
+let games;
+
+if (entry?.genero.includes('Reseña de videojuego') && entry.videojuego) {
+  resena = true;
+  games = await getEntry('videogames', entry.videojuego[0]?.slug);
+}
+---
+
+<LayoutPrincipal
+  title={entry?.title}
+  description={entry?.description}
+  image={entry?.image}
+  autor={entry?.author}
+  type='article'>
+  <div class='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>
+    <div class='grid grid-cols-7 gap-4'>
+      <div class='sm:col-span-5 ls:max-sm:col-span-7 relative mx-4'>
+        <h1 class='md:text-5xl md:mt-10 text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>
+          {entry?.title}
+        </h1>
+        <div class='md:my-2 ls:max-md:my-0 text-slate-700'>
+          <span class='text-slate-600 md:text-sm lg:max-md:text-xs'>
+            Creado por
+            <strong>{entry?.author}</strong>
+             el día
+            <strong>
+              <FormattedDate date={entry?.pubDate} />
+              {
+                entry?.updatedDate ? (
+                  <span class=' opacity-50'>
+                    {' '}
+                    (Última actualización: <FormattedDate date={entry?.updatedDate} />)
+                  </span>
+                ) : null
+              }
+            </strong>
+          </span>
+        </div>
+        <p class='md:text-sm ls:max-md:text-xs md:my-2 ls:max-md:my-1 text-slate-400'>
+          {
+            entry?.genero.map((gen: any) => {
+              return gen;
+            })
+          }
+        </p>
+        <p class='md:text-xl text-slate-500 ls:max-md:text-xs'>{entry?.description}</p>
+
+        {
+          resena && games?.data.Trailervideo ? (
+            <iframe
+              width='853'
+              height='480'
+              src={games.data.Trailervideo}
+              class='w-full my-4 ls:max-md:h-auto'
+              title='video-trailer'
+            />
+          ) : entry && entry.image !== null ? (
+            <img
+              width={1000}
+              height={800}
+              src={entry.image}
+              alt='image'
+              class='my-8 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
+              loading='lazy'
+            />
+          ) : null
+        }
+
+        <div class='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4 ls:max-sm:hidden'>
+          <Indice data={renderResult?.headings} />
+        </div>
+        <div class='contenido'>
+          <Content />
+        </div>
+      </div>
+      <div class='h-full relative sm:col-span-2'>
+        <div class='h-full relative sm:col-span-2'>
+          {
+            resena ? (
+              <div class='bg-slate-950 p-4 rounded-2xl w-full h-fit ls:max-md:hidden'>
+                <p class='text-2xl text-slate-400 text-center font-bold work ls:max-sm:text-xl'>{games?.data.name}</p>
+                <img
+                  width={600}
+                  height={400}
+                  src={games?.data.CoverImage}
+                  alt={`image`}
+                  class='my-4 w-80 h-96 mx-auto object-cover'
+                  loading='lazy'
+                />
+                <Estrellas cantidad={games?.data.stars} />
+                <p class='ml-3 text-slate-300'>
+                  Lanzamiento:{' '}
+                  <span class='text-slate-400'>
+                    <FormattedDate date={games?.data.DateLaunch} />
+                  </span>
+                </p>
+                <p class='ml-3 text-slate-300'>
+                  Multijugador:
+                  <span class='text-slate-400'>{games?.data.Multijugador ? ' Si' : ' No'}</span>
+                </p>
+                <div>{/*PlataformasUI(videojuegos[0].Plataformas)*/}</div>
+                <a href={`../{/*params.url*/}p`} class='hidden'>
+                  {' '}
+                  Ver articulos
+                </a>
+              </div>
+            ) : null
+          }
+          <div class='bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
+            <h1 class='md:text-lg font-bold ls:max-md:text-base text-white'>Más artículos</h1>
+            {allPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} />)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</LayoutPrincipal>
