@@ -42,6 +42,9 @@ if (entry?.genero.includes('Reseña de videojuego') && entry.videojuego) {
   image={entry?.image}
   autor={entry?.author}
   type='article'>
+  <head>
+    <link rel='sitemap' href='/sitemap-index.xml' />
+  </head>
   <div class='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>
     <div class='grid grid-cols-7 gap-4'>
       <div class='sm:col-span-5 ls:max-sm:col-span-7 relative mx-4'>
