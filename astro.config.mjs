@@ -3,13 +3,14 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import preact from '@astrojs/preact';
+import vercel from '@astrojs/vercel/serverless';
 
-import vercel from "@astrojs/vercel/serverless";
+import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hypergamerx.com',
-  integrations: [mdx(), sitemap(), tailwind(), preact()],
-  output: "server",
-  adapter: vercel()
+  integrations: [mdx(), sitemap(), tailwind(), preact(), ,],
+  output: 'server',
+  adapter: vercel(),
 });
