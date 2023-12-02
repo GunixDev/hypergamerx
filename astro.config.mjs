@@ -11,4 +11,8 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind(), preact()],
   output: 'hybrid',
   adapter: vercel(),
+  redirects: {
+    '/blog/noticia': '/',
+    '/blog/resena': '/',
+  },
 });
