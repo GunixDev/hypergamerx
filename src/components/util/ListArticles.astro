@@ -17,17 +17,21 @@ import { Image } from 'astro:assets';
           <Image
             alt={`image`}
             src={image}
-            widths={[240, 540, 720]}
             width={870}
             height={472}
-            class='rounded-t-xl w-full h-16 md:h-36 object-cover group-hover:brightness-50 duration-500'
+            quality={10}
+            widths={[240, 540, 720, 870]}
+            sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, 870px`}
+            class='rounded-t-xl w-full h-16 md:h-36 group-hover:brightness-50 duration-500'
           />
         ) : (
           <Image
             alt={`image`}
             src={'/logo3.png'}
-            width={1280}
-            height={720}
+            width={870}
+            height={472}
+            widths={[240, 540, 720, 870]}
+            sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, 870px`}
             class='rounded-xl duration-500 object-cover group-hover:brightness-50  h-16 md:h-36'
           />
         )
