@@ -17,7 +17,6 @@ export default defineConfig({
     sitemap({
       serialize(item) {
         item.changefreq = 'monthly';
-        item.lastmod = new Date();
         item.priority = 1;
         return item;
       },
