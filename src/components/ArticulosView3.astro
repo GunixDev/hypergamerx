@@ -7,9 +7,9 @@ const { file, data } = Astro.props;
 const { image, pubDate, title } = data;
 const fileName = file.split('/').pop()?.split('.')[0];
 let fechaFormateada = new Date(pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
-import ListData from './util/listdata';
+import Listdata from './util/listdata.astro';
 ---
 
 <div class='relative w-full h-auto my-3 group duration-500'>
-  <ListData image={image} title={title} fileName={fileName} fecha={fechaFormateada} />
+  <Listdata image={image} title={title} fileName={fileName} fecha={fechaFormateada} />
 </div>
