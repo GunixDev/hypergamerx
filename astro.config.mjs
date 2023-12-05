@@ -16,8 +16,9 @@ export default defineConfig({
     mdx(),
     sitemap({
       serialize(item) {
-        item.changefreq = 'weekly';
+        item.changefreq = 'monthly';
         item.lastmod = new Date();
+        item.priority = 1;
         return item;
       },
     }),
