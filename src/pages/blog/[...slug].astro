@@ -35,6 +35,8 @@ if (entry?.genero.includes('Reseña de videojuego') && entry.videojuego) {
   resena = true;
   games = await getEntry('videogames', entry.videojuego[0]?.slug);
 }
+
+import { Image } from 'astro:assets';
 ---
 
 <LayoutPrincipal
@@ -85,14 +87,15 @@ if (entry?.genero.includes('Reseña de videojuego') && entry.videojuego) {
               class='w-full my-4 ls:max-md:h-auto'
               title='video-trailer'
             />
-          ) : entry && entry.image !== null ? (
-            <img
-              width={1000}
-              height={800}
+          ) : entry && entry.image && entry.image !== null ? (
+            <Image
+              alt={`image`}
               src={entry.image}
-              alt='image'
+              width={870}
+              height={472}
+              quality={'low'}
+              format='webp'
               class='my-8 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
-              loading='lazy'
             />
           ) : null
         }
@@ -110,13 +113,14 @@ if (entry?.genero.includes('Reseña de videojuego') && entry.videojuego) {
             resena ? (
               <div class='bg-slate-950 p-4 rounded-2xl w-full h-fit ls:max-md:hidden'>
                 <p class='text-2xl text-slate-400 text-center font-bold work ls:max-sm:text-xl'>{games?.data.name}</p>
-                <img
-                  width={600}
-                  height={400}
-                  src={games?.data.CoverImage}
+                <Image
                   alt={`image`}
-                  class='my-4 w-80 h-96 mx-auto object-cover'
-                  loading='lazy'
+                  src={games?.data.CoverImage ?? ''}
+                  width={310}
+                  height={384}
+                  quality={'low'}
+                  format='webp'
+                  class='my-8 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
                 />
                 <Estrellas cantidad={games?.data.stars} />
                 <p class='ml-3 text-slate-300'>
