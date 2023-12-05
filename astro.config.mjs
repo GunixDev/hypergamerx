@@ -12,7 +12,18 @@ export default defineConfig({
     remotePatterns: [{ protocol: 'https' }],
   },
   site: 'https://hypergamerx.com',
-  integrations: [mdx(), sitemap(), tailwind(), preact()],
+  integrations: [
+    mdx(),
+    sitemap({
+      serialize(item) {
+        item.changefreq = 'daily';
+        item.lastmod = new Date();
+        return item;
+      },
+    }),
+    tailwind(),
+    preact(),
+  ],
   output: 'hybrid',
   adapter: vercel({
     webAnalytics: { enabled: true },
