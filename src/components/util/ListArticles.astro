@@ -18,9 +18,9 @@ import { Image } from 'astro:assets';
             alt={`image`}
             src={image}
             width={870}
+            format='webp'
             height={472}
             quality={'low'}
-            format='avif'
             class='rounded-t-xl w-full h-16 md:h-36 group-hover:brightness-50 duration-500'
           />
         ) : (
@@ -28,8 +28,8 @@ import { Image } from 'astro:assets';
             alt={`image`}
             src={'/logo3.png'}
             width={870}
+            format='webp'
             height={472}
-            format='avif'
             class='rounded-xl duration-500 object-cover group-hover:brightness-50  h-16 md:h-36'
           />
         )
