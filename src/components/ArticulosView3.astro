@@ -10,6 +10,6 @@ let fechaFormateada = new Date(pubDate).toLocaleDateString('es-ES', { year: 'num
 import Listdata from './util/listdata.astro';
 ---
 
-<div class='relative w-full h-auto my-3 group duration-500'>
+<div class='relative w-full h-auto my-3 p-1 group duration-500'>
   <Listdata image={image} title={title} fileName={fileName} fecha={fechaFormateada} />
 </div>
