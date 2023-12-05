@@ -14,7 +14,7 @@ export default defineConfig({
   site: 'https://hypergamerx.com',
   integrations: [mdx(), sitemap(), tailwind(), preact()],
   output: 'hybrid',
-  adapter: vercel(),
+  adapter: vercel({ webAnalytics: { enabled: true } }),
   redirects: {
     '/blog/noticia': '/',
     '/blog/resena': '/',
