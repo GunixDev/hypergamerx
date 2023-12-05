@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import preact from '@astrojs/preact';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/static';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +14,14 @@ export default defineConfig({
   site: 'https://hypergamerx.com',
   integrations: [mdx(), sitemap(), tailwind(), preact()],
   output: 'hybrid',
-  adapter: vercel({ webAnalytics: { enabled: true }, speedInsights: { enabled: true } }),
+  adapter: vercel({
+    webAnalytics: { enabled: true },
+    speedInsights: { enabled: true },
+    imageService: true,
+    imagesConfig: {
+      sizes: [218, 435, 870],
+    },
+  }),
   redirects: {
     '/blog/noticia': '/',
     '/blog/resena': '/',
