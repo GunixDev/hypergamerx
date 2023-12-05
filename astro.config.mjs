@@ -17,10 +17,6 @@ export default defineConfig({
   adapter: vercel({
     webAnalytics: { enabled: true },
     speedInsights: { enabled: true },
-    imageService: true,
-    imagesConfig: {
-      sizes: [218, 435, 870],
-    },
   }),
   redirects: {
     '/blog/noticia': '/',
