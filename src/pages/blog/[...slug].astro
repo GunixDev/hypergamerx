@@ -28,6 +28,10 @@ const allPosts = await getCollection('blog', (data) => {
   return data.slug !== slug && data.data.isDraft !== true;
 });
 
+allPosts.sort((a, b) => {
+  return Number(new Date(b.data.pubDate)) - Number(new Date(a.data.pubDate));
+});
+
 let resena: undefined | boolean;
 let games;
 
@@ -35,6 +39,16 @@ if (entry?.genero.includes('Reseña de videojuego') && entry.videojuego) {
   resena = true;
   games = await getEntry('videogames', entry.videojuego[0]?.slug);
 }
+//Si tiene games o games no es null, crea un let de videogamesrelat usando "games" y luego filtra los videogames usando data.data.videojuego (un array con string) que tengan el mismo genero que el videogame, usa allPosts para atraer los articulos
+let videogamesrelat = allPosts
+  .filter((data) => {
+    let games = entry?.videojuego;
+    return games && games.includes(data.data.videojuego as any);
+  })
+  .slice(0, 3);
+console.log(allPosts);
+
+let LimitPosts = allPosts.slice(0, 3);
 
 import { Image } from 'astro:assets';
 ---
@@ -141,10 +155,23 @@ import { Image } from 'astro:assets';
               </div>
             ) : null
           }
+
           <div class='bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
-            <h1 class='md:text-lg font-bold ls:max-md:text-base text-white'>Más artículos</h1>
-            {allPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} />)}
+            <h1 class='md:text-lg font-bold ls:max-md:text-base text-white'>Artículos más recientes</h1>
+            {LimitPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} />)}
           </div>
+          {
+            games ? (
+              <div class='bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-2 ls:max-sm:hidden'>
+                <h1 class='md:text-lg font-bold ls:max-md:text-base text-white'>
+                  Otros artículos de {games?.data.name}
+                </h1>
+                {videogamesrelat.map((post) => (
+                  <ArticulosRamdon file={post.slug} data={post.data} />
+                ))}
+              </div>
+            ) : null
+          }
         </div>
       </div>
     </div>
