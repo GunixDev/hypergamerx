@@ -5,13 +5,14 @@ interface Props {
   description: any;
   fileName: any;
   fecha: any;
+  lang: any;
 }
 
-const { image, title, description, fileName, fecha }: Props = Astro.props;
+const { image, title, description, fileName, fecha, lang }: Props = Astro.props;
 import { Image } from 'astro:assets';
 ---
 
-<a href={`/blog/${fileName}`}>
+<a href={`/${lang}/blog/${fileName}`}>
   <div>
     <div class='rounded-l-xl w-full bg-gradient-to-t from-black to-transparent absolute z-50 h-64 lg:h-96'></div>
     {

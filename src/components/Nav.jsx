@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "preact/hooks";
+import languages from '../components/util/languges.astro'
 
 export default function Nav() {
     const [Movil, setMovil] = useState(false);
@@ -165,6 +166,9 @@ export default function Nav() {
                         className='text-gray-300 hover:bg-gray-700 hover:text-white sm:px-1 md:px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out '>
                         Inicio
                     </a>
+                    <ul>
+                        <languages />
+                    </ul>
                 </div>
 
                 <div className=' mx-auto px-4 items-center justify-end h-14 hidden ls:max-sm:flex'>

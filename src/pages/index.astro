@@ -1,10 +1,19 @@
 ---
+export const prerender = false;
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 import LayoutPrincipal from '../layouts/LayoutPrincipal.astro';
-const allPosts = await Astro.glob('../content/blog/*.mdx');
+let allPosts = await Astro.glob(`../content/blog/en/*.mdx`);
+if (lang === 'es') {
+  allPosts = await Astro.glob(`../content/blog/es/*.mdx`);
+} else if (lang === 'en') {
+  allPosts = await Astro.glob(`../content/blog/en/*.mdx`);
+}
 import ArticulosView from '../components/ArticulosView.astro';
 import ArticulosView2 from '../components/ArticulosView2.astro';
 import ArticulosView3 from '../components/ArticulosView3.astro';
-
 allPosts.sort((a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime());
 const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
@@ -21,40 +30,40 @@ const minecraftPosts = allPosts
 const geometryPosts = allPosts
   .filter((post) => post.frontmatter.videojuego && post.frontmatter.videojuego.includes('geometry-dash'))
   .slice(0, 4);
-const resenasPosts = allPosts.filter((post) => post.frontmatter.genero.includes('Reseña de videojuego')).slice(0, 4);
+const resenasPosts = allPosts.filter((post) => post.frontmatter.genero.includes('resena')).slice(0, 4);
 ---
 
 <LayoutPrincipal>
   <main>
     <div class='w-11/12 mx-auto'>
-      <h2 class='lg:text-3xl font-bold my-4'>Ultimos articulos</h2>
+      <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimoarticules')}</h2>
       <div class='grid grid-cols-5 h-max-[100px] lg:h-max-[384px] relative bg-slate-950'>
         <div class='col-span-3'>
-          {Ultimo.map((post) => <ArticulosView2 file={post.file} data={post.frontmatter} />)}
+          {Ultimo.map((post) => <ArticulosView2 file={post.file} data={post.frontmatter} lang={lang} />)}
         </div>
         <div class='col-span-2 mx-2 lg:mx-4'>
-          {recentpost.map((post) => <ArticulosView3 file={post.file} data={post.frontmatter} />)}
+          {recentpost.map((post) => <ArticulosView3 file={post.file} data={post.frontmatter} lang={lang} />)}
         </div>
       </div>
-      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>Noticias nuevas</h2>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.noticianuevas')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {newsPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} />)}
+        {newsPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
       </div>
-      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>Ultimas curiosidades</h2>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.ultimascuriosidades')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {curiosidadesPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} />)}
+        {curiosidadesPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
       </div>
-      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>Reseñas de Videojuegos</h2>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.resenasvideogames')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {resenasPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} />)}
+        {resenasPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
       </div>
-      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>Articulos de Minecraft</h2>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Minecraft</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {minecraftPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} />)}
+        {minecraftPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
       </div>
-      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>Articulos de Geometry Dash</h2>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Geometry Dash</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {geometryPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} />)}
+        {geometryPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
       </div>
     </div>
   </main>

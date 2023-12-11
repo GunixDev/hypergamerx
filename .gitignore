@@ -20,12 +20,3 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-src/pages/Controller/blog/index.astro
-src/pages/Controller/components/Datas.tsx
-src/pages/Controller/components/formatDate.tsx
-src/pages/Controller/components/FormVideoGames.tsx
-src/pages/Controller/components/list.tsx
-src/pages/Controller/index.astro
-src/pages/Controller/videogames/\[slug\].astro
-src/pages/Controller/videogames/index.astro
-src/pages/blog/seccion/\[etiqueta\]/index.astro

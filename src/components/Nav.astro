@@ -1,0 +1,26 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang2 = getLangFromUrl(Astro.url);
+const t = useTranslations(lang2);
+---
+
+<div class='sm:relative fixed z-100 right-0 w-full h-full'>
+  <nav
+    class='sm:max-2xl:bg-gray-800 w-full font-sans duration-500 z-100 grid grid-cols-5 md:grid-cols-7 lg:grid-cols-12'>
+    <div class='mx-auto px-4 h-14 flex items-center justify-end ls:max-sm:flex'>
+      <a href='/' class='text-blue-400 right-4 absolute flex items-center justify-center'>Inicio</a>
+    </div>
+    <div class='col-start-4 md:col-start-6 lg:col-start-11 my-3'>
+      <select onchange='window.location.href=this.value' class='text-xs md:text-base bg-gray-700'>
+        {
+          Object.entries(languages).map(([lang, label]) => (
+            <option value={`/${lang}/`} {...(lang === lang2 ? { selected: true } : {})}>
+              {label}
+            </option>
+          ))
+        }
+      </select>
+    </div>
+  </nav>
+</div>

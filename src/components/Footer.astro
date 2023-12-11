@@ -1,36 +1,38 @@
 ---
-
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<footer class='text-white bg-gray-900 bg-opacity-70 py-8 w-full font-sans mt-10 ls:max-md:hidden'>
-  <div class='container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
+<footer class='text-white bg-gray-900 bg-opacity-70 py-2 md:py-8 w-full font-sans mt-4 md:mt-10'>
+  <div class='md:container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
     <div class='text-left'>
-      <p class='text-slate-700 ls:max-sm:text-xs'>Terminos y condiciones</p>
+      <p class='text-slate-700 ls:max-sm:text-xs'>{t('footer.terminos')}</p>
       <div class='ml-6 ls:max-md:text-xs'>
         <ol>
-          <li class='m-2'>
-            <a href={'/terminos-servicios/AvisoLegal'}>Aviso legal</a>
+          <li class='m-2 duration-300 hover:text-gray-300'>
+            <a href={'/terminos-servicios/AvisoLegal'}>{t('footer.avisolega')}</a>
           </li>
-          <li class='m-2'>
-            <a href={'/terminos-servicios/PoliticaCookies'}>Politica de Cookies</a>
+          <li class='m-2 duration-300 hover:text-gray-300'>
+            <a href={'/terminos-servicios/PoliticaCookies'}>{t('footer.politicascookies')}</a>
           </li>
-          <li class='m-2'>
-            <a href={'/terminos-servicios/Privacidad'}>Privacidad</a>
+          <li class='m-2 duration-300 hover:text-gray-300'>
+            <a href={'/terminos-servicios/Privacidad'}>{t('footer.politicas')}</a>
           </li>
         </ol>
       </div>
     </div>
     <div class='text-left'>
-      <p class='text-slate-700 ls:max-sm:text-xs'>Redes sociales</p>
+      <p class='text-slate-700 ls:max-sm:text-xs'>{t('footer.redes')}</p>
       <div class='ml-6 ls:max-md:text-xs'>
         <ol>
-          <li class='m-2'>
+          <li class='m-2 duration-300 hover:text-gray-300'>
             <a href={'https://discord.gg/WEjnRFpHUK'} target='_blank'> Discord</a>
           </li>
-          <li class='m-2'>
+          <li class='m-2 duration-300 hover:text-gray-300'>
             <a href={'https://twitter.com/HyperGamerX_ES'} target='_blank'> Twitter</a>
           </li>
-          <li class='m-2'>
+          <li class='m-2 duration-300 hover:text-gray-300'>
             <a href={'https://www.youtube.com/@HyperGamerX1/featured'} target='_blank'> Youtube</a>
           </li>
         </ol>
@@ -38,12 +40,11 @@
     </div>
     <div>
       <p class='text-gray-400 ls:max-lg:text-xs'>
-        &copy; 2023 HyperGamerX. Creado por
-        <a href={'https://sunrizestudios.vercel.app/'} target='_blank'>
+        &copy; 2023 HyperGamerX. {t('article.creadorpor')}
+        <a href={'https://sunrizestudios.vercel.app/'} target='_blank' class='duration-300 hover:text-red-300'>
           {' '}
            Sunrize Studios
         </a>
-         .
       </p>
     </div>
   </div>

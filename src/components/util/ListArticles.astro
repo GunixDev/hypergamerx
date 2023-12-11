@@ -4,12 +4,13 @@ interface Props {
   title: any;
   fileName: any;
   fecha: any;
+  lang: any;
 }
-const { image, title, fileName, fecha }: Props = Astro.props;
+const { image, title, fileName, fecha, lang }: Props = Astro.props;
 import { Image } from 'astro:assets';
 ---
 
-<a href={`/blog/${fileName}`}>
+<a href={`/${lang}/blog//${fileName}`}>
   <div class='grid grid-flow-row-dense'>
     <div>
       {

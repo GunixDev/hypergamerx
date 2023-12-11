@@ -1,19 +1,29 @@
 import { defineConfig } from 'astro/config';
+import preact from '@astrojs/preact';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import preact from '@astrojs/preact';
 import vercel from '@astrojs/vercel/serverless';
 
-// https://astro.build/config
 export default defineConfig({
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
   image: {
     domains: ['astro.build'],
-    remotePatterns: [{ protocol: 'https' }],
+    remotePatterns: [
+      {
+        protocol: 'https',
+      },
+    ],
   },
   site: 'https://hypergamerx.com',
   integrations: [
-    mdx(),
+    preact(),
     sitemap({
       serialize(item) {
         item.changefreq = 'monthly';
@@ -22,7 +32,7 @@ export default defineConfig({
       },
     }),
     tailwind(),
-    preact(),
+    mdx(),
   ],
   output: 'hybrid',
   adapter: vercel({

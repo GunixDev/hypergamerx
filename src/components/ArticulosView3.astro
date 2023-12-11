@@ -2,14 +2,15 @@
 interface Props {
   file: string;
   data: any;
+  lang: any;
 }
-const { file, data } = Astro.props;
+const { file, data, lang } = Astro.props;
 const { image, pubDate, title } = data;
 const fileName = file.split('/').pop()?.split('.')[0];
-let fechaFormateada = new Date(pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+let fechaFormateada = new Date(pubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
 import Listdata from './util/listdata.astro';
 ---
 
 <div class='relative w-full h-auto my-3 p-1 group duration-500'>
-  <Listdata image={image} title={title} fileName={fileName} fecha={fechaFormateada} />
+  <Listdata image={image} title={title} fileName={fileName} fecha={fechaFormateada} lang={lang} />
 </div>

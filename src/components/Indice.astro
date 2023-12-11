@@ -1,13 +1,16 @@
 ---
+import { useTranslations } from '../i18n/utils';
 interface Props {
   data: any;
+  lang: any;
 }
 
-const { data } = Astro.props;
+const { data, lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div class='bg-slate-950 rounded-2xl w-fit'>
-  <h2 class='align-middle font-bold text-white text-center text-2xl'>Indice</h2>
+  <h2 class='align-middle font-bold text-white text-center text-2xl'>{t('article.indice')}</h2>
   <div class='grid grid-cols-1'>
     {
       data.map((indice: any) => {

@@ -2,16 +2,19 @@
 import Star from '/icons/star.svg';
 import StarFill from '/icons/star-fill.svg';
 import StarHalf from '/icons/star-half.svg';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 interface Props {
   cantidad: number | undefined | null;
 }
 const { cantidad } = Astro.props;
+let lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 {
   cantidad && (
     <div class='mx-auto ml-3'>
-      <span class='inline-block align-middle mr-2 text-slate-300'>Estrellas:</span>
+      <span class='inline-block align-middle mr-2 text-slate-300'>{t('article.estrellas')}:</span>
       <span class='ml-2 align-middle text-slate-400'>{cantidad + '  '}</span>
       {cantidad >= 4.5 ? (
         <>

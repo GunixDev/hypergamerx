@@ -10,7 +10,7 @@ const blogCollection = defineCollection({
     image: z.string().optional(),
     video: z.string().optional(),
     author: z.enum(['Brayan Cordova', 'Anonymous']).default('Anonymous'),
-    genero: z.array(z.enum(['Guia', 'Noticia', 'Curiosidades', 'Reseña de videojuego'])),
+    genero: z.array(z.enum(['guia', 'noticia', 'curiosidades', 'resena'])),
     videojuego: z.array(reference('videogames')).optional(),
   }),
 });
