@@ -49,6 +49,7 @@ export default defineConfig({
     },
   }),
   redirects: {
+    '/': '/en',
     '/blog/noticia': '/',
     '/blog/resena': '/',
     '/blog/noticia/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1':
