@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 
+// https://astro.build/config
 export default defineConfig({
   i18n: {
     defaultLocale: 'en',
@@ -43,8 +44,9 @@ export default defineConfig({
   ],
   output: 'hybrid',
   adapter: vercel({
-    webAnalytics: { enabled: true },
-    speedInsights: { enabled: true },
+    webAnalytics: {
+      enabled: true,
+    },
   }),
   redirects: {
     '/blog/noticia': '/',
