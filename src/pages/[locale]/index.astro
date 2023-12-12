@@ -1,36 +1,45 @@
 ---
-export const prerender = false;
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
-import LayoutPrincipal from '../../layouts/LayoutPrincipal.astro';
-let allPosts = await Astro.glob(`../../content/blog/en/*.mdx`);
-if (lang === 'es') {
-  allPosts = await Astro.glob(`../../content/blog/es/*.mdx`);
-} else if (lang === 'en') {
-  allPosts = await Astro.glob(`../../content/blog/en/*.mdx`);
-}
 import ArticulosView from '../../components/ArticulosView.astro';
 import ArticulosView2 from '../../components/ArticulosView2.astro';
 import ArticulosView3 from '../../components/ArticulosView3.astro';
-allPosts.sort((a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime());
+import LayoutPrincipal from '../../layouts/LayoutPrincipal.astro';
+import { getCollection } from 'astro:content';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allPosts = await getCollection('blog', (data) => {
+  return data.data.isDraft !== true && data.slug.startsWith(lang);
+});
+
+allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
-const newsPosts = allPosts.filter((post) => post.frontmatter.genero.includes('noticia')).slice(0, 8);
-const curiosidadesPosts = allPosts.filter((post) => post.frontmatter.genero.includes('curiosidades')).slice(0, 4);
+const newsPosts = allPosts.filter((post) => post.data.genero.includes('noticia')).slice(0, 8);
+const curiosidadesPosts = allPosts.filter((post) => post.data.genero.includes('curiosidades')).slice(0, 4);
+const resenasPosts = allPosts.filter((post) => post.data.genero.includes('resena')).slice(0, 4);
+
+export async function getStaticPaths() {
+  return [{ params: { locale: 'en' } }, { params: { locale: 'es' } }];
+}
+
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.frontmatter.videojuego &&
-      post.frontmatter.videojuego.includes('minecraft-java-edition') &&
-      post.frontmatter.videojuego.includes('minecraft-for-windows'),
+      post.data.videojuego &&
+      post.data.videojuego.some((videojuego) =>
+        ['minecraft-for-windows', 'minecraft-java-edition'].includes(videojuego.slug),
+      ),
   )
   .slice(0, 4);
+
 const geometryPosts = allPosts
-  .filter((post) => post.frontmatter.videojuego && post.frontmatter.videojuego.includes('geometry-dash'))
+  .filter(
+    (post) =>
+      post.data.videojuego && post.data.videojuego.some((videojuego) => ['geometry-dash'].includes(videojuego.slug)),
+  )
   .slice(0, 4);
-const resenasPosts = allPosts.filter((post) => post.frontmatter.genero.includes('resena')).slice(0, 4);
 ---
 
 <LayoutPrincipal>
@@ -39,31 +48,31 @@ const resenasPosts = allPosts.filter((post) => post.frontmatter.genero.includes(
       <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimoarticules')}</h2>
       <div class='grid grid-cols-5 h-max-[100px] lg:h-max-[384px] relative bg-slate-950'>
         <div class='col-span-3'>
-          {Ultimo.map((post) => <ArticulosView2 file={post.file} data={post.frontmatter} lang={lang} />)}
+          {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}
         </div>
         <div class='col-span-2 mx-2 lg:mx-4'>
-          {recentpost.map((post) => <ArticulosView3 file={post.file} data={post.frontmatter} lang={lang} />)}
+          {recentpost.map((post) => <ArticulosView3 file={post.slug} data={post.data} lang={lang} />)}
         </div>
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.noticianuevas')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {newsPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
+        {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.ultimascuriosidades')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {curiosidadesPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
+        {curiosidadesPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.resenasvideogames')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {resenasPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
+        {resenasPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Minecraft</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {minecraftPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
+        {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Geometry Dash</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-        {geometryPosts.map((post) => <ArticulosView file={post.file} data={post.frontmatter} lang={lang} />)}
+        {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
     </div>
   </main>

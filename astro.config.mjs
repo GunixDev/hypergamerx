@@ -30,6 +30,13 @@ export default defineConfig({
         item.priority = 1;
         return item;
       },
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          es: 'es',
+        },
+      },
     }),
     tailwind(),
     mdx(),
