@@ -10,6 +10,8 @@ interface Props {
   image?: string;
   autor?: string;
   type?: string;
+  spanish?: string;
+  english?: string;
 }
 
 const {
@@ -18,6 +20,8 @@ const {
   image = '/logo4.png',
   autor = 'Sunrize Studios',
   type = 'website',
+  spanish = 'https://www.hypergamerx.com/es',
+  english = 'https://www.hypergamerx.com/en',
 } = Astro.props;
 
 import { getLangFromUrl } from '../i18n/utils';
@@ -26,7 +30,15 @@ const lang = getLangFromUrl(Astro.url);
 
 <html lang={lang}>
   <head>
-    <BaseHead title={title + ` | HyperGamerX`} description={description} image={image} autor={autor} type={type} />
+    <BaseHead
+      title={title + ` | HyperGamerX`}
+      description={description}
+      image={image}
+      autor={autor}
+      type={type}
+      spanish={spanish}
+      english={english}
+    />
     <link rel='sitemap' href='/sitemap-index.xml' />
   </head>
   <body>
