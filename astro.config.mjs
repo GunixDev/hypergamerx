@@ -26,6 +26,13 @@ export default defineConfig({
   integrations: [
     preact(),
     sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          es: 'es',
+        }
+      },
       serialize(item) {
         item.changefreq = 'monthly';
         item.priority = 1;
