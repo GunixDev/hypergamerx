@@ -56,17 +56,17 @@ export default defineConfig({
     },
   }),
   redirects: {
-    '/': '/en',
-    '/blog/noticia': '/es',
-    '/blog/resena': '/es',
+    '/': '/en/',
+    '/blog/noticia': '/es/',
+    '/blog/resena': '/es/',
     '/blog/noticia/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1':
       '/es/blog/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1',
     '/blog/noticia/los-aldeanos-cambiaran-en-la-1-20-2-snapshot-23w31a':
       '/es/blog/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a',
     '/blog/noticia/el-trailer-de-la-minecraft-live-2023': '/es/blog/the-trailer-of-minecraft-live-2023',
-    '/blog/guia': '/es',
+    '/blog/guia': '/es/',
     '/blog/resena/valorant': '/es/blog/valorant',
-    '/blog/curiosidades': '/es',
+    '/blog/curiosidades': '/es/',
     '/blog/noticia/la-hitbox-cambiaran-en-minecraft-1-20-2-snapshot-23w32a':
       '/es/blog/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a',
     '/blog/guia/las-7-mejores-semillas-para-minecraft-1-20': '/es/blog/the-7-best-seeds-for-minecraft-1-20',
@@ -81,9 +81,9 @@ export default defineConfig({
     '/blog/noticia/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard':
       '/es/blog/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard',
     '/blog/resena/minecraft-java': 'es/blog/minecraft',
-    '/blog/anuncios/etiquetas-para-los-articulos-y-nuevo-canal-de-youtube': '/es',
-    '/blog/anuncios/bienvenidos-a-hyper-gamer-x-1': '/es',
-    '/blog/anuncios': '/es',
+    '/blog/anuncios/etiquetas-para-los-articulos-y-nuevo-canal-de-youtube': '/es/',
+    '/blog/anuncios/bienvenidos-a-hyper-gamer-x-1': '/es/',
+    '/blog/anuncios': '/es/',
     '/blog/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1':
       '/es/blog/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1',
     '/blog/minecraft': '/es/blog/minecraft',

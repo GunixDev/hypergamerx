@@ -10,7 +10,7 @@ const { image, title, fileName, fecha, lang } = Astro.props;
 import { Image } from 'astro:assets';
 ---
 
-<a href={`/${lang}/blog/${fileName}`}>
+<a href={`/${lang}/blog/${fileName}/`}>
   <div class='grid lg:grid-flow-col-dense lg:grid-cols-5'>
     <div class='lg:col-span-2'>
       {
