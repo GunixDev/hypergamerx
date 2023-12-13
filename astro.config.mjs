@@ -97,5 +97,16 @@ export default defineConfig({
       '/es/blog/the-7-most-influential-video-games-of-all-time',
     '/blog/7-consejos-esenciales-para-sobrevivir-la-primera-noche-en-minecraft':
       '/es/blog/7-essential-tips-to-survive-the-first-night-in-minecraft',
+    '/blog/la-hitbox-cambiaran-en-minecraft-1-20-2-snapshot-23w32a':
+      '/es/blog/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a',
+    '/blog/descubre-por-que-mario-bros-es-uno-de-los-juegos-mas-iconicos':
+      '/es/blog/discover-why-mario-bros-is-one-of-the-most-iconic-games',
+    '/blog/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard':
+      '/es/blog/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard',
+    '/blog/geometry-dash-22-sneak-peek-3': '/es/blog/geometry-dash-22-sneak-peek-3',
+    '/blog/la-22-esta-demasiado-cerca-de-salir': '/es/blog/the-22-is-too-close-to-coming-out',
+    '/blog/geometrydash': '/es/blog/geometrydash',
+    '/blog/que-son-las-lunas-de-geometry-dash-22': '/es/blog/what-are-the-moons-of-geometry-dash-22',
+    '/terminos-servicios/AvisoLegal': '/es/terminos-servicios/AvisoLegal',
   },
 });
