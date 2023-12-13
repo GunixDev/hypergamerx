@@ -12,6 +12,7 @@ const blogCollection = defineCollection({
     author: z.enum(['Brayan Cordova', 'Anonymous']).default('Anonymous'),
     genero: z.array(z.enum(['guia', 'noticia', 'curiosidades', 'resena'])),
     videojuego: z.array(reference('videogames')).optional(),
+    keywords: z.string().optional(),
   }),
 });
 

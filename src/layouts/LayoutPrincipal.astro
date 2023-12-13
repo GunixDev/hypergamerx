@@ -10,6 +10,7 @@ interface Props {
   image?: string;
   autor?: string;
   type?: string;
+  keywords?: string;
   spanish?: string;
   english?: string;
 }
@@ -20,6 +21,7 @@ const {
   image = '/logo4.png',
   autor = 'Sunrize Studios',
   type = 'website',
+  keywords = 'videojuegos, noticias, reseñas, análisis, avances, curiosidades, HyperGamerX, HyperGamerX.com',
   spanish = 'https://www.hypergamerx.com/es',
   english = 'https://www.hypergamerx.com/en',
 } = Astro.props;
@@ -36,6 +38,7 @@ const lang = getLangFromUrl(Astro.url);
       image={image}
       autor={autor}
       type={type}
+      keywords={keywords}
       spanish={spanish}
       english={english}
     />
