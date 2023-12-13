@@ -22,7 +22,7 @@ export default defineConfig({
       },
     ],
   },
-  site: 'https://hypergamerx.com',
+  site: 'https://www.hypergamerx.com',
   integrations: [
     preact(),
     sitemap({
