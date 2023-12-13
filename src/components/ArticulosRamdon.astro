@@ -2,13 +2,14 @@
 interface Props {
   file: string;
   data: any;
+  lang: any;
 }
 
-const { file, data } = Astro.props;
+const { file, data, lang } = Astro.props;
 const { title, description } = data;
 ---
 
-<a href={`../blog/${file.slice(3)}`}>
+<a href={`/${lang}/blog/${file.slice(3)}`}>
   <div class='mt-4 group'>
     <h2 class='text-sm ls:max-md:text-xs text-slate-300 font-bold group-hover:text-slate-200 duration-500'>
       {title}

@@ -158,7 +158,7 @@ allPosts.length = 5;
           }
           <div class='bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl mt-10 ls:max-sm:hidden'>
             <h1 class='md:text-lg font-bold ls:max-md:text-base text-white'>{t('article.articuclosreciente')}</h1>
-            {allPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} />)}
+            {allPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} lang={lang2} />)}
           </div>
         </div>
       </div>
