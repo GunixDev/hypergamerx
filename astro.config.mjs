@@ -104,8 +104,8 @@ export default defineConfig({
     '/blog/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard':
       '/es/blog/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard',
     '/blog/geometry-dash-22-sneak-peek-3': '/es/blog/geometry-dash-22-sneak-peek-3',
-    '/blog/la-22-esta-demasiado-cerca-de-salir': '/es/blog/the-22-is-too-close-to-coming-out',
-    '/blog/geometrydash': '/es/blog/geometrydash',
+    '/blog/la-22-esta-demasiado-cerca-de-salir': '/es/blog/the-22-is-too-close-to-exit',
+    '/blog/geometrydash': '/es/blog/geometry-dash',
     '/blog/que-son-las-lunas-de-geometry-dash-22': '/es/blog/what-are-the-moons-of-geometry-dash-22',
     '/terminos-servicios/AvisoLegal': '/es/terminos-servicios/AvisoLegal',
   },
