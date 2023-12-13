@@ -43,7 +43,7 @@ const allPosts = await getCollection('blog', (data) => {
     data.data.title !== page.data.title
   );
 });
-console.log(page.slug.slice(3));
+allPosts.length = 5;
 ---
 
 <LayoutPrincipal
