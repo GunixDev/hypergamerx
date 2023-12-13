@@ -89,5 +89,13 @@ export default defineConfig({
     '/blog/minecraft': '/es/blog/minecraft',
     '/blog/los-aldeanos-cambiaran-en-la-1-20-2-snapshot-23w31a':
       '/es/blog/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a',
+    '/blog/el-trailer-de-la-minecraft-live-2023': '/es/blog/the-trailer-of-minecraft-live-2023',
+    '/blog/como-activar-las-funciones-experimentales-en-minecraft':
+      '/es/blog/how-to-enable-experimental-features-in-minecraft',
+    '/blog/las-7-mejores-semillas-para-minecraft-1-20': '/es/blog/the-7-best-seeds-for-minecraft-1-20',
+    '/blog/los-7-videojuegos-mas-influyentes-de-todos-los-tiempos':
+      '/es/blog/the-7-most-influential-video-games-of-all-time',
+    '/blog/7-consejos-esenciales-para-sobrevivir-la-primera-noche-en-minecraft':
+      '/es/blog/7-essential-tips-to-survive-the-first-night-in-minecraft',
   },
 });
