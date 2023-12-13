@@ -43,6 +43,10 @@ const allPosts = await getCollection('blog', (data) => {
     data.data.title !== page.data.title
   );
 });
+
+allPosts.sort((a, b) => {
+  return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+});
 allPosts.length = 5;
 ---
 
