@@ -43,6 +43,7 @@ const allPosts = await getCollection('blog', (data) => {
     data.data.title !== page.data.title
   );
 });
+console.log(page.slug.slice(3));
 ---
 
 <LayoutPrincipal
@@ -51,12 +52,8 @@ const allPosts = await getCollection('blog', (data) => {
   image={page.data.image}
   autor={page.data.author}
   type='article'
-  spanish={lang2 === 'es'
-    ? Astro.url.toString()
-    : `https://www.hypergamerx.com/es/blog/${page.data.spanish !== undefined ? page.data.spanish : ''}}`}
-  english={lang2 === 'en'
-    ? Astro.url.toString()
-    : `https://www.hypergamerx.com/en/blog/${page.data.english !== undefined ? page.data.english : ''}`}>
+  spanish={`https://www.hypergamerx.com/es/blog/${page.slug.slice(3)}`}
+  english={`https://www.hypergamerx.com/en/blog/${page.slug.slice(3)}`}>
   <div class='md:w-11/12 ls:max-md:w-11/12 md:m-auto my-10'>
     <div class='grid grid-cols-7 gap-4'>
       <div class='sm:col-span-5 ls:max-sm:col-span-7 relative mx-4'>
@@ -163,5 +160,4 @@ const allPosts = await getCollection('blog', (data) => {
       </div>
     </div>
   </div>
-   } />
 </LayoutPrincipal>
