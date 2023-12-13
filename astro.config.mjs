@@ -31,7 +31,7 @@ export default defineConfig({
         locales: {
           en: 'en',
           es: 'es',
-        }
+        },
       },
       serialize(item) {
         item.changefreq = 'monthly';
@@ -57,32 +57,37 @@ export default defineConfig({
   }),
   redirects: {
     '/': '/en',
-    '/blog/noticia': '/',
-    '/blog/resena': '/',
+    '/blog/noticia': '/es',
+    '/blog/resena': '/es',
     '/blog/noticia/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1':
-      '/blog/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1',
+      '/es/blog/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1',
     '/blog/noticia/los-aldeanos-cambiaran-en-la-1-20-2-snapshot-23w31a':
-      '/blog/los-aldeanos-cambiaran-en-la-1-20-2-snapshot-23w31a',
-    '/blog/noticia/el-trailer-de-la-minecraft-live-2023': '/blog/el-trailer-de-la-minecraft-live-2023',
-    '/blog/guia': '/',
-    '/blog/resena/valorant': '/blog/valorant',
-    '/blog/curiosidades': '/',
+      '/es/blog/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a',
+    '/blog/noticia/el-trailer-de-la-minecraft-live-2023': '/es/blog/the-trailer-of-minecraft-live-2023',
+    '/blog/guia': '/es',
+    '/blog/resena/valorant': '/es/blog/valorant',
+    '/blog/curiosidades': '/es',
     '/blog/noticia/la-hitbox-cambiaran-en-minecraft-1-20-2-snapshot-23w32a':
-      '/blog/la-hitbox-cambiaran-en-minecraft-1-20-2-snapshot-23w32a',
-    '/blog/guia/las-7-mejores-semillas-para-minecraft-1-20': '/blog/las-7-mejores-semillas-para-minecraft-1-20',
+      '/es/blog/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a',
+    '/blog/guia/las-7-mejores-semillas-para-minecraft-1-20': '/es/blog/the-7-best-seeds-for-minecraft-1-20',
     '/blog/guia/como-activar-las-funciones-experimentales-en-minecraft':
-      '/blog/como-activar-las-funciones-experimentales-en-minecraft',
+      '/es/blog/how-to-enable-experimental-features-in-minecraft',
     '/blog/guia/7-consejos-esenciales-para-sobrevivir-la-primera-noche-en-minecraft':
-      '/blog/7-consejos-esenciales-para-sobrevivir-la-primera-noche-en-minecraft',
+      '/es/blog/7-essential-tips-to-survive-the-first-night-in-minecraft',
     '/blog/curiosidades/descubre-por-que-mario-bros-es-uno-de-los-juegos-mas-iconicos':
-      '/blog/descubre-por-que-mario-bros-es-uno-de-los-juegos-mas-iconicos',
+      '/es/blog/discover-why-mario-bros-is-one-of-the-most-iconic-games',
     '/blog/curiosidades/los-7-videojuegos-mas-influyentes-de-todos-los-tiempos':
-      '/blog/las-7-mejores-semillas-para-minecraft-1-20',
+      '/es/blog/the-7-most-influential-video-games-of-all-time',
     '/blog/noticia/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard':
-      '/blog/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard',
-    '/blog/resena/minecraft-java': '/blog/minecraft',
-    '/blog/anuncios/etiquetas-para-los-articulos-y-nuevo-canal-de-youtube': '/',
-    '/blog/anuncios/bienvenidos-a-hyper-gamer-x-1': '/',
-    '/blog/anuncios': '/',
+      '/es/blog/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard',
+    '/blog/resena/minecraft-java': 'es/blog/minecraft',
+    '/blog/anuncios/etiquetas-para-los-articulos-y-nuevo-canal-de-youtube': '/es',
+    '/blog/anuncios/bienvenidos-a-hyper-gamer-x-1': '/es',
+    '/blog/anuncios': '/es',
+    '/blog/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1':
+      '/es/blog/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1',
+    '/blog/minecraft': '/es/blog/minecraft',
+    '/blog/los-aldeanos-cambiaran-en-la-1-20-2-snapshot-23w31a':
+      '/es/blog/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a',
   },
 });
