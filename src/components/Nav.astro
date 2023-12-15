@@ -11,16 +11,25 @@ const t = useTranslations(lang2);
     <div class='mx-auto px-4 h-14 flex items-center justify-end ls:max-sm:flex'>
       <a href=`/${lang2}/` class='text-blue-400 right-4 absolute flex items-center justify-center'>Inicio</a>
     </div>
-    <div class='col-start-4 md:col-start-6 lg:col-start-11 my-3'>
-      <select onchange='window.location.href=this.value' class='text-xs md:text-base bg-gray-700'>
-        {
-          Object.entries(languages).map(([lang, label]) => (
-            <option value={`/${lang}/`} {...(lang === lang2 ? { selected: true } : {})}>
-              {label}
-            </option>
-          ))
-        }
-      </select>
+    <div class='col-start-3 sm:col-start-4 md:col-start-6 lg:col-start-11 my-3 grid grid-flow-col-dense'>
+      <div>
+        <label for='Lang' class='text-white text-xs mr-1 md:mr-2 md:text-base'>Idioma</label>
+      </div>
+      <div>
+        <select
+          id='Lang'
+          name='Lang'
+          onchange='window.location.href=this.value'
+          class='text-xs md:text-base bg-gray-700 text-white'>
+          {
+            Object.entries(languages).map(([lang, label]) => (
+              <option value={`/${lang}/`} {...(lang === lang2 ? { selected: true } : {})}>
+                {label}
+              </option>
+            ))
+          }
+        </select>
+      </div>
     </div>
   </nav>
 </div>
