@@ -31,6 +31,8 @@ export const ui = {
     'footer.avisolega': 'Legal notice',
     'footer.politicascookies': 'Cookies policies',
     'footer.redes': 'Social networks',
+    'nav.idiomas': 'Languages',
+    'nav.inicio': 'Home',
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -57,5 +59,7 @@ export const ui = {
     'footer.avisolega': 'Aviso legal',
     'footer.politicascookies': 'Políticas de cookies',
     'footer.redes': 'Redes sociales',
+    'nav.idiomas': 'Idiomas',
+    'nav.inicio': 'Inicio',
   },
 } as const;
