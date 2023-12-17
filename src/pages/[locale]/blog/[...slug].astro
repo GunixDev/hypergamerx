@@ -162,7 +162,7 @@ allPosts.length = 5;
           }
           <div
             class=`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 ${resena ? 'ls:max-sm:col-span-2' : ' w-11/12 mx-auto'}`>
-            <h1 class='md:text-lg font-bold ls:max-md:text-base text-white'>{t('article.articuclosreciente')}</h1>
+            <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>{t('article.articuclosreciente')}</h2>
             {allPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} lang={lang2} />)}
           </div>
         </div>
