@@ -33,6 +33,7 @@ export const ui = {
     'footer.redes': 'Social networks',
     'nav.idiomas': 'Languages',
     'nav.inicio': 'Home',
+    'index.articulosdevideojuego': 'Video game articles',
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -61,5 +62,6 @@ export const ui = {
     'footer.redes': 'Redes sociales',
     'nav.idiomas': 'Idiomas',
     'nav.inicio': 'Inicio',
+    'index.articulosdevideojuego': 'Artículos de videojuego',
   },
 } as const;

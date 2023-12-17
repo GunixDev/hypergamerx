@@ -44,7 +44,10 @@ const geometryPosts = allPosts
 <LayoutPrincipal>
   <main>
     <div class='w-11/12 mx-auto'>
-      <h1 class='lg:text-3xl font-bold my-4'>{t('index.ultimoarticules')}</h1>
+      <h1 class='md:text-4xl text-base mx-auto font-bold mt-12 md:mt-2 text-white'>
+        {t('index.articulosdevideojuego')}
+      </h1>
+      <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimoarticules')}</h2>
       <div class='grid grid-cols-5 h-max-[100px] lg:h-max-[384px] relative bg-slate-950'>
         <div class='col-span-3'>
           {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}
@@ -53,23 +56,23 @@ const geometryPosts = allPosts
           {recentpost.map((post) => <ArticulosView3 file={post.slug} data={post.data} lang={lang} />)}
         </div>
       </div>
-      <h1 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.noticianuevas')}</h1>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.noticianuevas')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
         {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-      <h1 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.ultimascuriosidades')}</h1>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.ultimascuriosidades')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
         {curiosidadesPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-      <h1 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.resenasvideogames')}</h1>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.resenasvideogames')}</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
         {resenasPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-      <h1 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Minecraft</h1>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Minecraft</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
         {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-      <h1 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Geometry Dash</h1>
+      <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Geometry Dash</h2>
       <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
         {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
