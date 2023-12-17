@@ -1,5 +1,6 @@
 User-Agent: *
 Allow: /
-Disallow: /terminos-servicios/
+Disallow: /es/terminos-servicios/ 
+Disallow: /en/terminos-servicios/
 
 Sitemap: https://www.hypergamerx.com/sitemap-index.xml
