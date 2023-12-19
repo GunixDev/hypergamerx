@@ -42,6 +42,8 @@ const lang = getLangFromUrl(Astro.url);
       keywords={keywords}
       spanish={spanish}
       english={english}
+      publishtime={new Date().toISOString()}
+      updatetime={new Date().toISOString()}
     />
     <link rel='sitemap' href='/sitemap-index.xml' />
     <ViewTransitions />
