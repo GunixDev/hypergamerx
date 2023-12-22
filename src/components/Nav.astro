@@ -3,7 +3,13 @@ import { languages } from '../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang2 = getLangFromUrl(Astro.url);
 const t = useTranslations(lang2);
-const pathname = Astro.url.pathname.replace(/\/[a-z]{2}\//, '');
+let pathname = Astro.url.pathname.replace(/\/[a-z]{2}\//, '');
+
+if (pathname === '/en') {
+  pathname = '';
+} else if (pathname === '/es') {
+  pathname = '';
+}
 ---
 
 <div class='sm:relative fixed right-0 w-full h-auto z-50'>
@@ -24,7 +30,7 @@ const pathname = Astro.url.pathname.replace(/\/[a-z]{2}\//, '');
           class='text-xs md:text-base bg-gray-700 text-white'>
           {
             Object.entries(languages).map(([lang, label]) => (
-              <option value={`/${lang}/${pathname}`} {...(lang === lang2 ? { selected: true } : {})}>
+              <option value={`../../../../${lang}/${pathname}`} {...(lang === lang2 ? { selected: true } : {})}>
                 {label}
               </option>
             ))
