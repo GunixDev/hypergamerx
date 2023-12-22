@@ -30,7 +30,7 @@ if (pathname === '/en') {
           class='text-xs md:text-base bg-gray-700 text-white'>
           {
             Object.entries(languages).map(([lang, label]) => (
-              <option value={`../../../../${lang}/${pathname}`} {...(lang === lang2 ? { selected: true } : {})}>
+              <option value={`/${lang}/${pathname}`} {...(lang === lang2 ? { selected: true } : {})}>
                 {label}
               </option>
             ))
