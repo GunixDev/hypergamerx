@@ -11,7 +11,7 @@ let fecha = new Date(pubDate).toLocaleDateString(lang, { year: 'numeric', month:
 import { Image } from 'astro:assets';
 ---
 
-<a href={`/${lang}/blog/${fileName}/`}>
+<a href={`/${lang}/blog/${fileName}/`} class='group duration-500'>
   <div class='grid lg:grid-cols-5'>
     <div class='lg:col-span-2'>
       {
