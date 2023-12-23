@@ -27,7 +27,7 @@ const minecraftPosts = allPosts
   .filter(
     (post) =>
       post.data.videojuego &&
-      post.data.videojuego.some((videojuego) =>
+      post.data.videojuego.some((videojuego: { slug: string }) =>
         ['minecraft-for-windows', 'minecraft-java-edition'].includes(videojuego.slug),
       ),
   )
@@ -36,7 +36,8 @@ const minecraftPosts = allPosts
 const geometryPosts = allPosts
   .filter(
     (post) =>
-      post.data.videojuego && post.data.videojuego.some((videojuego) => ['geometry-dash'].includes(videojuego.slug)),
+      post.data.videojuego &&
+      post.data.videojuego.some((videojuego: { slug: string }) => ['geometry-dash'].includes(videojuego.slug)),
   )
   .slice(0, 8);
 ---
