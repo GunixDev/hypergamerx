@@ -14,7 +14,7 @@ import { Image } from 'astro:assets';
 
 <a href={`/${lang}/blog/${fileName}/`}>
   <div>
-    <div class='rounded-l-xl w-full bg-gradient-to-t from-black to-transparent absolute z-50 h-64 lg:h-96'></div>
+    <div class='rounded-l-xl w-full bg-gradient-to-t from-black to-transparent absolute z-50 h-full'></div>
     {
       image !== null ? (
         <Image
@@ -24,7 +24,7 @@ import { Image } from 'astro:assets';
           height={472}
           quality={'low'}
           format='webp'
-          class='rounded-l-xl w-full object-cover fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out z-0 absolute h-64 lg:h-96'
+          class='rounded-l-xl w-full object-cover fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out z-0 absolute h-full'
         />
       ) : (
         <Image
@@ -39,11 +39,11 @@ import { Image } from 'astro:assets';
       )
     }
   </div>
-  <div class='absolute w-11/12 left-5 bottom-0 z-50 mb-4'>
-    <h3 class='z-50 text-white font-bold md:font-extrabold text-lg lg:text-2xl ls:max-md:text-xs'>
+  <div class='absolute w-full ls:max-sm:mx-1 md:w-11/12 md:left-5 bottom-0 z-50 mb-2 md:mb-4'>
+    <h3 class='z-50 text-white font-medium lss:font-extrabold text-lg lg:text-2xl ls:max-md:text-xs'>
       {title}
     </h3>
     <p class='z-50 text-xs lg:text-base my-1 text-blue-500'>{fecha}</p>
-    <p class='z-50 lg:text-lg text-xs ls:max-md:hidden'>{description}</p>
+    <p class='z-50 lg:text-lg text-xs ls:max-lss:hidden'>{description}</p>
   </div>
 </a>
