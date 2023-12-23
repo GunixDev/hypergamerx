@@ -5,6 +5,7 @@ import ArticulosView2 from '../components/ArticulosView2.astro';
 import ArticulosView3 from '../components/ArticulosView3.astro';
 import LayoutPrincipal from '../layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
+import Listdata from '../components/util/listdata.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -43,12 +44,15 @@ const geometryPosts = allPosts
     <div class='w-11/12 mx-auto'>
       <h1 class='md:text-3xl text-base mx-auto font-bold mt-12 md:mt-2'>{t('index.articulosdevideojuego')}</h1>
       <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimoarticules')}</h2>
-      <div class='grid grid-cols-5 h-max-[100px] lg:h-max-[384px] relative bg-slate-950'>
+      <div class='grid grid-cols-5 h-auto lg:h-max-[384px] relative bg-slate-950'>
         <div class='col-span-3'>
           {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}
         </div>
         <div class='col-span-2 mx-2 lg:mx-4'>
-          {recentpost.map((post) => <ArticulosView3 file={post.slug} data={post.data} lang={lang} />)}
+          <div
+            class='relative w-full h-auto my-1 md:my-3 md:p-1 group duration-500 grid grid-flow-row gap-1 lss:gap-2 sm:my-4 sm:gap-6 md:gap-7'>
+            {recentpost.map((post) => <Listdata file={post.slug} data={post.data} lang={lang} />)}
+          </div>
         </div>
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.noticianuevas')}</h2>
