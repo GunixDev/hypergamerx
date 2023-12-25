@@ -202,8 +202,8 @@ allPosts.length = 5;
         {
           postgames && (
             <div
-              class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 ${
-                resena ? 'sm:hidden mx-4' : ' w-11/12 mx-auto'
+              class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 sm:hidden ${
+                resena ? 'mx-4' : ' w-11/12 mx-auto'
               }`}>
               <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
                 {t('article.articulosde')} {games.data.name}
