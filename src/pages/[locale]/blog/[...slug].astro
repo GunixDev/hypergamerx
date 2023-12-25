@@ -29,9 +29,9 @@ if (page.data.videojuego) {
   games = await getEntry('videogames', page.data.videojuego[0]?.slug);
 }
 
-if (page.data.genero.includes('resena') && page.data.videojuego) {
+if (page.data?.genero.includes('resena') && page.data?.videojuego) {
   resena = true;
-  games = await getEntry('videogames', page.data.videojuego[0]?.slug);
+  games = await getEntry('videogames', page.data?.videojuego[0]?.slug);
 }
 const t = useTranslations(lang2);
 
