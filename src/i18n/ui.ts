@@ -34,6 +34,7 @@ export const ui = {
     'nav.idiomas': 'Languages',
     'nav.inicio': 'Home',
     'index.articulosdevideojuego': 'Video game articles',
+    'article.articulosde': 'Articles of',
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -63,5 +64,6 @@ export const ui = {
     'nav.idiomas': 'Idiomas',
     'nav.inicio': 'Inicio',
     'index.articulosdevideojuego': 'Artículos de videojuego',
+    'article.articulosde': 'Artículos de',
   },
 } as const;

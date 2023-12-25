@@ -47,7 +47,22 @@ const allPosts = await getCollection('blog', (data) => {
 allPosts.sort((a, b) => {
   return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 });
+
+let game = page.data.videojuego && page.data.videojuego[0]?.slug;
+const gamesposts = allPosts.filter((post) => {
+  return post.data.videojuego && post.data.videojuego[0]?.slug === game;
+});
+let postgames = false;
+if (gamesposts.length >= 3) {
+  gamesposts.sort((a, b) => {
+    return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+  });
+  postgames = true;
+  gamesposts.length = 3;
+}
+
 allPosts.length = 5;
+console.log(games.data.name);
 ---
 
 <LayoutPrincipal
@@ -132,9 +147,11 @@ allPosts.length = 5;
       </div>
       <div class='h-full ls:max-sm:w-full relative sm:col-span-2'>
         <div
-          class=`h-full relative sm:col-span-2 ${resena ? 'ls:max-sm:grid ls:max-sm:grid-cols-5 ls:max-sm:p-2 ls:max-sm:gap-1' : ''}`>
+          class={`h-full relative sm:col-span-2 ${
+            resena ? 'ls:max-sm:grid ls:max-sm:grid-cols-5 ls:max-sm:p-2 ls:max-sm:gap-1' : ''
+          }`}>
           {
-            resena ? (
+            resena && (
               <div class='bg-slate-950 p-2 md:p-4 rounded-2xl w-full h-fit ls:max-sm:col-span-3'>
                 <p class='text-sm text-slate-400 text-center font-bold md:text-xl xl:text-2xl'>{games.data.name}</p>
                 <Image
@@ -158,14 +175,46 @@ allPosts.length = 5;
                   <span class='text-slate-400'>{games.data.Multijugador ? t('article.yes') : t('article.no')}</span>
                 </p>
               </div>
-            ) : null
+            )
           }
           <div
-            class=`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 ${resena ? 'ls:max-sm:col-span-2' : ' w-11/12 mx-auto'}`>
+            class={`bg-slate-950 mb-1 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 ${
+              resena ? 'ls:max-sm:col-span-2' : ' w-11/12 mx-auto'
+            }`}>
             <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>{t('article.articuclosreciente')}</h2>
             {allPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} lang={lang2} />)}
           </div>
+          {
+            postgames && (
+              <div
+                class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
+                  resena ? 'ls:max-sm:hidden' : ' w-11/12 mx-auto'
+                }`}>
+                <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
+                  {t('article.articulosde')} {games.data.name}
+                </h2>
+                {gamesposts.map((post) => (
+                  <ArticulosRamdon file={post.slug} data={post.data} lang={lang2} />
+                ))}
+              </div>
+            )
+          }
         </div>
+        {
+          postgames && (
+            <div
+              class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 ${
+                resena ? 'sm:hidden mx-4' : ' w-11/12 mx-auto'
+              }`}>
+              <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
+                {t('article.articulosde')} {games.data.name}
+              </h2>
+              {gamesposts.map((post) => (
+                <ArticulosRamdon file={post.slug} data={post.data} lang={lang2} />
+              ))}
+            </div>
+          )
+        }
       </div>
     </div>
   </div>
