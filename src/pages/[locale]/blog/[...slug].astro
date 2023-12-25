@@ -187,7 +187,7 @@ allPosts.length = 5;
             postgames && (
               <div
                 class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
-                  resena ? 'ls:max-sm:hidden' : ' w-11/12 mx-auto'
+                  resena ? ' ls:max-sm:col-span-6' : ' w-11/12 mx-auto'
                 }`}>
                 <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
                   {t('article.articulosde')} {games.data.name}
@@ -199,21 +199,6 @@ allPosts.length = 5;
             )
           }
         </div>
-        {
-          postgames && (
-            <div
-              class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 sm:hidden ${
-                resena ? 'mx-4' : ' w-11/12 mx-auto'
-              }`}>
-              <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
-                {t('article.articulosde')} {games.data.name}
-              </h2>
-              {gamesposts.map((post) => (
-                <ArticulosRamdon file={post.slug} data={post.data} lang={lang2} />
-              ))}
-            </div>
-          )
-        }
       </div>
     </div>
   </div>
