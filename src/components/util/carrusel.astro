@@ -14,7 +14,7 @@ import { Image } from 'astro:assets';
 
 <a href={`/${lang}/blog/${fileName}/`}>
   <div>
-    <div class='rounded-l-xl w-full bg-gradient-to-t from-black to-transparent absolute z-50 h-full'></div>
+    <div class='rounded-l-xl w-full bg-gradient-to-t from-black to-transparent absolute z-30 h-full'></div>
     {
       image !== null ? (
         <Image
@@ -40,10 +40,10 @@ import { Image } from 'astro:assets';
     }
   </div>
   <div class='absolute w-full ls:max-sm:mx-1 md:w-11/12 md:left-5 bottom-0 z-50 mb-2 md:mb-4'>
-    <h3 class='z-50 text-white font-medium lss:font-extrabold text-lg lg:text-2xl ls:max-md:text-xs'>
+    <h3 class='z-40 text-white font-medium lss:font-extrabold text-lg lg:text-2xl ls:max-md:text-xs'>
       {title}
     </h3>
-    <p class='z-50 text-xs lg:text-base my-1 text-blue-500'>{fecha}</p>
-    <p class='z-50 lg:text-lg text-xs ls:max-lss:hidden'>{description}</p>
+    <p class='z-40 text-xs lg:text-base my-1 text-blue-500'>{fecha}</p>
+    <p class='z-40 lg:text-lg text-xs ls:max-lss:hidden'>{description}</p>
   </div>
 </a>

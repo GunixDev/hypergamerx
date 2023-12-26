@@ -4,7 +4,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<footer class='text-white bg-gray-900 bg-opacity-70 py-2 md:py-8 w-full font-sans mt-4 md:mt-10'>
+<footer class='text-white bg-gray-900 bg-opacity-70 py-2 md:py-8 w-full font-sans mt-4 md:mt-10 ls:max-sm:hidden'>
   <div class='md:container text-slate-500 mx-auto text-center grid grid-cols-3 list-none'>
     <div class='text-left'>
       <p class='text-slate-700 ls:max-sm:text-xs'>{t('footer.terminos')}</p>

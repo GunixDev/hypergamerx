@@ -46,10 +46,10 @@ import Listdata from '../../components/util/listdata.astro';
 <LayoutPrincipal>
   <main>
     <div class='w-11/12 mx-auto'>
-      <h1 class='md:text-4xl sm:text-2xl text-base mx-auto font-bold mt-12 md:mt-2 text-white'>
+      <h1 class='md:text-4xl sm:text-2xl text-base mx-auto font-bold mt-10 md:mt-4 text-white'>
         {t('index.articulosdevideojuego')}
       </h1>
-      <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimoarticules')}</h2>
+      <h2 class='lg:text-3xl text-sm font-bold my-2 md:my-4'>{t('index.ultimoarticules')}</h2>
       <div class='grid grid-cols-5 h-auto lg:h-max-[384px] relative bg-slate-950'>
         <div class='col-span-3'>
           {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}

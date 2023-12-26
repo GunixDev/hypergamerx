@@ -182,7 +182,12 @@ body {
 
 hr {
   @media screen and (min-width: 768px) {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0)
+    );
     width: 100%;
     border: 0;
     height: 1px;
@@ -190,5 +195,4 @@ hr {
   @media screen and (max-width: 767px) {
     width: 90%;
   }
-
 }

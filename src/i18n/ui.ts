@@ -35,6 +35,11 @@ export const ui = {
     'nav.inicio': 'Home',
     'index.articulosdevideojuego': 'Video game articles',
     'article.articulosde': 'Articles of',
+    'seccion.news': 'News articles',
+    'nav.noticias': 'News',
+    'nav.navegacion': 'Navigation',
+    'index.ultimanoticias': 'Latest news',
+    'index.utlimasnoticiasde': 'Latest news from',
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -65,5 +70,10 @@ export const ui = {
     'nav.inicio': 'Inicio',
     'index.articulosdevideojuego': 'Artículos de videojuego',
     'article.articulosde': 'Artículos de',
+    'seccion.news': 'Artículos de noticias',
+    'nav.noticias': 'Noticias',
+    'nav.navegacion': 'Navegación',
+    'index.ultimanoticias': 'Últimas noticias',
+    'index.utlimasnoticiasde': 'Últimas noticias de',
   },
 } as const;

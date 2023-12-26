@@ -1,8 +1,8 @@
 ---
-import { languages } from '../i18n/ui';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils';
+import MobileNav from '../components/util/Mobilenav.tsx';
+
 const lang2 = getLangFromUrl(Astro.url);
-const t = useTranslations(lang2);
 let pathname = Astro.url.pathname.replace(/\/[a-z]{2}\//, '');
 
 if (pathname === '/en') {
@@ -12,31 +12,4 @@ if (pathname === '/en') {
 }
 ---
 
-<div class='sm:relative fixed right-0 w-full h-auto z-50'>
-  <nav
-    class='sm:max-2xl:bg-gray-800 w-full font-sans duration-500 z-100 grid grid-cols-5 md:grid-cols-7 lg:grid-cols-12 z-50'>
-    <div class='mx-auto px-4 h-14 flex items-center justify-end ls:max-sm:flex z-50'>
-      <a href=`/${lang2}/` class='text-blue-400 right-4 absolute flex items-center justify-center'>{t('nav.inicio')}</a>
-    </div>
-    <div class='col-start-3 sm:col-start-4 md:col-start-6 lg:col-start-10 my-3 grid grid-flow-col-dense z-50'>
-      <div>
-        <label for='Lang' class='text-white text-xs mr-1 md:mr-2 md:text-base'>{t('nav.idiomas')}</label>
-      </div>
-      <div>
-        <select
-          id='Lang'
-          name='Lang'
-          onchange='window.location.href=this.value'
-          class='text-xs md:text-base bg-gray-700 text-white'>
-          {
-            Object.entries(languages).map(([lang, label]) => (
-              <option value={`/${lang}/${pathname}`} {...(lang === lang2 ? { selected: true } : {})}>
-                {label}
-              </option>
-            ))
-          }
-        </select>
-      </div>
-    </div>
-  </nav>
-</div>
+<MobileNav lang2={lang2} pathname={pathname} client:load />
