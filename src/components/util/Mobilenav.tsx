@@ -144,7 +144,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
             onClick={() => {
               setIsOpen(!isOpen);
             }}>
-            <img src='/icons/menu.svg' className='align-middle mx-2' alt='Menu' />
+            <img width={20} height={20} src='/icons/menu.svg' className='align-middle mx-2' alt='Menu' />
           </button>
         </div>
         <div className='flex sm:col-span-4 col-span-2'>
