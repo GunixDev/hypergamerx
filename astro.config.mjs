@@ -6,6 +6,8 @@ import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import partytown from '@astrojs/partytown';
 
+import compress from 'astro-compress';
+
 // https://astro.build/config
 export default defineConfig({
   i18n: {
@@ -55,6 +57,13 @@ export default defineConfig({
     tailwind(),
     mdx(),
     partytown(),
+    compress({
+      CSS: true,
+      HTML: true,
+      Image: false,
+      JavaScript: true,
+      SVG: true,
+    }),
   ],
   output: 'hybrid',
   adapter: vercel({
