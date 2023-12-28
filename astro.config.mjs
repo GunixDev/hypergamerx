@@ -4,8 +4,6 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
-import partytown from '@astrojs/partytown';
-
 import compress from 'astro-compress';
 
 // https://astro.build/config
@@ -51,7 +49,6 @@ export default defineConfig({
     }),
     tailwind(),
     mdx(),
-    partytown(),
     compress({
       CSS: true,
       HTML: true,
