@@ -28,11 +28,6 @@ export default defineConfig({
   site: 'https://www.hypergamerx.com',
   integrations: [
     preact(),
-    partytown({
-      config: {
-        forward: ['dataLayer.push'],
-      },
-    }),
     sitemap({
       i18n: {
         defaultLocale: 'en',
