@@ -17,12 +17,12 @@ const { image, title, description, fileName, fecha, lang }: Props = Astro.props;
     {
       image !== null ? (
         <img
-          src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_137/${image}`}
-          srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_55/${image} 256w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_110/${image} 512w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${image} 768w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_220/${image} 958w 1024w,
-          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_274/${image} 958w`}
+          src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${image}`}
+          srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_136/${image} 256w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_272/${image} 512w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${image} 768w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_544/${image} 958w 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_680/${image} 958w`}
           alt={`${image}`}
           class='rounded-l-xl w-full fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out z-0 absolute h-full'
         />
