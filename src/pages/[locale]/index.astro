@@ -62,23 +62,23 @@ import Listdata from '../../components/util/listdata.astro';
         </div>
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.noticianuevas')}</h2>
-      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative'>
+      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
         {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.ultimascuriosidades')}</h2>
-      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative'>
+      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
         {curiosidadesPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.resenasvideogames')}</h2>
-      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative'>
+      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
         {resenasPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.articulosde')} Minecraft</h2>
-      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative'>
+      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
         {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
       <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.articulosde')} Geometry Dash</h2>
-      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative'>
+      <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
         {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
     </div>
