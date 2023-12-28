@@ -15,13 +15,14 @@ import { Image } from 'astro:assets';
     <div>
       {
         image !== null ? (
-          <Image
-            alt={`image`}
-            src={image}
-            width={1191}
-            format='webp'
-            height={671}
-            quality={'low'}
+          <img
+            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${image}`}
+            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${image} 256w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${image} 512w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${image} 768w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_639/${image} 958w 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${image} 958w`}
+            alt='image'
             class='w-full h-full group-hover:brightness-50 duration-500'
           />
         ) : (

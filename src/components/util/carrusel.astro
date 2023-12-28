@@ -9,7 +9,6 @@ interface Props {
 }
 
 const { image, title, description, fileName, fecha, lang }: Props = Astro.props;
-import { Image } from 'astro:assets';
 ---
 
 <a href={`/${lang}/blog/${fileName}/`}>
@@ -17,24 +16,21 @@ import { Image } from 'astro:assets';
     <div class='rounded-l-xl w-full bg-gradient-to-t from-black to-transparent absolute z-30 h-full'></div>
     {
       image !== null ? (
-        <Image
-          alt={`image`}
-          src={image}
-          width={870}
-          height={472}
-          quality={'low'}
-          format='webp'
+        <img
+          src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${image}`}
+          srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${image} 256w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${image} 512w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${image} 768w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_639/${image} 958w 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${image} 958w`}
+          alt='image'
           class='rounded-l-xl w-full fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out z-0 absolute h-full'
         />
       ) : (
-        <Image
-          width={870}
-          height={472}
-          quality={'low'}
-          alt='sin imagen'
+        <img
           src='/logo3.png'
-          format='webp'
-          class='rounded-xl ls:max-sm:hidden'
+          alt='image'
+          class='rounded-l-xl w-full fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out z-0 absolute h-full'
         />
       )
     }

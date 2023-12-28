@@ -125,14 +125,15 @@ allPosts.length = 5;
               title='video-trailer'
             />
           ) : page && page.data.image && page.data.image !== null ? (
-            <Image
-              alt={`image`}
-              src={page.data.image}
-              width={870}
-              height={472}
-              quality={'low'}
-              format='webp'
-              class='my-8 md:w-11/12 ls:max-md:w-full h-auto mx-auto'
+            <img
+              src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data.image}`}
+              srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data.image} 256w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${page.data.image} 512w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data.image} 768w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_639/${page.data.image} 958w 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${page.data.image} 958w`}
+              alt='image'
+              class='my-8 w-full h-auto mx-auto'
             />
           ) : null
         }
