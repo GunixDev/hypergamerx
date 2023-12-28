@@ -24,10 +24,12 @@ import { Image } from 'astro:assets';
             srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_40/${image} 256w,
                 https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_80/${image} 512w,
                 https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_120/${image} 768w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_160/${image} 958w 1024w,
-          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_200/${image} 958w`}
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_160/${image} 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_200/${image} 1280w`}
             alt={`${image}`}
-            class=' fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out ls:max-lg:hidden '
+            decoding='async'
+            loading='lazy'
+            class=' h-full w-full fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out ls:max-lg:hidden '
           />
         ) : (
           <Image
