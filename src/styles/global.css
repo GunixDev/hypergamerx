@@ -6,18 +6,6 @@
   color: rgb(100, 116, 139);
 }
 
-.contenido img {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: rgba(175, 176, 250, 0.418);
-  border-width: 2px;
-  border-style: double;
-  max-width: 100%; /* Hace que la imagen sea flexible */
-  display: block; /* Elimina el espacio en blanco debajo de la imagen */
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .contenido iframe {
   width: 90%;
   height: 400px;
