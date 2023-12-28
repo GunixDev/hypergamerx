@@ -19,7 +19,7 @@ const allPosts = await getCollection('blog', (data) => {
 allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
-const newsPosts = allPosts.filter((post) => post.data.genero.includes('noticia')).slice(0, 8);
+const newsPosts = allPosts.filter((post) => post.data.genero.includes('noticia')).slice(0, 4);
 const curiosidadesPosts = allPosts.filter((post) => post.data.genero.includes('curiosidades')).slice(0, 4);
 const resenasPosts = allPosts.filter((post) => post.data.genero.includes('resena')).slice(0, 4);
 const minecraftPosts = allPosts
@@ -38,7 +38,7 @@ const geometryPosts = allPosts
       post.data.videojuego &&
       post.data.videojuego.some((videojuego: { slug: string }) => ['geometry-dash'].includes(videojuego.slug)),
   )
-  .slice(0, 8);
+  .slice(0, 4);
 
 import Listdata from '../../components/util/listdata.astro';
 ---
