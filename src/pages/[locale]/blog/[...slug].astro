@@ -122,6 +122,9 @@ allPosts.length = 5;
               height='480'
               src={games.data.Trailervideo}
               class='w-full my-4 ls:max-sm:h-60'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture web-share'
+              allowfullscreen
+              loading='lazy'
               title='video-trailer'
             />
           ) : page && page.data.image && page.data.image !== null ? (
