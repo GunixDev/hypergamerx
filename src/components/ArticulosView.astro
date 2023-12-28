@@ -9,9 +9,43 @@ const { file, data, lang } = Astro.props;
 const { image, pubDate, title } = data;
 const fileName = file.split('/').pop()?.split('.')[0];
 let fechaFormateada = new Date(pubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
-import ListArticles from './util/ListArticles.astro';
+import { Image } from 'astro:assets';
 ---
 
-<div class='h-full w-full group duration-500'>
-  <ListArticles image={image} title={title} fileName={fileName} fecha={fechaFormateada} lang={lang} />
-</div>
+<a href={`/${lang}/blog/${fileName}/`} class='h-full w-full group duration-500'>
+  <div class='grid grid-flow-row-dense'>
+    <div>
+      {
+        image !== null ? (
+          <img
+            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${image}`}
+            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_55/${image} 256w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_110/${image} 512w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${image} 768w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_220/${image} 1024w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_274/${image} 1280w`}
+            width='165'
+            height='93'
+            alt={`${image}`}
+            decoding='async'
+            loading='lazy'
+            class='w-fit h-fit group-hover:brightness-50 duration-500'
+          />
+        ) : (
+          <Image
+            alt={`image`}
+            src={'/logo3.png'}
+            width={870}
+            format='webp'
+            height={472}
+            class='rounded-xl duration-500 group-hover:brightness-50 h-full w-full'
+          />
+        )
+      }
+    </div>
+    <div>
+      <p class='text-xs ls:max-sm:hidden text-blue-500 lg:font-bold lg:my-1'>{fechaFormateada}</p>
+      <h3 class='text-xs md:text-sm text-slate-400 group-hover:text-slate-100 duration-500'>{title}</h3>
+    </div>
+  </div>
+</a>

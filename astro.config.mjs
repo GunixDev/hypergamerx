@@ -50,8 +50,8 @@ export default defineConfig({
     tailwind(),
     mdx(),
     compress({
-      CSS: false,
-      HTML: false,
+      CSS: true,
+      HTML: true,
       Image: false,
       JavaScript: true,
       SVG: true,
