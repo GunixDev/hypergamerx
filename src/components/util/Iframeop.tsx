@@ -36,9 +36,9 @@ export default function MobileNav({ id }: IframeProps) {
           </div>
           <img
             onClick={() => setIsOpen(true)}
-            src={`https://i3.ytimg.com/vi/${id}/maxresdefault.jpg`}
-            srcset={`https://i3.ytimg.com/vi/${id}/hqdefault.jpg 256w,
-            https://i3.ytimg.com/vi/${id}/maxresdefault.jpg 1280w`}
+            src={`https://i3.ytimg.com/vi/${id}/hqdefault.jpg`}
+            srcset={`https://i3.ytimg.com/vi/${id}/mqdefault.jpg 256w,
+            https://i3.ytimg.com/vi/${id}/hqdefault.jpg 1280w`}
             width='479'
             height='270'
             alt={`${id}`}
