@@ -7,6 +7,7 @@ import Indice from '../../../components/Indice.astro';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import ArticulosRamdon from '../../../components/ArticulosRamdon.astro';
 import Estrellas from '../../../components/Estrellas.astro';
+import Iframeop from '../../../components/util/Iframeop';
 
 export async function getStaticPaths() {
   const pages = await getCollection('blog');
@@ -115,9 +116,13 @@ allPosts.length = 5;
           }
         </p>
         <p class='text-xs md:text-xl text-gray-400'>{page.data.description}</p>
+
         {
-          page && page.data.image && page.data.image !== null ? (
-            <img
+          resena && games?.data.Trailervideo ? (
+            <Iframeop id={games.data.Trailervideo} client:load/>
+
+          ) : page && page.data.image && page.data.image !== null ? (
+          <img
               src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data.image}`}
               srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data.image} 256w,
                 https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${page.data.image} 512w,
