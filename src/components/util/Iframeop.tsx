@@ -31,18 +31,20 @@ export default function MobileNav({ id }: IframeProps) {
               alt='youtube'
               decoding='async'
               loading='lazy'
-              className='h-24 w-8/12 mx-auto brightness-100 group-hover:brightness-150 duration-300'
+              className='md:h-24 md:w-8/12 w-7/12 h-14 mx-auto brightness-100 group-hover:brightness-150 duration-300'
             />
           </div>
           <img
             onClick={() => setIsOpen(true)}
             src={`https://i3.ytimg.com/vi/${id}/maxresdefault.jpg`}
+            srcset={`https://i3.ytimg.com/vi/${id}/hqdefault.jpg 256w,
+            https://i3.ytimg.com/vi/${id}/maxresdefault.jpg 1280w`}
             width='479'
             height='270'
             alt={`${id}`}
             decoding='async'
             loading='lazy'
-            className='md:h-96 h-64 w-full md:w-10/12 mx-auto my-4 md:my-6 brightness-50 group-hover:brightness-75 duration-300'
+            className=' w-full mx-auto my-4 md:my-6 brightness-50 group-hover:brightness-75 duration-300'
           />
         </div>
       )}
