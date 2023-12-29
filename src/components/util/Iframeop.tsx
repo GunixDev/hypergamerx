@@ -36,15 +36,15 @@ export default function MobileNav({ id }: IframeProps) {
           </div>
           <img
             onClick={() => setIsOpen(true)}
-            src={`https://i3.ytimg.com/vi/${id}/hqdefault.jpg`}
+            src={`https://i3.ytimg.com/vi/${id}/maxresdefault.jpg`}
             srcset={`https://i3.ytimg.com/vi/${id}/mqdefault.jpg 256w,
-            https://i3.ytimg.com/vi/${id}/hqdefault.jpg 1280w`}
+            https://i3.ytimg.com/vi/${id}/maxresdefault.jpg 1280w`}
             width='479'
             height='270'
             alt={`${id}`}
             decoding='async'
             loading='lazy'
-            className=' w-full mx-auto my-4 md:my-6 brightness-50 group-hover:brightness-75 duration-300'
+            className=' w-full mx-auto my-4 md:my-6 brightness-50 group-hover:brightness-75 duration-300 '
           />
         </div>
       )}
