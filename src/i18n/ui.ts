@@ -40,6 +40,7 @@ export const ui = {
     'nav.navegacion': 'Navigation',
     'index.ultimanoticias': 'Latest news',
     'index.utlimasnoticiasde': 'Latest news from',
+    'article.vertrailer': 'Watch trailer',
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -75,5 +76,6 @@ export const ui = {
     'nav.navegacion': 'Navegación',
     'index.ultimanoticias': 'Últimas noticias',
     'index.utlimasnoticiasde': 'Últimas noticias de',
+    'article.vertrailer': 'Ver trailer',
   },
 } as const;

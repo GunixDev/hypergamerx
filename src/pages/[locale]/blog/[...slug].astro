@@ -116,18 +116,7 @@ allPosts.length = 5;
         </p>
         <p class='text-xs md:text-xl text-gray-400'>{page.data.description}</p>
         {
-          resena && games?.data.Trailervideo ? (
-            <iframe
-              width='853'
-              height='480'
-              src={games.data.Trailervideo}
-              class='w-full my-4 ls:max-sm:h-60'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture web-share'
-              allowfullscreen
-              loading='lazy'
-              title='video-trailer'
-            />
-          ) : page && page.data.image && page.data.image !== null ? (
+          page && page.data.image && page.data.image !== null ? (
             <img
               src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data.image}`}
               srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data.image} 256w,
@@ -178,6 +167,20 @@ allPosts.length = 5;
                 <p class='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300'>
                   {t('article.multijugador')}:
                   <span class='text-slate-400'>{games.data.Multijugador ? t('article.yes') : t('article.no')}</span>
+                </p>
+                <p class='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300 hover:text-slate-100 duration-300'>
+                  {resena && games?.data.Trailervideo ? (
+                    <a target='_blank' href={games.data.Trailervideo}>
+                      {t('article.vertrailer')}{' '}
+                    </a>
+                    <img
+                        width={12}
+                        height={12}
+                        src='/icons/external.svg'
+                        class='align-middle mx-1 inline-block'
+                        alt='External'
+                      />
+                  ) : null}
                 </p>
               </div>
             )
