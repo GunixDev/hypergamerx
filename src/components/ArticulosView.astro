@@ -9,7 +9,6 @@ const { file, data, lang } = Astro.props;
 const { image, pubDate, title } = data;
 const fileName = file.split('/').pop()?.split('.')[0];
 let fechaFormateada = new Date(pubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
-import { Image } from 'astro:assets';
 ---
 
 <a href={`/${lang}/blog/${fileName}/`} class='h-full w-full group duration-500'>
@@ -32,13 +31,14 @@ import { Image } from 'astro:assets';
             class=' w-full h-full group-hover:brightness-50 duration-500'
           />
         ) : (
-          <Image
-            alt={`image`}
-            src={'/logo3.png'}
-            width={870}
-            format='webp'
-            height={472}
-            class='rounded-xl duration-500 group-hover:brightness-50 h-full w-full'
+          <img
+            src={`/logo3.png`}
+            width='165'
+            height='93'
+            alt={`sin imagen`}
+            decoding='async'
+            loading='lazy'
+            class=' w-full h-full group-hover:brightness-50 duration-500'
           />
         )
       }
