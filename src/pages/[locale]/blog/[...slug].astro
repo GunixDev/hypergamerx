@@ -126,7 +126,7 @@ allPosts.length = 5;
           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${page.data.image} 1280w`}
               width='479'
               height='270'
-              alt='image'
+              alt={page.data.image}
               class='my-8 w-full h-auto mx-auto'
             />
           ) : null
@@ -149,7 +149,7 @@ allPosts.length = 5;
               <div class='bg-slate-950 p-2 md:p-4 rounded-2xl w-full h-fit ls:max-sm:col-span-3'>
                 <p class='text-sm text-slate-400 text-center font-bold md:text-xl xl:text-2xl'>{games.data.name}</p>
                 <Image
-                  alt={`image`}
+                  alt={games.data.name}
                   src={games.data.CoverImage}
                   width={310}
                   height={384}
