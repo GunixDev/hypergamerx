@@ -6,15 +6,6 @@
   color: rgb(150, 162, 180);
 }
 
-.contenido iframe {
-  width: 90%;
-  height: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 .contenido a {
   color: rgb(44, 75, 252);
   text-decoration: underline;
