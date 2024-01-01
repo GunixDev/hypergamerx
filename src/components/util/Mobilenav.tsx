@@ -11,10 +11,6 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations(lang2);
 
-  if (pathname === '/en' || pathname === '/es') {
-    pathname = '';
-  }
-
   return (
     <>
       {isOpen && (
