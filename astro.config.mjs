@@ -8,13 +8,6 @@ import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es'],
-    routing: {
-      prefixDefaultLocale: true,
-    },
-  },
   image: {
     domains: ['astro.build'],
     remotePatterns: [
@@ -39,13 +32,6 @@ export default defineConfig({
         item.priority = 1;
         return item;
       },
-      i18n: {
-        defaultLocale: 'en',
-        locales: {
-          en: 'en',
-          es: 'es',
-        },
-      },
     }),
     tailwind(),
     mdx(),
@@ -64,7 +50,6 @@ export default defineConfig({
     },
   }),
   redirects: {
-    '/': '/en/',
     '/blog/noticia': '/es/',
     '/blog/resena': '/es/',
     '/blog/noticia/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1':
