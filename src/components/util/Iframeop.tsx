@@ -17,7 +17,6 @@ export default function MobileNav({ id }: IframeProps) {
           width='445'
           height='200'
           title={id}
-          frameborder='0'
           allowFullScreen={true}
           allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>
       ) : (

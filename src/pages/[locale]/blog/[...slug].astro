@@ -1,6 +1,5 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
-import { Image } from 'astro:assets';
 import LayoutPrincipal from '../../../layouts/LayoutPrincipal.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 import Indice from '../../../components/Indice.astro';
@@ -98,17 +97,17 @@ allPosts.length = 5;
             </span>
           </p>
         </div>
-        <p class='text-xs my-1 md:text-sm md:my-2 text-slate-400'>
+        <p class='text-xs my-1 md:text-sm md:my-2 text-slate-300 gap-2'>
           {
             page.data.genero.map((gen: any) => {
               if (gen === 'resena') {
-                return t('article.resenadevieojuego');
+                return <span class='p-2 bg-black'>{t('article.resenadevieojuego')}</span>;
               } else if (gen === 'guia') {
-                return t('article.guia');
+                return <span class='p-2 bg-black'>{t('article.guia')}</span>;
               } else if (gen === 'noticia') {
-                return t('article.noticia');
+                return <span class='p-2 bg-black'>{t('article.noticia')}</span>;
               } else if (gen === 'curiosidades') {
-                return t('article.curiosidades');
+                return <span class='p-2 bg-black'>{t('article.curiosidades')}</span>;
               } else {
                 return null;
               }

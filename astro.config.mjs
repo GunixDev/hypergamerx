@@ -35,7 +35,7 @@ export default defineConfig({
         },
       },
       serialize(item) {
-        item.changefreq = 'monthly';
+        item.changefreq = 'weekly';
         item.priority = 1;
         return item;
       },

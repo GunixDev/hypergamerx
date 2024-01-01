@@ -8,7 +8,7 @@
         "**/Thumbs.db": false,
         ".git": true,
         ".astro": true,
-        ".vercel": true,
+        ".vercel": false,
         "node_modules": true,
         ".vscode": true
     },
