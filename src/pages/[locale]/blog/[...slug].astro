@@ -118,7 +118,7 @@ allPosts.length = 5;
 
         {
           resena && games?.data.Trailervideo ? (
-            <Iframeop id={games.data.Trailervideo} client:load/>
+            <Iframeop client:load id={games.data.Trailervideo}/>
 
           ) : page && page.data.image && page.data.image !== null ? (
           <img

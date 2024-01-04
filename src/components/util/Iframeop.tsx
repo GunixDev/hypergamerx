@@ -4,7 +4,7 @@ interface IframeProps {
   id: string;
 }
 
-export default function MobileNav({ id }: IframeProps) {
+export default function IframeOp({ id }: IframeProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -20,10 +20,9 @@ export default function MobileNav({ id }: IframeProps) {
           allowFullScreen={true}
           allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>
       ) : (
-        <div className='group relative'>
+        <div className='group relative' onClick={() => setIsOpen(true)}>
           <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20'>
             <img
-              onClick={() => setIsOpen(true)}
               src='/icons/youtube.svg'
               width='20'
               height='16'
