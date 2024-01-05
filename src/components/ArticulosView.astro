@@ -11,7 +11,7 @@ const fileName = file.split('/').pop()?.split('.')[0];
 let fechaFormateada = new Date(pubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<a href={`/${lang}/blog/${fileName}/`} class='h-full w-full group duration-500'>
+<a href={`/${lang}/blog/${fileName}/`} hreflang={lang} class='h-full w-full group duration-500'>
   <div class='grid grid-flow-row-dense'>
     <div>
       {

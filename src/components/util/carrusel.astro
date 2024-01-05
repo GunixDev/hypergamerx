@@ -11,7 +11,7 @@ interface Props {
 const { image, title, description, fileName, fecha, lang }: Props = Astro.props;
 ---
 
-<a href={`/${lang}/blog/${fileName}/`}>
+<a hreflang={lang} href={`/${lang}/blog/${fileName}/`}>
   <div>
     <div class='rounded-l-xl w-full bg-gradient-to-t from-black to-transparent absolute z-30 h-full'></div>
     {

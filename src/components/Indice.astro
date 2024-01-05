@@ -15,19 +15,26 @@ const t = useTranslations(lang);
     {
       data.map((indice: any) => {
         return indice.depth === 2 ? (
-          <a href={`#${indice.slug}`} class='text-xl font-bold text-slate-100 hover:text-slate-300 duration-300 p-1'>
+          <a
+            hreflang={lang}
+            href={`#${indice.slug}`}
+            class='text-xl font-bold text-slate-100 hover:text-slate-300 duration-300 p-1'>
             <ol class=' list-disc ml-2'>
               <li>{indice.text}</li>
             </ol>
           </a>
         ) : indice.depth === 3 ? (
-          <a href={`#${indice.slug}`} class='text-lg ml-4 font-medium text-gray-300 hover:text-white duration-300 p-1'>
+          <a
+            hreflang={lang}
+            href={`#${indice.slug}`}
+            class='text-lg ml-4 font-medium text-gray-300 hover:text-white duration-300 p-1'>
             <ol>
               <li class=' list-none'>{indice.text}</li>
             </ol>
           </a>
         ) : indice.depth === 4 ? (
           <a
+            hreflang={lang}
             href={`#${indice.slug}`}
             class='text-sm ml-8 text-gray-400 font-medium hover:text-slate-300 duration-300 p-1'>
             <ol>

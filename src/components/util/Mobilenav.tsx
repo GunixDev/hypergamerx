@@ -44,12 +44,12 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
               <div className='grid grid-rows-2 text-xs ml-5'>
                 <ol className='list-disc'>
                   <li>
-                    <a href={`/${lang2}/`} className='text-blue-400'>
+                    <a hreflang={lang2} href={`/${lang2}/`} className='text-blue-400'>
                       {t('nav.inicio')}
                     </a>
                   </li>
                   <li>
-                    <a href={`/${lang2}/seccion/news/`} className='text-blue-400'>
+                    <a hreflang={lang2} href={`/${lang2}/seccion/news/`} className='text-blue-400'>
                       {t('nav.noticias')}
                     </a>
                   </li>
@@ -62,37 +62,37 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
               <div className='ml-6 text-xs'>
                 <ol className='grid grid-cols-2 list-disc'>
                   <li className='py-2 duration-300 hover:text-gray-300'>
-                    <a href={'https://discord.gg/aXmCVfcXaa'} target='_blank'>
+                    <a hreflang={lang2} href={'https://discord.gg/aXmCVfcXaa'} target='_blank'>
                       {' '}
                       Discord
                     </a>
                   </li>
                   <li className=' py-2 duration-300 hover:text-gray-300'>
-                    <a href={'https://twitter.com/HyperGamerX_ES'} target='_blank'>
+                    <a hreflang={lang2} href={'https://twitter.com/HyperGamerX_ES'} target='_blank'>
                       {' '}
                       Twitter
                     </a>
                   </li>
                   <li className='py-2 duration-300 hover:text-gray-300'>
-                    <a href={'https://www.youtube.com/@HyperGamerX1'} target='_blank'>
+                    <a hreflang={lang2} href={'https://www.youtube.com/@HyperGamerX1'} target='_blank'>
                       {' '}
                       Youtube
                     </a>
                   </li>
                   <li className='py-2 duration-300 hover:text-gray-300'>
-                    <a href={'https://www.facebook.com/Hypergamerx'} target='_blank'>
+                    <a hreflang={lang2} href={'https://www.facebook.com/Hypergamerx'} target='_blank'>
                       {' '}
                       Facebook
                     </a>
                   </li>
                   <li className='py-2 duration-300 hover:text-gray-300'>
-                    <a href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'} target='_blank'>
+                    <a hreflang={lang2} href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'} target='_blank'>
                       {' '}
                       Whatsapp
                     </a>
                   </li>
                   <li className='py-2 duration-300 hover:text-gray-300'>
-                    <a href={'https://www.instagram.com/hypergamerx1/'} target='_blank'>
+                    <a hreflang={lang2} href={'https://www.instagram.com/hypergamerx1/'} target='_blank'>
                       {' '}
                       Instagram
                     </a>
@@ -106,13 +106,19 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
               <div className='text-xs'>
                 <ol className=' ml-6 list-disc'>
                   <li className='duration-300 hover:text-gray-300'>
-                    <a href={`/${lang2}/terminos-servicios/AvisoLegal/`}>{t('footer.avisolega')}</a>
+                    <a hreflang={lang2} href={`/${lang2}/terminos-servicios/AvisoLegal/`}>
+                      {t('footer.avisolega')}
+                    </a>
                   </li>
                   <li className='duration-300 hover:text-gray-300'>
-                    <a href={`/${lang2}/terminos-servicios/PoliticaCookies/`}>{t('footer.politicascookies')}</a>
+                    <a hreflang={lang2} href={`/${lang2}/terminos-servicios/PoliticaCookies/`}>
+                      {t('footer.politicascookies')}
+                    </a>
                   </li>
                   <li className='duration-300 hover:text-gray-300'>
-                    <a href={`/${lang2}/terminos-servicios/Privacidad/`}>{t('footer.politicas')}</a>
+                    <a hreflang={lang2} href={`/${lang2}/terminos-servicios/Privacidad/`}>
+                      {t('footer.politicas')}
+                    </a>
                   </li>
                 </ol>
               </div>
@@ -122,6 +128,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
               <p className='text-gray-400 ls:max-lg:text-xs'>
                 &copy; 2023 HyperGamerX. {t('article.creadorpor')}
                 <a
+                  hreflang={lang2}
                   href={'https://sunrizestudios.vercel.app/'}
                   target='_blank'
                   className='duration-300 hover:text-red-300'>
@@ -173,18 +180,18 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
         </div>
         <div className='col-span-1 sm:my-auto'>
           <div className='sm:hidden absolute right-0'>
-            <a href={`/${lang2}/`} className='text-blue-400 text-xs mx-2 font-bold'>
+            <a hreflang={lang2} href={`/${lang2}/`} className='text-blue-400 text-xs mx-2 font-bold'>
               {t('nav.inicio')}
             </a>
           </div>
           <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-xs sm:text-base ls:max-sm:hidden'>
             <div className='mx-auto z-50 md:col-start-2 lg:col-start-3'>
-              <a href={`/${lang2}/seccion/news/`} className='text-blue-400'>
+              <a hreflang={lang2} href={`/${lang2}/seccion/news/`} className='text-blue-400'>
                 {t('nav.noticias')}
               </a>
             </div>
             <div className='mx-auto z-50'>
-              <a href={`/${lang2}/`} className='text-blue-400'>
+              <a hreflang={lang2} href={`/${lang2}/`} className='text-blue-400'>
                 {t('nav.inicio')}
               </a>
             </div>
