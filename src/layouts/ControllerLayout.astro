@@ -1,60 +1,68 @@
 ---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+import { getLangFromUrl } from '../i18n/utils';
+import { getCollection } from 'astro:content';
+import ListArticlesBlog from '../components/admin/ListArticlesBlog.tsx';
+
 interface Props {
-  data: any;
-  collection: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  autor?: string;
+  type?: string;
+  keywords?: string;
+  spanish?: string;
+  english?: string;
 }
 
-const { data, collection } = Astro.props;
+const {
+  title = 'HyperGamerX: Tu Destino para Noticias de Videojuegos',
+  description = 'Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información',
+  image = '/logo4.png',
+  autor = 'Sunrize Studios',
+  type = 'website',
+  keywords = 'videojuegos, noticias, reseñas, análisis, avances, curiosidades, HyperGamerX, HyperGamerX.com',
+  spanish = 'https://www.hypergamerx.com/es/',
+  english = 'https://www.hypergamerx.com/en/',
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const allBlogPosts = await getCollection('blog', (data) => {
+  return data.slug.startsWith(lang);
+});
+
+const sortallBlogPosts = allBlogPosts.sort((a, b) => {
+  return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+});
 ---
 
-<!doctype html>
-<html lang='es'>
+<html lang={lang}>
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>Document</title>
-    <meta name='color-scheme' content='light dark' />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      autor={autor}
+      type={type}
+      keywords={keywords}
+      spanish={spanish}
+      english={english}
+      publishtime={new Date().toISOString()}
+      updatetime={new Date().toISOString()}
+    />
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <ViewTransitions />
   </head>
-  <body class='bg-gray-950'>
-    <button id='button-view' class='bg-slate-700 px-2'>> {collection}</button>
-    <div id='content' class='flex flex-col p-2 bg-slate-700 w-2/12 hidden'>
-      <h2 class='text-2xl font-bold'>Colecciones</h2>
-      <div>
-        <a class='text-xl p-2 hover:ml-3 duration-300' href='/Controller/blog'>Blog</a>
-      </div>
-      <div>
-        <a class='text-xl p-2 hover:ml-3 duration-300' href='/Controller/videogames'>Videogames</a>
-      </div>
-    </div>
-    <div class='flex flex-grow flex-wrap'>
-      <div class='bg-slate-900 py-2 w-1/5'>
-        <h2 class='font-bold text-3xl text-center'>Lista de datos</h2>
-        <ol class='my-2'>
-          {
-            data.map((post: any) => (
-              <li class='w-full bg-slate-950 hover:bg-slate-800 duration-300 p-2 border-slate-800 border-y-2'>
-                <a href={`/Controller/${collection}/${post.slug}`}>{post.data.name}</a>
-              </li>
-            ))
-          }
-        </ol>
-      </div>
-      <div><slot /></div>
-    </div>
-
-    <script>
-      let view = false;
-      const button = document.getElementById('button-view') as HTMLButtonElement;
-      const content = document.getElementById('content') as HTMLDivElement;
-
-      button.addEventListener('click', () => {
-        view = !view;
-        if (view) {
-          content.style.display = 'block';
-        } else {
-          content.style.display = 'none';
-        }
-      });
-    </script>
+  <body class='bg-gray-950 text-white'>
+    <ListArticlesBlog lang={lang} list={sortallBlogPosts} client:load />
+    <Nav />
+    <main class='w-full lg:w-11/12 mx-auto flex flex-col mb-10'>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
