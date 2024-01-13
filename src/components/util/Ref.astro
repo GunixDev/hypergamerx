@@ -23,14 +23,14 @@ switch (url) {
 
 <span class='relative group'>
   <a
-    class='hover:text-blue-500 text-blue-800 duration-300 group'
+    class='hover:text-blue-500 text-blue-600 duration-300 group'
     target='_blank'
     href={`/${lang}/blog/${url}/`}
     hreflang={lang}>{text}</a
   >
   <a href={`/${lang}/blog/${url}/`} target='_blank' hreflang={lang}>
     <span
-      class='absolute left-0 w-80 p-2 mt-6 text-white bg-gray-800 rounded shadow-lg hidden group-hover:inline transition duration-300 text-xs z-50 ls:max-sm:hidden'>
+      class='absolute left-0 w-80 p-2 mt-6 text-white opacity-90 bg-gray-800 rounded shadow-lg hidden group-hover:inline transition duration-500 text-xs z-50 ls:max-sm:hidden'>
       <span class='font-bold lg:text-sm text-white no-underline'>{titulo}</span><br />{descripcion}
     </span>
   </a>
