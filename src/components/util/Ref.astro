@@ -11,12 +11,18 @@ const { url, text } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 let titulo;
 let descripcion;
+let arial;
 
 switch (url) {
   case 'geometry-dash':
+    titulo = textos[url][lang].titulo;
+    descripcion = textos[url][lang].descripcion;
+    arial = textos[url][lang].arial;
+    break;
   case 'minecraft':
     titulo = textos[url][lang].titulo;
     descripcion = textos[url][lang].descripcion;
+    arial = textos[url][lang].arial;
     break;
 }
 ---
