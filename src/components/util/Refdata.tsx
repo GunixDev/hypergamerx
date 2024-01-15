@@ -26,15 +26,18 @@ export const textos = {
       arial: 'Go to Minecraft Java review article',
     },
   },
-  'the-new-level-of-geometry-dash-22': {
+  'how-to-get-obsidian-in-fortnite-lego': {
     es: {
-      titulo: 'El nuevo nivel de Geometry Dash 2.2',
+      titulo: 'Como obtener obsidiana en LEGO Fortnite',
       descripcion:
-        'Geometry Dash 2.2 se actualizó y se mostró el nuevo nivel llamado "Dash" el cual muestra las nuevas características de Geometry Dash',
+        'En este artículo aprenderás a como obtener obsidiana en Fortnite lego, uno de los materiales casi finales para terminar el juego',
+      arial: 'Ir al articulo sobre como obtener obsidiana en LEGO Fortnite',
     },
     en: {
-      titulo: 'The new music system of Geometry Dash 2.2',
-      descripcion: 'Geometry Dash 2.2 includes a new custom sound system, available for all level creators and players',
+      titulo: 'How to obtain obsidian in LEGO Fortnite',
+      descripcion:
+        'In this article, you will learn how to obtain obsidian in Fortnite Lego, one of the nearly final materials to complete the game.',
+      arial: ' Go to the article on how to obtain obsidian in LEGO Fortnite',
     },
   },
 };
