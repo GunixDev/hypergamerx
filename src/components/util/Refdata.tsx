@@ -40,4 +40,18 @@ export const textos = {
       arial: ' Go to the article on how to obtain obsidian in LEGO Fortnite',
     },
   },
+  'how-to-get-amber-in-lego-fortnite': {
+    es: {
+      titulo: 'Como conseguir el ámbar en LEGO Fortnite',
+      descripcion:
+        'En este articulo aprenderás a como conseguir un materia muy importante para Lego Fortnite, este material te servirá para mejorar tus herramientas',
+      arial: 'Ir al articulo sobre como obtener ámbar en LEGO Fortnite',
+    },
+    en: {
+      titulo: 'How to obtain amber in LEGO Fortnite',
+      descripcion:
+        'In this article, you will learn how to obtain a very important material for Lego Fortnite. This material will be useful for enhancing your tools.',
+      arial: ' Go to the article on how to obtain amber in LEGO Fortnite',
+    },
+  },
 };
