@@ -126,7 +126,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
 
             <div className='row-start-6 absolute bottom-12'>
               <p className='text-gray-400 ls:max-lg:text-xs'>
-                &copy; 2023 HyperGamerX. {t('article.creadorpor')}
+                &copy; 2024 HyperGamerX. {t('article.creadorpor')}
                 <a
                   hreflang={lang2}
                   href={'https://sunrizestudios.vercel.app/'}
