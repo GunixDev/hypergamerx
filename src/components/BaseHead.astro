@@ -10,11 +10,13 @@ interface Props {
   english: string;
   publishtime: string;
   updatetime: string;
+  lang?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image, autor, type, keywords, english, spanish, publishtime, updatetime } = Astro.props;
+const { title, description, image, autor, type, keywords, english, spanish, publishtime, updatetime, lang } =
+  Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -32,8 +34,9 @@ const { title, description, image, autor, type, keywords, english, spanish, publ
   content=`${keywords}, HyperGamerX, videojuegos que son, videojuegos de decisiones pc, clases de videojuegos,videojuegos mas famosos, generos de videojuegos, cual es el juego mas famoso del mundo, videojuegos populares, Noticias de videojuegos, Curiosidades de videojuegos, Últimas novedades en videojuegos`
 />
 <link rel='canonical' href={canonicalURL} />
-<link rel='alternate' href={spanish} hreflang='es' />
-<link rel='alternate' href={english} hreflang='en' />
+<link rel='alternate' hreflang='es' href={spanish} />
+<link rel='alternate' hreflang='en' href={english} />
+<meta http-equiv='Content-Language' content={lang} />
 <meta name='viewport' content='width=device-width,initial-scale=1' />
 <meta name='creator' content={autor} />
 <meta name='publisher' content={autor} />

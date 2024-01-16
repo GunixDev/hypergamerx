@@ -44,6 +44,7 @@ const lang = getLangFromUrl(Astro.url);
       english={english}
       publishtime={new Date().toISOString()}
       updatetime={new Date().toISOString()}
+      lang={lang}
     />
     <link rel='sitemap' href='/sitemap-index.xml' />
     <ViewTransitions />
@@ -56,7 +57,7 @@ const lang = getLangFromUrl(Astro.url);
   </head>
   <body class='bg-gray-950 text-white'>
     <Nav />
-    <main class='w-full lg:w-11/12 mx-auto flex flex-col mb-10'>
+    <main lang={lang} class='w-full lg:w-11/12 mx-auto flex flex-col mb-10'>
       <slot />
     </main>
     <Footer />
