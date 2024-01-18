@@ -52,7 +52,7 @@ const { title, description, image, autor, type, keywords, english, spanish, publ
 <meta property='og:url' content={Astro.url} />
 <meta property='og:title' content={title} />
 <meta property='og:description' content={description} />
-<meta property='og:image' content={new URL(image, Astro.url)} />
+<meta property='og:image' content={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/${image}`} />
 
 <meta property='twitter:card' content='summary_large_image' />
 <meta property='twitter:url' content={Astro.url} />
