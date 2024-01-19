@@ -1,171 +1,106 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import LayoutPrincipal from '../../../layouts/LayoutPrincipal.astro';
 
 export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'es' } }];
 }
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <LayoutPrincipal>
   <div class='w-4/5 mx-auto mt-10'>
-    <h1 class='text-6xl text-center font-bold my-6'>Politica de Cookies</h1>
+    <h1 class='text-6xl text-center font-bold my-6'>{t('cookie.1')}</h1>
     <article class='text-lg'>
-      Esta Política de Cookies detallada tiene como objetivo brindar una descripción exhaustiva de cómo HyperGamerX
-      (nosotros, nuestro o sitio web) utiliza cookies y otras tecnologías similares para recopilar y almacenar
-      información valiosa cuando visitas nuestro sitio web, HyperGamerX. Queremos que estés plenamente informado sobre
-      cómo se manejan tus datos y cómo se utilizan estas tecnologías en nuestra plataforma. HyperGamerX es un sitio web
-      creado y respaldado por Sunrize Studios, una reconocida empresa dedicada a proporcionar artículos especializados
-      sobre videojuegos y todo lo relacionado con ellos. En esta política, también te explicaremos detalladamente cómo
-      puedes tener el control total sobre el uso de cookies y las diversas opciones que tienes a tu disposición en
-      relación con ellas. Nos tomamos muy en serio la protección de tu privacidad y la seguridad de tus datos
-      personales, y a través de esta política te ofrecemos la transparencia y la información necesaria para que puedas
-      tomar decisiones informadas sobre tu experiencia en HyperGamerX.
+      {t('cookie.2')}
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>¿Qué son las cookies?</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.3')}</h2>
       <p class='my-2'>
-        Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Estas
-        cookies desempeñan un papel fundamental en la experiencia de navegación en línea al permitir que los sitios web
-        recuerden tus acciones y preferencias. Almacenando información como tus preferencias de idioma, inicio de
-        sesión, temas de diseño y otras configuraciones, las cookies contribuyen a mejorar la funcionalidad del sitio
-        web y ofrecerte una experiencia más personalizada.
+        {t('cookie.4')}
       </p>
 
       <p class='my-2'>
-        Además de mejorar la funcionalidad, las cookies también son utilizadas para recopilar datos estadísticos y de
-        análisis sobre cómo los usuarios interactúan con los sitios web. Estos datos ayudan a los propietarios de los
-        sitios a comprender mejor el comportamiento de los visitantes y a realizar mejoras en el contenido y la
-        estructura del sitio para adaptarse a las necesidades de los usuarios.
+        {t('cookie.5')}
       </p>
       <p class='my-2'>
-        Es importante destacar que las cookies pueden ser utilizadas tanto por el propio sitio web que visitas (cookies
-        de origen) como por terceros que tienen componentes integrados en el sitio web, como herramientas de análisis o
-        publicidad (cookies de terceros). Estos terceros pueden utilizar las cookies para recopilar información sobre
-        tus actividades en línea y mostrarte anuncios relevantes en función de tus intereses.
+        {t('cookie.6')}
       </p>
       <p class='my-2'>
-        Sin embargo, es crucial mencionar que las cookies no son programas maliciosos y no pueden ejecutar código ni
-        transmitir virus. Además, tienes el control sobre cómo se utilizan las cookies en tu dispositivo. Puedes
-        configurar tu navegador para aceptar o rechazar cookies, así como para eliminar las cookies existentes. Ten en
-        cuenta que al desactivar o rechazar las cookies, es posible que algunas funciones de los sitios web no funcionen
-        correctamente o que se vea afectada tu experiencia de navegación.
+        {t('cookie.7')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Tipos de cookies utilizadas</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.8')}</h2>
       <p class='my-2'>
-        <strong>Cookies necesarias:</strong> Estas cookies son absolutamente fundamentales para el funcionamiento básico
-        de nuestro sitio web. Sin ellas, no podríamos brindarle los servicios y funciones esenciales que ofrece nuestra
-        plataforma. Estas cookies nos permiten autenticar usuarios, prevenir fraudes y garantizar la seguridad total de
-        nuestro sitio. Son esenciales para proteger su información personal y mantener la integridad de nuestras
-        operaciones.
+        {t('cookie.9')}
       </p>
 
       <p class='my-2'>
-        <strong>Cookies de rendimiento y análisis:</strong> Además de las cookies necesarias, también utilizamos cookies
-        de rendimiento y análisis para recopilar información valiosa sobre cómo los usuarios interactúan con nuestro
-        sitio web. Estas cookies, que incluyen Vercel Analytics, nos proporcionan datos detallados sobre diversas
-        métricas, como el país de origen de los usuarios, la cantidad de clics realizados, la duración de la visita, la
-        referencia de origen (por ejemplo, Twitter), el sistema operativo utilizado y el navegador utilizado.
+        {t('cookie.10')}
       </p>
       <p class='my-2'>
-        La información recopilada a través de estas cookies nos brinda una visión profunda sobre cómo los usuarios
-        utilizan nuestro sitio web, lo cual resulta fundamental para mejorar continuamente nuestra plataforma y
-        optimizar la experiencia del usuario. Al comprender las preferencias y comportamientos de nuestros usuarios,
-        podemos adaptar nuestro contenido, diseño y funciones para satisfacer mejor sus necesidades y brindarles una
-        experiencia más personalizada y satisfactoria en cada visita. Estas cookies también nos ayudan a identificar
-        posibles problemas técnicos y mejorar la funcionalidad general de nuestro sitio.
+        {t('cookie.11')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Consentimiento para el uso de cookies:</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.12')}</h2>
       <p class='my-2'>
-        Al visitar nuestro sitio web, te mostraremos un aviso de cookies detallado y fácil de entender que te brindará
-        información clara sobre el uso de cookies en nuestra plataforma. Este aviso se presenta con el objetivo de
-        garantizar tu privacidad y cumplir con las regulaciones y leyes vigentes.
+        {t('cookie.13')}
       </p>
       <p class='my-2'>
-        Dicho aviso te solicitará amablemente tu consentimiento para el uso de cookies no necesarias. Reconocemos la
-        importancia de tu privacidad y, por eso, queremos asegurarnos de que estés completamente informado antes de
-        tomar una decisión.
+        {t('cookie.14')}
       </p>
       <p class='my-2'>
-        Si decides dar tu consentimiento, nos autorizas a utilizar cookies de acuerdo con los términos de nuestra
-        política de cookies. Nuestra política describe en detalle qué son las cookies, cómo las utilizamos, qué
-        información recopilamos y cómo la protegemos.
+        {t('cookie.15')}
       </p>
       <p class='my-2'>
-        Queremos que tengas plena confianza en que tu privacidad está protegida y que solo utilizaremos cookies de
-        manera responsable y segura. Estamos comprometidos en ofrecerte una experiencia en nuestro sitio web que sea
-        transparente, personalizada y ajustada a tus preferencias.
+        {t('cookie.16')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Control de cookies</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.17')}</h2>
       <p class='my-2'>
-        Puedes tener un control total y una gestión precisa de las cookies en tu navegador. La amplia mayoría de
-        navegadores te ofrecen la opción de rechazar o aceptar cookies, además de brindarte la capacidad de eliminar las
-        cookies ya almacenadas en tu dispositivo. No obstante, es importante tener en cuenta que si decides deshabilitar
-        o eliminar ciertas cookies, es posible que algunas partes de nuestro sitio web no funcionen correctamente o que
-        tu experiencia como usuario se vea afectada de alguna manera. Por lo tanto, te recomendamos considerar
-        cuidadosamente tus preferencias y necesidades antes de realizar cualquier modificación en la configuración de
-        las cookies. Nuestro objetivo es ofrecerte una experiencia en línea óptima y personalizada, y el uso adecuado de
-        las cookies puede ser fundamental para lograrlo.
+        {t('cookie.18')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Cookies de terceros</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.19')}</h2>
       <p class='my-2'>
-        Es importante destacar que nuestro sitio web puede contener cookies de terceros, tales como las utilizadas por
-        anunciantes, redes de publicidad y proveedores de servicios de análisis. Estas cookies son gestionadas
-        directamente por dichos terceros, por lo que no tenemos control total sobre ellas.
+        {t('cookie.20')}
       </p>
       <p class='my-2'>
-        Recomendamos encarecidamente que revises las políticas de privacidad de estos terceros para obtener información
-        más detallada acerca de sus prácticas de cookies. Al hacerlo, podrás comprender mejor cómo utilizan estas
-        cookies y cómo afectan tu experiencia en nuestro sitio web.
+        {t('cookie.21')}
       </p>
       <p class='my-2'>
-        Queremos asegurarte que velamos por la protección de tus datos personales y tu privacidad. Sin embargo, debemos
-        señalar que no asumimos responsabilidad alguna por las cookies de terceros, ya que están sujetas a sus propias
-        políticas y prácticas. Te recomendamos que siempre estés informado y tomes las medidas necesarias para proteger
-        tu privacidad en línea.
+        {t('cookie.22')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Cambios en nuestra política de cookies</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.23')}</h2>
       <p class='my-2'>
-        Nos reservamos el derecho de modificar esta Política de Cookies en cualquier momento, con el objetivo de
-        mantenernos actualizados y adaptarnos a las necesidades y regulaciones vigentes. Queremos asegurarnos de que
-        estés al tanto de estos cambios y cómo pueden afectarte. Por lo tanto, te informamos de que cualquier
-        modificación que realicemos será efectiva de inmediato después de que publiquemos la política actualizada en
-        nuestro sitio web.
+        {t('cookie.24')}
       </p>
       <p class='my-2'>
-        Valoramos tu privacidad y transparencia, por lo que te recomendamos encarecidamente que revises periódicamente
-        esta página para estar plenamente informado sobre cualquier cambio en nuestra Política de Cookies. Entendemos
-        que es importante para ti estar al tanto de cómo utilizamos las cookies y cómo pueden afectar a tu experiencia
-        en nuestro sitio web.
+        {t('cookie.25')}
       </p>
       <p class='my-2'>
-        Si continúas utilizando nuestros servicios después de que se hayan realizado cambios en la Política de Cookies,
-        consideraremos que has aceptado dichos cambios. Sin embargo, si no estás de acuerdo con las modificaciones
-        realizadas, te ofrecemos la opción de discontinuar el uso de nuestro sitio web.
+        {t('cookie.26')}
       </p>
       <p class='my-2'>
-        Queremos asegurarnos de que estés informado y puedas tomar decisiones informadas sobre tu privacidad y la forma
-        en que utilizamos las cookies en nuestro sitio web. Apreciamos tu confianza en nosotros y nos comprometemos a
-        mantener altos estándares de protección de datos y transparencia en todo momento.
+        {t('cookie.27')}
       </p>
     </article>
     <article>
-      <p class='my-10 font-semibold'>Última actualización: 17/07/2023</p>
+      <p class='my-10 font-semibold'>{t('cookie.28')}</p>
     </article>
   </div>
 </LayoutPrincipal>
