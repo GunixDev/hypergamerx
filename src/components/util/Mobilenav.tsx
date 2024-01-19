@@ -14,7 +14,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
   return (
     <>
       {isOpen && (
-        <div className='sm:hidden fixed mt-10 bg-slate-950 text-white w-10/12 h-full z-[100]'>
+        <div className='sm:hidden fixed mt-10 bg-slate-950 text-white w-8/12 h-full z-[100]'>
           <div className='row-start-1 mx-2'>
             <div className='my-auto'>
               <label htmlFor='Lang' className='text-white text-xs'>
