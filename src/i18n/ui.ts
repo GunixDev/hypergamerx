@@ -135,6 +135,59 @@ export const ui = {
     'cookie.27':
       'We want to ensure that you are informed and can make informed decisions about your privacy and how we use cookies on our website. We appreciate your trust in us and are committed to maintaining high standards of data protection and transparency at all times.',
     'cookie.28': 'Last updated: 07/17/2023',
+    'privacidad.1': 'Privacy',
+    'privacidad.2':
+      'At HyperGamerX, owned by Sunrize Studios, we value and respect your privacy. This Privacy Policy describes how we collect, use, and protect personal information gathered from users of our website. By using the HyperGamerX website, you agree to the practices outlined in this policy.',
+    'privacidad.3': 'Information Collection',
+    'privacidad.4':
+      'We collect certain data and personal information to enhance your experience on HyperGamerX and provide you with relevant content. The information we collect includes:',
+    'privacidad.5':
+      'Navigation Data: We collect standard server log information, such as your IP address, browser type, Internet Service Provider (ISP), referrer pages/exit pages, and date/time stamps. This information is automatically collected by our systems and analytics services, including Vercel Analytics.',
+    'privacidad.6':
+      'Usage Data: We collect information about how you use HyperGamerX, including the number of clicks made, the duration of your visit to the site, your interactions with the webpage, and the actions you take during your navigation.',
+    'privacidad.7':
+      'Location Data: We may collect information about your approximate geographical location for analytical and statistical purposes.',
+    'privacidad.8': 'Use of Collected Information',
+    'privacidad.9':
+      'User Experience Improvement: We use the information to personalize and enhance your experience on HyperGamerX, providing you with relevant content tailored to your interests.',
+    'privacidad.10':
+      'Analysis and Statistics: We analyze the collected information to better understand how our website is used, which content is more popular, and how we can improve our services.',
+    'privacidad.11': 'Sharing Personal Information',
+    'privacidad.12':
+      'In our company, we take the privacy and protection of your personal information very seriously. We want to assure you that under no circumstances do we sell, exchange, or otherwise transfer your data to third parties without your explicit consent. Your privacy is our top priority.',
+    'privacidad.13':
+      'However, it is important to note that in certain circumstances, it may be necessary to share your information with third parties to efficiently provide our services and comply with current legal obligations. In these cases, we will ensure that any data disclosure is done in accordance with applicable laws and regulations.',
+    'privacidad.14':
+      'Our commitment is to use your personal data solely for the purpose of effectively providing our services and enhancing your customer experience. We will not share your information with third parties for marketing or advertising purposes without your explicit consent.',
+    'privacidad.15':
+      'We value the trust you place in us by providing us with your personal data, and we strive to maintain high standards of security to protect your information. We are always ready to address any questions or concerns you may have about our privacy policy and the use of your personal data.',
+    'privacidad.16': 'Information Protection',
+    'privacidad.17':
+      'In our organization, we prioritize the protection of the personal information we collect by implementing appropriate security measures. We understand the importance of keeping your data safe and confidential. However, it is important to note that no transmission of data over the Internet or online storage can be considered completely secure in all cases.',
+    'privacidad.18':
+      'Despite our constant efforts to safeguard your personal data, we cannot provide an absolute guarantee of the security of information transmitted through our website. Various factors beyond our control could compromise the integrity of data during transit, such as possible technical failures, cyber attacks, unauthorized interception, or other similar incidents.',
+    'privacidad.19':
+      'Nevertheless, we want to assure you that we employ state-of-the-art technologies and security practices to minimize risks and protect your personal data. This includes the use of encryption methods, firewalls, access controls, and other advanced security measures to maintain a secure environment for storing and processing your data.',
+    'privacidad.20':
+      'Additionally, we commit to staying informed about the latest trends and developments in cybersecurity to continuously update our protective measures. We conduct regular audits and risk assessments to identify potential vulnerabilities and take necessary actions to mitigate any potential risks.',
+    'privacidad.21':
+      'We recommend that you also take additional security measures on your part, such as using strong and unique passwords, regularly updating your devices, and using updated antivirus software. Additionally, it is crucial to be vigilant for possible signs of suspicious activity and to report immediately if you suspect a security breach.',
+    'privacidad.22': 'Third-Party Links',
+    'privacidad.23':
+      'HyperGamerX is a website that may contain links to various third-party websites. However, it is important to note that this Privacy Policy applies exclusively to our own website and does not govern the privacy practices of other linked sites. We assume no responsibility for the privacy practices implemented by these third-party websites.',
+    'privacidad.24':
+      'We strongly recommend that you carefully read the privacy policies of any external website you may access through links on HyperGamerX before providing any personal information. These privacy policies may differ from ours and may influence how your personal information is collected, used, or shared on such external websites.',
+    'privacidad.25':
+      'At HyperGamerX, we strive to protect your privacy and ensure the confidentiality of your personal information within our own website. However, we have no direct control over third-party websites, so it is important to take necessary precautions when browsing the Internet and interacting with other websites. Always remember to review and understand the privacy policies and terms of use of each website you visit, especially those that collect personal information.',
+    'privacidad.26': 'Changes to the Privacy Policy',
+    'privacidad.27':
+      'We reserve the right to update or modify this Privacy Policy at any time to ensure the protection and privacy of your personal data. It is important to periodically review this page to stay informed about any changes made.',
+    'privacidad.28':
+      'The effective date of the policy will be clearly indicated at the beginning of the document so that you can easily identify when the most recent modifications were made. Your continued use of our services after the effective date of any changes to the Privacy Policy constitutes your acceptance of such changes.',
+    'privacidad.29': 'Contact',
+    'privacidad.30':
+      'If you have any questions or concerns about our Privacy Policy, you can contact us at sunrizecontact@gmail.com. By using HyperGamerX, you agree to the terms of this Privacy Policy.',
+    'privacidad.31': 'Last updated: 01/19/2023',
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -293,5 +346,58 @@ export const ui = {
     'cookie.27':
       'Queremos asegurarnos de que estés informado y puedas tomar decisiones informadas sobre tu privacidad y la forma en que utilizamos las cookies en nuestro sitio web. Apreciamos tu confianza en nosotros y nos comprometemos a mantener altos estándares de protección de datos y transparencia en todo momento.',
     'cookie.28': 'Última actualización: 17/07/2023',
+    'privacidad.1': 'Privacidad',
+    'privacidad.2':
+      'En HyperGamerX, propiedad de Sunrize Studios, valoramos y respetamos tu privacidad. Esta Política de Privacidad describe cómo recopilamos, utilizamos y protegemos la información personal que recopilamos de los usuarios de nuestro sitio web. Al utilizar el sitio web de HyperGamerX, aceptas las prácticas descritas en esta política.',
+    'privacidad.3': 'Recopilación de Información',
+    'privacidad.4':
+      'Recopilamos ciertos datos e información personal para mejorar tu experiencia en HyperGamerX y brindarte contenido relevante. La información que recopilamos incluye:',
+    'privacidad.5':
+      'Datos de Navegación: Recopilamos información estándar del registro del servidor, como tu dirección IP, tipo de navegador, proveedor de servicios de Internet (ISP), páginas de referencia/salida y marcas de fecha/hora. Esta información es recopilada de forma automática por nuestros sistemas y servicios de análisis, incluyendo Vercel Analytics.',
+    'privacidad.6':
+      'Datos de Uso: Recopilamos información sobre cómo utilizas HyperGamerX, incluyendo la cantidad de clics realizados, la duración de tu visita en el sitio, tus interacciones con la página web y las acciones que realizas durante tu navegación.',
+    'privacidad.7':
+      'Datos de Localización: Podemos recopilar información sobre tu ubicación geográfica aproximada con fines analíticos y estadísticos.',
+    'privacidad.8': 'Uso de la Información Recopilada',
+    'privacidad.9':
+      'Mejora de la Experiencia del Usuario: Utilizamos la información para personalizar y mejorar tu experiencia en HyperGamerX, brindándote contenido relevante y adaptado a tus intereses.',
+    'privacidad.10':
+      'Análisis y Estadísticas: Analizamos la información recopilada para comprender mejor cómo se utiliza nuestro sitio web, qué contenido es más popular y cómo podemos mejorar nuestros servicios.',
+    'privacidad.11': 'Compartir Información Personal',
+    'privacidad.12':
+      'En nuestra empresa, nos tomamos muy en serio la privacidad y protección de tu información personal. Queremos asegurarte que en ningún caso vendemos, intercambiamos ni transferimos de ninguna otra manera tus datos a terceros sin tu consentimiento expreso. Tu privacidad es nuestra máxima prioridad.',
+    'privacidad.13':
+      'Sin embargo, es importante destacar que en determinadas circunstancias, puede ser necesario compartir tu información con terceros para poder ofrecerte nuestros servicios de manera eficiente y cumplir con las obligaciones legales vigentes. En estos casos, nos aseguraremos de que cualquier divulgación de datos se realice de acuerdo con las leyes y regulaciones aplicables.',
+    'privacidad.14':
+      'Nuestro compromiso es utilizar tus datos personales únicamente con el propósito de brindarte nuestros servicios de manera efectiva y mejorar tu experiencia como cliente. No compartiremos tu información con terceros para fines de marketing o publicidad sin tu consentimiento explícito.',
+    'privacidad.15':
+      'Valoramos la confianza que depositas en nosotros al proporcionarnos tus datos personales y nos esforzamos por mantener altos estándares de seguridad para proteger tu información. Siempre estamos dispuestos a responder a cualquier pregunta o inquietud que puedas tener sobre nuestra política de privacidad y el uso de tus datos personales.',
+    'privacidad.16': 'Protección de la Información',
+    'privacidad.17':
+      'En nuestra organización, priorizamos la protección de la información personal que recopilamos implementando medidas de seguridad adecuadas. Comprendemos la importancia de mantener tus datos seguros y confidenciales. Sin embargo, es importante que tengas en cuenta que ninguna transmisión de datos a través de Internet o almacenamiento en línea puede considerarse completamente segura en todos los casos.',
+    'privacidad.18':
+      'A pesar de nuestros constantes esfuerzos por salvaguardar tus datos personales, no podemos ofrecer una garantía absoluta de la seguridad de la información transmitida a través de nuestro sitio web. Existen diversos factores fuera de nuestro control que podrían comprometer la integridad de los datos durante su tránsito, como posibles fallos técnicos, ataques cibernéticos, interceptación no autorizada u otros incidentes similares.',
+    'privacidad.19':
+      'No obstante, queremos asegurarte que empleamos tecnologías y prácticas de seguridad de vanguardia para reducir al máximo los riesgos y proteger tus datos personales. Esto implica la utilización de métodos de cifrado, firewalls, controles de acceso y otras medidas de seguridad avanzadas para mantener un entorno seguro en el que se almacenan y procesan tus datos.',
+    'privacidad.20':
+      'Además, nos comprometemos a estar al tanto de las últimas tendencias y desarrollos en seguridad informática para actualizar constantemente nuestras medidas de protección. Realizamos auditorías periódicas y evaluaciones de riesgos para identificar posibles vulnerabilidades y tomar las medidas necesarias para mitigar cualquier riesgo potencial.',
+    'privacidad.21':
+      'Te recomendamos que también adoptes medidas de seguridad adicionales por tu parte, como el uso de contraseñas sólidas y únicas, la actualización regular de tus dispositivos y el uso de software antivirus actualizado. Asimismo, es fundamental que estés atento/a a posibles signos de actividad sospechosa y nos informes de inmediato si sospechas que ha habido alguna infracción de seguridad.',
+    'privacidad.22': 'Enlaces a Terceros',
+    'privacidad.23':
+      'HyperGamerX es un sitio web que puede contener enlaces a diversos sitios web de terceros. Sin embargo, es importante tener en cuenta que esta Política de Privacidad se aplica exclusivamente a nuestro propio sitio web y no rige las prácticas de privacidad de otros sitios enlazados. No asumimos ninguna responsabilidad por las prácticas de privacidad implementadas por estos sitios web de terceros.',
+    'privacidad.24':
+      'Te recomendamos encarecidamente que leas detenidamente las políticas de privacidad de cualquier sitio web externo al que puedas acceder a través de enlaces presentes en HyperGamerX antes de proporcionar cualquier tipo de información personal. Estas políticas de privacidad pueden diferir de las nuestras y pueden influir en la forma en que tu información personal se recopila, utiliza o comparte en dichos sitios web externos.',
+    'privacidad.25':
+      'En HyperGamerX nos esforzamos por proteger tu privacidad y garantizar la confidencialidad de tu información personal dentro de nuestro propio sitio web. Sin embargo, no tenemos control directo sobre los sitios web de terceros, por lo que es importante que tomes las precauciones necesarias al navegar por Internet y al interactuar con otros sitios web. Recuerda siempre revisar y comprender las políticas de privacidad y los términos de uso de cada sitio web que visitas, especialmente aquellos que recopilan información personal.',
+    'privacidad.26': 'Cambios en la Política de Privacidad',
+    'privacidad.27':
+      'Nos reservamos el derecho de actualizar o modificar esta Política de Privacidad en cualquier momento con el objetivo de garantizar la protección y privacidad de tus datos personales. Es importante que revises periódicamente esta página para mantenerte informado acerca de cualquier cambio realizado.',
+    'privacidad.28':
+      'La fecha de entrada en vigencia de la política se indicará claramente al comienzo del documento, de manera que puedas identificar fácilmente cuándo se realizaron las modificaciones más recientes. Tu continua utilización de nuestros servicios después de la fecha de entrada en vigencia de cualquier cambio en la Política de Privacidad constituye tu aceptación de dichos cambios.',
+    'privacidad.29': 'Contacto',
+    'privacidad.30':
+      'Si tienes alguna pregunta o inquietud sobre nuestra Política de Privacidad, puedes contactarnos a través de sunrizecontact@gmail.com. Al utilizar HyperGamerX, aceptas los términos de esta Política de Privacidad.',
+    'privacidad.31': 'Última actualización: 16/07/2023',
   },
 } as const;

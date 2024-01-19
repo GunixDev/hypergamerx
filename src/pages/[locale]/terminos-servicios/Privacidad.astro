@@ -1,169 +1,112 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import LayoutPrincipal from '../../../layouts/LayoutPrincipal.astro';
 
 export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'es' } }];
 }
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <LayoutPrincipal>
   <div class='w-4/5 mx-auto mt-10'>
-    <h1 class='text-6xl text-center font-bold my-6'>Privacidad</h1>
-    <article>
-      <p class='my-10 font-semibold'>Fecha de vigencia: 17/07/2028</p>
-    </article>
+    <h1 class='text-6xl text-center font-bold my-6'>{t('privacidad.1')}</h1>
     <article class='text-lg'>
-      En HyperGamerX, propiedad de Sunrize Studios, valoramos y respetamos tu privacidad. Esta Política de Privacidad
-      describe cómo recopilamos, utilizamos y protegemos la información personal que recopilamos de los usuarios de
-      nuestro sitio web. Al utilizar el sitio web de HyperGamerX, aceptas las prácticas descritas en esta política.
+      {t('privacidad.2')}
     </article>
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Recopilación de Información</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.3')}</h2>
       <p class='my-2'>
-        Recopilamos ciertos datos e información personal para mejorar tu experiencia en HyperGamerX y brindarte
-        contenido relevante. La información que recopilamos incluye:
+        {t('privacidad.4')}
       </p>
       <li class='my-10'>
-        <strong>Datos de Navegación:</strong> Recopilamos información estándar del registro del servidor, como tu
-        dirección IP, tipo de navegador, proveedor de servicios de Internet (ISP), páginas de referencia/salida y marcas
-        de fecha/hora. Esta información es recopilada de forma automática por nuestros sistemas y servicios de análisis,
-        incluyendo Vercel Analytics.
+        {t('privacidad.5')}
       </li>
       <li class='my-10'>
-        <strong>Datos de Uso:</strong> Recopilamos información sobre cómo utilizas HyperGamerX, incluyendo la cantidad
-        de clics realizados, la duración de tu visita en el sitio, tus interacciones con la página web y las acciones
-        que realizas durante tu navegación.
+        {t('privacidad.6')}
       </li>
       <li class='my-10'>
-        <strong>Datos de Localización:</strong> Podemos recopilar información sobre tu ubicación geográfica aproximada
-        con fines analíticos y estadísticos.
+        {t('privacidad.7')}
       </li>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Uso de la Información Recopilada</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.8')}</h2>
       <li class='my-10'>
-        <strong>Mejora de la Experiencia del Usuario:</strong> Utilizamos la información para personalizar y mejorar tu
-        experiencia en HyperGamerX, brindándote contenido relevante y adaptado a tus intereses.
+        {t('privacidad.9')}
       </li>
       <li class='my-10'>
-        <strong>Análisis y Estadísticas:</strong> Analizamos la información recopilada para comprender mejor cómo se
-        utiliza nuestro sitio web, qué contenido es más popular y cómo podemos mejorar nuestros servicios.
+        {t('privacidad.10')}
       </li>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Compartir Información Personal</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.11')}</h2>
       <p class='my-2'>
-        En nuestra empresa, nos tomamos muy en serio la privacidad y protección de tu información personal. Queremos
-        asegurarte que en ningún caso vendemos, intercambiamos ni transferimos de ninguna otra manera tus datos a
-        terceros sin tu consentimiento expreso. Tu privacidad es nuestra máxima prioridad.
+        {t('privacidad.12')}
       </p>
       <p class='my-2'>
-        Sin embargo, es importante destacar que en determinadas circunstancias, puede ser necesario compartir tu
-        información con terceros para poder ofrecerte nuestros servicios de manera eficiente y cumplir con las
-        obligaciones legales vigentes. En estos casos, nos aseguraremos de que cualquier divulgación de datos se realice
-        de acuerdo con las leyes y regulaciones aplicables.
+        {t('privacidad.13')}
       </p>
       <p class='my-2'>
-        Nuestro compromiso es utilizar tus datos personales únicamente con el propósito de brindarte nuestros servicios
-        de manera efectiva y mejorar tu experiencia como cliente. No compartiremos tu información con terceros para
-        fines de marketing o publicidad sin tu consentimiento explícito.
+        {t('privacidad.14')}
       </p>
       <p class='my-2'>
-        Valoramos la confianza que depositas en nosotros al proporcionarnos tus datos personales y nos esforzamos por
-        mantener altos estándares de seguridad para proteger tu información. Siempre estamos dispuestos a responder a
-        cualquier pregunta o inquietud que puedas tener sobre nuestra política de privacidad y el uso de tus datos
-        personales.
+        {t('privacidad.15')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Protección de la Información</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.16')}</h2>
       <p class='my-2'>
-        En nuestra organización, priorizamos la protección de la información personal que recopilamos implementando
-        medidas de seguridad adecuadas. Comprendemos la importancia de mantener tus datos seguros y confidenciales. Sin
-        embargo, es importante que tengas en cuenta que ninguna transmisión de datos a través de Internet o
-        almacenamiento en línea puede considerarse completamente segura en todos los casos.
+        {t('privacidad.17')}
       </p>
       <p class='my-2'>
-        A pesar de nuestros constantes esfuerzos por salvaguardar tus datos personales, no podemos ofrecer una garantía
-        absoluta de la seguridad de la información transmitida a través de nuestro sitio web. Existen diversos factores
-        fuera de nuestro control que podrían comprometer la integridad de los datos durante su tránsito, como posibles
-        fallos técnicos, ataques cibernéticos, interceptación no autorizada u otros incidentes similares.
+        {t('privacidad.18')}
       </p>
       <p class='my-2'>
-        No obstante, queremos asegurarte que empleamos tecnologías y prácticas de seguridad de vanguardia para reducir
-        al máximo los riesgos y proteger tus datos personales. Esto implica la utilización de métodos de cifrado,
-        firewalls, controles de acceso y otras medidas de seguridad avanzadas para mantener un entorno seguro en el que
-        se almacenan y procesan tus datos.
+        {t('privacidad.19')}
       </p>
       <p class='my-2'>
-        Además, nos comprometemos a estar al tanto de las últimas tendencias y desarrollos en seguridad informática para
-        actualizar constantemente nuestras medidas de protección. Realizamos auditorías periódicas y evaluaciones de
-        riesgos para identificar posibles vulnerabilidades y tomar las medidas necesarias para mitigar cualquier riesgo
-        potencial.
+        {t('privacidad.20')}
       </p>
       <p class='my-2'>
-        Te recomendamos que también adoptes medidas de seguridad adicionales por tu parte, como el uso de contraseñas
-        sólidas y únicas, la actualización regular de tus dispositivos y el uso de software antivirus actualizado.
-        Asimismo, es fundamental que estés atento/a a posibles signos de actividad sospechosa y nos informes de
-        inmediato si sospechas que ha habido alguna infracción de seguridad.
+        {t('privacidad.21')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Enlaces a Terceros</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.22')}</h2>
       <p class='my-2'>
-        HyperGamerX es un sitio web que puede contener enlaces a diversos sitios web de terceros. Sin embargo, es
-        importante tener en cuenta que esta Política de Privacidad se aplica exclusivamente a nuestro propio sitio web y
-        no rige las prácticas de privacidad de otros sitios enlazados. No asumimos ninguna responsabilidad por las
-        prácticas de privacidad implementadas por estos sitios web de terceros.
+        {t('privacidad.23')}
       </p>
       <p class='my-2'>
-        Te recomendamos encarecidamente que leas detenidamente las políticas de privacidad de cualquier sitio web
-        externo al que puedas acceder a través de enlaces presentes en HyperGamerX antes de proporcionar cualquier tipo
-        de información personal. Estas políticas de privacidad pueden diferir de las nuestras y pueden influir en la
-        forma en que tu información personal se recopila, utiliza o comparte en dichos sitios web externos.
+        {t('privacidad.24')}
       </p>
       <p class='my-2'>
-        En HyperGamerX nos esforzamos por proteger tu privacidad y garantizar la confidencialidad de tu información
-        personal dentro de nuestro propio sitio web. Sin embargo, no tenemos control directo sobre los sitios web de
-        terceros, por lo que es importante que tomes las precauciones necesarias al navegar por Internet y al
-        interactuar con otros sitios web. Recuerda siempre revisar y comprender las políticas de privacidad y los
-        términos de uso de cada sitio web que visitas, especialmente aquellos que recopilan información personal.
+        {t('privacidad.25')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Cambios en la Política de Privacidad</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.26')}</h2>
       <p class='my-2'>
-        Nos reservamos el derecho de actualizar o modificar esta Política de Privacidad en cualquier momento con el
-        objetivo de garantizar la protección y privacidad de tus datos personales. Es importante que revises
-        periódicamente esta página para mantenerte informado acerca de cualquier cambio realizado.
+        {t('privacidad.27')}
       </p>
 
       <p class='my-2'>
-        Nos reservamos el derecho de actualizar o modificar esta Política de Privacidad en cualquier momento con el
-        objetivo de garantizar la protección y privacidad de tus datos personales. Es importante que revises
-        periódicamente esta página para mantenerte informado acerca de cualquier cambio realizado.
-      </p>
-      <p class='my-2'>
-        La fecha de entrada en vigencia de la política se indicará claramente al comienzo del documento, de manera que
-        puedas identificar fácilmente cuándo se realizaron las modificaciones más recientes. Tu continua utilización de
-        nuestros servicios después de la fecha de entrada en vigencia de cualquier cambio en la Política de Privacidad
-        constituye tu aceptación de dichos cambios.
+        {t('privacidad.28')}
       </p>
     </article>
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>Contacto</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.29')}</h2>
       <p class='my-2'>
-        Si tienes alguna pregunta o inquietud sobre nuestra Política de Privacidad, puedes contactarnos a través de
-        [correo electrónico de contacto]. Al utilizar HyperGamerX, aceptas los términos de esta Política de Privacidad.
+        {t('privacidad.30')}
       </p>
     </article>
     <article>
-      <p class='my-10 font-semibold'>Última actualización: 16/07/2023</p>
+      <p class='my-10 font-semibold'>{t('privacidad.31')}</p>
     </article>
   </div>
 </LayoutPrincipal>
