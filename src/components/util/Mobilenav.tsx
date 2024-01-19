@@ -124,6 +124,24 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
               </div>
             </div>
 
+            <div className='row-start-5'>
+              {t('footer.contactoseconocenos')}
+              <div className='text-xs'>
+                <ol className=' ml-6 list-disc'>
+                  <li className='duration-300 hover:text-gray-300'>
+                    <a hreflang={lang2} href={`/${lang2}/about/`}>
+                      {t('footer.sobrehypergamerx')}
+                    </a>
+                  </li>
+                  <li className='duration-300 hover:text-gray-300'>
+                    <a hreflang={lang2} href={'mailto:sunrizecontact@gmail.com'}>
+                      {t('footer.contacto')}
+                    </a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
             <div className='row-start-6 absolute bottom-12'>
               <p className='text-gray-400 ls:max-lg:text-xs'>
                 &copy; 2024 HyperGamerX. {t('article.creadorpor')}
