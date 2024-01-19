@@ -54,4 +54,18 @@ export const textos = {
       arial: ' Go to the article on how to obtain amber in LEGO Fortnite',
     },
   },
+  'how-to-get-copper-in-lego-fortnite': {
+    es: {
+      titulo: 'Como conseguir cobre en Lego Fortnite',
+      descripcion:
+        'En este articulo se te explicara el como obtener cobre en Lego Fortnite, una de los minerales que son difíciles de conseguir',
+      arial: 'Ir al articulo sobre como obtener cobre en LEGO Fortnite',
+    },
+    en: {
+      titulo: 'How to obtain copper in Lego Fortnite',
+      descripcion:
+        'In this article, you will be explained how to obtain copper in Lego Fortnite, one of the minerals that is difficult to acquire.',
+      arial: 'Go to the article on how to obtain copper in LEGO Fortnite',
+    },
+  },
 };
