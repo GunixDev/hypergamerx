@@ -41,6 +41,18 @@ export const ui = {
     'index.ultimanoticias': 'Latest news',
     'index.utlimasnoticiasde': 'Latest news from',
     'article.vertrailer': 'Watch trailer',
+    'footer.contactoseconocenos': 'Know us and Contact us',
+    'footer.sobrehypergamerx': 'About HyperGamerX',
+    'footer.contacto': 'Contact',
+    'about.title': 'Welcome to HyperGamerX!',
+    'about.1':
+      'Hey, how are you gamer! I knew that HyperGamerX is like paradise for all video game fans, and you will love it! discover everything we have for you, from breaking news to reviews of games',
+    'about.2': `Imagine a place where you find out about all the latest news from your favorite games, whether it's Minecraft, Geometry Dash, Fortnite, among others. Well, that's what HyperGamerX offers you. From epic releases to exciting events, here we keep you in the loop of everything that's happening in the world of video games.`,
+    'about.3': `Are you stuck on that tricky level? Do you need some tips to shine in your games? At HyperGamerX you have detailed guides and tricks that will make you the king of protips and you can beat your friends.`,
+    'about.4': `Our reviews are like those conversations with friends where everyone gives their honest opinion. We analyze each game from top to bottom, from gameplay to graphics and plot, so you have all the info you need before you go on the adventure.`,
+    'about.5': `At HyperGamerX we don't just talk about video games, we live them with passion! We understand the fire you feel for gaming, because we feel it too. So, join our`,
+    'about.6': `, where we all share that unique excitement for video games and share opinions among them, you can also find people to play with, soon we will do events among our community, with great prizes!`,
+    'about.7': `Don't miss a single detail on this amazing journey. Ready to dive in? Visit HyperGamerX today and live the ultimate experience for true video game fans. We'll be waiting for you with the controls ready! 🎮✨`,
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -77,5 +89,23 @@ export const ui = {
     'index.ultimanoticias': 'Últimas noticias',
     'index.utlimasnoticiasde': 'Últimas noticias de',
     'article.vertrailer': 'Ver trailer',
+    'footer.contactoseconocenos': 'Conócenos y Contáctanos',
+    'footer.sobrehypergamerx': 'Sobre HyperGamerX',
+    'footer.contacto': 'Contacto',
+    'about.title': 'Bienvenido a HyperGamerX!',
+    'about.1':
+      '¡Hey que tal gamer! Sabia que HyperGamerX es como el paraíso para todos los fanáticos de los videojuegos, ¡y te va a encantar! descubre todo lo que tenemos para ti, desde noticias de última hora hasta reseñas de los juegos',
+    'about.2':
+      'Imagínate un lugar donde te enteras de todas las noticias más nuevas de tus juegos favoritos ya sea Minecraft, Geometry Dash, Fortnite, entre otros. Pues bien, eso es lo que te ofrece HyperGamerX. Desde lanzamientos épicos hasta eventos emocionantes, aquí te mantenemos en la onda de todo lo que está pasando en el mundo de los videojuegos.',
+    'about.3':
+      '¿Te sientes trabado en ese nivel complicado? ¿Necesitas algunos consejos para brillar en tus juegos? En HyperGamerX tiene guías detalladas y trucos que te convertirán en el rey de los protips y puedas ganarle a tus amigos.',
+    'about.4':
+      'Nuestras reseñas son como esas conversaciones con amigos en las que todos dan su opinión sincera. Analizamos cada juego de arriba a abajo, desde la jugabilidad hasta los gráficos y la trama, para que tengas toda la info que necesitas antes de lanzarte a la aventura.',
+    'about.5':
+      'En HyperGamerX no solo hablamos de videojuegos, ¡los vivimos con pasión! Entendemos el fuego que sientes por el gaming, porque nosotros también lo sentimos. Así que, únete a nuestro',
+    'about.6':
+      ', donde todos compartimos esa emoción única por los videojuegos y compartimos opiniones entre los mismos, ademas de que podras encontrar personas con las que puedes jugar, pronto haremos eventos entre nuestra comunidad, con grandes premios!.',
+    'about.7':
+      'No te pierdas ni un solo detalle en este viaje alucinante. ¿Preparado para sumergirte? Visita HyperGamerX hoy mismo y vive la experiencia suprema para los verdaderos apasionados de los videojuegos. ¡Te esperamos con los controles listos! 🎮✨',
   },
 } as const;
