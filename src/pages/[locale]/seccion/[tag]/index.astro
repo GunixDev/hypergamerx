@@ -10,17 +10,27 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 export async function getStaticPaths() {
-  return [{ params: { locale: 'es', tag: 'news' } }, { params: { locale: 'en', tag: 'news' } }];
+  return [
+    { params: { locale: 'es', tag: 'news' } },
+    { params: { locale: 'en', tag: 'news' } },
+    { params: { locale: 'en', tag: 'guides' } },
+    { params: { locale: 'es', tag: 'guides' } },
+  ];
 }
 
+const { tag } = Astro.params;
+let id: '' | 'noticia' | 'resena' | 'guia' = '';
+if (tag == 'news') {
+  id = 'noticia';
+} else if (tag == 'guides') {
+  id = 'guia';
+}
 const allPosts = await getCollection('blog', (data) => {
-  return data.data.isDraft !== true && data.slug.startsWith(lang) && data.data.genero.includes('noticia');
+  return data.data.isDraft !== true && data.slug.startsWith(lang) && data.data.genero.includes(id);
 });
 
 allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
-const Ultimo = allPosts.slice(0, 1);
-const recentpost = allPosts.slice(1, 4);
-const newsPosts = allPosts.filter((post) => post.data.genero.includes('noticia')).slice(0, 12);
+const Posts = allPosts.filter((post) => post.data.genero.includes(id)).slice(0, 12);
 const minecraftPosts = allPosts
   .filter(
     (post) =>
@@ -38,27 +48,72 @@ const geometryPosts = allPosts
       post.data.videojuego.some((videojuego: { slug: string }) => ['geometry-dash'].includes(videojuego.slug)),
   )
   .slice(0, 6);
+
+const legofortnitePosts = allPosts
+  .filter(
+    (post) =>
+      post.data.videojuego &&
+      post.data.videojuego.some((videojuego: { slug: string }) => ['lego-fortnite'].includes(videojuego.slug)),
+  )
+  .slice(0, 6);
 ---
 
 <LayoutPrincipal>
   <main>
     <div class='w-11/12 mx-auto'>
       <h1 class='md:text-4xl text-base mx-auto font-bold mt-12 md:mt-2 text-white'>
-        {t('seccion.news')}
+        {id === 'guia' ? t('seccion.guide') : t('seccion.news')}
       </h1>
       <div class='w-10/12 mx-auto'>
-        <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimanoticias')}</h2>
+        <h2 class='lg:text-3xl font-bold my-4'>
+          {id === 'guia' ? t('seccion.ultimasguias') : t('index.ultimanoticias')}
+        </h2>
         <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
-          {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+          {Posts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
         </div>
-        <h2 class='lg:text-3xl font-bold mt-10 mb-4'>{t('index.utlimasnoticiasde')} Minecraft</h2>
-        <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
-          {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
-        </div>
-        <h2 class='lg:text-3xl font-bold mt-10 mb-4'>{t('index.utlimasnoticiasde')} Geometry Dash</h2>
-        <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
-          {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
-        </div>
+        {
+          minecraftPosts.length > 2 ? (
+            <>
+              <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
+                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Minecraft
+              </h2>
+              <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
+                {minecraftPosts.map((post) => (
+                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
+                ))}
+              </div>
+            </>
+          ) : null
+        }
+
+        {
+          geometryPosts.length > 2 ? (
+            <>
+              <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
+                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} LEGO Fortnite
+              </h2>
+              <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
+                {geometryPosts.map((post) => (
+                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
+                ))}
+              </div>
+            </>
+          ) : null
+        }
+        {
+          legofortnitePosts.length > 2 ? (
+            <>
+              <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
+                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Lego Fortnite
+              </h2>
+              <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
+                {legofortnitePosts.map((post) => (
+                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
+                ))}
+              </div>
+            </>
+          ) : null
+        }
       </div>
     </div>
   </main>

@@ -188,6 +188,10 @@ export const ui = {
     'privacidad.30':
       'If you have any questions or concerns about our Privacy Policy, you can contact us at sunrizecontact@gmail.com. By using HyperGamerX, you agree to the terms of this Privacy Policy.',
     'privacidad.31': 'Last updated: 01/19/2023',
+    'seccion.guide': 'Guide articles',
+    'seccion.ultimasguias': 'Latest guides',
+    'seccion.ultimasguiasde': 'Latest guides from',
+    'seccion.guias': 'Guides',
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -399,5 +403,9 @@ export const ui = {
     'privacidad.30':
       'Si tienes alguna pregunta o inquietud sobre nuestra Política de Privacidad, puedes contactarnos a través de sunrizecontact@gmail.com. Al utilizar HyperGamerX, aceptas los términos de esta Política de Privacidad.',
     'privacidad.31': 'Última actualización: 16/07/2023',
+    'seccion.guide': 'Artículos de guias',
+    'seccion.ultimasguias': 'Últimas guías',
+    'seccion.ultimasguiasde': 'Últimas guías de',
+    'seccion.guias': 'Guías',
   },
 } as const;

@@ -53,6 +53,11 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
                       {t('nav.noticias')}
                     </a>
                   </li>
+                  <li>
+                    <a hreflang={lang2} href={`/${lang2}/seccion/guides/`} className='text-blue-400'>
+                      {t('seccion.guias')}
+                    </a>
+                  </li>
                 </ol>
               </div>
             </div>
@@ -159,7 +164,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
         </div>
       )}
 
-      <nav className='bg-gray-900 duration-500 ls:max-sm:fixed w-full h-auto grid sm:grid-cols-5 sm:relative py-2 ls:max-sm:grid-cols-4 z-[100]'>
+      <nav className='bg-gray-900 duration-500 ls:max-sm:fixed w-full h-auto grid md:grid-cols-5 sm:grid-cols-6 sm:relative py-2 ls:max-sm:grid-cols-4 z-[100] '>
         <div className='sm:hidden col-span-1'>
           <button
             onClick={() => {
@@ -202,13 +207,18 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
               {t('nav.inicio')}
             </a>
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-xs sm:text-base ls:max-sm:hidden'>
-            <div className='mx-auto z-50 md:col-start-2 lg:col-start-3'>
+          <div className='grid grid-cols-3 lg:grid-cols text-xs sm:text-base ls:max-sm:hidden sm:gap-20 md:gap-6'>
+            <div className='z-50 ls:max-sm:col-start-3'>
+              <a hreflang={lang2} href={`/${lang2}/seccion/guides/`} className='text-blue-400'>
+                {t('seccion.guias')}
+              </a>
+            </div>
+            <div className='z-50'>
               <a hreflang={lang2} href={`/${lang2}/seccion/news/`} className='text-blue-400'>
                 {t('nav.noticias')}
               </a>
             </div>
-            <div className='mx-auto z-50'>
+            <div className='z-50'>
               <a hreflang={lang2} href={`/${lang2}/`} className='text-blue-400'>
                 {t('nav.inicio')}
               </a>
