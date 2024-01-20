@@ -20,7 +20,7 @@ const allPosts = await getCollection('blog', (data) => {
 allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
-const newsPosts = allPosts.filter((post) => post.data.genero.includes('noticia')).slice(4, 12);
+const newsPosts = allPosts.filter((post) => post.data.genero.includes('noticia')).slice(0, 12);
 const minecraftPosts = allPosts
   .filter(
     (post) =>
@@ -48,25 +48,14 @@ const geometryPosts = allPosts
       </h1>
       <div class='w-10/12 mx-auto'>
         <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimanoticias')}</h2>
-        <div class='grid grid-cols-5 h-auto lg:h-max-[384px] relative bg-slate-950'>
-          <div class='col-span-3'>
-            {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}
-          </div>
-          <div class='col-span-2 mx-2 lg:mx-4'>
-            <div
-              class='relative w-full h-auto my-1 md:my-3 md:p-1 grid grid-flow-row gap-1 lss:gap-2 sm:my-4 sm:gap-6 md:gap-7'>
-              {recentpost.map((post) => <Listdata file={post.slug} data={post.data} lang={lang} />)}
-            </div>
-          </div>
-        </div>
         <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
           {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
         </div>
-        <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.utlimasnoticiasde')} Minecraft</h2>
+        <h2 class='lg:text-3xl font-bold mt-10 mb-4'>{t('index.utlimasnoticiasde')} Minecraft</h2>
         <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
           {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
         </div>
-        <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.utlimasnoticiasde')} Geometry Dash</h2>
+        <h2 class='lg:text-3xl font-bold mt-10 mb-4'>{t('index.utlimasnoticiasde')} Geometry Dash</h2>
         <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
           {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
         </div>
