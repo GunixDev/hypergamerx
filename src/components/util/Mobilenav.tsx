@@ -164,7 +164,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
         </div>
       )}
 
-      <nav className='bg-gray-900 duration-500 ls:max-sm:fixed w-full h-auto grid md:grid-cols-5 sm:grid-cols-5 sm:relative py-2 ls:max-sm:grid-cols-4 z-[100] p-2 sm:p-4'>
+      <nav className='bg-gray-900 duration-500 ls:max-sm:fixed w-full h-auto grid md:grid-cols-5 sm:grid-cols-5 sm:relative py-2 ls:max-sm:grid-cols-4 z-[100] px-2 sm:px-4'>
         <div className='sm:hidden col-span-1'>
           <button
             onClick={() => {
