@@ -164,7 +164,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
         </div>
       )}
 
-      <nav className='bg-gray-900 duration-500 ls:max-sm:fixed w-full h-auto grid md:grid-cols-5 sm:grid-cols-6 sm:relative py-2 ls:max-sm:grid-cols-4 z-[100] '>
+      <nav className='bg-gray-900 duration-500 ls:max-sm:fixed w-full h-auto grid md:grid-cols-5 sm:grid-cols-5 sm:relative py-2 ls:max-sm:grid-cols-4 z-[100] p-2 sm:p-4'>
         <div className='sm:hidden col-span-1'>
           <button
             onClick={() => {
@@ -173,7 +173,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
             <img width={20} height={20} src='/icons/menu.svg' className='align-middle mx-2' alt='Menu' />
           </button>
         </div>
-        <div className='flex sm:col-span-4 col-span-2'>
+        <div className='flex lg:col-span-4 col-span-2 sm:col-span-3'>
           <div className='text-xs sm:text-2xl font-bold mx-2 sm:my-1 ls:max-sm:text-center ls:max-sm:w-full'>
             <p>
               HyperGamerX <span className='text-xs align-super sm:align-top ls:max-sm:font-light'>{lang2}</span>
@@ -201,28 +201,22 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
             </select>
           </div>
         </div>
-        <div className='col-span-1 sm:my-auto'>
+        <div className='col-span-1 lg:col-span-1 sm:col-span-2 sm:my-auto w-full'>
           <div className='sm:hidden absolute right-0'>
             <a hreflang={lang2} href={`/${lang2}/`} className='text-blue-400 text-xs mx-2 font-bold'>
               {t('nav.inicio')}
             </a>
           </div>
-          <div className='grid grid-cols-3 lg:grid-cols text-xs sm:text-base ls:max-sm:hidden sm:gap-20 md:gap-6'>
-            <div className='z-50 ls:max-sm:col-start-3'>
-              <a hreflang={lang2} href={`/${lang2}/seccion/guides/`} className='text-blue-400'>
-                {t('seccion.guias')}
-              </a>
-            </div>
-            <div className='z-50'>
-              <a hreflang={lang2} href={`/${lang2}/seccion/news/`} className='text-blue-400'>
-                {t('nav.noticias')}
-              </a>
-            </div>
-            <div className='z-50'>
-              <a hreflang={lang2} href={`/${lang2}/`} className='text-blue-400'>
-                {t('nav.inicio')}
-              </a>
-            </div>
+          <div className='grid grid-cols-3 lg:grid-cols text-xs sm:text-base ls:max-sm:hidden sm:gap-20 md:gap-6 text-center'>
+            <a hreflang={lang2} href={`/${lang2}/seccion/guides/`} className='text-blue-400'>
+              {t('seccion.guias')}
+            </a>
+            <a hreflang={lang2} href={`/${lang2}/seccion/news/`} className='text-blue-400'>
+              {t('nav.noticias')}
+            </a>
+            <a hreflang={lang2} href={`/${lang2}/`} className='text-blue-400'>
+              {t('nav.inicio')}
+            </a>
           </div>
         </div>
       </nav>
