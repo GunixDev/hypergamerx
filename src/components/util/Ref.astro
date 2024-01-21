@@ -1,6 +1,6 @@
 ---
+import { getEntryBySlug } from 'astro:content';
 import { getLangFromUrl } from '../../i18n/utils';
-import { textos } from './Refdata';
 
 interface Props {
   url: string;
@@ -9,34 +9,10 @@ interface Props {
 
 const { url, text } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-let titulo;
-let descripcion;
-let arial;
-
-switch (url) {
-  case 'geometry-dash':
-    titulo = textos[url][lang].titulo;
-    descripcion = textos[url][lang].descripcion;
-    arial = textos[url][lang].arial;
-    break;
-  case 'minecraft':
-    titulo = textos[url][lang].titulo;
-    descripcion = textos[url][lang].descripcion;
-    arial = textos[url][lang].arial;
-    break;
-  case 'how-to-get-obsidian-in-fortnite-lego':
-    titulo = textos[url][lang].titulo;
-    descripcion = textos[url][lang].descripcion;
-    arial = textos[url][lang].arial;
-  case 'how-to-get-amber-in-lego-fortnite':
-    titulo = textos[url][lang].titulo;
-    descripcion = textos[url][lang].descripcion;
-    arial = textos[url][lang].arial;
-  case 'how-to-get-copper-in-lego-fortnite':
-    titulo = textos[url][lang].titulo;
-    descripcion = textos[url][lang].descripcion;
-    arial = textos[url][lang].arial;
-}
+const data = await getEntryBySlug('blog', `${lang}/${url}`);
+let titulo = data?.data.title;
+let descripcion = data?.data.description;
+let arial = `ir al articulo de ${data?.data.title}`;
 ---
 
 <span class='relative group'>
