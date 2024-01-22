@@ -134,6 +134,11 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
               <div className='text-xs'>
                 <ol className=' ml-6 list-disc'>
                   <li className='duration-300 hover:text-gray-300'>
+                    <a hreflang={lang2} href={'https://www.paypal.com/donate/?hosted_button_id=K7PXSGWS98LXQ'}>
+                      {t('footer.donar')}
+                    </a>
+                  </li>
+                  <li className='duration-300 hover:text-gray-300'>
                     <a hreflang={lang2} href={`/${lang2}/about/`}>
                       {t('footer.sobrehypergamerx')}
                     </a>
