@@ -37,102 +37,31 @@ export const amazon = {
         image: '',
       },
     ],
-    'geometry-dash': {
-      product1: {
-        titulo: '',
-        link: '',
-        descripcion: '',
+    'geometry-dash': [
+      {
+        titulo: 'Geometry Dash Cuaderno 1',
+        link: 'https://www.amazon.es/G%25C3%25A9ometry-D%25C3%25A1sh-Notebook-development-convenience/dp/B0BGKHY6DM?keywords=geometry+dash&amp;qid=1706058528&amp;sr=8-2&amp;linkCode=ll1&amp;tag=hypergamerx-21&amp;linkId=76bbc274accbd43a797f504797a92a0c&amp;language=es_ES&amp;ref_=as_li_ss_tl&_encoding=UTF8&tag=hypergamerx-21&linkCode=ur2&linkId=8d2c80a655dd07555df7c9b6c7728460&camp=3638&creative=24630',
+        descripcion:
+          'Haz un cuaderno personal todos los días. Tomar notas de las cosas que hacer. Anota buenos pensamientos, iniciativas repentinas. Es un diario perfecto Adecuado en todas partes y en todos los diferentes entornos de trabajo y aprendizaje.',
         image: '',
       },
-      product2: {
-        titulo: '',
-        link: '',
-        descripcion: '',
+      {
+        titulo: 'Geometry Dash Cuaderno 2',
+        link: 'https://www.amazon.es/G%25C3%25A9ometry-D%25C3%25A1sh-Notebook-development-convenience/dp/B0BGKX37FW?keywords=geometry+dash&amp;qid=1706058528&amp;sr=8-19&amp;linkCode=ll1&amp;tag=hypergamerx-21&amp;linkId=9c1309122311a51445cf0386acc83b19&amp;language=es_ES&amp;ref_=as_li_ss_tl&_encoding=UTF8&tag=hypergamerx-21&linkCode=ur2&linkId=8bdfd92a78c3d2b4b7fce0c3b6afe4e1&camp=3638&creative=24630',
+        descripcion:
+          '¡Desata tu creatividad y toma notas con estilo con nuestro exclusivo cuaderno inspirado en Geometry Dash! Diseñado pensando en los amantes de este emocionante juego, el Geometry Dash Cuaderno 2 combina funcionalidad y diseño para ofrecerte la herramienta perfecta para tus ideas.',
         image: '',
       },
-      product3: {
-        titulo: '',
-        link: '',
-        descripcion: '',
+      {
+        titulo: 'Geometry Dash Cuaderno 3',
+        link: 'https://www.amazon.es/G%25C3%25A9ometry-D%25C3%25A1sh-Notebook-development-convenience/dp/B0BGKN34GK?keywords=geometry+dash&amp;qid=1706058528&amp;sr=8-20&amp;linkCode=ll1&amp;tag=hypergamerx-21&amp;linkId=8c89f033c3e288a7095b7dab1aeaf696&amp;language=es_ES&amp;ref_=as_li_ss_tl&_encoding=UTF8&tag=hypergamerx-21&linkCode=ur2&linkId=ba977b5feddd525075ca2b7173c8e7ee&camp=3638&creative=24630',
+        descripcion:
+          '¿Buscas un cuaderno que no solo sea funcional sino también una expresión de tu pasión por Geometry Dash? Este cuaderno te dará inspiración y el juego se encuentran en cada página. Este cuaderno no es solo un accesorio; es una declaración de tu amor por el ritmo y la geometría.',
         image: '',
       },
-      product4: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product5: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-    },
-    valorant: {
-      product1: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product2: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product3: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product4: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product5: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-    },
-    'lego-fortnite': {
-      product1: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product2: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product3: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product4: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-      product5: {
-        titulo: '',
-        link: '',
-        descripcion: '',
-        image: '',
-      },
-    },
+    ],
+    valorant: [{}],
+    'lego-fortnite': [{}],
   },
   en: [],
 };
