@@ -35,9 +35,7 @@ const minecraftPosts = allPosts
   .filter(
     (post) =>
       post.data.videojuego &&
-      post.data.videojuego.some((videojuego: { slug: string }) =>
-        ['minecraft-for-windows', 'minecraft-java-edition'].includes(videojuego.slug),
-      ),
+      post.data.videojuego.some((videojuego: { slug: string }) => ['minecraft'].includes(videojuego.slug)),
   )
   .slice(0, 6);
 

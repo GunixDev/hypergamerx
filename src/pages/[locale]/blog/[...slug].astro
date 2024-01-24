@@ -7,6 +7,8 @@ import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import ArticulosRamdon from '../../../components/ArticulosRamdon.astro';
 import Estrellas from '../../../components/Estrellas.astro';
 import Iframeop from '../../../components/util/Iframeop';
+import Producto from '../../../components/util/productos';
+import { amazon } from '../../../components/util/amazon';
 
 export async function getStaticPaths() {
   const pages = await getCollection('blog');
@@ -61,7 +63,22 @@ if (gamesposts.length >= 3) {
   gamesposts.length = 3;
 }
 
+
+
 allPosts.length = 5;
+let amazonlang:any = amazon[lang2]
+let amazon1
+if(games.slug == "minecraft"){
+  amazon1 = amazonlang.minecraft
+}else if( games.slug == "geometry-dash"){
+  amazon1 = amazonlang['geometry-dash']
+} else if( games.slug == "lego-fortnite"){
+  amazon1 = amazonlang['lego-fortnite']
+}else if(games.slug == "valorant"){
+  amazon1 = amazonlang.valorant
+}
+
+console.log(amazon1)
 ---
 
 <LayoutPrincipal
@@ -218,6 +235,22 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
               </div>
             )
           }
+
+{
+  postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
+    <div
+      class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
+        resena ? ' ls:max-sm:col-span-6' : ' w-11/12 mx-auto'
+      }`}
+    >
+      <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
+        {t('articulo.compraproductosde')} {games.data.name}
+      </h2>
+      <Producto juego={amazon1} lang={locale} />
+    </div>
+  )
+}
+
         </div>
       </div>
     </div>
