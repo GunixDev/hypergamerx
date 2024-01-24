@@ -68,17 +68,16 @@ if (gamesposts.length >= 3) {
 allPosts.length = 5;
 let amazonlang:any = amazon[lang2]
 let amazon1
-if(games.slug == "minecraft"){
+if(games?.slug == "minecraft"){
   amazon1 = amazonlang.minecraft
-}else if( games.slug == "geometry-dash"){
+}else if( games?.slug == "geometry-dash"){
   amazon1 = amazonlang['geometry-dash']
-} else if( games.slug == "lego-fortnite"){
+} else if( games?.slug == "lego-fortnite"){
   amazon1 = amazonlang['lego-fortnite']
-}else if(games.slug == "valorant"){
+}else if(games?.slug == "valorant"){
   amazon1 = amazonlang.valorant
 }
 
-console.log(amazon1)
 ---
 
 <LayoutPrincipal
@@ -236,7 +235,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
             )
           }
 
-{
+{/*
   postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
     <div
       class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
@@ -249,7 +248,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
       <Producto juego={amazon1} lang={locale} />
     </div>
   )
-}
+*/}
 
         </div>
       </div>
