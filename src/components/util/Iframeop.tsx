@@ -35,7 +35,8 @@ export default function IframeOp({ id }: IframeProps) {
           <img
             onClick={() => setIsOpen(true)}
             src={`https://i3.ytimg.com/vi/${id}/maxresdefault.jpg`}
-            srcset={`https://i3.ytimg.com/vi/${id}/mqdefault.jpg 256w,
+            srcset={`https://i.ytimg.com/vi/${id}/default.jpg 256w,
+            https://i3.ytimg.com/vi/${id}/mqdefault.jpg 512w,
             https://i3.ytimg.com/vi/${id}/maxresdefault.jpg 1280w`}
             width='479'
             height='270'
