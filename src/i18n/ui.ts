@@ -409,7 +409,7 @@ export const ui = {
     'seccion.ultimasguias': 'Últimas guías',
     'seccion.ultimasguiasde': 'Últimas guías de',
     'seccion.guias': 'Guías',
-    'footer.donaar': 'Donar',
+    'footer.donar': 'Donar',
     'articulo.compraproductosde': 'Compra productos de',
   },
 } as const;
