@@ -1,4 +1,4 @@
 {
-  "rewrites": [{ "source": "/:path*", "destination": "/:path*/" }],
+  "rewrites": [{ "source": "/:path*", "destination": "/:path*" }],
   "trailingSlash": true
 }
