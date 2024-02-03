@@ -1,4 +1,5 @@
 {
-  "rewrites": [{ "source": "/:path*", "destination": "/:path*/", "statusCode": 301 }],
-  "trailingSlash": true
+  "rewrites": [{ "source": "/:path*", "destination": "/:path*/", "permanent": true }],
+  "trailingSlash": true,
+  "cleanUrls": true
 }
