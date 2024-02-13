@@ -1,0 +1,113 @@
+---
+import LayoutPrincipal from '../../layouts/LayoutPrincipal.astro';
+export async function getStaticPaths() {
+  return [{ params: { locale: 'en' } }, { params: { locale: 'es' } }];
+}
+---
+
+<LayoutPrincipal>
+  <main>
+    <aside class='form'>
+      <div>
+        <label for='search'>Search</label>
+        <span>Enter a searach term or phrase to search the blog</span>
+      </div>
+      <input type='search' required min='2' max='24' id='search' name='search' placeholder='Enter a search term..' />
+    </aside>
+
+    <p id='searchReadout'></p>
+    <section aria-label='Search Results'>
+      <ul id='searchResults'></ul>
+    </section>
+  </main>
+</LayoutPrincipal>
+
+<script>
+  import DOMPurify from 'dompurify';
+  import Fuse from 'fuse.js';
+  let SEARCH_DATA: any;
+  let FUSE_INSTANCE: any;
+  const FUSE_OPTIONS = {
+    includeScore: true,
+    shouldSort: true,
+    minMatchCharLength: 2,
+    threshold: 0.4,
+    keys: [
+      {
+        name: 'title',
+        weight: 1,
+      },
+      {
+        name: 'description',
+        weight: 0.75,
+      },
+    ],
+  };
+  const SPINNER =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256" id="spinner"><path d="M236,128a108,108,0,0,1-216,0c0-42.52,24.73-81.34,63-98.9A12,12,0,1,1,93,50.91C63.24,64.57,44,94.83,44,128a84,84,0,0,0,168,0c0-33.17-19.24-63.43-49-77.09A12,12,0,1,1,173,29.1C211.27,46.66,236,85.48,236,128Z"></path><style>#spinner{animation: spin 1s linear infinite;} @keyframes spin{ 100%{transform: rotate(360deg);}}</style></svg>';
+  //Selectors
+  const search = document.querySelector('#search') as HTMLInputElement;
+  const searchReadout = document.querySelector('#searchReadout') as HTMLParagraphElement;
+  const searchResults = document.querySelector('#searchResults') as HTMLUListElement;
+  //Functions
+  const updateDocumentTItle = (searchTerm: any) => {
+    document.title = search ? `Search Results for "${searchTerm}"` : 'Search Results';
+  };
+  const updateSearchReadout = (searchTerm: any) => {
+    searchReadout.textContent = search ? `Search Results for "${searchTerm}"` : '';
+  };
+  //Event Listeners
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = DOMPurify.sanitize(new URLSearchParams(window.location.search).get('q') ?? '');
+    fetchSearchResults(urlParams);
+    updateDocumentTItle(urlParams);
+    updateSearchReadout(urlParams);
+    search.value = urlParams;
+    search.focus();
+  });
+
+  function updateSearchPageURL(search: any) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('q', search);
+    window.history.replaceState(null, '', url);
+  }
+
+  function generateSearchList(results: any) {
+    return results
+      .map((result: any) => {
+        const { item } = result;
+        return `<li class=" bg-red-400 my-2"><a href="blog/${item.slug.slice(3)}">${item.title}</a><p>${item.description}</p></li>`;
+      })
+      .join('');
+  }
+
+  async function fetchSearchResults(search: any) {
+    if (search.length === 0) return;
+    searchResults.innerHTML = SPINNER;
+    if (!SEARCH_DATA) {
+      try {
+        const lang = document.documentElement.lang;
+        const res = await fetch(`/${lang}/search.json`);
+        if (!res.ok) throw new Error('Network response was not ok');
+        const data = await res.json();
+        SEARCH_DATA = data;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    if (SEARCH_DATA && !FUSE_INSTANCE) {
+      FUSE_INSTANCE = new Fuse(SEARCH_DATA, FUSE_OPTIONS);
+    }
+    if (!FUSE_INSTANCE) return;
+    const searchResult = FUSE_INSTANCE.search(search);
+    searchResults.innerHTML = searchResult.length > 0 ? generateSearchList(searchResult) : '<li>No results found</li>';
+  }
+
+  search.addEventListener('input', () => {
+    const searchTerm = DOMPurify.sanitize(search.value);
+    updateDocumentTItle(searchTerm);
+    updateSearchReadout(searchTerm);
+    fetchSearchResults(searchTerm);
+    updateSearchPageURL(searchTerm);
+  });
+</script>

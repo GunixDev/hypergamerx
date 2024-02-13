@@ -18,11 +18,14 @@
     "@astrojs/vercel": "^6.0.2",
     "astro": "^4.0.4",
     "astro-compress": "^2.2.5",
+    "dompurify": "^3.0.8",
+    "fuse.js": "^7.0.0",
     "preact": "^10.19.3",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@astrojs/partytown": "^2.0.4"
+    "@astrojs/partytown": "^2.0.4",
+    "@types/dompurify": "^3.0.5"
   }
 }

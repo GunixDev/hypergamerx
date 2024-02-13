@@ -1,6 +1,7 @@
 import { languages } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
 import { useState } from 'preact/hooks';
+import SearchWidget from '../SearchWidget';
 
 interface MobileNavProps {
   lang2: 'en' | 'es';
@@ -169,7 +170,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
         </div>
       )}
 
-      <nav className='bg-gray-900 duration-500 ls:max-sm:fixed w-full h-auto grid md:grid-cols-5 sm:grid-cols-5 sm:relative py-2 ls:max-sm:grid-cols-4 z-[100] px-2 sm:px-4'>
+      <nav className='bg-gray-900 duration-500 ls:max-sm:fixed w-full h-auto grid md:grid-cols-5 sm:grid-cols-5 sm:relative py-2 ls:max-sm:grid-cols-4 z-[100] px-2 sm:px-4 gap-1'>
         <div className='sm:hidden col-span-1'>
           <button
             onClick={() => {
@@ -178,7 +179,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
             <img width={20} height={20} src='/icons/menu.svg' className='align-middle mx-2' alt='Menu' />
           </button>
         </div>
-        <div className='flex lg:col-span-4 col-span-2 sm:col-span-3'>
+        <div className='flex lg:col-span-2 col-span-2 sm:col-span-3 '>
           <div className='text-xs sm:text-2xl font-bold mx-2 sm:my-1 ls:max-sm:text-center ls:max-sm:w-full'>
             <p>
               HyperGamerX <span className='text-xs align-super sm:align-top ls:max-sm:font-light'>{lang2}</span>
@@ -206,7 +207,10 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
             </select>
           </div>
         </div>
-        <div className='col-span-1 lg:col-span-1 sm:col-span-2 sm:my-auto w-full'>
+        <div className='col-span-1 lg:col-span-2 w-full my-auto ls:max-sm:hidden'>
+          <SearchWidget lang={lang2} />
+        </div>
+        <div className='col-span-1 lg:col-span-1 sm:col-span-1 sm:my-auto w-full'>
           <div className='sm:hidden absolute right-0'>
             <a hreflang={lang2} href={`/${lang2}/`} className='text-blue-400 text-xs mx-2 font-bold'>
               {t('nav.inicio')}
