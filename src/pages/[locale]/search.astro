@@ -72,7 +72,7 @@ export async function getStaticPaths() {
     return results
       .map((result: any) => {
         const { item } = result;
-        return `<li class=" bg-slate-800 p-2 my-2 mx-2"><a href="blog/${item.slug.slice(3)}"><h2 class="lg:text-2xl md:text-xl text-lg font-bold">${item.title}</h2><p class="lg:text-lg md:text-base text-xs">${item.description}</p></a></li>`;
+        return `<li class=" bg-slate-800 p-2 my-2 mx-2"><a href="blog/${item.slug.slice(3)}"><h2 class="lg:text-2xl md:text-xl text-lg font-bold">${item.title}</h2><p class="lg:text-base  text-xs">${item.description}</p></a></li>`;
       })
       .join('');
   }
