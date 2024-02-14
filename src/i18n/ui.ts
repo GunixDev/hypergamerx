@@ -194,6 +194,11 @@ export const ui = {
     'seccion.guias': 'Guides',
     'footer.donar': 'Donate',
     'articulo.compraproductosde': 'Buy products from',
+    'articulo.search': 'Search:',
+    'articulo.searchinput': 'Enter a search term...',
+    'articulo.searching': 'Search Results for ',
+    'articulo.searchnotresults': 'No results found',
+    'articulo.searching2': 'Searching results',
   },
   es: {
     'index.ultimoarticules': 'Últimos artículos',
@@ -411,5 +416,10 @@ export const ui = {
     'seccion.guias': 'Guías',
     'footer.donar': 'Donar',
     'articulo.compraproductosde': 'Compra productos de',
+    'articulo.search': 'Buscar:',
+    'articulo.searchinput': 'Introduzca un término de búsqueda...',
+    'articulo.searching': 'Resultados de búsqueda para ',
+    'articulo.searchnotresults': 'No se encontraron resultados',
+    'articulo.searching2': 'Buscando resultados',
   },
 } as const;

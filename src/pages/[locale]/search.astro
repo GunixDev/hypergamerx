@@ -6,16 +6,8 @@ export async function getStaticPaths() {
 ---
 
 <LayoutPrincipal>
-  <main>
-    <aside class='form'>
-      <div>
-        <label for='search'>Search</label>
-        <span>Enter a searach term or phrase to search the blog</span>
-      </div>
-      <input type='search' required min='2' max='24' id='search' name='search' placeholder='Enter a search term..' />
-    </aside>
-
-    <p id='searchReadout'></p>
+  <main class='mb-72'>
+    <h1 id='searchReadout'></h1>
     <section aria-label='Search Results'>
       <ul id='searchResults'></ul>
     </section>
@@ -27,6 +19,10 @@ export async function getStaticPaths() {
   import Fuse from 'fuse.js';
   let SEARCH_DATA: any;
   let FUSE_INSTANCE: any;
+  const locale: any = document.documentElement.lang;
+  import { useTranslations } from '../../i18n/utils';
+  const t = useTranslations(locale);
+  console.log(locale);
   const FUSE_OPTIONS = {
     includeScore: true,
     shouldSort: true,
@@ -51,10 +47,10 @@ export async function getStaticPaths() {
   const searchResults = document.querySelector('#searchResults') as HTMLUListElement;
   //Functions
   const updateDocumentTItle = (searchTerm: any) => {
-    document.title = search ? `Search Results for "${searchTerm}"` : 'Search Results';
+    document.title = search ? `${t('articulo.searching')} "${searchTerm}"` : `${t('articulo.searching2')}`;
   };
   const updateSearchReadout = (searchTerm: any) => {
-    searchReadout.textContent = search ? `Search Results for "${searchTerm}"` : '';
+    searchReadout.textContent = search ? `${t('articulo.searching')} "${searchTerm}"` : '';
   };
   //Event Listeners
   window.addEventListener('DOMContentLoaded', () => {
@@ -76,7 +72,7 @@ export async function getStaticPaths() {
     return results
       .map((result: any) => {
         const { item } = result;
-        return `<li class=" bg-red-400 my-2"><a href="blog/${item.slug.slice(3)}">${item.title}</a><p>${item.description}</p></li>`;
+        return `<li class=" bg-slate-800 p-2 my-2 mx-2"><a href="blog/${item.slug.slice(3)}"><h2 class="lg:text-2xl md:text-xl text-lg font-bold">${item.title}</h2><p class="lg:text-lg md:text-base text-xs">${item.description}</p></a></li>`;
       })
       .join('');
   }
@@ -100,7 +96,8 @@ export async function getStaticPaths() {
     }
     if (!FUSE_INSTANCE) return;
     const searchResult = FUSE_INSTANCE.search(search);
-    searchResults.innerHTML = searchResult.length > 0 ? generateSearchList(searchResult) : '<li>No results found</li>';
+    searchResults.innerHTML =
+      searchResult.length > 0 ? generateSearchList(searchResult) : `<li>${t('articulo.searchnotresults')}</li>`;
   }
 
   search.addEventListener('input', () => {
