@@ -11,7 +11,7 @@ export default function SearchWidget(lang: any) {
     setValue(DOMPurify.sanitize(e.target.value));
     const searchTerm = value;
     if (!searchTerm || searchTerm.length === 0) return;
-    const url = new URL(`/en/search`, window.location.origin);
+    const url = new URL(`/${lang.lang}/search`, window.location.origin);
     url.searchParams.append('q', searchTerm);
     window.location.assign(url.toString());
   };
