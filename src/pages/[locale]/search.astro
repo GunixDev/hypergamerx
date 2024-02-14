@@ -22,7 +22,6 @@ export async function getStaticPaths() {
   const locale: any = document.documentElement.lang;
   import { useTranslations } from '../../i18n/utils';
   const t = useTranslations(locale);
-  console.log(locale);
   const FUSE_OPTIONS = {
     includeScore: true,
     shouldSort: true,
