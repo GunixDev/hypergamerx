@@ -3,8 +3,8 @@ import { defineCollection, reference, z } from 'astro:content';
 const blogCollection = defineCollection({
   schema: z.object({
     isDraft: z.boolean().default(true),
-    title: z.string().max(70),
-    description: z.string().max(160),
+    title: z.string(),
+    description: z.string(),
     pubDate: z.date(),
     updatedDate: z.date().optional(),
     image: z.string().optional(),
@@ -12,7 +12,7 @@ const blogCollection = defineCollection({
     author: z.enum(['Brayan Cordova', 'Anonymous']).default('Anonymous'),
     genero: z.array(z.enum(['guia', 'noticia', 'curiosidades', 'resena', ''])),
     videojuego: z.array(reference('videogames')).optional(),
-    keywords: z.string().optional(),
+    keywords: z.string(),
   }),
 });
 
