@@ -11,7 +11,9 @@ import Producto from '../../../components/util/productos';
 import { amazon } from '../../../components/util/amazon';
 
 export async function getStaticPaths() {
-  const pages = await getCollection('blog');
+  let pages = await getCollection('blog', (data) => {
+    return data.data.isDraft !== true;
+  });
   const paths = pages.map((page) => {
     const [locale, ...slug] = page.slug.split('/');
     return { params: { locale, slug: slug.join('/') || undefined }, props: page };

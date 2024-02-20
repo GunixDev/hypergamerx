@@ -8,7 +8,8 @@ async function getPosts({ params, request }: { params: any; request: any }) {
   const locale = params.locale;
   const posts = (await getCollection('blog'))
     .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
-    .filter((post) => post.slug.startsWith(locale));
+    .filter((post) => post.slug.startsWith(locale))
+    .filter((post) => post.data.isDraft !== true);
   return posts.map((post) => ({
     slug: post.slug,
     title: post.data.title,
