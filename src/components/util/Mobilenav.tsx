@@ -16,7 +16,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
     <>
       {isOpen && (
         <div className='md:hidden fixed mt-10 bg-slate-950 text-white w-8/12 sm:w-5/12 h-full z-[100]'>
-          <div className='row-start-1 mx-2'>
+          <div className='row-start-1 mx-2 ls:max-sm:mt-2'>
             <div className='my-auto'>
               <label htmlFor='Lang' className='text-white text-xs'>
                 {t('nav.idiomas')}
@@ -183,7 +183,7 @@ export default function MobileNav({ lang2, pathname }: MobileNavProps) {
           </button>
         </div>
         <div className='flex col-span-1 md:col-span-4'>
-          <div className='text-xs md:text-xl font-bold mx-2 md:my-1 ls:max-md:text-center ls:max-md:w-full'>
+          <div className='text-xs md:text-xl font-bold sm:mx-2 md:my-1 ls:max-md:text-center ls:max-md:w-full'>
             <p>
               HyperGamerX <span className='text-xs align-super md:align-top ls:max-md:font-light'>{lang2}</span>
             </p>

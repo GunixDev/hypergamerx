@@ -6,9 +6,9 @@ export async function getStaticPaths() {
 ---
 
 <LayoutPrincipal>
-  <main class='mb-72 ls:max-md:mt-12'>
-    <h1 id='searchReadout' class='ls:max-md:mx-1'></h1>
-    <section aria-label='Search Results' class='ls:max-md:mx-1'>
+  <main class='md:mb-72 ls:max-md:mt-12 ls:max-md:mx-2 mx-4'>
+    <h1 id='searchReadout'></h1>
+    <section aria-label='Search Results'>
       <ul id='searchResults'></ul>
     </section>
   </main>
@@ -71,7 +71,7 @@ export async function getStaticPaths() {
     return results
       .map((result: any) => {
         const { item } = result;
-        return `<li class=" bg-slate-800 p-2 my-2 mx-2"><a href="blog/${item.slug.slice(3)}"><h2 class="lg:text-2xl md:text-xl text-lg font-bold">${item.title}</h2><p class="lg:text-base  text-xs">${item.description}</p></a></li>`;
+        return `<li class=" bg-slate-800 p-2 my-2 md:mx-2"><a href="blog/${item.slug.slice(3)}"><h2 class="lg:text-2xl md:text-xl text-lg font-bold">${item.title}</h2><p class="lg:text-base  text-xs">${item.description}</p></a></li>`;
       })
       .join('');
   }
