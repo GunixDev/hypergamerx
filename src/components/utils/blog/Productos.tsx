@@ -1,7 +1,7 @@
-import type { Lang } from '../../../types';
+import type { Locale } from '../../../types';
 
 export default function Producto(props: any) {
-  const { juego, locale: Lang } = props;
+  const { juego, locale } = props;
 
   if (!juego || typeof juego !== 'object') {
     return <div>Error: El objeto de juego no es válido.</div>;
@@ -13,7 +13,7 @@ export default function Producto(props: any) {
   return (
     <div>
       {Object.values(data).map((producto: any, index: number) => (
-        <a key={index} href={producto.link} target='_blank' hreflang={Lang}>
+        <a key={index} href={producto.link} target='_blank' hreflang={locale}>
           <div class='mt-4 group'>
             <h3 class='text-sm ls:max-md:text-xs text-slate-200 font-extrabold group-hover:text-slate-300 duration-500'>
               {producto.titulo}

@@ -11,7 +11,7 @@ export type Author = CollectionEntry<'Author'>;
 export type AuthorReference = Blog['data']['Author'];
 export type GameJson = {
   Name: string;
-  slug: string;
+  id: string;
   Stars: number;
   DateLaunch: Date;
   Multijugador: boolean;
@@ -20,7 +20,7 @@ export type GameJson = {
 };
 export type GameJsonArray = GameJson[];
 export type TagJson = {
-  slug: string;
+  id: string;
   Name: string;
   NameEnglish: string;
   English: string;
@@ -30,6 +30,6 @@ export type TagJson = {
 export type TagsJsonArray = TagJson[];
 export type AuthorJson = {
   Name: string;
-  slug: string;
+  id: string;
 };
 export type AuthorsJsonArray = AuthorJson[];
