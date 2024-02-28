@@ -21,29 +21,28 @@ allPosts.sort((a, b) => new Date(b.data.PubDate).getTime() - new Date(a.data.Pub
 const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
 const newsPosts = allPosts
-  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['noticia'].includes(Tag.slug)))
+  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['Noticia'].includes(Tag.id)))
   .slice(0, 8);
 
 const curiosidadesPosts = allPosts
-  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['curiosidades'].includes(Tag.slug)))
+  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['Curiosidades'].includes(Tag.id)))
   .slice(0, 4);
 
 const reseñasPosts = allPosts
-  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['reseña'].includes(Tag.slug)))
+  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['Reseña'].includes(Tag.id)))
   .slice(0, 4);
 
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.slug)),
+      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.id)),
   )
   .slice(0, 8);
 
 const geometryPosts = allPosts
   .filter(
     (post) =>
-      post.data.Videojuego &&
-      post.data.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.slug)),
+      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.id)),
   )
   .slice(0, 4);
 ---
@@ -65,6 +64,7 @@ const geometryPosts = allPosts
         </div>
       </div>
     </div>
+
     <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.noticianuevas')}</h2>
     <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
       {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}

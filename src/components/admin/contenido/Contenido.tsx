@@ -35,16 +35,14 @@ export default function Contenido({
   const [date, setDate] = useState(PropData.data.PubDate);
   const [update, setUpdate] = useState(PropData.data.UpdatedDate);
   const [keywords, setKeywords] = useState(PropData.data.Keywords);
-  const [valuesEtiqueta, setValuesEtiqueta] = useState(Tags.map((tag) => tag.slug));
-  const [valuesVideojuego, setValuesVideojuego] = useState(Games.map((game) => game.slug));
+  const [valuesEtiqueta, setValuesEtiqueta] = useState(Tags.map((tag) => tag.id));
+  const [valuesVideojuego, setValuesVideojuego] = useState(Games.map((game) => game.id));
   const [image, setImage] = useState(PropData.data.Image);
   const [reference, setReference] = useState(PropData.data.Reference);
   const [content, setContent] = useState(PropData.body);
   const [contentRender, setContentRender] = useState(PropData.body);
   const [indice, setIndice] = useState(Array<any>());
   const [viewContent, setViewContent] = useState(false);
-
-  console.log(PropData.data);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { checked, value } = event.target as HTMLInputElement;
@@ -54,7 +52,6 @@ export default function Contenido({
       setValuesEtiqueta((prevValues: any[]) => prevValues.filter((v: string) => v !== value));
     }
   };
-  console.log(valuesEtiqueta);
 
   const handleCheckboxChangeVideojuego = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { checked, value } = event.target as HTMLInputElement;
@@ -134,10 +131,10 @@ export default function Contenido({
     );
 
     Games.map((game) => {
-      if (game.slug === 'geometry-dash') {
-      } else if (game.slug === 'minecraft') {
-      } else if (game.slug === 'valorant') {
-      } else if (game.slug === 'lego-fortnite') {
+      if (game.id === 'geometry-dash') {
+      } else if (game.id === 'minecraft') {
+      } else if (game.id === 'valorant') {
+      } else if (game.id === 'lego-fortnite') {
         if (PropData.slug !== `${locale}/how-to-get-obsidian-in-fortnite-lego`) {
           updateLin = updateLin.replace(
             / obsidian /gi,
@@ -231,7 +228,7 @@ Description: "${description}"
 PubDate: ${date?.toISOString()}
 ${update ? `UpdatedDate: ${update?.toISOString()}` : ''}
 Image: "${image}"
-Author: ['brayan-cordova']
+Author: ['Brayan-Cordova']
 Tag: [${valuesEtiqueta.map((gen: any) => `${gen}`)}]
 ${valuesVideojuego[0] ? `Videojuego: [${valuesVideojuego.map((videojuego: any) => `'${videojuego}'`)}]` : ''}
 Keywords: "${keywords}"
@@ -518,45 +515,45 @@ ${imports.join('\n') + '\n\n' + resultado}`;
               ))}
               <input
                 type='checkbox'
-                id='guia'
-                name='guia'
-                value='guia'
+                id='Guia'
+                name='Guia'
+                value='Guia'
                 onChange={handleCheckboxChange}
-                class={`${valuesEtiqueta.includes('guia') ? 'opacity-10' : ''}`}></input>
-              <label for='guia' class={`${valuesEtiqueta.includes('guia') ? 'hidden' : ''}`}>
+                class={`${valuesEtiqueta.includes('Guia') ? 'opacity-10' : ''}`}></input>
+              <label for='Guia' class={`${valuesEtiqueta.includes('Guia') ? 'hidden' : ''}`}>
                 {' '}
                 {t('article.guia')}
               </label>
               <input
                 type='checkbox'
-                id='noticia'
-                name='noticia'
-                value='noticia'
+                id='Noticia'
+                name='Noticia'
+                value='Noticia'
                 onChange={handleCheckboxChange}
-                class={`${valuesEtiqueta.includes('noticia') ? 'opacity-10' : ''}`}></input>
-              <label for='noticia' class={`${valuesEtiqueta.includes('noticia') ? 'hidden' : ''}`}>
+                class={`${valuesEtiqueta.includes('Noticia') ? 'opacity-10' : ''}`}></input>
+              <label for='Noticia' class={`${valuesEtiqueta.includes('Noticia') ? 'hidden' : ''}`}>
                 {' '}
                 {t('article.noticia')}
               </label>
               <input
                 type='checkbox'
-                id='curiosidades'
-                name='curiosidades'
-                value='curiosidades'
+                id='Curiosidades'
+                name='Curiosidades'
+                value='Curiosidades'
                 onChange={handleCheckboxChange}
-                class={`${valuesEtiqueta.includes('curiosidades') ? 'opacity-10' : ''}`}></input>
-              <label for='curiosidades' class={`${valuesEtiqueta.includes('curiosidades') ? 'hidden' : ''}`}>
+                class={`${valuesEtiqueta.includes('Curiosidades') ? 'opacity-10' : ''}`}></input>
+              <label for='Curiosidades' class={`${valuesEtiqueta.includes('Curiosidades') ? 'hidden' : ''}`}>
                 {' '}
                 {t('article.curiosidades')}
               </label>
               <input
                 type='checkbox'
-                id='reseña'
-                name='reseña'
-                value='reseña'
+                id='Reseña'
+                name='Reseña'
+                value='Reseña'
                 onChange={handleCheckboxChange}
-                class={`${valuesEtiqueta.includes('reseña') ? 'opacity-10' : ''}`}></input>
-              <label for='reseña' class={`${valuesEtiqueta.includes('reseña') ? 'hidden' : ''}`}>
+                class={`${valuesEtiqueta.includes('Reseña') ? 'opacity-10' : ''}`}></input>
+              <label for='Reseña' class={`${valuesEtiqueta.includes('Reseña') ? 'hidden' : ''}`}>
                 {' '}
                 {t('article.resenadevieojuego')}
               </label>
@@ -578,7 +575,7 @@ ${imports.join('\n') + '\n\n' + resultado}`;
                 viewDescription ? 'block' : 'hidden'
               }`}
             />
-            {valuesEtiqueta.includes('reseña') ? (
+            {valuesEtiqueta.includes('Reseña') ? (
               <Iframeop id={Games[0].TrailerVideo} />
             ) : image !== null ? (
               <img
@@ -647,11 +644,11 @@ ${imports.join('\n') + '\n\n' + resultado}`;
           <div className='h-full ls:max-sm:w-full relative sm:col-span-2'>
             <div
               className={`h-full relative sm:col-span-2 ${
-                valuesEtiqueta.includes('reseña')
+                valuesEtiqueta.includes('Reseña')
                   ? 'ls:max-sm:grid ls:max-sm:grid-cols-5 ls:max-sm:p-2 ls:max-sm:gap-1'
                   : ''
               }`}>
-              {valuesEtiqueta.includes('reseña') ? (
+              {valuesEtiqueta.includes('Reseña') ? (
                 <div className='bg-slate-950 p-2 md:p-4 rounded-2xl w-full h-fit ls:max-sm:col-span-3'>
                   <p className='text-sm text-slate-400 text-center font-bold md:text-xl xl:text-2xl'>
                     {Games[0]?.Name}
@@ -911,7 +908,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
                     <span class='text-slate-400'>{Games[0].Multijugador ? t('article.yes') : t('article.no')}</span>
                   </p>
                   <p className='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300 hover:text-slate-100 duration-300'>
-                    {Tags.some((tag) => tag.slug === 'reseña') && Games[0].TrailerVideo ? (
+                    {Tags.some((tag) => tag.id === 'Reseña') && Games[0].TrailerVideo ? (
                       <>
                         <a target='_blank' href={Games[0].TrailerVideo}>
                           {t('article.vertrailer')}{' '}
@@ -930,7 +927,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
               ) : null}
               <div
                 className={`bg-slate-950 mb-1 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 ${
-                  valuesEtiqueta.includes('reseña') ? 'ls:max-sm:col-span-2' : ' w-11/12 mx-auto'
+                  valuesEtiqueta.includes('Reseña') ? 'ls:max-sm:col-span-2' : ' w-11/12 mx-auto'
                 }`}>
                 <h2 className='md:text-lg font-bold ls:max-md:text-base text-white'>
                   {t('article.articuclosreciente')}
@@ -978,7 +975,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
               </div>
               <div
                 className={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
-                  valuesEtiqueta.includes('reseña') ? ' ls:max-sm:col-span-6' : ' w-11/12 mx-auto'
+                  valuesEtiqueta.includes('Reseña') ? ' ls:max-sm:col-span-6' : ' w-11/12 mx-auto'
                 } ${Games[0]?.Name ? '' : 'hidden'}`}>
                 <h2 className='md:text-lg font-bold ls:max-md:text-base text-white'>
                   {t('article.articulosde')} {Games[0]?.Name}

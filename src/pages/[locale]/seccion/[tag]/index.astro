@@ -17,47 +17,45 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
-let id: '' | 'noticia' | 'reseña' | 'guia' = '';
+let id: '' | 'Noticia' | 'Reseña' | 'Guia' = '';
 if (tag == 'news') {
-  id = 'noticia';
+  id = 'Noticia';
 } else if (tag == 'guides') {
-  id = 'guia';
+  id = 'Guia';
 }
 
 const allPosts = await getCollection('Blog', (data) => {
   return (
     data.data.IsDraft !== true &&
-    data.slug.startsWith(lang) &&
+    data.id.startsWith(lang) &&
     data.data.Tag &&
-    data.data.Tag.some((tag: any) => [id].includes(tag.slug))
+    data.data.Tag.some((tag: any) => [id].includes(tag.id))
   );
 });
 
 allPosts.sort((a, b) => new Date(b.data.PubDate).getTime() - new Date(a.data.PubDate).getTime());
 const Posts = allPosts
-  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => [id].includes(Tag.slug)))
+  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => [id].includes(Tag.id)))
   .slice(0, 12);
 
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.slug)),
+      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.id)),
   )
   .slice(0, 8);
 
 const geometryPosts = allPosts
   .filter(
     (post) =>
-      post.data.Videojuego &&
-      post.data.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.slug)),
+      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.id)),
   )
   .slice(0, 6);
 
 const legofortnitePosts = allPosts
   .filter(
     (post) =>
-      post.data.Videojuego &&
-      post.data.Videojuego.some((Videojuego: any) => ['lego-fortnite'].includes(Videojuego.slug)),
+      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['lego-fortnite'].includes(Videojuego.id)),
   )
   .slice(0, 6);
 ---
@@ -66,24 +64,24 @@ const legofortnitePosts = allPosts
   <main>
     <div class='w-11/12 mx-auto'>
       <h1 class='md:text-4xl text-base mx-auto font-bold mt-12 md:mt-2 text-white'>
-        {id === 'guia' ? t('seccion.guide') : t('seccion.news')}
+        {id === 'Guia' ? t('seccion.guide') : t('seccion.news')}
       </h1>
       <div class='w-10/12 mx-auto'>
         <h2 class='lg:text-3xl font-bold my-4'>
-          {id === 'guia' ? t('seccion.ultimasguias') : t('index.ultimanoticias')}
+          {id === 'Guia' ? t('seccion.ultimasguias') : t('index.ultimanoticias')}
         </h2>
         <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
-          {Posts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+          {Posts.map((post) => <ArticulosView file={post.id} data={post.data} lang={lang} />)}
         </div>
         {
           minecraftPosts.length > 2 ? (
             <>
               <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
-                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Minecraft
+                {id === 'Guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Minecraft
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {minecraftPosts.map((post) => (
-                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
+                  <ArticulosView file={post.id} data={post.data} lang={lang} />
                 ))}
               </div>
             </>
@@ -94,11 +92,11 @@ const legofortnitePosts = allPosts
           geometryPosts.length > 2 ? (
             <>
               <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
-                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} LEGO Fortnite
+                {id === 'Guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Geometry Dash
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {geometryPosts.map((post) => (
-                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
+                  <ArticulosView file={post.id} data={post.data} lang={lang} />
                 ))}
               </div>
             </>
@@ -108,11 +106,11 @@ const legofortnitePosts = allPosts
           legofortnitePosts.length > 2 ? (
             <>
               <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
-                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Lego Fortnite
+                {id === 'Guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Lego Fortnite
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {legofortnitePosts.map((post) => (
-                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
+                  <ArticulosView file={post.id} data={post.data} lang={lang} />
                 ))}
               </div>
             </>

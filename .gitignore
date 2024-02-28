@@ -23,8 +23,7 @@ pnpm-debug.log*
 
 src/pages/\[locale\]/admin/
 src/layouts/ControllerLayout.astro
-src/components/admin/Contenido.tsx
-
+src/components/admin/contenido/Contenido.tsx
 src/components/admin/ListArticlesBlog.tsx
 
 src/pages/api/blogs.ts

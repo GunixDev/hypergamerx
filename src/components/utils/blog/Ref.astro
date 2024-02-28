@@ -9,10 +9,10 @@ interface Props {
 
 const { url, text } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const data = await getEntryBySlug('blog', `${lang}/${url}`);
-const titulo = data?.data.title;
-const descripcion = data?.data.reference;
-const arial = `ir al articulo de ${data?.data.title}`;
+const data = await getEntryBySlug('Blog', `${lang}/${url}`);
+const titulo = data?.data.Title;
+const descripcion = data?.data.Description;
+const arial = `ir al articulo de ${data?.data.Title}`;
 ---
 
 <span class='relative group'>
