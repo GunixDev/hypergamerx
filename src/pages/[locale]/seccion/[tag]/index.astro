@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../../../i18n/utils';
-import ArticulosView from '../../../../components/ArticulosView.astro';
+import ArticulosView from '../../../../components/Views/ArticulosView1.astro';
 import LayoutPrincipal from '../../../../layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
 
@@ -17,39 +17,47 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
-let id: '' | 'noticia' | 'resena' | 'guia' = '';
+let id: '' | 'noticia' | 'reseña' | 'guia' = '';
 if (tag == 'news') {
   id = 'noticia';
 } else if (tag == 'guides') {
   id = 'guia';
 }
-const allPosts = await getCollection('blog', (data) => {
-  return data.data.isDraft !== true && data.slug.startsWith(lang) && data.data.genero.includes(id);
+
+const allPosts = await getCollection('Blog', (data) => {
+  return (
+    data.data.IsDraft !== true &&
+    data.slug.startsWith(lang) &&
+    data.data.Tag &&
+    data.data.Tag.some((tag: any) => [id].includes(tag.slug))
+  );
 });
 
-allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
-const Posts = allPosts.filter((post) => post.data.genero.includes(id)).slice(0, 12);
+allPosts.sort((a, b) => new Date(b.data.PubDate).getTime() - new Date(a.data.PubDate).getTime());
+const Posts = allPosts
+  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => [id].includes(Tag.slug)))
+  .slice(0, 12);
+
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data.videojuego &&
-      post.data.videojuego.some((videojuego: { slug: string }) => ['minecraft'].includes(videojuego.slug)),
+      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.slug)),
   )
-  .slice(0, 6);
+  .slice(0, 8);
 
 const geometryPosts = allPosts
   .filter(
     (post) =>
-      post.data.videojuego &&
-      post.data.videojuego.some((videojuego: { slug: string }) => ['geometry-dash'].includes(videojuego.slug)),
+      post.data.Videojuego &&
+      post.data.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.slug)),
   )
   .slice(0, 6);
 
 const legofortnitePosts = allPosts
   .filter(
     (post) =>
-      post.data.videojuego &&
-      post.data.videojuego.some((videojuego: { slug: string }) => ['lego-fortnite'].includes(videojuego.slug)),
+      post.data.Videojuego &&
+      post.data.Videojuego.some((Videojuego: any) => ['lego-fortnite'].includes(Videojuego.slug)),
   )
   .slice(0, 6);
 ---

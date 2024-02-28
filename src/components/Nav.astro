@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl } from '../i18n/utils';
-import MobileNav from '../components/util/Mobilenav.tsx';
+import NavPreact from './utils/nav/NavPreact';
 
 const lang2 = getLangFromUrl(Astro.url);
 let pathname = Astro.url.pathname.replace(/\/[a-z]{2}\//, '');
@@ -16,4 +16,4 @@ if (pathname === '/') {
 }
 ---
 
-<MobileNav lang2={lang2} pathname={pathname} client:load />
+<NavPreact lang2={lang2} pathname={pathname} client:load />

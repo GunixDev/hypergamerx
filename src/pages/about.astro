@@ -1,15 +1,14 @@
 ---
-import ArticulosRamdon from '../components/ArticulosRamdon.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import ArticulosRamdon from '../components/Views/ArticulosRamdon.astro';
 import LayoutPrincipal from '../layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
 
-const allPosts = await getCollection('blog', (data) => {
-  return data.data.isDraft !== true && data.slug.startsWith('en');
+const allPosts = await getCollection('Blog', (data) => {
+  return data.data.IsDraft !== true && data.slug.startsWith('en');
 });
 
 allPosts.sort((a, b) => {
-  return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+  return new Date(b.data.PubDate).getTime() - new Date(a.data.PubDate).getTime();
 });
 allPosts.length = 8;
 ---

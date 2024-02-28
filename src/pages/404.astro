@@ -1,9 +1,12 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import LayoutPrincipal from '../layouts/LayoutPrincipal.astro';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <LayoutPrincipal>
-  <main>
-    <h1>Error al cargar la pagina web</h1>
-  </main>
+  <div class='w-full h-80'>
+    <h1 class='text-4xl mx-96 my-40'>{t('error.error')}</h1>
+  </div>
 </LayoutPrincipal>

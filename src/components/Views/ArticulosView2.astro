@@ -1,0 +1,23 @@
+---
+interface Props {
+  file: string;
+  data: any;
+  lang: any;
+}
+const { file, data, lang } = Astro.props;
+const { Image, PubDate, Title, Description } = data;
+const fileName = file.split('/').pop()?.split('.')[0];
+let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
+import Carrusel from './Carrusel.astro';
+---
+
+<div class='relative w-full h-full group duration-500'>
+  <Carrusel
+    Image={Image}
+    Title={Title}
+    Description={Description}
+    fileName={fileName}
+    fecha={fechaFormateada}
+    lang={lang}
+  />
+</div>

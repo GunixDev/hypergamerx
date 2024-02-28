@@ -1,0 +1,53 @@
+---
+interface Props {
+  file: string;
+  data: any;
+  lang: any;
+}
+const { file, data, lang } = Astro.props;
+const { Image, PubDate, Title } = data;
+const fileName = file.split('/').pop()?.split('.')[0];
+let fecha = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<a hreflang={lang} href={`/${lang}/blog/${fileName}/`} class='group duration-500'>
+  <div class='grid lg:grid-cols-5'>
+    <div class='lg:col-span-2'>
+      {
+        Image !== null ? (
+          <img
+            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_162/${Image}`}
+            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_54/${Image} 256w,
+           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_108/${Image} 512w,
+           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_162/${Image} 768w,
+           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_216/${Image} 1024w,
+           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_270/${Image} 1280w`}
+            width='83'
+            height='47'
+            alt={`${Image}`}
+            decoding='async'
+            loading='lazy'
+            class='h-full w-full fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out ls:max-lg:hidden ls:max-sm:aspect-auto'
+          />
+        ) : (
+          <img
+            src='/logo3.png'
+            width='83'
+            height='47'
+            alt={`${Image}`}
+            decoding='async'
+            loading='lazy'
+            class='h-full w-full fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out ls:max-lg:hidden ls:max-sm:aspect-auto'
+          />
+        )
+      }
+    </div>
+    <div>
+      <div class='lg:absolute'>
+        <h3 class='z-50 text-white font-normal lss:font-bold md:ml-2 text-xs md:text-base'>{Title}</h3>
+        <p class='z-50 font-bold ml-2 text-xs text-blue-500 md:font-extrabold ls:max-lss:hidden'>{fecha}</p>
+      </div>
+    </div>
+  </div>
+  <hr class='lss:mt-1' />
+</a>

@@ -6,15 +6,15 @@ export async function getStaticPaths() {
 
 async function getPosts({ params, request }: { params: any; request: any }) {
   const locale = params.locale;
-  const posts = (await getCollection('blog'))
-    .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+  const posts = (await getCollection('Blog'))
+    .sort((a, b) => a.data.PubDate.valueOf() - b.data.PubDate.valueOf())
     .filter((post) => post.slug.startsWith(locale))
-    .filter((post) => post.data.isDraft !== true);
+    .filter((post) => post.data.IsDraft !== true);
   return posts.map((post) => ({
     slug: post.slug,
-    title: post.data.title,
-    description: post.data.description,
-    pubDate: post.data.pubDate,
+    title: post.data.Title,
+    description: post.data.Description,
+    pubDate: post.data.PubDate,
   }));
 }
 

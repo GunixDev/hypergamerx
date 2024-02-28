@@ -2,9 +2,10 @@
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+import Redes from './utils/footer/Redes';
 ---
 
-<footer class='text-white bg-gray-900 bg-opacity-70 py-2 md:py-8 w-full font-sans mt-4 md:mt-10 ls:max-sm:hidden'>
+<footer class='text-white bg-gray-900 bg-opacity-70 py-2 md:py-8 w-full font-sans mt-4 md:mt-10 ls:max-md:hidden'>
   <div class='md:container text-slate-500 mx-auto text-center grid grid-cols-4 list-none'>
     <div class='text-left'>
       <p class='text-gray-400 lg:font-bold ls:max-sm:text-xs'>{t('footer.terminos')}</p>
@@ -40,33 +41,7 @@ const t = useTranslations(lang);
         </ol>
       </div>
     </div>
-    <div class='text-left'>
-      <p class='text-gray-400 lg:font-bold ls:max-sm:text-xs'>{t('footer.redes')}</p>
-      <div class='ml-6 ls:max-md:text-xs'>
-        <ol>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={'https://discord.gg/aXmCVfcXaa'} hreflang={lang} target='_blank'> Discord</a>
-          </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={'https://twitter.com/HyperGamerX_ES'} hreflang={lang} target='_blank'> Twitter</a>
-          </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={'https://www.youtube.com/@HyperGamerX1'} hreflang={lang} target='_blank'> Youtube</a>
-          </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={'https://www.facebook.com/Hypergamerx'} hreflang={lang} target='_blank'> Facebook</a>
-          </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'} hreflang={lang} target='_blank'>
-              Whatsapp</a
-            >
-          </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={'https://www.instagram.com/hypergamerx1/'} hreflang={lang} target='_blank'> Instagram</a>
-          </li>
-        </ol>
-      </div>
-    </div>
+    <Redes lang={lang} />
     <div>
       <p class='text-gray-400 ls:max-lg:text-xs'>
         &copy; 2024 HyperGamerX. {t('article.creadorpor')}

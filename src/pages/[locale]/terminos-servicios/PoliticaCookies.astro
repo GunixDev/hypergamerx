@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { getLangFromUrl, useTranslationsSpecial } from '../../../i18n/utils';
 import LayoutPrincipal from '../../../layouts/LayoutPrincipal.astro';
 
 export async function getStaticPaths() {
@@ -7,100 +7,100 @@ export async function getStaticPaths() {
 }
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const te = useTranslationsSpecial(lang);
 ---
 
 <LayoutPrincipal>
   <div class='w-4/5 mx-auto mt-10'>
-    <h1 class='text-6xl text-center font-bold my-6'>{t('cookie.1')}</h1>
+    <h1 class='text-6xl text-center font-bold my-6'>{te('cookie.1')}</h1>
     <article class='text-lg'>
-      {t('cookie.2')}
+      {te('cookie.2')}
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.3')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('cookie.3')}</h2>
       <p class='my-2'>
-        {t('cookie.4')}
+        {te('cookie.4')}
       </p>
 
       <p class='my-2'>
-        {t('cookie.5')}
+        {te('cookie.5')}
       </p>
       <p class='my-2'>
-        {t('cookie.6')}
+        {te('cookie.6')}
       </p>
       <p class='my-2'>
-        {t('cookie.7')}
-      </p>
-    </article>
-
-    <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.8')}</h2>
-      <p class='my-2'>
-        {t('cookie.9')}
-      </p>
-
-      <p class='my-2'>
-        {t('cookie.10')}
-      </p>
-      <p class='my-2'>
-        {t('cookie.11')}
+        {te('cookie.7')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.12')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('cookie.8')}</h2>
       <p class='my-2'>
-        {t('cookie.13')}
+        {te('cookie.9')}
+      </p>
+
+      <p class='my-2'>
+        {te('cookie.10')}
       </p>
       <p class='my-2'>
-        {t('cookie.14')}
-      </p>
-      <p class='my-2'>
-        {t('cookie.15')}
-      </p>
-      <p class='my-2'>
-        {t('cookie.16')}
+        {te('cookie.11')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.17')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('cookie.12')}</h2>
       <p class='my-2'>
-        {t('cookie.18')}
+        {te('cookie.13')}
+      </p>
+      <p class='my-2'>
+        {te('cookie.14')}
+      </p>
+      <p class='my-2'>
+        {te('cookie.15')}
+      </p>
+      <p class='my-2'>
+        {te('cookie.16')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.19')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('cookie.17')}</h2>
       <p class='my-2'>
-        {t('cookie.20')}
-      </p>
-      <p class='my-2'>
-        {t('cookie.21')}
-      </p>
-      <p class='my-2'>
-        {t('cookie.22')}
+        {te('cookie.18')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('cookie.23')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('cookie.19')}</h2>
       <p class='my-2'>
-        {t('cookie.24')}
+        {te('cookie.20')}
       </p>
       <p class='my-2'>
-        {t('cookie.25')}
+        {te('cookie.21')}
       </p>
       <p class='my-2'>
-        {t('cookie.26')}
+        {te('cookie.22')}
+      </p>
+    </article>
+
+    <article>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('cookie.23')}</h2>
+      <p class='my-2'>
+        {te('cookie.24')}
       </p>
       <p class='my-2'>
-        {t('cookie.27')}
+        {te('cookie.25')}
+      </p>
+      <p class='my-2'>
+        {te('cookie.26')}
+      </p>
+      <p class='my-2'>
+        {te('cookie.27')}
       </p>
     </article>
     <article>
-      <p class='my-10 font-semibold'>{t('cookie.28')}</p>
+      <p class='my-10 font-semibold'>{te('cookie.28')}</p>
     </article>
   </div>
 </LayoutPrincipal>

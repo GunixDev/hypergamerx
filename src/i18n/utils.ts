@@ -1,8 +1,9 @@
-import { ui, defaultLang } from './ui';
+import { ui } from './data';
+import { ui_essential, defaultLang } from './data_essential';
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
-  if (lang in ui) return lang as keyof typeof ui;
+  if (lang in ui_essential) return lang as keyof typeof ui_essential;
   return defaultLang;
 }
 
@@ -12,6 +13,16 @@ export function useTranslations(lang: keyof typeof ui) {
       return ui[lang][key];
     } else {
       return ui[defaultLang][key];
+    }
+  };
+}
+
+export function useTranslationsSpecial(lang: keyof typeof ui_essential) {
+  return function te(key: keyof (typeof ui_essential)[typeof defaultLang]) {
+    if (key in ui_essential[lang]) {
+      return ui_essential[lang][key];
+    } else {
+      return ui_essential[defaultLang][key];
     }
   };
 }

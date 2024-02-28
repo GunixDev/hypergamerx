@@ -1,9 +1,10 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import ArticulosView from '../../components/ArticulosView.astro';
-import ArticulosView2 from '../../components/ArticulosView2.astro';
+import ArticulosView from '../../components/Views/ArticulosView1.astro';
+import ArticulosView2 from '../../components/Views/ArticulosView2.astro';
 import LayoutPrincipal from '../../layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
+import ListData from '../../components/Views/ListData.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -12,33 +13,39 @@ export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'es' } }];
 }
 
-const allPosts = await getCollection('blog', (data) => {
-  return data.data.isDraft !== true && data.slug.startsWith(lang);
+const allPosts = await getCollection('Blog', (data) => {
+  return data.data.IsDraft !== true && data.slug.startsWith(lang);
 });
 
-allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+allPosts.sort((a, b) => new Date(b.data.PubDate).getTime() - new Date(a.data.PubDate).getTime());
 const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
-const newsPosts = allPosts.filter((post) => post.data.genero.includes('noticia')).slice(0, 8);
-const curiosidadesPosts = allPosts.filter((post) => post.data.genero.includes('curiosidades')).slice(0, 4);
-const resenasPosts = allPosts.filter((post) => post.data.genero.includes('resena')).slice(0, 4);
+const newsPosts = allPosts
+  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['noticia'].includes(Tag.slug)))
+  .slice(0, 8);
+
+const curiosidadesPosts = allPosts
+  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['curiosidades'].includes(Tag.slug)))
+  .slice(0, 4);
+
+const reseñasPosts = allPosts
+  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => ['reseña'].includes(Tag.slug)))
+  .slice(0, 4);
+
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data.videojuego &&
-      post.data.videojuego.some((videojuego: { slug: string }) => ['minecraft'].includes(videojuego.slug)),
+      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.slug)),
   )
   .slice(0, 8);
 
 const geometryPosts = allPosts
   .filter(
     (post) =>
-      post.data.videojuego &&
-      post.data.videojuego.some((videojuego: { slug: string }) => ['geometry-dash'].includes(videojuego.slug)),
+      post.data.Videojuego &&
+      post.data.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.slug)),
   )
   .slice(0, 4);
-
-import Listdata from '../../components/util/listdata.astro';
 ---
 
 <LayoutPrincipal>
@@ -46,7 +53,7 @@ import Listdata from '../../components/util/listdata.astro';
     <h1 class='md:text-4xl sm:text-2xl text-base mx-auto font-bold mt-12 md:mt-4 text-white'>
       {t('index.articulosdevideojuego')}
     </h1>
-    <h2 class='lg:text-3xl text-sm font-bold my-2 md:my-4'>{t('index.ultimoarticules')}</h2>
+    <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimoarticules')}</h2>
     <div class='grid grid-cols-5 h-auto lg:h-max-[384px] relative bg-slate-950'>
       <div class='col-span-3'>
         {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}
@@ -54,28 +61,28 @@ import Listdata from '../../components/util/listdata.astro';
       <div class='col-span-2 mx-2 lg:mx-4'>
         <div
           class='relative w-full h-auto my-1 md:my-3 md:p-1 grid grid-flow-row gap-1 lss:gap-2 sm:my-4 sm:gap-6 md:gap-7'>
-          {recentpost.map((post) => <Listdata file={post.slug} data={post.data} lang={lang} />)}
+          {recentpost.map((post) => <ListData file={post.slug} data={post.data} lang={lang} />)}
         </div>
       </div>
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.noticianuevas')}</h2>
-    <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
+    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.noticianuevas')}</h2>
+    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
       {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.ultimascuriosidades')}</h2>
-    <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
+    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.ultimascuriosidades')}</h2>
+    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
       {curiosidadesPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.resenasvideogames')}</h2>
-    <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
-      {resenasPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.resenasvideogames')}</h2>
+    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
+      {reseñasPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.articulosde')} Minecraft</h2>
-    <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
+    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Minecraft</h2>
+    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
       {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-2 w-full'>{t('index.articulosde')} Geometry Dash</h2>
-    <div class='grid grid-cols-4 lg:gap-3 gap-2 relative w-full'>
+    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Geometry Dash</h2>
+    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
       {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
     </div>
   </div>

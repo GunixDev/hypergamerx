@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
+import vercel from '@astrojs/vercel/serverless';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
 import compress from 'astro-compress';
 import partytown from '@astrojs/partytown';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +20,7 @@ export default defineConfig({
   site: 'https://www.hypergamerx.com',
   integrations: [
     preact(),
+    mdx(),
     sitemap({
       i18n: {
         defaultLocale: 'en',
@@ -34,8 +35,6 @@ export default defineConfig({
         return item;
       },
     }),
-    tailwind(),
-    mdx(),
     compress({
       CSS: true,
       HTML: true,
@@ -48,6 +47,7 @@ export default defineConfig({
         forward: ['dataLayer.push'],
       },
     }),
+    tailwind(),
   ],
   output: 'hybrid',
   adapter: vercel({

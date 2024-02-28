@@ -1,112 +1,112 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { getLangFromUrl, useTranslationsSpecial } from '../../../i18n/utils';
 import LayoutPrincipal from '../../../layouts/LayoutPrincipal.astro';
 
 export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'es' } }];
 }
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const te = useTranslationsSpecial(lang);
 ---
 
 <LayoutPrincipal>
   <div class='w-4/5 mx-auto mt-10'>
-    <h1 class='text-6xl text-center font-bold my-6'>{t('privacidad.1')}</h1>
+    <h1 class='text-6xl text-center font-bold my-6'>{te('privacidad.1')}</h1>
     <article class='text-lg'>
-      {t('privacidad.2')}
+      {te('privacidad.2')}
     </article>
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.3')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('privacidad.3')}</h2>
       <p class='my-2'>
-        {t('privacidad.4')}
+        {te('privacidad.4')}
       </p>
       <li class='my-10'>
-        {t('privacidad.5')}
+        {te('privacidad.5')}
       </li>
       <li class='my-10'>
-        {t('privacidad.6')}
+        {te('privacidad.6')}
       </li>
       <li class='my-10'>
-        {t('privacidad.7')}
-      </li>
-    </article>
-
-    <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.8')}</h2>
-      <li class='my-10'>
-        {t('privacidad.9')}
-      </li>
-      <li class='my-10'>
-        {t('privacidad.10')}
+        {te('privacidad.7')}
       </li>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.11')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('privacidad.8')}</h2>
+      <li class='my-10'>
+        {te('privacidad.9')}
+      </li>
+      <li class='my-10'>
+        {te('privacidad.10')}
+      </li>
+    </article>
+
+    <article>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('privacidad.11')}</h2>
       <p class='my-2'>
-        {t('privacidad.12')}
+        {te('privacidad.12')}
       </p>
       <p class='my-2'>
-        {t('privacidad.13')}
+        {te('privacidad.13')}
       </p>
       <p class='my-2'>
-        {t('privacidad.14')}
+        {te('privacidad.14')}
       </p>
       <p class='my-2'>
-        {t('privacidad.15')}
+        {te('privacidad.15')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.16')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('privacidad.16')}</h2>
       <p class='my-2'>
-        {t('privacidad.17')}
+        {te('privacidad.17')}
       </p>
       <p class='my-2'>
-        {t('privacidad.18')}
+        {te('privacidad.18')}
       </p>
       <p class='my-2'>
-        {t('privacidad.19')}
+        {te('privacidad.19')}
       </p>
       <p class='my-2'>
-        {t('privacidad.20')}
+        {te('privacidad.20')}
       </p>
       <p class='my-2'>
-        {t('privacidad.21')}
-      </p>
-    </article>
-
-    <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.22')}</h2>
-      <p class='my-2'>
-        {t('privacidad.23')}
-      </p>
-      <p class='my-2'>
-        {t('privacidad.24')}
-      </p>
-      <p class='my-2'>
-        {t('privacidad.25')}
+        {te('privacidad.21')}
       </p>
     </article>
 
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.26')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('privacidad.22')}</h2>
       <p class='my-2'>
-        {t('privacidad.27')}
+        {te('privacidad.23')}
+      </p>
+      <p class='my-2'>
+        {te('privacidad.24')}
+      </p>
+      <p class='my-2'>
+        {te('privacidad.25')}
+      </p>
+    </article>
+
+    <article>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('privacidad.26')}</h2>
+      <p class='my-2'>
+        {te('privacidad.27')}
       </p>
 
       <p class='my-2'>
-        {t('privacidad.28')}
+        {te('privacidad.28')}
       </p>
     </article>
     <article>
-      <h2 class='text-2xl font-semibold mt-6 mb-2'>{t('privacidad.29')}</h2>
+      <h2 class='text-2xl font-semibold mt-6 mb-2'>{te('privacidad.29')}</h2>
       <p class='my-2'>
-        {t('privacidad.30')}
+        {te('privacidad.30')}
       </p>
     </article>
     <article>
-      <p class='my-10 font-semibold'>{t('privacidad.31')}</p>
+      <p class='my-10 font-semibold'>{te('privacidad.31')}</p>
     </article>
   </div>
 </LayoutPrincipal>
