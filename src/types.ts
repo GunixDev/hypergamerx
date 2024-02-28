@@ -9,6 +9,7 @@ export type Game = CollectionEntry<'Game'>;
 export type GameReference = Blog['data']['Videojuego'];
 export type Author = CollectionEntry<'Author'>;
 export type AuthorReference = Blog['data']['Author'];
+
 export type GameJson = {
   Name: string;
   id: string;
