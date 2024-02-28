@@ -4,7 +4,7 @@ export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'es' } }];
 }
 
-async function getPosts({ params, request }: { params: any; request: any }) {
+async function getPosts({ params }: { params: any; request: any }) {
   const locale = params.locale;
   const posts = (await getCollection('Blog'))
     .sort((a, b) => a.data.PubDate.valueOf() - b.data.PubDate.valueOf())

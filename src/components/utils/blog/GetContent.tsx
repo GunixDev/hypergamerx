@@ -7,7 +7,6 @@ import type {
   Game,
   GameJsonArray,
   Author,
-  AuthorJson,
   AuthorsJsonArray,
   AuthorReference,
 } from '../../../types';

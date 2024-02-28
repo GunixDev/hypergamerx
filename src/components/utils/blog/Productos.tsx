@@ -1,5 +1,3 @@
-import type { Locale } from '../../../types';
-
 export default function Producto(props: any) {
   const { juego, locale } = props;
 
