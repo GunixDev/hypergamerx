@@ -21,15 +21,15 @@ allPosts.sort((a, b) => new Date(b.data?.PubDate).getTime() - new Date(a.data?.P
 const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
 const newsPosts = allPosts
-  .filter((post) => post.data?.Tag && post.data?.Tag.some((Tag: any) => ['Noticia'].includes(Tag.id)))
+  .filter((post) => post.data?.Tag && post.data?.tag.some((Tag: any) => ['Noticia'].includes(Tag.id)))
   .slice(0, 8);
 
 const curiosidadesPosts = allPosts
-  .filter((post) => post.data?.Tag && post.data?.Tag.some((Tag: any) => ['Curiosidades'].includes(Tag.id)))
+  .filter((post) => post.data?.Tag && post.data?.tag.some((Tag: any) => ['Curiosidades'].includes(Tag.id)))
   .slice(0, 4);
 
 const reseñasPosts = allPosts
-  .filter((post) => post.data?.Tag && post.data?.Tag.some((Tag: any) => ['Reseña'].includes(Tag.id)))
+  .filter((post) => post.data?.Tag && post.data?.tag.some((Tag: any) => ['Reseña'].includes(Tag.id)))
   .slice(0, 4);
 
 const minecraftPosts = allPosts
