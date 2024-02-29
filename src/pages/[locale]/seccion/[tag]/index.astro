@@ -27,21 +27,21 @@ if (tag == 'news') {
 const allPosts = await getCollection('blog', (data) => {
   return (
     data?.data?.IsDraft !== true &&
-    data?.id.startsWith(lang) &&
+    data?.slug.startsWith(lang) &&
     data?.data?.tag &&
-    data?.data?.tag.some((tag: any) => [id].includes(tag.id))
+    data?.data?.tag.some((tag: any) => [id].includes(tag.slug))
   );
 });
 
 allPosts.sort((a, b) => new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime());
 const Posts = allPosts
-  .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => [id].includes(tag.id)))
+  .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => [id].includes(tag.slug)))
   .slice(0, 12);
 
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data?.videojuego && post.data?.videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.id)),
+      post.data?.videojuego && post.data?.videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.slug)),
   )
   .slice(0, 8);
 
@@ -49,7 +49,7 @@ const geometryPosts = allPosts
   .filter(
     (post) =>
       post.data?.videojuego &&
-      post.data?.videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.id)),
+      post.data?.videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.slug)),
   )
   .slice(0, 6);
 
@@ -57,7 +57,7 @@ const legofortnitePosts = allPosts
   .filter(
     (post) =>
       post.data?.videojuego &&
-      post.data?.videojuego.some((videojuego: any) => ['lego-fortnite'].includes(videojuego.id)),
+      post.data?.videojuego.some((videojuego: any) => ['lego-fortnite'].includes(videojuego.slug)),
   )
   .slice(0, 6);
 ---
@@ -73,7 +73,7 @@ const legofortnitePosts = allPosts
           {id === 'Guia' ? t('seccion.ultimasguias') : t('index.ultimanoticias')}
         </h2>
         <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
-          {Posts.map((post) => <ArticulosView file={post.id} data={post.data} lang={lang} />)}
+          {Posts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
         </div>
         {
           minecraftPosts.length > 2 ? (
@@ -83,7 +83,7 @@ const legofortnitePosts = allPosts
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {minecraftPosts.map((post) => (
-                  <ArticulosView file={post.id} data={post.data} lang={lang} />
+                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}
               </div>
             </>
@@ -98,7 +98,7 @@ const legofortnitePosts = allPosts
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {geometryPosts.map((post) => (
-                  <ArticulosView file={post.id} data={post.data} lang={lang} />
+                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}
               </div>
             </>
@@ -112,7 +112,7 @@ const legofortnitePosts = allPosts
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {legofortnitePosts.map((post) => (
-                  <ArticulosView file={post.id} data={post.data} lang={lang} />
+                  <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}
               </div>
             </>

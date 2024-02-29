@@ -66,10 +66,10 @@ const allPosts = await getCollection('blog', (data) => {
 
 const gamesposts = allPosts.filter((post) => {
   const postVideojuego = post?.data?.videojuego;
-  if (!postVideojuego || !games[0] || !games[0].id) {
+  if (!postVideojuego || !games[0] || !games[0].slug) {
     return false;
   }
-  return postVideojuego[0]?.id === games[0].id;
+  return postVideojuego[0]?.slug === games[0].slug;
 });
 
 let postgames = false;
@@ -83,7 +83,7 @@ if (gamesposts.length >= 3) {
 
 allPosts.length = 5;
 let amazonlocale:any = amazon[locale]
-let amazon1 = amazonlocale[games[0]?.id ? games[0]?.id : "games['minecraft'].slug"]
+let amazon1 = amazonlocale[games[0]?.slug ? games[0]?.slug : "games['minecraft'].slug"]
 if(amazon1 === undefined){
   amazon1 = null;
 }
