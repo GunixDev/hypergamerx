@@ -8,13 +8,34 @@ import type {
   AuthorReference,
 } from '../../../types';
 
-export type tag = CollectionEntry<'tag'>;
 export type Game = CollectionEntry<'game'>;
 type author = {
   id: string;
   collection: 'author';
   data: {
     Name: string;
+  };
+};
+
+type tag = {
+  id:
+    | 'Curiosidades'
+    | 'E-sports'
+    | 'Evento'
+    | 'Guia'
+    | 'Influencer'
+    | 'Mod'
+    | 'Noticia'
+    | 'Objeto'
+    | 'Reseña'
+    | 'Tecnologia'
+    | 'Top';
+  collection: 'tag';
+  data: {
+    Name: string;
+    NameEnglish: string;
+    Spanish: string;
+    English: string;
   };
 };
 
@@ -59,7 +80,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
           | 'Top';
       }) => {
         const tagEntry: tag = await getEntry('tag', tag.id);
-        if (tagEntry !== undefined || tagEntry !== null) {
+        if (tagEntry) {
           return {
             id: tagEntry?.id,
             Name: tagEntry?.data?.Name,
