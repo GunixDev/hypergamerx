@@ -1,12 +1,12 @@
 import { getEntry } from 'astro:content';
 import type {
   TagReference,
-  Tag,
+  tag,
   TagsJsonArray,
   GameReference,
   Game,
   GameJsonArray,
-  Author,
+  author,
   AuthorsJsonArray,
   AuthorReference,
 } from '../../../types';
@@ -34,7 +34,7 @@ export async function GetGames(games: GameReference): Promise<GameJsonArray> {
 export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
   return Promise.all(
     (tags ?? []).map(async (tag: any) => {
-      const tagEntry: Tag | undefined = await getEntry('tag', tag.id);
+      const tagEntry: tag | undefined = await getEntry('tag', tag.id);
       if (tagEntry !== undefined) {
         return {
           id: tagEntry.id,
@@ -52,7 +52,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
 export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonArray> {
   return Promise.all(
     (authors ?? []).map(async (author: any) => {
-      const authorEntry: Author | undefined = await getEntry('author', author.id);
+      const authorEntry: author | undefined = await getEntry('author', author.id);
       if (authorEntry !== undefined) {
         return {
           Name: authorEntry.data?.Name,

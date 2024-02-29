@@ -31,15 +31,15 @@ const reseñasPosts = allPosts
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data?.Videojuego && post.data?.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.id)),
+      post.data?.videojuego && post.data?.videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.id)),
   )
   .slice(0, 8);
 
 const geometryPosts = allPosts
   .filter(
     (post) =>
-      post.data?.Videojuego &&
-      post.data?.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.id)),
+      post.data?.videojuego &&
+      post.data?.videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.id)),
   )
   .slice(0, 4);
 ---

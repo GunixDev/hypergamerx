@@ -33,14 +33,14 @@ let games:GameJsonArray = [];
 let tags:TagsJsonArray =  [];
 let author:AuthorsJsonArray = [];
 
-if (Array.isArray(page?.data?.Videojuego)) {
-  games = await GetGames(page.data?.Videojuego);
+if (Array.isArray(page?.data?.videojuego)) {
+  games = await GetGames(page.data?.videojuego);
 }
 if (Array.isArray(page?.data?.Tag)) {
   tags = await GetTags(page.data?.Tag);
 }
-if(Array.isArray(page?.data?.Author)){
-  author = await GetAuthor(page.data?.Author);
+if(Array.isArray(page?.data?.author)){
+  author = await GetAuthor(page.data?.author);
 }
 
 tags.map((tag:any) => {
@@ -65,7 +65,7 @@ const allPosts = await getCollection('blog', (data) => {
 });
 
 const gamesposts = allPosts.filter((post) => {
-  const postVideojuego = post?.data?.Videojuego;
+  const postVideojuego = post?.data?.videojuego;
   if (!postVideojuego || !games[0] || !games[0].id) {
     return false;
   }

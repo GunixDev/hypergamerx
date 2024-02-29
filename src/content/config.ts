@@ -11,9 +11,9 @@ const BlogCollection = defineCollection({
     UpdatedDate: z.date().optional(),
     Image: z.string().optional(),
     Video: z.string().optional(),
-    Author: z.array(reference('author')),
-    Tag: z.array(reference('tag')).optional(),
-    Videojuego: z.array(reference('game')).optional(),
+    author: z.array(reference('author')),
+    tag: z.array(reference('tag')).optional(),
+    videojuego: z.array(reference('game')).optional(),
     Keywords: z.string(),
   }),
 });
