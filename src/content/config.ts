@@ -54,5 +54,5 @@ export const collections = {
   blog: BlogCollection,
   game: GameCollection,
   author: AuthorCollection,
-  Tag: TagCollection,
+  tag: TagCollection,
 };
