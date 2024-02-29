@@ -72,7 +72,7 @@ export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonAr
   return Promise.all(
     (authors ?? []).map(async (author) => {
       const authorEntry: author | null = await getEntry('author', author.id);
-      if (authorEntry !== null && authorEntry !== undefined && authorEntry.data !== undefined) {
+      if (authorEntry && 'data' in authorEntry) {
         return {
           Name: authorEntry.data.Name,
           id: authorEntry.id,
@@ -80,5 +80,5 @@ export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonAr
       }
       return null;
     }),
-  ) as unknown as AuthorsJsonArray;
+  ) as Promise<AuthorsJsonArray>;
 }
