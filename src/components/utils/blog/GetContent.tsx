@@ -25,7 +25,7 @@ type Game = {
 };
 
 type author = {
-  id: string;
+  id: 'Brayan-Cordova';
   collection: 'author';
   data: {
     Name: string;
