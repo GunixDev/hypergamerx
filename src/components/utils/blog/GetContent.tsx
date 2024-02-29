@@ -3,45 +3,13 @@ import type {
   TagReference,
   TagsJsonArray,
   GameReference,
+  Author,
+  Game,
+  Tag,
   GameJsonArray,
   AuthorsJsonArray,
   AuthorReference,
 } from '../../../types';
-
-interface Game {
-  slug: string;
-  collection: 'game';
-  data: {
-    Name: string;
-    Stars: number;
-    DateLaunch: string;
-    LastdatedDateVersion: string;
-    Developer: string;
-    Multijugador: boolean;
-    LastUpdatedDate?: string | undefined;
-    TrailerVideo?: string | undefined;
-    CoverImage?: string | undefined;
-  };
-}
-
-interface Author {
-  slug: string;
-  collection: 'author';
-  data: {
-    Name: string;
-  };
-}
-
-interface Tag {
-  slug: string;
-  collection: 'tag';
-  data: {
-    Name: string;
-    NameEnglish: string;
-    Spanish: string;
-    English: string;
-  };
-}
 
 export async function GetGames(games: GameReference): Promise<GameJsonArray> {
   return Promise.all(

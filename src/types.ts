@@ -3,11 +3,11 @@ import type { CollectionEntry } from 'astro:content';
 
 export type Locale = keyof typeof languages;
 export type Blog = CollectionEntry<'blog'>;
-export type tag = CollectionEntry<'tag'>;
+export type Tag = CollectionEntry<'tag'>;
 export type TagReference = Blog['data']['tag'];
 export type Game = CollectionEntry<'game'>;
 export type GameReference = Blog['data']['videojuego'];
-export type author = CollectionEntry<'author'>;
+export type Author = CollectionEntry<'author'>;
 export type AuthorReference = Blog['data']['author'];
 
 export type GameJson = {
