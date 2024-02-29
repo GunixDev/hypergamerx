@@ -45,9 +45,9 @@ type tag = {
 
 export async function GetGames(games: GameReference): Promise<GameJsonArray> {
   return Promise.all(
-    (games ?? []).map(async (game) => {
+    (games ?? []).map(async (game: { slug: string }) => {
       const gameEntry: Game | undefined = await getEntry('game', game.slug);
-      if (gameEntry) {
+      if (gameEntry !== undefined) {
         return {
           Name: gameEntry?.data?.Name,
           slug: gameEntry?.slug,
@@ -65,9 +65,9 @@ export async function GetGames(games: GameReference): Promise<GameJsonArray> {
 
 export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
   return Promise.all(
-    (tags ?? []).map(async (tag) => {
+    (tags ?? []).map(async (tag: { slug: string }) => {
       const tagEntry: tag | undefined = await getEntry('tag', tag.slug);
-      if (tagEntry) {
+      if (tagEntry !== undefined) {
         return {
           slug: tagEntry?.slug,
           Name: tagEntry?.data?.Name,
@@ -83,9 +83,9 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
 
 export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonArray> {
   return Promise.all(
-    (authors ?? []).map(async (author) => {
+    (authors ?? []).map(async (author: { slug: string }) => {
       const authorEntry: author | undefined = await getEntry('author', author.slug);
-      if (authorEntry) {
+      if (authorEntry !== undefined) {
         return {
           Name: authorEntry.data.Name,
           slug: authorEntry.slug,
