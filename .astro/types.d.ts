@@ -639,51 +639,16 @@ declare module 'astro:content' {
 } & { render(): Render[".mdx"] };
 };
 "tag": {
-"E-sports.mdx": {
-	id: "E-sports.mdx";
-  slug: "e-sports";
-  body: string;
-  collection: "tag";
-  data: InferEntrySchema<"tag">
-} & { render(): Render[".mdx"] };
-"Influencer.mdx": {
-	id: "Influencer.mdx";
-  slug: "influencer";
-  body: string;
-  collection: "tag";
-  data: InferEntrySchema<"tag">
-} & { render(): Render[".mdx"] };
-"Mod.mdx": {
-	id: "Mod.mdx";
-  slug: "mod";
-  body: string;
-  collection: "tag";
-  data: InferEntrySchema<"tag">
-} & { render(): Render[".mdx"] };
-"Objeto.mdx": {
-	id: "Objeto.mdx";
-  slug: "objeto";
-  body: string;
-  collection: "tag";
-  data: InferEntrySchema<"tag">
-} & { render(): Render[".mdx"] };
-"Tecnologia.mdx": {
-	id: "Tecnologia.mdx";
-  slug: "tecnologia";
-  body: string;
-  collection: "tag";
-  data: InferEntrySchema<"tag">
-} & { render(): Render[".mdx"] };
-"Top.mdx": {
-	id: "Top.mdx";
-  slug: "top";
-  body: string;
-  collection: "tag";
-  data: InferEntrySchema<"tag">
-} & { render(): Render[".mdx"] };
 "curiosidades.mdx": {
 	id: "curiosidades.mdx";
   slug: "curiosidades";
+  body: string;
+  collection: "tag";
+  data: InferEntrySchema<"tag">
+} & { render(): Render[".mdx"] };
+"e-sports.mdx": {
+	id: "e-sports.mdx";
+  slug: "e-sports";
   body: string;
   collection: "tag";
   data: InferEntrySchema<"tag">
@@ -702,6 +667,20 @@ declare module 'astro:content' {
   collection: "tag";
   data: InferEntrySchema<"tag">
 } & { render(): Render[".mdx"] };
+"influencer.mdx": {
+	id: "influencer.mdx";
+  slug: "influencer";
+  body: string;
+  collection: "tag";
+  data: InferEntrySchema<"tag">
+} & { render(): Render[".mdx"] };
+"mod.mdx": {
+	id: "mod.mdx";
+  slug: "mod";
+  body: string;
+  collection: "tag";
+  data: InferEntrySchema<"tag">
+} & { render(): Render[".mdx"] };
 "noticia.mdx": {
 	id: "noticia.mdx";
   slug: "noticia";
@@ -709,9 +688,30 @@ declare module 'astro:content' {
   collection: "tag";
   data: InferEntrySchema<"tag">
 } & { render(): Render[".mdx"] };
+"objeto.mdx": {
+	id: "objeto.mdx";
+  slug: "objeto";
+  body: string;
+  collection: "tag";
+  data: InferEntrySchema<"tag">
+} & { render(): Render[".mdx"] };
 "reseña.mdx": {
 	id: "reseña.mdx";
   slug: "reseña";
+  body: string;
+  collection: "tag";
+  data: InferEntrySchema<"tag">
+} & { render(): Render[".mdx"] };
+"tecnologia.mdx": {
+	id: "tecnologia.mdx";
+  slug: "tecnologia";
+  body: string;
+  collection: "tag";
+  data: InferEntrySchema<"tag">
+} & { render(): Render[".mdx"] };
+"top.mdx": {
+	id: "top.mdx";
+  slug: "top";
   body: string;
   collection: "tag";
   data: InferEntrySchema<"tag">
