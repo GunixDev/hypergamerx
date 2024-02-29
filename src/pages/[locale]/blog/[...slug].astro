@@ -14,7 +14,7 @@ import {GetGames, GetTags, GetAuthor} from '../../../components/utils/blog/GetCo
 
 export async function getStaticPaths() {
   let pages = await getCollection('Blog', (data) => {
-    return data.data.IsDraft !== true;
+    return data?.data?.IsDraft !== true;
   });
   const paths = pages.map((page) => {
     const [locale, ...slug] = page.slug.split('/');
@@ -33,14 +33,14 @@ let games:GameJsonArray = [];
 let tags:TagsJsonArray =  [];
 let author:AuthorsJsonArray = [];
 
-if (Array.isArray(page?.data.Videojuego)) {
-  games = await GetGames(page.data.Videojuego);
+if (Array.isArray(page?.data?.Videojuego)) {
+  games = await GetGames(page.data?.Videojuego);
 }
-if (Array.isArray(page?.data.Tag)) {
-  tags = await GetTags(page.data.Tag);
+if (Array.isArray(page?.data?.Tag)) {
+  tags = await GetTags(page.data?.Tag);
 }
-if(Array.isArray(page?.data.Author)){
-  author = await GetAuthor(page.data.Author);
+if(Array.isArray(page?.data?.Author)){
+  author = await GetAuthor(page.data?.Author);
 }
 
 tags.map((tag:any) => {
@@ -51,15 +51,15 @@ tags.map((tag:any) => {
 
 const allPosts = await getCollection('Blog', (data) => {
   return (
-    data.slug !== slug &&
-    data.data.IsDraft !== true &&
-    data.slug.startsWith(locale) &&
-    data.data.Title !== page.data.Title
+    data?.slug !== slug &&
+    data?.data?.IsDraft !== true &&
+    data?.slug.startsWith(locale) &&
+    data?.data?.Title !== page.data?.Title
   );
 })
 .then(posts => {
   posts.sort((a, b) => {
-    return new Date(b.data.PubDate).getTime() - new Date(a.data.PubDate).getTime();
+    return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
   });
   return posts;
 });
@@ -75,7 +75,7 @@ const gamesposts = allPosts.filter((post) => {
 let postgames = false;
 if (gamesposts.length >= 3) {
   gamesposts.sort((a, b) => {
-    return new Date(b.data.PubDate).getTime() - new Date(a.data.PubDate).getTime();
+    return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
   });
   postgames = true;
   gamesposts.length = 3;
@@ -90,16 +90,16 @@ if(amazon1 === undefined){
 ---
 
 <LayoutPrincipal
-  title={page.data.Title}
-  description={page.data.Description}
-  image={page.data.Image}
+  title={page.data?.Title}
+  description={page.data?.Description}
+  image={page.data?.Image}
   autor={"HyperGamerX"}
-  keywords={page.data.Keywords}
+  keywords={page.data?.Keywords}
   type='article'>
   <div class='lg:w-11/12 w-[99%] md:m-auto my-8 mt-12 sm:my-10 sm:grid sm:grid-cols-7 sm:gap-4'>
       <main lang={locale} class='sm:col-span-5 relative mx-2 sm:mx-4'>
         <h1 class='md:text-5xl md:mt-10 text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>
-          {page.data.Title}
+          {page.data?.Title}
         </h1>
         <div class='md:my-2 ls:max-md:my-0 text-slate-700'>
           <p class='text-gray-300 text-xs md:text-sm lg:max-md:text-xs font-extralight md:font-normal'>
@@ -112,12 +112,12 @@ if(amazon1 === undefined){
 ))}
             {t('article.eldiade')}
             <span>
-              <FormattedDate date={page.data.PubDate} locale={locale} />
+              <FormattedDate date={page.data?.PubDate} locale={locale} />
               {
-                page.data.UpdatedDate ? (
+                page.data?.UpdatedDate ? (
                   <span class=' opacity-70'>
                     {' '}
-                    ({t('article.ultimaactualizacion')}: <FormattedDate date={page.data.UpdatedDate} locale={locale} />)
+                    ({t('article.ultimaactualizacion')}: <FormattedDate date={page.data?.UpdatedDate} locale={locale} />)
                   </span>
                 ) : null
               }
@@ -131,21 +131,21 @@ if(amazon1 === undefined){
             </span>
           ))}
         </p>
-        <p class='text-xs md:text-xl text-gray-400'>{page.data.Description}</p>
+        <p class='text-xs md:text-xl text-gray-400'>{page.data?.Description}</p>
         {
           resena && games[0].TrailerVideo ? (
             <Iframeop client:load id={games[0].TrailerVideo}/>
-          ) : page && page.data.Image && page.data.Image !== null ? (
+          ) : page && page.data?.Image && page.data?.Image !== null ? (
           <img
-              src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data.Image}`}
-              srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data.Image} 256w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${page.data.Image} 512w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data.Image} 768w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_639/${page.data.Image} 1024w,
-          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${page.data.Image} 1280w`}
+              src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.Image}`}
+              srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data?.Image} 256w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${page.data?.Image} 512w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.Image} 768w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_639/${page.data?.Image} 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${page.data?.Image} 1280w`}
               width='479'
               height='270'
-              alt={page.data.Image}
+              alt={page.data?.Image}
               class='my-8 w-full h-auto mx-auto'
             />
           ) : null

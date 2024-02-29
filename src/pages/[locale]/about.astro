@@ -13,11 +13,11 @@ export async function getStaticPaths() {
 }
 
 const allPosts = await getCollection('Blog', (data) => {
-  return data.data.IsDraft !== true && data.slug.startsWith(lang);
+  return data?.data?.IsDraft !== true && data?.slug.startsWith(lang);
 });
 
 allPosts.sort((a, b) => {
-  return new Date(b.data.PubDate).getTime() - new Date(a.data.PubDate).getTime();
+  return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
 });
 allPosts.length = 8;
 ---

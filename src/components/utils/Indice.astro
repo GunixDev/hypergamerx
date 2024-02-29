@@ -14,7 +14,7 @@ const t = useTranslations(locale);
   <h2 class='align-middle font-bold text-white text-center text-2xl'>{t('article.indice')}</h2>
   <div class='grid grid-cols-1'>
     {
-      data.map((indice: any) => {
+      data?.map((indice: any) => {
         return indice.depth === 2 ? (
           <a
             hreflang={locale}

@@ -26,36 +26,38 @@ if (tag == 'news') {
 
 const allPosts = await getCollection('Blog', (data) => {
   return (
-    data.data.IsDraft !== true &&
-    data.id.startsWith(lang) &&
-    data.data.Tag &&
-    data.data.Tag.some((tag: any) => [id].includes(tag.id))
+    data?.data?.IsDraft !== true &&
+    data?.id.startsWith(lang) &&
+    data?.data?.Tag &&
+    data?.data?.Tag.some((tag: any) => [id].includes(tag.id))
   );
 });
 
-allPosts.sort((a, b) => new Date(b.data.PubDate).getTime() - new Date(a.data.PubDate).getTime());
+allPosts.sort((a, b) => new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime());
 const Posts = allPosts
-  .filter((post) => post.data.Tag && post.data.Tag.some((Tag: any) => [id].includes(Tag.id)))
+  .filter((post) => post.data?.Tag && post.data?.Tag.some((Tag: any) => [id].includes(Tag.id)))
   .slice(0, 12);
 
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.id)),
+      post.data?.Videojuego && post.data?.Videojuego.some((Videojuego: any) => ['minecraft'].includes(Videojuego.id)),
   )
   .slice(0, 8);
 
 const geometryPosts = allPosts
   .filter(
     (post) =>
-      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.id)),
+      post.data?.Videojuego &&
+      post.data?.Videojuego.some((Videojuego: any) => ['geometry-dash'].includes(Videojuego.id)),
   )
   .slice(0, 6);
 
 const legofortnitePosts = allPosts
   .filter(
     (post) =>
-      post.data.Videojuego && post.data.Videojuego.some((Videojuego: any) => ['lego-fortnite'].includes(Videojuego.id)),
+      post.data?.Videojuego &&
+      post.data?.Videojuego.some((Videojuego: any) => ['lego-fortnite'].includes(Videojuego.id)),
   )
   .slice(0, 6);
 ---
