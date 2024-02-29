@@ -36,8 +36,8 @@ let author:AuthorsJsonArray = [];
 if (Array.isArray(page?.data?.videojuego)) {
   games = await GetGames(page.data?.videojuego);
 }
-if (Array.isArray(page?.data?.Tag)) {
-  tags = await GetTags(page.data?.Tag);
+if (Array.isArray(page?.data?.tag)) {
+  tags = await GetTags(page.data?.tag);
 }
 if(Array.isArray(page?.data?.author)){
   author = await GetAuthor(page.data?.author);
