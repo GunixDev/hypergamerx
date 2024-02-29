@@ -1,6 +1,6 @@
 import { defineCollection, reference, z } from 'astro:content';
 
-const BlogCollection = defineCollection({
+const blog = defineCollection({
   type: 'content',
   schema: z.object({
     IsDraft: z.boolean(),
@@ -18,14 +18,14 @@ const BlogCollection = defineCollection({
   }),
 });
 
-const AuthorCollection = defineCollection({
+const author = defineCollection({
   type: 'data',
   schema: z.object({
     Name: z.string(),
   }),
 });
 
-const TagCollection = defineCollection({
+const tag = defineCollection({
   type: 'data',
   schema: z.object({
     Name: z.string(),
@@ -35,7 +35,7 @@ const TagCollection = defineCollection({
   }),
 });
 
-const GameCollection = defineCollection({
+const game = defineCollection({
   type: 'data',
   schema: z.object({
     Name: z.string(),
@@ -51,8 +51,8 @@ const GameCollection = defineCollection({
 });
 
 export const collections = {
-  blog: BlogCollection,
-  game: GameCollection,
-  author: AuthorCollection,
-  tag: TagCollection,
+  blog,
+  game,
+  author,
+  tag,
 };
