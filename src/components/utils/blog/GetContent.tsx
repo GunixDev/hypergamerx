@@ -1,15 +1,16 @@
-import { getEntry } from 'astro:content';
+import { getEntry, type CollectionEntry } from 'astro:content';
 import type {
   TagReference,
-  tag,
   TagsJsonArray,
   GameReference,
-  Game,
   GameJsonArray,
-  author,
   AuthorsJsonArray,
   AuthorReference,
 } from '../../../types';
+
+export type tag = CollectionEntry<'tag'>;
+export type Game = CollectionEntry<'game'>;
+export type author = CollectionEntry<'author'>;
 
 export async function GetGames(games: GameReference): Promise<GameJsonArray> {
   return Promise.all(
