@@ -11,7 +11,7 @@ const blog = defineCollection({
     Image: z.string().optional(),
     Video: z.string().optional(),
     author: z.array(reference('author')),
-    tag: z.array(reference('tag')).optional(),
+    tag: z.array(reference('tag')),
     videojuego: z.array(reference('game')).optional(),
     Keywords: z.string(),
   }),
