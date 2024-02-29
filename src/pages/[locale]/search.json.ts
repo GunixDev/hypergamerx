@@ -6,7 +6,7 @@ export async function getStaticPaths() {
 
 async function getPosts({ params }: { params: any; request: any }) {
   const locale = params.locale;
-  const posts = (await getCollection('Blog'))
+  const posts = (await getCollection('blog'))
     .sort((a, b) => a.data?.PubDate.valueOf() - b.data?.PubDate.valueOf())
     .filter((post) => post.slug.startsWith(locale))
     .filter((post) => post.data?.IsDraft !== true);

@@ -14,7 +14,7 @@ import type {
 export async function GetGames(games: GameReference): Promise<GameJsonArray> {
   return Promise.all(
     (games ?? []).map(async (game: any) => {
-      const gameEntry: Game | undefined = await getEntry('Game', game.id);
+      const gameEntry: Game | undefined = await getEntry('game', game.id);
       if (gameEntry) {
         return {
           Name: gameEntry.data?.Name,
@@ -34,7 +34,7 @@ export async function GetGames(games: GameReference): Promise<GameJsonArray> {
 export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
   return Promise.all(
     (tags ?? []).map(async (tag: any) => {
-      const tagEntry: Tag | undefined = await getEntry('Tag', tag.id);
+      const tagEntry: Tag | undefined = await getEntry('tag', tag.id);
       if (tagEntry) {
         return {
           id: tagEntry.id,
@@ -52,7 +52,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
 export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonArray> {
   return Promise.all(
     (authors ?? []).map(async (author: any) => {
-      const authorEntry: Author | undefined = await getEntry('Author', author.id);
+      const authorEntry: Author | undefined = await getEntry('author', author.id);
       if (authorEntry) {
         return {
           Name: authorEntry.data?.Name,

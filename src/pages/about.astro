@@ -3,7 +3,7 @@ import ArticulosRamdon from '../components/Views/ArticulosRamdon.astro';
 import LayoutPrincipal from '../layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
 
-const allPosts = await getCollection('Blog', (data) => {
+const allPosts = await getCollection('blog', (data) => {
   return data?.data?.IsDraft !== true && data?.slug.startsWith('en');
 });
 

@@ -13,7 +13,7 @@ import Producto from '../../../components/utils/blog/Productos';
 import {GetGames, GetTags, GetAuthor} from '../../../components/utils/blog/GetContent';
 
 export async function getStaticPaths() {
-  let pages = await getCollection('Blog', (data) => {
+  let pages = await getCollection('blog', (data) => {
     return data?.data?.IsDraft !== true;
   });
   const paths = pages.map((page) => {
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 }
 
 const { locale, slug } = Astro.params;
-const page = await getEntry('Blog', locale + '/' + slug) as unknown as Blog;
+const page = await getEntry('blog', locale + '/' + slug) as unknown as Blog;
 const renderResult = await page.render();
 const Content = renderResult.Content;
 const t = useTranslations(locale);
@@ -49,7 +49,7 @@ tags.map((tag:any) => {
   }
 });
 
-const allPosts = await getCollection('Blog', (data) => {
+const allPosts = await getCollection('blog', (data) => {
   return (
     data?.slug !== slug &&
     data?.data?.IsDraft !== true &&

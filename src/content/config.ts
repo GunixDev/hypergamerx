@@ -11,9 +11,9 @@ const BlogCollection = defineCollection({
     UpdatedDate: z.date().optional(),
     Image: z.string().optional(),
     Video: z.string().optional(),
-    Author: z.array(reference('Author')),
-    Tag: z.array(reference('Tag')).optional(),
-    Videojuego: z.array(reference('Game')).optional(),
+    Author: z.array(reference('author')),
+    Tag: z.array(reference('tag')).optional(),
+    Videojuego: z.array(reference('game')).optional(),
     Keywords: z.string(),
   }),
 });
@@ -51,8 +51,8 @@ const GameCollection = defineCollection({
 });
 
 export const collections = {
-  Blog: BlogCollection,
-  Game: GameCollection,
-  Author: AuthorCollection,
+  blog: BlogCollection,
+  game: GameCollection,
+  author: AuthorCollection,
   Tag: TagCollection,
 };
