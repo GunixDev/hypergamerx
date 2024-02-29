@@ -8,7 +8,7 @@ import type {
   AuthorReference,
 } from '../../../types';
 
-type Game = {
+interface Game {
   slug: string;
   collection: 'game';
   data: {
@@ -22,17 +22,17 @@ type Game = {
     TrailerVideo?: string | undefined;
     CoverImage?: string | undefined;
   };
-};
+}
 
-type author = {
+interface Author {
   slug: string;
   collection: 'author';
   data: {
     Name: string;
   };
-};
+}
 
-type tag = {
+interface Tag {
   slug: string;
   collection: 'tag';
   data: {
@@ -41,7 +41,7 @@ type tag = {
     Spanish: string;
     English: string;
   };
-};
+}
 
 export async function GetGames(games: GameReference): Promise<GameJsonArray> {
   return Promise.all(
@@ -49,13 +49,13 @@ export async function GetGames(games: GameReference): Promise<GameJsonArray> {
       const gameEntry: Game | undefined = await getEntry('game', game.slug);
       if (gameEntry !== undefined) {
         return {
-          Name: gameEntry?.data?.Name,
-          slug: gameEntry?.slug,
-          Stars: gameEntry?.data?.Stars,
-          DateLaunch: gameEntry?.data?.DateLaunch ? new Date(gameEntry?.data?.DateLaunch) : null,
-          Multijugador: gameEntry?.data?.Multijugador,
-          TrailerVideo: gameEntry?.data?.TrailerVideo,
-          CoverImage: gameEntry?.data?.CoverImage,
+          Name: gameEntry.data.Name,
+          slug: gameEntry.slug,
+          Stars: gameEntry.data.Stars,
+          DateLaunch: new Date(gameEntry.data.DateLaunch),
+          Multijugador: gameEntry.data.Multijugador,
+          TrailerVideo: gameEntry.data.TrailerVideo,
+          CoverImage: gameEntry.data.CoverImage,
         };
       }
       return null;
@@ -66,14 +66,14 @@ export async function GetGames(games: GameReference): Promise<GameJsonArray> {
 export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
   return Promise.all(
     (tags ?? []).map(async (tag: { slug: string }) => {
-      const tagEntry: tag | undefined = await getEntry('tag', tag.slug);
+      const tagEntry: Tag | undefined = await getEntry('tag', tag.slug);
       if (tagEntry !== undefined) {
         return {
-          slug: tagEntry?.slug,
-          Name: tagEntry?.data?.Name,
-          NameEnglish: tagEntry?.data?.NameEnglish,
-          English: tagEntry?.data?.English,
-          Spanish: tagEntry?.data?.Spanish,
+          slug: tagEntry.slug,
+          Name: tagEntry.data.Name,
+          NameEnglish: tagEntry.data.NameEnglish,
+          English: tagEntry.data.English,
+          Spanish: tagEntry.data.Spanish,
         };
       }
       return null;
@@ -84,7 +84,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
 export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonArray> {
   return Promise.all(
     (authors ?? []).map(async (author: { slug: string }) => {
-      const authorEntry: author | undefined = await getEntry('author', author.slug);
+      const authorEntry: Author | undefined = await getEntry('author', author.slug);
       if (authorEntry !== undefined) {
         return {
           Name: authorEntry.data.Name,
