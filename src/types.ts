@@ -14,7 +14,7 @@ export type GameJson = {
   Name: string;
   id: string;
   Stars: number;
-  DateLaunch: Date;
+  DateLaunch: string;
   Multijugador: boolean;
   TrailerVideo: string;
   CoverImage: string;
