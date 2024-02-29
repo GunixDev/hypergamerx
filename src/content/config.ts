@@ -19,14 +19,14 @@ const blog = defineCollection({
 });
 
 const author = defineCollection({
-  type: 'data',
+  type: 'content',
   schema: z.object({
     Name: z.string(),
   }),
 });
 
 const tag = defineCollection({
-  type: 'data',
+  type: 'content',
   schema: z.object({
     Name: z.string(),
     NameEnglish: z.string(),
@@ -36,7 +36,7 @@ const tag = defineCollection({
 });
 
 const game = defineCollection({
-  type: 'data',
+  type: 'content',
   schema: z.object({
     Name: z.string(),
     Stars: z.number(),
