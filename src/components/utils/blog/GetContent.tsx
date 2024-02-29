@@ -10,7 +10,13 @@ import type {
 
 export type tag = CollectionEntry<'tag'>;
 export type Game = CollectionEntry<'game'>;
-export type author = CollectionEntry<'author'>;
+export type author = {
+  id: string;
+  collection: 'author';
+  data: {
+    Name: string;
+  };
+};
 
 export async function GetGames(games: GameReference): Promise<GameJsonArray> {
   return Promise.all(
