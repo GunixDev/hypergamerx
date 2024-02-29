@@ -92,7 +92,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
   ) as unknown as TagsJsonArray;
 }
 
-export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonArray> {
+export async function GetAuthor(authors: AuthorReference[]): Promise<AuthorsJsonArray> {
   return Promise.all(
     (authors ?? []).map(async (author) => {
       const authorEntry: author = await getEntry('author', author.id);
