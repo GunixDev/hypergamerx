@@ -10,7 +10,7 @@ import type {
 
 export type tag = CollectionEntry<'tag'>;
 export type Game = CollectionEntry<'game'>;
-export type author = {
+type author = {
   id: string;
   collection: 'author';
   data: {
@@ -77,8 +77,8 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
 export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonArray> {
   return Promise.all(
     (authors ?? []).map(async (author) => {
-      const authorEntry: author | null = await getEntry('author', author.id);
-      if (authorEntry && 'data' in authorEntry) {
+      const authorEntry: author = await getEntry('author', author.id);
+      if (authorEntry) {
         return {
           Name: authorEntry.data.Name,
           id: authorEntry.id,
