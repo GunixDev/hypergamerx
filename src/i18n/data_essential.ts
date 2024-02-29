@@ -123,14 +123,14 @@ export const ui_essential = {
     'privacidad.14':
       'Our commitment is to use your personal data solely for the purpose of effectively providing our services and enhancing your customer experience. We will not share your information with third parties for marketing or advertising purposes without your explicit consent.',
     'privacidad.15':
-      'We value the trust you place in us by providing us with your personal data, and we strive to maintain high standards of security to protect your information. We are always ready to address any questions or concerns you may have about our privacy policy and the use of your personal data.',
+      'We value the trust you place in us by providing us with your personal data, and we strive to maintain high standards of security to protect your information. We are always ready to address any questions or concerns you may have about our privacy policy and the use of your personal data?.',
     'privacidad.16': 'Information Protection',
     'privacidad.17':
       'In our organization, we prioritize the protection of the personal information we collect by implementing appropriate security measures. We understand the importance of keeping your data safe and confidential. However, it is important to note that no transmission of data over the Internet or online storage can be considered completely secure in all cases.',
     'privacidad.18':
       'Despite our constant efforts to safeguard your personal data, we cannot provide an absolute guarantee of the security of information transmitted through our website. Various factors beyond our control could compromise the integrity of data during transit, such as possible technical failures, cyber attacks, unauthorized interception, or other similar incidents.',
     'privacidad.19':
-      'Nevertheless, we want to assure you that we employ state-of-the-art technologies and security practices to minimize risks and protect your personal data. This includes the use of encryption methods, firewalls, access controls, and other advanced security measures to maintain a secure environment for storing and processing your data.',
+      'Nevertheless, we want to assure you that we employ state-of-the-art technologies and security practices to minimize risks and protect your personal data?. This includes the use of encryption methods, firewalls, access controls, and other advanced security measures to maintain a secure environment for storing and processing your data?.',
     'privacidad.20':
       'Additionally, we commit to staying informed about the latest trends and developments in cybersecurity to continuously update our protective measures. We conduct regular audits and risk assessments to identify potential vulnerabilities and take necessary actions to mitigate any potential risks.',
     'privacidad.21':
@@ -144,7 +144,7 @@ export const ui_essential = {
       'At HyperGamerX, we strive to protect your privacy and ensure the confidentiality of your personal information within our own website. However, we have no direct control over third-party websites, so it is important to take necessary precautions when browsing the Internet and interacting with other websites. Always remember to review and understand the privacy policies and terms of use of each website you visit, especially those that collect personal information.',
     'privacidad.26': 'Changes to the Privacy Policy',
     'privacidad.27':
-      'We reserve the right to update or modify this Privacy Policy at any time to ensure the protection and privacy of your personal data. It is important to periodically review this page to stay informed about any changes made.',
+      'We reserve the right to update or modify this Privacy Policy at any time to ensure the protection and privacy of your personal data?. It is important to periodically review this page to stay informed about any changes made.',
     'privacidad.28':
       'The effective date of the policy will be clearly indicated at the beginning of the document so that you can easily identify when the most recent modifications were made. Your continued use of our services after the effective date of any changes to the Privacy Policy constitutes your acceptance of such changes.',
     'privacidad.29': 'Contact',
