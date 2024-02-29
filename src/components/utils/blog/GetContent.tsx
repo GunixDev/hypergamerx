@@ -16,7 +16,7 @@ export async function GetGames(games: GameReference): Promise<GameJsonArray> {
   return Promise.all(
     (games ?? []).map(
       async (value: { collection: 'game'; id: 'geometry-dash' | 'lego-fortnite' | 'minecraft' | 'valorant' }) => {
-        const gameEntry: Game = await getEntry('game', value.id);
+        const gameEntry = await getEntry('game', value.id);
         if (gameEntry !== undefined || gameEntry !== null) {
           return {
             Name: gameEntry?.data?.Name,
@@ -52,7 +52,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
           | 'Tecnologia'
           | 'Top';
       }) => {
-        const tagEntry: tag = await getEntry('tag', tag.id);
+        const tagEntry = await getEntry('tag', tag.id);
         if (tagEntry !== undefined || tagEntry !== null) {
           return {
             id: tagEntry?.id,
@@ -71,7 +71,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
 export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonArray> {
   return Promise.all(
     (authors ?? []).map(async (author) => {
-      const authorEntry: author = await getEntry('author', author.id);
+      const authorEntry = await getEntry('author', author.id);
       if (authorEntry && authorEntry.data) {
         return {
           Name: authorEntry.data.Name,
