@@ -1,20 +1,14 @@
 import { languages } from './i18n/data_essential';
 import type { CollectionEntry } from 'astro:content';
 
-interface BlogData {
-  Tag: any; // Cambia 'any' por el tipo correcto si lo conoces
-  Videojuego: any; // Cambia 'any' por el tipo correcto si lo conoces
-  Author: any; // Cambia 'any' por el tipo correcto si lo conoces
-}
-
 export type Locale = keyof typeof languages;
-export type Blog = CollectionEntry<'Blog'> & { data: BlogData };
+export type Blog = CollectionEntry<'Blog'>;
 export type Tag = CollectionEntry<'Tag'>;
-export type TagReference = Blog['data']['Tag'] | undefined;
+export type TagReference = Blog['data']['Tag'];
 export type Game = CollectionEntry<'Game'>;
-export type GameReference = Blog['data']['Videojuego'] | undefined;
+export type GameReference = Blog['data']['Videojuego'];
 export type Author = CollectionEntry<'Author'>;
-export type AuthorReference = Blog['data']['Author'] | undefined;
+export type AuthorReference = Blog['data']['Author'];
 
 export type GameJson = {
   Name: string;
