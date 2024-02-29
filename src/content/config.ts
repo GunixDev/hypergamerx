@@ -1,7 +1,6 @@
 import { defineCollection, reference, z } from 'astro:content';
 
 const blog = defineCollection({
-  type: 'content',
   schema: z.object({
     IsDraft: z.boolean(),
     Title: z.string(),
@@ -11,7 +10,7 @@ const blog = defineCollection({
     UpdatedDate: z.date().optional(),
     Image: z.string().optional(),
     Video: z.string().optional(),
-    author: reference('author'),
+    author: z.array(reference('author')),
     tag: z.array(reference('tag')).optional(),
     videojuego: z.array(reference('game')).optional(),
     Keywords: z.string(),
@@ -19,14 +18,12 @@ const blog = defineCollection({
 });
 
 const author = defineCollection({
-  type: 'content',
   schema: z.object({
     Name: z.string(),
   }),
 });
 
 const tag = defineCollection({
-  type: 'content',
   schema: z.object({
     Name: z.string(),
     NameEnglish: z.string(),
@@ -36,7 +33,6 @@ const tag = defineCollection({
 });
 
 const game = defineCollection({
-  type: 'content',
   schema: z.object({
     Name: z.string(),
     Stars: z.number(),

@@ -17,11 +17,11 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
-let id: '' | 'Noticia' | 'Reseña' | 'Guia' = '';
+let id: '' | 'noticia' | 'reseña' | 'guia' = '';
 if (tag == 'news') {
-  id = 'Noticia';
+  id = 'noticia';
 } else if (tag == 'guides') {
-  id = 'Guia';
+  id = 'guia';
 }
 
 const allPosts = await getCollection('blog', (data) => {
@@ -66,11 +66,11 @@ const legofortnitePosts = allPosts
   <main>
     <div class='w-11/12 mx-auto'>
       <h1 class='md:text-4xl text-base mx-auto font-bold mt-12 md:mt-2 text-white'>
-        {id === 'Guia' ? t('seccion.guide') : t('seccion.news')}
+        {id === 'guia' ? t('seccion.guide') : t('seccion.news')}
       </h1>
       <div class='w-10/12 mx-auto'>
         <h2 class='lg:text-3xl font-bold my-4'>
-          {id === 'Guia' ? t('seccion.ultimasguias') : t('index.ultimanoticias')}
+          {id === 'guia' ? t('seccion.ultimasguias') : t('index.ultimanoticias')}
         </h2>
         <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
           {Posts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
@@ -79,7 +79,7 @@ const legofortnitePosts = allPosts
           minecraftPosts.length > 2 ? (
             <>
               <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
-                {id === 'Guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Minecraft
+                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Minecraft
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {minecraftPosts.map((post) => (
@@ -94,7 +94,7 @@ const legofortnitePosts = allPosts
           geometryPosts.length > 2 ? (
             <>
               <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
-                {id === 'Guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Geometry Dash
+                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Geometry Dash
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {geometryPosts.map((post) => (
@@ -108,7 +108,7 @@ const legofortnitePosts = allPosts
           legofortnitePosts.length > 2 ? (
             <>
               <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
-                {id === 'Guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Lego Fortnite
+                {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Lego Fortnite
               </h2>
               <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
                 {legofortnitePosts.map((post) => (

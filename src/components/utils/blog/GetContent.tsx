@@ -9,7 +9,7 @@ import type {
 } from '../../../types';
 
 type Game = {
-  id: string;
+  slug: string;
   collection: 'game';
   data: {
     Name: string;
@@ -25,7 +25,7 @@ type Game = {
 };
 
 type author = {
-  id: 'Brayan-Cordova';
+  slug: string;
   collection: 'author';
   data: {
     Name: string;
@@ -33,18 +33,7 @@ type author = {
 };
 
 type tag = {
-  id:
-    | 'Curiosidades'
-    | 'E-sports'
-    | 'Evento'
-    | 'Guia'
-    | 'Influencer'
-    | 'Mod'
-    | 'Noticia'
-    | 'Objeto'
-    | 'Reseña'
-    | 'Tecnologia'
-    | 'Top';
+  slug: string;
   collection: 'tag';
   data: {
     Name: string;
@@ -61,7 +50,7 @@ export async function GetGames(games: GameReference): Promise<GameJsonArray> {
       if (gameEntry !== undefined || gameEntry !== null) {
         return {
           Name: gameEntry?.data?.Name,
-          id: gameEntry?.slug,
+          slug: gameEntry?.slug,
           Stars: gameEntry?.data?.Stars,
           DateLaunch: gameEntry?.data?.DateLaunch ? new Date(gameEntry?.data?.DateLaunch) : null,
           Multijugador: gameEntry?.data?.Multijugador,
@@ -80,7 +69,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
       const tagEntry: tag = await getEntry('tag', tag.slug);
       if (tagEntry) {
         return {
-          id: tagEntry?.slug,
+          slug: tagEntry?.slug,
           Name: tagEntry?.data?.Name,
           NameEnglish: tagEntry?.data?.NameEnglish,
           English: tagEntry?.data?.English,
@@ -99,7 +88,7 @@ export async function GetAuthor(authors: AuthorReference[]): Promise<AuthorsJson
       if (authorEntry) {
         return {
           Name: authorEntry.data.Name,
-          id: authorEntry.slug,
+          slug: authorEntry.slug,
         };
       }
       return null;

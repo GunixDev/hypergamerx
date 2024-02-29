@@ -56,17 +56,17 @@ export default defineConfig({
     },
   }),
   redirects: {
-    '/blog/Noticia': '/es/',
+    '/blog/noticia': '/es/',
     '/blog/resena': '/es/',
-    '/blog/Noticia/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1':
+    '/blog/noticia/nuevos-tradeos-y-cartografos-en-minecraft-1-20-2-pre-release-2-1':
       '/es/blog/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1/',
-    '/blog/Noticia/los-aldeanos-cambiaran-en-la-1-20-2-snapshot-23w31a':
+    '/blog/noticia/los-aldeanos-cambiaran-en-la-1-20-2-snapshot-23w31a':
       '/es/blog/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a/',
-    '/blog/Noticia/el-trailer-de-la-minecraft-live-2023': '/es/blog/the-trailer-of-minecraft-live-2023/',
+    '/blog/noticia/el-trailer-de-la-minecraft-live-2023': '/es/blog/the-trailer-of-minecraft-live-2023/',
     '/blog/guia': '/es/',
     '/blog/resena/valorant': '/es/blog/valorant/',
     '/blog/curiosidades': '/es/',
-    '/blog/Noticia/la-hitbox-cambiaran-en-minecraft-1-20-2-snapshot-23w32a':
+    '/blog/noticia/la-hitbox-cambiaran-en-minecraft-1-20-2-snapshot-23w32a':
       '/es/blog/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a/',
     '/blog/guia/las-7-mejores-semillas-para-minecraft-1-20': '/es/blog/the-7-best-seeds-for-minecraft-1-20/',
     '/blog/guia/como-activar-las-funciones-experimentales-en-minecraft':
@@ -77,7 +77,7 @@ export default defineConfig({
       '/es/blog/discover-why-mario-bros-is-one-of-the-most-iconic-games/',
     '/blog/curiosidades/los-7-videojuegos-mas-influyentes-de-todos-los-tiempos':
       '/es/blog/the-7-most-influential-video-games-of-all-time/',
-    '/blog/Noticia/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard':
+    '/blog/noticia/xbox-gana-la-demanda-contra-play-station-por-la-compra-de-activision-blizzard':
       '/es/blog/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard/',
     '/blog/resena/minecraft-java': 'es/blog/minecraft/',
     '/blog/anuncios/etiquetas-para-los-articulos-y-nuevo-canal-de-youtube': '/es/',
