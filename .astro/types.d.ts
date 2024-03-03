@@ -135,16 +135,7 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"author": {
-"brayan-cordova.mdx": {
-	id: "brayan-cordova.mdx";
-  slug: "brayan-cordova";
-  body: string;
-  collection: "author";
-  data: InferEntrySchema<"author">
-} & { render(): Render[".mdx"] };
-};
-"blog": {
+		"blog": {
 "en/7-essential-tips-to-survive-the-first-night-in-minecraft.mdx": {
 	id: "en/7-essential-tips-to-survive-the-first-night-in-minecraft.mdx";
   slug: "en/7-essential-tips-to-survive-the-first-night-in-minecraft";
@@ -721,7 +712,14 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"author": {
+"brayan-cordova": {
+	id: "brayan-cordova";
+  collection: "author";
+  data: InferEntrySchema<"author">
+};
+};
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;

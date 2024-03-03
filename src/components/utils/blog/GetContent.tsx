@@ -51,12 +51,12 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
 
 export async function GetAuthor(authors: AuthorReference): Promise<AuthorsJsonArray> {
   return Promise.all(
-    (authors ?? []).map(async (author: { slug: string }) => {
-      const authorEntry = (await getEntry('author', author.slug)) as Author | undefined;
+    (authors ?? []).map(async (author: { id: string }) => {
+      const authorEntry = (await getEntry('author', author.id)) as Author | undefined;
       if (authorEntry) {
         return {
           Name: authorEntry.data.Name,
-          slug: authorEntry.slug,
+          id: authorEntry.id,
         };
       }
       return null;

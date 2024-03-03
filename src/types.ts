@@ -31,6 +31,6 @@ export type TagJson = {
 export type TagsJsonArray = TagJson[];
 export type AuthorJson = {
   Name: string;
-  slug: string;
+  id: string;
 };
 export type AuthorsJsonArray = AuthorJson[];
