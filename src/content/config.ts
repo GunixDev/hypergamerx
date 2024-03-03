@@ -39,8 +39,8 @@ const game = defineCollection({
   schema: z.object({
     Name: z.string(),
     Stars: z.number(),
-    DateLaunch: z.date(),
-    LastUpdatedDate: z.date().optional(),
+    DateLaunch: z.string(),
+    LastUpdatedDate: z.string().optional(),
     LastdatedDateVersion: z.string(),
     Developer: z.string(),
     Multijugador: z.boolean(),

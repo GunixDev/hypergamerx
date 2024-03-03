@@ -13,12 +13,12 @@ import type {
 
 export async function GetGames(games: GameReference): Promise<GameJsonArray> {
   return Promise.all(
-    (games ?? []).map(async (game: { slug: string }) => {
-      const gameEntry = (await getEntry('game', game.slug)) as Game | undefined;
+    (games ?? []).map(async (game: { id: string }) => {
+      const gameEntry = (await getEntry('game', game.id)) as Game | undefined;
       if (gameEntry) {
         return {
           Name: gameEntry.data.Name,
-          slug: gameEntry.slug,
+          id: gameEntry.id,
           Stars: gameEntry.data.Stars,
           DateLaunch: new Date(gameEntry.data.DateLaunch),
           Multijugador: gameEntry.data.Multijugador,

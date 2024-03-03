@@ -12,7 +12,7 @@ export type AuthorReference = Blog['data']['author'];
 
 export type GameJson = {
   Name: string;
-  slug: string;
+  id: string;
   Stars: number;
   DateLaunch: Date;
   Multijugador: boolean;
