@@ -41,7 +41,7 @@ const Posts = allPosts
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data?.videojuego && post.data?.videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.slug)),
+      post.data?.videojuego && post.data?.videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.id)),
   )
   .slice(0, 8);
 
@@ -49,7 +49,7 @@ const geometryPosts = allPosts
   .filter(
     (post) =>
       post.data?.videojuego &&
-      post.data?.videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.slug)),
+      post.data?.videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.id)),
   )
   .slice(0, 6);
 
@@ -57,7 +57,7 @@ const legofortnitePosts = allPosts
   .filter(
     (post) =>
       post.data?.videojuego &&
-      post.data?.videojuego.some((videojuego: any) => ['lego-fortnite'].includes(videojuego.slug)),
+      post.data?.videojuego.some((videojuego: any) => ['lego-fortnite'].includes(videojuego.id)),
   )
   .slice(0, 6);
 ---
