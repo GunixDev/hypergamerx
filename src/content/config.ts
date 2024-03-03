@@ -26,6 +26,7 @@ const author = defineCollection({
 });
 
 const tag = defineCollection({
+  type: 'data',
   schema: z.object({
     Name: z.string(),
     NameEnglish: z.string(),

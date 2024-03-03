@@ -33,8 +33,8 @@ export async function GetGames(games: GameReference): Promise<GameJsonArray> {
 
 export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
   return Promise.all(
-    (tags ?? []).map(async (tag: { slug: string }) => {
-      const tagEntry = (await getEntry('tag', tag.slug)) as Tag | undefined;
+    (tags ?? []).map(async (tag: { id: string }) => {
+      const tagEntry = (await getEntry('tag', tag.id)) as Tag | undefined;
       if (tagEntry) {
         return {
           id: tagEntry.id,

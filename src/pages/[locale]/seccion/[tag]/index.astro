@@ -29,13 +29,13 @@ const allPosts = await getCollection('blog', (data) => {
     data?.data?.IsDraft !== true &&
     data?.slug.startsWith(lang) &&
     data?.data?.tag &&
-    data?.data?.tag.some((tag: any) => [id].includes(tag.slug))
+    data?.data?.tag.some((tag: any) => [id].includes(tag.id))
   );
 });
 
 allPosts.sort((a, b) => new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime());
 const Posts = allPosts
-  .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => [id].includes(tag.slug)))
+  .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => [id].includes(tag.id)))
   .slice(0, 12);
 
 const minecraftPosts = allPosts
