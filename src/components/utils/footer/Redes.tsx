@@ -12,7 +12,7 @@ export default function Redes({ lang }: RedesProps) {
       <div class='ml-6 ls:max-md:text-xs'>
         <ol className='ls:max-md:grid ls:max-md:grid-cols-2 ls:max-md:list-disc'>
           <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={'https://discord.gg/aXmCVfcXaa'} hreflang={lang} target='_blank'>
+            <a href={'https://discord.gg/KqmwVhZnfa'} hreflang={lang} target='_blank'>
               {' '}
               Discord
             </a>
