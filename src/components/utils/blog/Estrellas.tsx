@@ -1,4 +1,4 @@
-import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { useTranslations } from '../../../i18n/utils';
 import type { Locale } from '../../../types';
 
 export default function Estrellas(cantidad: number, locale: Locale) {
