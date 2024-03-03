@@ -7,7 +7,7 @@ export default function Producto(props: any) {
 
   juego.sort(() => Math.random() - 0.5);
 
-  let data = juego.slice(0, juego.length > 5 ? 5 : juego.length);
+  let data = juego.slice(0, juego.length > 3 ? 3 : juego.length);
   return (
     <div>
       {Object.values(data).map((producto: any, index: number) => (

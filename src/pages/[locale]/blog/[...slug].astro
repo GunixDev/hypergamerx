@@ -1,16 +1,14 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
-import type {Locale, Blog,TagsJsonArray, GameJsonArray, AuthorsJsonArray} from '../../../types'
+import type { Locale, Blog, TagsJsonArray, GameJsonArray, AuthorsJsonArray } from '../../../types';
 import { amazon } from '../../../components/utils/blog/Amazon';
 import LayoutPrincipal from '../../../layouts/LayoutPrincipal.astro';
 import FormattedDate from '../../../components/utils/FormattedDate.astro';
 import Indice from '../../../components/utils/Indice.astro';
 import { useTranslations } from '../../../i18n/utils';
-import ArticulosRamdon from '../../../components/Views/ArticulosRamdon.astro';
-import Estrellas from '../../../components/utils/blog/Estrellas.astro';
 import Iframeop from '../../../components/utils/blog/Iframeop';
-import Producto from '../../../components/utils/blog/Productos';
-import {GetGames, GetTags, GetAuthor} from '../../../components/utils/blog/GetContent';
+import { GetGames, GetTags, GetAuthor } from '../../../components/utils/blog/GetContent';
+import AsideBlog from '@components/utils/blog/AsideBlog';
 
 export async function getStaticPaths() {
   let pages = await getCollection('blog', (data) => {
@@ -18,20 +16,20 @@ export async function getStaticPaths() {
   });
   const paths = pages.map((page) => {
     const [locale, ...slug] = page.slug.split('/');
-    return { params: { locale: locale as unknown as Locale, slug: slug.join('/') || undefined} };
+    return { params: { locale: locale as unknown as Locale, slug: slug.join('/') || undefined } };
   });
   return paths;
 }
 
 const { locale, slug } = Astro.params;
-const page = await getEntry('blog', locale + '/' + slug) as unknown as Blog;
+const page = (await getEntry('blog', locale + '/' + slug)) as unknown as Blog;
 const renderResult = await page.render();
 const Content = renderResult.Content;
 const t = useTranslations(locale);
 let resena: undefined | boolean;
-let games:GameJsonArray = [];
-let tags:TagsJsonArray =  [];
-let author:AuthorsJsonArray = [];
+let games: GameJsonArray = [];
+let tags: TagsJsonArray = [];
+let author: AuthorsJsonArray = [];
 
 if (Array.isArray(page?.data?.videojuego)) {
   games = await GetGames(page.data?.videojuego);
@@ -39,12 +37,12 @@ if (Array.isArray(page?.data?.videojuego)) {
 if (Array.isArray(page?.data?.tag)) {
   tags = await GetTags(page.data?.tag);
 }
-if(Array.isArray(page?.data?.author)){
+if (Array.isArray(page?.data?.author)) {
   author = await GetAuthor(page.data?.author);
 }
 
-tags.map((tag:any) => {
-  if (tag.Name === "reseña") {
+tags.map((tag: any) => {
+  if (tag.Name === 'reseña') {
     resena = true;
   }
 });
@@ -56,8 +54,7 @@ const allPosts = await getCollection('blog', (data) => {
     data?.slug.startsWith(locale) &&
     data?.data?.Title !== page.data?.Title
   );
-})
-.then(posts => {
+}).then((posts) => {
   posts.sort((a, b) => {
     return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
   });
@@ -82,9 +79,9 @@ if (gamesposts.length >= 3) {
 }
 
 allPosts.length = 5;
-let amazonlocale:any = amazon[locale]
-let amazon1 = amazonlocale[games[0]?.id ? games[0]?.id : "games['minecraft'].slug"]
-if(amazon1 === undefined){
+let amazonlocale: any = amazon[locale];
+let amazon1 = amazonlocale[games[0]?.id ? games[0]?.id : "games['minecraft'].slug"];
+if (amazon1 === undefined) {
   amazon1 = null;
 }
 ---
@@ -93,157 +90,77 @@ if(amazon1 === undefined){
   title={page.data?.Title}
   description={page.data?.Description}
   image={page.data?.Image}
-  autor={"HyperGamerX"}
+  autor={'HyperGamerX'}
   keywords={page.data?.Keywords}
   type='article'>
   <div class='lg:w-11/12 w-[99%] md:m-auto my-8 mt-12 sm:my-10 sm:grid sm:grid-cols-7 sm:gap-4'>
-      <main lang={locale} class='sm:col-span-5 relative mx-2 sm:mx-4'>
-        <h1 class='md:text-5xl md:mt-10 text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>
-          {page.data?.Title}
-        </h1>
-        <div class='md:my-2 ls:max-md:my-0 text-slate-700'>
-          <p class='text-gray-300 text-xs md:text-sm lg:max-md:text-xs font-extralight md:font-normal'>
-            {t('article.creadorpor')}
-            {author.map( (author:any) => (
-              <strong>
-                {author.Name}
-              </strong>
-            ))}
-            {t('article.eldiade')}
-            <span>
-              <FormattedDate date={page.data?.PubDate} locale={locale} />
-              {
-                page.data?.UpdatedDate ? (
-                  <span class=' opacity-70'>
-                    {' '}
-                    ({t('article.ultimaactualizacion')}: <FormattedDate date={page.data?.UpdatedDate} locale={locale} />)
-                  </span>
-                ) : null
-              }
-            </span>
-          </p>
-        </div>
-        <p class='text-xs my-1 md:text-sm md:my-2 text-slate-300 gap-2'>
-          {tags.map( (tag:any) => (
-            <span class="md:px-2 md:py-1 md:mx-1 mx-0.5 px-1 py-0.5 bg-black" title={locale === "es" ? tag.Spanish : tag.English}>
-              {locale === "es" ? tag.Name : tag.NameEnglish}
-            </span>
-          ))}
+    <main lang={locale} class='sm:col-span-5 relative mx-2 sm:mx-4'>
+      <h1 class='md:text-5xl md:mt-10 text-slate-400 font-bold work ls:max-sm:text-lg sm:max-md:text-xl'>
+        {page.data?.Title}
+      </h1>
+      <div class='md:my-2 ls:max-md:my-0 text-slate-700'>
+        <p class='text-gray-300 text-xs md:text-sm lg:max-md:text-xs font-extralight md:font-normal'>
+          {t('article.creadorpor')}
+          {author.map((author: any) => <strong>{author.Name}</strong>)}
+          {t('article.eldiade')}
+          <span>
+            <FormattedDate date={page.data?.PubDate} locale={locale} />
+            {
+              page.data?.UpdatedDate ? (
+                <span class=' opacity-70'>
+                  {' '}
+                  ({t('article.ultimaactualizacion')}: <FormattedDate date={page.data?.UpdatedDate} locale={locale} />)
+                </span>
+              ) : null
+            }
+          </span>
         </p>
-        <p class='text-xs md:text-xl text-gray-400'>{page.data?.Description}</p>
+      </div>
+      <p class='text-xs my-1 md:text-sm md:my-2 text-slate-300 gap-2'>
         {
-          resena && games[0].TrailerVideo ? (
-            <Iframeop client:load id={games[0].TrailerVideo}/>
-          ) : page && page.data?.Image && page.data?.Image !== null ? (
+          tags.map((tag: any) => (
+            <span
+              class='md:px-2 md:py-1 md:mx-1 mx-0.5 px-1 py-0.5 bg-black'
+              title={locale === 'es' ? tag.Spanish : tag.English}>
+              {locale === 'es' ? tag.Name : tag.NameEnglish}
+            </span>
+          ))
+        }
+      </p>
+      <p class='text-xs md:text-xl text-gray-400'>{page.data?.Description}</p>
+      {
+        resena && games[0].TrailerVideo ? (
+          <Iframeop client:load id={games[0].TrailerVideo} />
+        ) : page && page.data?.Image && page.data?.Image !== null ? (
           <img
-              src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.Image}`}
-              srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data?.Image} 256w,
+            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.Image}`}
+            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data?.Image} 256w,
                 https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${page.data?.Image} 512w,
                 https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.Image} 768w,
                 https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_639/${page.data?.Image} 1024w,
           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${page.data?.Image} 1280w`}
-              width='479'
-              height='270'
-              alt={page.data?.Image}
-              class='my-8 w-full h-auto mx-auto'
-            />
-          ) : null
-        }
-        <div class='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4 ls:max-sm:hidden'>
-          <Indice data={renderResult?.headings} locale={locale} />
-        </div>
-        <div class='contenido'>
-          <Content />
-        </div>
-      </main>
-      <aside lang={locale} class='h-full ls:max-sm:w-full relative sm:col-span-2'>
-        <div
-          class={`h-full relative sm:col-span-2 ${
-            resena ? 'ls:max-sm:grid ls:max-sm:grid-cols-5 ls:max-sm:p-2 ls:max-sm:gap-1' : ''
-          }`}>
-          {
-            resena && (
-              <div class='bg-slate-950 p-2 md:p-4 rounded-2xl w-full h-fit ls:max-sm:col-span-3'>
-                <p class='text-sm text-slate-400 text-center font-bold md:text-xl xl:text-2xl'>{games[0].Name}</p>
-                <img
-  src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_186/${games[0].CoverImage}`}
-  srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_62/${games[0].CoverImage} 256w,
-  https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_124/${games[0].CoverImage} 512w,
-  https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_186/${games[0].CoverImage} 768w,
-  https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_248/${games[0].CoverImage} 1024w,
-https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${games[0].CoverImage} 1280w`}
-  width='186'
-  height='230'
-  alt={games[0].Name}
-  decoding='async'
-  loading='lazy'
-  class='my-1 sm:my-4 w-80 h-56 md:h-64 lg:h-96 mx-auto object-cover'
-/>
-                <Estrellas cantidad={games[0].Stars} />
-                <p class='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300'>
-                  {t('article.lanzamiento')}:{' '}
-                  <span class='text-slate-400 text-xs sm:text-base'>
-                    {<FormattedDate date={games[0].DateLaunch} locale={locale} />}
-                  </span>
-                </p>
-                <p class='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300'>
-                  {t('article.multijugador')}:
-                  <span class='text-slate-400'>{games[0].Multijugador ? t('article.yes') : t('article.no')}</span>
-                </p>
-                <p class='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300 hover:text-slate-100 duration-300'>
-                  {resena && games[0].TrailerVideo ? (
-                    <a hreflang={locale} target='_blank' href={games[0].TrailerVideo}>
-                      {t('article.vertrailer')}{' '}
-                    </a>
-                    <img
-                        width={12}
-                        height={12}
-                        src='/icons/external.svg'
-                        class='align-middle mx-1 inline-block'
-                        alt='External'
-                      />
-                  ) : null}
-                </p>
-              </div>
-            )
-          }
-          <div
-            class={`bg-slate-950 mb-1 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 ${
-              resena ? 'ls:max-sm:col-span-2' : ' w-11/12 mx-auto'
-            }`}>
-            <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>{t('article.articuclosreciente')}</h2>
-            {allPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} locale={locale} />)}
-          </div>
-          {
-            postgames && (
-              <div
-                class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
-                  resena ? ' ls:max-sm:col-span-6' : ' w-11/12 mx-auto'
-                }`}>
-                <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
-                  {t('article.articulosde')} {games[0].Name}
-                </h2>
-                {gamesposts.map((post) => (
-                  <ArticulosRamdon file={post.slug} data={post.data} locale={locale} />
-                ))}
-              </div>
-            )
-          }
-{
-  postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
-    <div
-      class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
-        resena ? ' ls:max-sm:col-span-6' : ' w-11/12 mx-auto'
-      }`}
-    >
-      <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
-        {t('articulo.compraproductosde')} {games[0].Name}
-      </h2>
-      <Producto juego={amazon1} locale={locale} />
-    </div>
-  )
-}
-        </div>
-      </aside>
+            width='479'
+            height='270'
+            alt={page.data?.Image}
+            class='my-8 w-full h-auto mx-auto'
+          />
+        ) : null
+      }
+      <div class='bg-slate-950 md:p-6 ls:max-md:p-4 rounded-2xl w-fit mt-4 ls:max-sm:hidden'>
+        <Indice data={renderResult?.headings} locale={locale} />
+      </div>
+      <div class='contenido'>
+        <Content />
+      </div>
+    </main>
+    <AsideBlog
+      locale={locale}
+      resena={resena}
+      games={games}
+      allPosts={allPosts}
+      gamesposts={gamesposts}
+      postgames={postgames}
+      amazon1={amazon1}
+    />
   </div>
 </LayoutPrincipal>

@@ -1,5 +1,5 @@
 ---
-import ArticulosRamdon from '../components/Views/ArticulosRamdon.astro';
+import ArticulosRamdon from '../components/Views/ArticulosRamdon';
 import LayoutPrincipal from '../layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
 
@@ -53,7 +53,7 @@ allPosts.length = 8;
         class={`bg-slate-950 mb-1 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 
          w-11/12 mx-auto`}>
         <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>Recent articles</h2>
-        {allPosts.map((post) => <ArticulosRamdon file={post.slug} data={post.data} locale={'en'} />)}
+        {allPosts.map((post) => ArticulosRamdon(post.slug, post.data, 'en'))}
       </div>
     </div>
   </div>
