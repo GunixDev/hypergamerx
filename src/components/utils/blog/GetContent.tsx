@@ -37,7 +37,7 @@ export async function GetTags(tags: TagReference): Promise<TagsJsonArray> {
       const tagEntry = (await getEntry('tag', tag.slug)) as Tag | undefined;
       if (tagEntry) {
         return {
-          slug: tagEntry.slug,
+          id: tagEntry.id,
           Name: tagEntry.data.Name,
           NameEnglish: tagEntry.data.NameEnglish,
           English: tagEntry.data.English,

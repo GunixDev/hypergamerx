@@ -21,7 +21,7 @@ export type GameJson = {
 };
 export type GameJsonArray = GameJson[];
 export type TagJson = {
-  slug: string;
+  id: string;
   Name: string;
   NameEnglish: string;
   English: string;

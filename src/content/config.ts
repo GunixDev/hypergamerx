@@ -35,6 +35,7 @@ const tag = defineCollection({
 });
 
 const game = defineCollection({
+  type: 'data',
   schema: z.object({
     Name: z.string(),
     Stars: z.number(),
