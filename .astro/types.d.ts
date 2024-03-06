@@ -141,462 +141,434 @@ declare module 'astro:content' {
   slug: "en/7-essential-tips-to-survive-the-first-night-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/discover-why-mario-bros-is-one-of-the-most-iconic-games.mdx": {
 	id: "en/discover-why-mario-bros-is-one-of-the-most-iconic-games.mdx";
   slug: "en/discover-why-mario-bros-is-one-of-the-most-iconic-games";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/geometry-dash-22-sneak-peek-3.mdx": {
 	id: "en/geometry-dash-22-sneak-peek-3.mdx";
   slug: "en/geometry-dash-22-sneak-peek-3";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/geometry-dash-22-was-updated-the-images-on-steam.mdx": {
 	id: "en/geometry-dash-22-was-updated-the-images-on-steam.mdx";
   slug: "en/geometry-dash-22-was-updated-the-images-on-steam";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/geometry-dash.mdx": {
 	id: "en/geometry-dash.mdx";
   slug: "en/geometry-dash";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/how-to-enable-experimental-features-in-minecraft.mdx": {
 	id: "en/how-to-enable-experimental-features-in-minecraft.mdx";
   slug: "en/how-to-enable-experimental-features-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/how-to-get-amber-in-lego-fortnite.mdx": {
 	id: "en/how-to-get-amber-in-lego-fortnite.mdx";
   slug: "en/how-to-get-amber-in-lego-fortnite";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/how-to-get-copper-in-lego-fortnite.mdx": {
 	id: "en/how-to-get-copper-in-lego-fortnite.mdx";
   slug: "en/how-to-get-copper-in-lego-fortnite";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/how-to-get-diamonds-faster-in-geometry-dash.mdx": {
 	id: "en/how-to-get-diamonds-faster-in-geometry-dash.mdx";
   slug: "en/how-to-get-diamonds-faster-in-geometry-dash";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
-"en/how-to-get-fertilizer-in-lego-fortnite.mdx": {
-	id: "en/how-to-get-fertilizer-in-lego-fortnite.mdx";
-  slug: "en/how-to-get-fertilizer-in-lego-fortnite";
+"en/how-to-get-knotroot-in-lego-fortnite.mdx": {
+	id: "en/how-to-get-knotroot-in-lego-fortnite.mdx";
+  slug: "en/how-to-get-knotroot-in-lego-fortnite";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"en/how-to-get-flexwood-in-lego-fortnite.mdx": {
-	id: "en/how-to-get-flexwood-in-lego-fortnite.mdx";
-  slug: "en/how-to-get-flexwood-in-lego-fortnite";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"en/how-to-get-iron-in-lego-fortnite.mdx": {
-	id: "en/how-to-get-iron-in-lego-fortnite.mdx";
-  slug: "en/how-to-get-iron-in-lego-fortnite";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/how-to-get-netherite-in-minecraft.mdx": {
 	id: "en/how-to-get-netherite-in-minecraft.mdx";
   slug: "en/how-to-get-netherite-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/how-to-get-obsidian-in-fortnite-lego.mdx": {
 	id: "en/how-to-get-obsidian-in-fortnite-lego.mdx";
   slug: "en/how-to-get-obsidian-in-fortnite-lego";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/how-to-get-rubi-in-lego-fortnite.mdx": {
 	id: "en/how-to-get-rubi-in-lego-fortnite.mdx";
   slug: "en/how-to-get-rubi-in-lego-fortnite";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/how-to-know-my-coordinates-in-minecraft.mdx": {
 	id: "en/how-to-know-my-coordinates-in-minecraft.mdx";
   slug: "en/how-to-know-my-coordinates-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/learn-how-to-use-redstone.mdx": {
 	id: "en/learn-how-to-use-redstone.mdx";
   slug: "en/learn-how-to-use-redstone";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/minecraft.mdx": {
 	id: "en/minecraft.mdx";
   slug: "en/minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1.mdx": {
 	id: "en/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1.mdx";
   slug: "en/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-22-is-too-close-to-exit.mdx": {
 	id: "en/the-22-is-too-close-to-exit.mdx";
   slug: "en/the-22-is-too-close-to-exit";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-7-best-seeds-for-minecraft-1-20.mdx": {
 	id: "en/the-7-best-seeds-for-minecraft-1-20.mdx";
   slug: "en/the-7-best-seeds-for-minecraft-1-20";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-7-most-influential-video-games-of-all-time.mdx": {
 	id: "en/the-7-most-influential-video-games-of-all-time.mdx";
   slug: "en/the-7-most-influential-video-games-of-all-time";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-best-levels-of-games-recreated-in-geometry-dash.mdx": {
 	id: "en/the-best-levels-of-games-recreated-in-geometry-dash.mdx";
   slug: "en/the-best-levels-of-games-recreated-in-geometry-dash";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a.mdx": {
 	id: "en/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a.mdx";
   slug: "en/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-new-level-of-geometry-dash-22.mdx": {
 	id: "en/the-new-level-of-geometry-dash-22.mdx";
   slug: "en/the-new-level-of-geometry-dash-22";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-new-platform-mode-of-geometry-dash-22.mdx": {
 	id: "en/the-new-platform-mode-of-geometry-dash-22.mdx";
   slug: "en/the-new-platform-mode-of-geometry-dash-22";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-new-sounds-custom-geometry-dash-22.mdx": {
 	id: "en/the-new-sounds-custom-geometry-dash-22.mdx";
   slug: "en/the-new-sounds-custom-geometry-dash-22";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-redstone-components-in-minecraft.mdx": {
 	id: "en/the-redstone-components-in-minecraft.mdx";
   slug: "en/the-redstone-components-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-trailer-of-minecraft-live-2023.mdx": {
 	id: "en/the-trailer-of-minecraft-live-2023.mdx";
   slug: "en/the-trailer-of-minecraft-live-2023";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a.mdx": {
 	id: "en/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a.mdx";
   slug: "en/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/valorant.mdx": {
 	id: "en/valorant.mdx";
   slug: "en/valorant";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/what-are-the-moons-of-geometry-dash-22.mdx": {
 	id: "en/what-are-the-moons-of-geometry-dash-22.mdx";
   slug: "en/what-are-the-moons-of-geometry-dash-22";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "en/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard.mdx": {
 	id: "en/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard.mdx";
   slug: "en/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/7-essential-tips-to-survive-the-first-night-in-minecraft.mdx": {
 	id: "es/7-essential-tips-to-survive-the-first-night-in-minecraft.mdx";
   slug: "es/7-essential-tips-to-survive-the-first-night-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/discover-why-mario-bros-is-one-of-the-most-iconic-games.mdx": {
 	id: "es/discover-why-mario-bros-is-one-of-the-most-iconic-games.mdx";
   slug: "es/discover-why-mario-bros-is-one-of-the-most-iconic-games";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/geometry-dash-22-sneak-peek-3.mdx": {
 	id: "es/geometry-dash-22-sneak-peek-3.mdx";
   slug: "es/geometry-dash-22-sneak-peek-3";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/geometry-dash-22-was-updated-the-images-on-steam.mdx": {
 	id: "es/geometry-dash-22-was-updated-the-images-on-steam.mdx";
   slug: "es/geometry-dash-22-was-updated-the-images-on-steam";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/geometry-dash.mdx": {
 	id: "es/geometry-dash.mdx";
   slug: "es/geometry-dash";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/how-to-enable-experimental-features-in-minecraft.mdx": {
 	id: "es/how-to-enable-experimental-features-in-minecraft.mdx";
   slug: "es/how-to-enable-experimental-features-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/how-to-get-amber-in-lego-fortnite.mdx": {
 	id: "es/how-to-get-amber-in-lego-fortnite.mdx";
   slug: "es/how-to-get-amber-in-lego-fortnite";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/how-to-get-copper-in-lego-fortnite.mdx": {
 	id: "es/how-to-get-copper-in-lego-fortnite.mdx";
   slug: "es/how-to-get-copper-in-lego-fortnite";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/how-to-get-diamonds-faster-in-geometry-dash.mdx": {
 	id: "es/how-to-get-diamonds-faster-in-geometry-dash.mdx";
   slug: "es/how-to-get-diamonds-faster-in-geometry-dash";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
-"es/how-to-get-fertilizer-in-lego-fortnite.mdx": {
-	id: "es/how-to-get-fertilizer-in-lego-fortnite.mdx";
-  slug: "es/how-to-get-fertilizer-in-lego-fortnite";
+"es/how-to-get-knotroot-in-lego-fortnite.mdx": {
+	id: "es/how-to-get-knotroot-in-lego-fortnite.mdx";
+  slug: "es/how-to-get-knotroot-in-lego-fortnite";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"es/how-to-get-flexwood-in-lego-fortnite.mdx": {
-	id: "es/how-to-get-flexwood-in-lego-fortnite.mdx";
-  slug: "es/how-to-get-flexwood-in-lego-fortnite";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"es/how-to-get-iron-in-lego-fortnite.mdx": {
-	id: "es/how-to-get-iron-in-lego-fortnite.mdx";
-  slug: "es/how-to-get-iron-in-lego-fortnite";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/how-to-get-netherite-in-minecraft.mdx": {
 	id: "es/how-to-get-netherite-in-minecraft.mdx";
   slug: "es/how-to-get-netherite-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/how-to-get-obsidian-in-fortnite-lego.mdx": {
 	id: "es/how-to-get-obsidian-in-fortnite-lego.mdx";
   slug: "es/how-to-get-obsidian-in-fortnite-lego";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/how-to-get-rubi-in-lego-fortnite.mdx": {
 	id: "es/how-to-get-rubi-in-lego-fortnite.mdx";
   slug: "es/how-to-get-rubi-in-lego-fortnite";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/how-to-know-my-coordinates-in-minecraft.mdx": {
 	id: "es/how-to-know-my-coordinates-in-minecraft.mdx";
   slug: "es/how-to-know-my-coordinates-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/learn-how-to-use-redstone.mdx": {
 	id: "es/learn-how-to-use-redstone.mdx";
   slug: "es/learn-how-to-use-redstone";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/minecraft.mdx": {
 	id: "es/minecraft.mdx";
   slug: "es/minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1.mdx": {
 	id: "es/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1.mdx";
   slug: "es/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-22-is-too-close-to-exit.mdx": {
 	id: "es/the-22-is-too-close-to-exit.mdx";
   slug: "es/the-22-is-too-close-to-exit";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-7-best-seeds-for-minecraft-1-20.mdx": {
 	id: "es/the-7-best-seeds-for-minecraft-1-20.mdx";
   slug: "es/the-7-best-seeds-for-minecraft-1-20";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-7-most-influential-video-games-of-all-time.mdx": {
 	id: "es/the-7-most-influential-video-games-of-all-time.mdx";
   slug: "es/the-7-most-influential-video-games-of-all-time";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-best-levels-of-games-recreated-in-geometry-dash.mdx": {
 	id: "es/the-best-levels-of-games-recreated-in-geometry-dash.mdx";
   slug: "es/the-best-levels-of-games-recreated-in-geometry-dash";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a.mdx": {
 	id: "es/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a.mdx";
   slug: "es/the-hitbox-will-change-in-minecraft-1-20-2-snapshot-23w32a";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-new-level-of-geometry-dash-22.mdx": {
 	id: "es/the-new-level-of-geometry-dash-22.mdx";
   slug: "es/the-new-level-of-geometry-dash-22";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-new-platform-mode-of-geometry-dash-22.mdx": {
 	id: "es/the-new-platform-mode-of-geometry-dash-22.mdx";
   slug: "es/the-new-platform-mode-of-geometry-dash-22";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-new-sounds-custom-geometry-dash-22.mdx": {
 	id: "es/the-new-sounds-custom-geometry-dash-22.mdx";
   slug: "es/the-new-sounds-custom-geometry-dash-22";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-redstone-components-in-minecraft.mdx": {
 	id: "es/the-redstone-components-in-minecraft.mdx";
   slug: "es/the-redstone-components-in-minecraft";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-trailer-of-minecraft-live-2023.mdx": {
 	id: "es/the-trailer-of-minecraft-live-2023.mdx";
   slug: "es/the-trailer-of-minecraft-live-2023";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a.mdx": {
 	id: "es/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a.mdx";
   slug: "es/the-villagers-will-change-in-the-1-20-2-snapshot-23w31a";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/valorant.mdx": {
 	id: "es/valorant.mdx";
   slug: "es/valorant";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/what-are-the-moons-of-geometry-dash-22.mdx": {
 	id: "es/what-are-the-moons-of-geometry-dash-22.mdx";
   slug: "es/what-are-the-moons-of-geometry-dash-22";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 "es/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard.mdx": {
 	id: "es/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard.mdx";
   slug: "es/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".mdx"] };
 };
 
@@ -607,86 +579,86 @@ declare module 'astro:content' {
 "brayan-cordova": {
 	id: "brayan-cordova";
   collection: "author";
-  data: InferEntrySchema<"author">
+  data: any
 };
 };
 "game": {
 "geometry-dash": {
 	id: "geometry-dash";
   collection: "game";
-  data: InferEntrySchema<"game">
+  data: any
 };
 "lego-fortnite": {
 	id: "lego-fortnite";
   collection: "game";
-  data: InferEntrySchema<"game">
+  data: any
 };
 "minecraft": {
 	id: "minecraft";
   collection: "game";
-  data: InferEntrySchema<"game">
+  data: any
 };
 "valorant": {
 	id: "valorant";
   collection: "game";
-  data: InferEntrySchema<"game">
+  data: any
 };
 };
 "tag": {
 "curiosidades": {
 	id: "curiosidades";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "e-sports": {
 	id: "e-sports";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "evento": {
 	id: "evento";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "guia": {
 	id: "guia";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "influencer": {
 	id: "influencer";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "mod": {
 	id: "mod";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "noticia": {
 	id: "noticia";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "objeto": {
 	id: "objeto";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "reseña": {
 	id: "reseña";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "tecnologia": {
 	id: "tecnologia";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 "top": {
 	id: "top";
   collection: "tag";
-  data: InferEntrySchema<"tag">
+  data: any
 };
 };
 
@@ -694,5 +666,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("./../src/content/config.js");
+	export type ContentConfig = never;
 }
