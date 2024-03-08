@@ -9,6 +9,7 @@ import { useTranslations } from '../../../i18n/utils';
 import Iframeop from '../../../components/utils/blog/Iframeop';
 import { GetGames, GetTags, GetAuthor } from '../../../components/utils/blog/GetContent';
 import AsideBlog from '@components/utils/blog/AsideBlog';
+import Compartir from '@components/utils/blog/Compartir';
 
 export async function getStaticPaths() {
   let pages = await getCollection('blog', (data) => {
@@ -109,7 +110,7 @@ if (amazon1 === undefined) {
               page.data?.UpdatedDate ? (
                 <span class=' opacity-70'>
                   {' '}
-                  ({t('article.ultimaactualizacion')}: <FormattedDate date={page.data?.UpdatedDate} locale={locale}/>)
+                  ({t('article.ultimaactualizacion')}: <FormattedDate date={page.data?.UpdatedDate} locale={locale} />)
                 </span>
               ) : null
             }
@@ -128,6 +129,7 @@ if (amazon1 === undefined) {
         }
       </p>
       <p class='text-xs md:text-xl text-gray-400'>{page.data?.Description}</p>
+      {(<Compartir locale={locale} path={page.slug.slice(3)} />)}
       {
         resena && games[0].TrailerVideo ? (
           <Iframeop client:load id={games[0].TrailerVideo} />
