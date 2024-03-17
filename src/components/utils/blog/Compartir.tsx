@@ -15,7 +15,6 @@ function generarCompartirGmail(subject: string, body: string) {
 export default function Compartir({ path, locale }: CompartirProps) {
   const url = `https://www.hypergamerx.com/${locale}/blog/${path}/`;
   const articleUrl = encodeURIComponent(url);
-  console.log(articleUrl);
   const subject = `${
     locale === 'es'
       ? '⭐ Mira este artículo que vi en HyperGamerX 🎮'
