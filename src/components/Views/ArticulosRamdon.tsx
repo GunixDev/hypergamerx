@@ -34,8 +34,12 @@ export default function ArticulosRamdon(file: string, data: any, locale: Locale)
           )}
         </div>
         <div class='col-span-3'>
-          <h3 class='subtitulo5-movil lgi:subtitulo4-movil sm:subtitulo6-movil lg:subtitulo6-desktop'>{Title}</h3>
-          <p class='mt-1 smaller-movil lgi:smallerb-movil sm:minismaller-movil lg:minismaller-desktop'>{Description}</p>
+          <h3 class='subtitulo6-movil lgi:subtitulo5-movil lss:subtitulo4-movil sm:subtitulo6-movil lg:subtitulo6-desktop'>
+            {Title}
+          </h3>
+          <p class='mt-1 minismaller-movil lgi:smaller-movil lss:smallerb-movil sm:minismaller-movil lg:minismaller-desktop'>
+            {Description}
+          </p>
         </div>
       </div>
     </a>
