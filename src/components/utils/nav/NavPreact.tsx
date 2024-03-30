@@ -32,7 +32,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
             <hr />
           </div>
           <div className='grid grid-rows-11 h-full'>
-            <div className='row-span-9 subtitulo3-movil grid grid-rows-6'>
+            <div className='row-span-9 subtitulo3-movil grid grid-rows-10'>
               <a lang={lang2} href={`/${lang2}/about/`} className='flex my-auto gap-2'>
                 <img src='/icons/Periodico.svg' />
                 <span className='my-auto'>{t('footer.sobrehypergamerx')}</span>
@@ -54,7 +54,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                 <span className='my-auto'>{t('footer.politicas')}</span>
               </a>
             </div>
-            <div className='row-span-2 text-dark'>
+            <div className='row-span-2 text-dark self-end'>
               <LanguagesSelect lang={lang2} pathname={pathname} languages={languages} />
               <p>© 2024 HyperGamerX. Creador por Sunrize Studios</p>
             </div>
@@ -79,32 +79,34 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
             />
             <hr />
           </div>
-          <div className='grid grid-rows-11 h-full'>
-            <div className='row-span-9 subtitulo3-movil grid grid-flow-row-dense'>
-              <a className='my-auto'>
-                <SearchWidget lang={lang2} />
-              </a>
-              <a lang={lang2} href={`/${lang2}/`} className='flex my-auto gap-2'>
-                <img src='/icons/Casa.svg' />
-                <span className='my-auto'> {t('nav.inicio')}</span>
-              </a>
-              <a lang={lang2} href={`/${lang2}/seccion/news/`} className='flex my-auto gap-2'>
-                <img src='/icons/Periodico.svg' />
-                <span className='my-auto'> {t('nav.noticias')}</span>
-              </a>
-              <a lang={lang2} href={`/${lang2}/seccion/guides/`} className='flex my-auto gap-2'>
-                <img src='/icons/Mapa.svg' />
-                <span className='my-auto'> {t('seccion.guias')}</span>
-              </a>
-              <a
-                lang={lang2}
-                href={'https://www.paypal.com/donate/?hosted_button_id=K7PXSGWS98LXQ'}
-                target={'_blank'}
-                className='flex my-auto gap-2'>
-                <img src='/icons/Donar.svg' />
-                <span className='my-auto'>{t('footer.donar')}</span>
-              </a>
-              <div className='my-auto grid subtitulo4-movil grid-cols-2 grid-rows-3 gap-x-1 gap-y-4'>
+          <div className='grid grid-rows-12 h-full'>
+            <div className='row-span-9 subtitulo3-movil grid grid-rows-12'>
+              <div className=' h-full row-span-6 grid subtitulo3-movil'>
+                <a className='my-auto'>
+                  <SearchWidget lang={lang2} />
+                </a>
+                <a lang={lang2} href={`/${lang2}/`} className='flex my-auto gap-2'>
+                  <img src='/icons/Casa.svg' />
+                  <span className='my-auto'> {t('nav.inicio')}</span>
+                </a>
+                <a lang={lang2} href={`/${lang2}/seccion/news/`} className='flex my-auto gap-2'>
+                  <img src='/icons/Periodico.svg' />
+                  <span className='my-auto'> {t('nav.noticias')}</span>
+                </a>
+                <a lang={lang2} href={`/${lang2}/seccion/guides/`} className='flex my-auto gap-2'>
+                  <img src='/icons/Mapa.svg' />
+                  <span className='my-auto'> {t('seccion.guias')}</span>
+                </a>
+                <a
+                  lang={lang2}
+                  href={'https://www.paypal.com/donate/?hosted_button_id=K7PXSGWS98LXQ'}
+                  target={'_blank'}
+                  className='flex my-auto gap-2'>
+                  <img src='/icons/Donar.svg' />
+                  <span className='my-auto'>{t('footer.donar')}</span>
+                </a>
+              </div>
+              <div className='my-auto row-span-4 h-full grid subtitulo4-movil grid-cols-2 grid-rows-3 gap-x-1 gap-y-4'>
                 <a
                   href={'https://discord.gg/KqmwVhZnfa'}
                   hreflang={lang2}
@@ -154,17 +156,17 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                   <span className='my-auto'>Faceboook</span>
                 </a>
               </div>
+            </div>
+            <div className='row-span-3 text-dark self-end'>
               <div
                 onClick={() => {
                   setIsOpenMas(true);
                   setIsOpen(false);
                 }}
-                className='flex my-auto gap-2'>
+                className='flex gap-2 self-end mb-3 subtitulo4-movil'>
                 <img src='/icons/Puntos.svg' />
                 <span className='my-auto'>{t('nav.more')}</span>
               </div>
-            </div>
-            <div className='row-span-2 text-dark'>
               <LanguagesSelect lang={lang2} pathname={pathname} languages={languages} />
               <p>
                 &copy; 2024 HyperGamerX. {t('article.creadorpor')}

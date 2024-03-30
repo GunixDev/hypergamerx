@@ -74,7 +74,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
           </div>
         )}
         <div class={` rounded-2xl ${resena ? 'ls:max-sm:col-span-2 mt-3' : ''}`}>
-          <h2 class='subtitulo4-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+          <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
             {t('article.articuclosreciente')}
           </h2>
           <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
@@ -83,7 +83,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
         </div>
         {postgames && (
           <div class={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
-            <h2 class='subtitulo4-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+            <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
               {t('article.articulosde')} {games[0].Name}
             </h2>
             <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
@@ -93,7 +93,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
         )}
         {postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
           <div class={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
-            <h2 class='subtitulo4-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+            <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
               {games[0].Name} {t('articulo.amazon')}
             </h2>
             <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-5 mt-2 lg:mt-5'>
