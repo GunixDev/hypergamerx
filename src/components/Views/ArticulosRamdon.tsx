@@ -1,16 +1,42 @@
 import type { Locale } from '../../types';
 
 export default function ArticulosRamdon(file: string, data: any, locale: Locale) {
-  const { Title, Description } = data;
+  const { Title, Description, Image } = data;
   return (
     <a href={`/${locale}/blog/${file.slice(3)}/`} hreflang={locale}>
-      <div class='mt-4 group'>
-        <h3 class='text-sm ls:max-md:text-xs text-slate-300 font-bold group-hover:text-slate-200 duration-500'>
-          {Title}
-        </h3>
-        <p class='md:text-xs ls:max-md:hidden mt-1 text-slate-400 font-semibold group-hover:text-slate-300 duration-500'>
-          {Description}
-        </p>
+      <div class='grid grid-cols-5 gap-2'>
+        <div class='col-span-2'>
+          {Image !== null ? (
+            <img
+              src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${Image}`}
+              srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_55/${Image} 256w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_110/${Image} 512w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${Image} 768w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_220/${Image} 1024w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_573/${Image} 1280w`}
+              width='165'
+              height='93'
+              alt={`${Image}`}
+              decoding='async'
+              loading='lazy'
+              class=' w-full h-auto aspect-auto  rounded-md'
+            />
+          ) : (
+            <img
+              src={`/Banner.png`}
+              width='165'
+              height='93'
+              alt={`sin imagen`}
+              decoding='async'
+              loading='lazy'
+              class=' w-full h-full'
+            />
+          )}
+        </div>
+        <div class='col-span-3'>
+          <h3 class='subtitulo5-movil lgi:subtitulo4-movil sm:subtitulo6-movil lg:subtitulo6-desktop'>{Title}</h3>
+          <p class='mt-1 smaller-movil lgi:smallerb-movil sm:minismaller-movil lg:minismaller-desktop'>{Description}</p>
+        </div>
       </div>
     </a>
   );

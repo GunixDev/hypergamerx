@@ -2,7 +2,7 @@ import { useTranslations } from 'src/i18n/utils';
 import type { Locale, GameJsonArray } from '../../../types';
 import FormattedDate from '@components/utils/FormattedDate';
 import Estrellas from '@components/utils/blog/Estrellas';
-import ArticulosRamdon from '@components/Views/ArticulosRamdon';
+import ArticulosRamdon from '@components/Views/ArticulosRamdon.tsx';
 import Producto from '@components/utils/blog/Productos';
 
 interface AsideBlogProps {
@@ -18,14 +18,16 @@ interface AsideBlogProps {
 export default function AsideBlog({ locale, resena, games, allPosts, gamesposts, postgames, amazon1 }: AsideBlogProps) {
   const t = useTranslations(locale);
   return (
-    <aside lang={locale} class='h-full ls:max-sm:w-full relative sm:col-span-2'>
+    <aside lang={locale} class='h-full ls:max-sm:w-full relative sm:col-span-4'>
       <div
         class={`h-full relative sm:col-span-2 ${
           resena ? 'ls:max-sm:grid ls:max-sm:grid-cols-5 ls:max-sm:p-2 ls:max-sm:gap-1' : ''
         }`}>
         {resena && (
-          <div class='bg-slate-950 p-2 md:p-4 rounded-2xl w-full h-fit ls:max-sm:col-span-3'>
-            <p class='text-sm text-slate-400 text-center font-bold md:text-xl xl:text-2xl'>{games[0].Name}</p>
+          <div class=' bg-dark text-white p-2 md:p-4 rounded-lg w-full h-fit ls:max-sm:col-span-3'>
+            <p class='text-center subtitulo2-movil lss:subtitulo3-movil lg:subtitulo3-desktop lg:my-1'>
+              {games[0].Name}
+            </p>
             <img
               src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_186/${games[0].CoverImage}`}
               srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_62/${games[0].CoverImage} 256w,
@@ -38,20 +40,22 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
               alt={games[0].Name}
               decoding='async'
               loading='lazy'
-              class='my-1 sm:my-4 w-80 h-56 md:h-64 lg:h-96 mx-auto object-cover'
+              class='my-1 sm:my-4 w-80 h-56 md:h-64 lg:h-96 mx-auto aspect-auto'
             />
             {Estrellas(games[0].Stars, locale)}
-            <p class='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300'>
+            <p class='ml-1 lg:ml-3 smallerb-movil lg:small-desktop'>
               {t('article.lanzamiento')}:{' '}
-              <span class='text-slate-400 text-xs sm:text-base'>
+              <span class='smallerb-movil lg:small-desktop'>
                 {<FormattedDate date={games[0].DateLaunch} locale={locale} />}
               </span>
             </p>
-            <p class='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300'>
+            <p class='ml-1 lg:ml-3 smallerb-movil lg:small-desktop my-1'>
               {t('article.multijugador')}:
-              <span class='text-slate-400'>{games[0].Multijugador ? t('article.yes') : t('article.no')}</span>
+              <span class='smallerb-movil lg:small-desktop'>
+                {games[0].Multijugador ? t('article.yes') : t('article.no')}
+              </span>
             </p>
-            <p class='ml-1 lg:ml-3 text-xs lg:text-base text-slate-300 hover:text-slate-100 duration-300'>
+            <p class='ml-1 lg:ml-3 smallerb-movil lg:small-desktop my-1'>
               {resena && games[0].TrailerVideo ? (
                 <>
                   <a hreflang={locale} target='_blank' href={games[0].TrailerVideo}>
@@ -69,33 +73,32 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
             </p>
           </div>
         )}
-        <div
-          class={`bg-slate-950 mb-1 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 ${
-            resena ? 'ls:max-sm:col-span-2' : ' w-11/12 mx-auto'
-          }`}>
-          <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>{t('article.articuclosreciente')}</h2>
-          {allPosts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+        <div class={` rounded-2xl ${resena ? 'ls:max-sm:col-span-2 mt-3' : ''}`}>
+          <h2 class='subtitulo4-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+            {t('article.articuclosreciente')}
+          </h2>
+          <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
+            {allPosts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+          </div>
         </div>
         {postgames && (
-          <div
-            class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
-              resena ? ' ls:max-sm:col-span-6' : ' w-11/12 mx-auto'
-            }`}>
-            <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
+          <div class={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
+            <h2 class='subtitulo4-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
               {t('article.articulosde')} {games[0].Name}
             </h2>
-            {gamesposts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+            <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
+              {gamesposts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+            </div>
           </div>
         )}
         {postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
-          <div
-            class={`bg-slate-950 md:p-5 ls:max-md:p-3 rounded-2xl ${
-              resena ? ' ls:max-sm:col-span-6' : ' w-11/12 mx-auto'
-            }`}>
-            <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>
-              {t('articulo.compraproductosde')} {games[0].Name}
+          <div class={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
+            <h2 class='subtitulo4-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+              {games[0].Name} {t('articulo.amazon')}
             </h2>
-            <Producto juego={amazon1} locale={locale} />
+            <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-5 mt-2 lg:mt-5'>
+              <Producto juego={amazon1} locale={locale} />
+            </div>
           </div>
         )}
       </div>

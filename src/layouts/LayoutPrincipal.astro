@@ -59,9 +59,11 @@ const lang = getLangFromUrl(Astro.url);
     </script>
     <meta name='publisuites-verify-code' content='aHR0cHM6Ly93d3cuaHlwZXJnYW1lcnguY29t' />
   </head>
-  <body class='bg-gray-950 text-white'>
+  <body class='text-dark font-Segoe-UI flex flex-col'>
     <Nav />
-    <div lang={lang} class='w-full lg:w-11/12 mx-auto flex flex-col mb-10'>
+    <div
+      lang={lang}
+      class='lg:mx-[48px] lga:mx-[32px] mx-[16px] xl:mx-[50px] lg:pt-[90px] pt-[67px] lg:mb-[64px] mb-[32px]'>
       <slot />
     </div>
     <Footer />

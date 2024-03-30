@@ -15,29 +15,34 @@ export async function getStaticPaths() {
 
 const allPosts = await getCollection('blog', (data) => {
   return data?.data?.IsDraft !== true && data?.slug.startsWith(lang);
+}).then((posts) => {
+  posts.sort((a, b) => {
+    return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
+  });
+  return posts;
 });
 
-allPosts.sort((a, b) => new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime());
 const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
+const recentpost2 = allPosts.slice(4, 10);
 const newsPosts = allPosts
   .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => ['noticia'].includes(tag.id)))
-  .slice(0, 8);
+  .slice(0, 9);
 
 const curiosidadesPosts = allPosts
   .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => ['curiosidades'].includes(tag.id)))
-  .slice(0, 4);
+  .slice(0, 6);
 
 const reseñasPosts = allPosts
   .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => ['reseña'].includes(tag.id)))
-  .slice(0, 4);
+  .slice(0, 3);
 
 const minecraftPosts = allPosts
   .filter(
     (post) =>
       post.data?.videojuego && post.data?.videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.id)),
   )
-  .slice(0, 8);
+  .slice(0, 9);
 
 const geometryPosts = allPosts
   .filter(
@@ -45,46 +50,64 @@ const geometryPosts = allPosts
       post.data?.videojuego &&
       post.data?.videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.id)),
   )
-  .slice(0, 4);
+  .slice(0, 6);
 ---
 
 <LayoutPrincipal>
-  <div class='w-11/12 mx-auto'>
-    <h1 class='md:text-4xl sm:text-2xl text-base mx-auto font-bold mt-12 md:mt-4 text-white'>
-      {t('index.articulosdevideojuego')}
-    </h1>
-    <h2 class='lg:text-3xl font-bold my-4'>{t('index.ultimoarticules')}</h2>
-    <div class='grid grid-cols-5 h-auto lg:h-max-[384px] relative bg-slate-950'>
-      <div class='col-span-3'>
-        {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}
-      </div>
-      <div class='col-span-2 mx-2 lg:mx-4'>
-        <div
-          class='relative w-full h-auto my-1 md:my-3 md:p-1 grid grid-flow-row gap-1 lss:gap-2 sm:my-4 sm:gap-6 md:gap-7'>
+  <div>
+    <div>
+      <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop lss:mb-4'>{t('index.ultimoarticules')}</h2>
+      <div class='lg:grid lg:grid-cols-5 ls:max-lg:w-full h-auto bg-slate-950'>
+        <div class='lg:col-span-3'>
+          {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}
+        </div>
+        <div class='ls:max-lg:hidden lg:col-span-2 lg:ml-[4px] lg:w-full lg:h-full lg:grid grid-flow-row-dense gap-3.5'>
           {recentpost.map((post) => <ListData file={post.slug} data={post.data} lang={lang} />)}
         </div>
       </div>
+      <div class='grid grid-cols-3 gap-1 lss:gap-2 relative mt-[8px] lg:hidden'>
+        {recentpost.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+      </div>
+      <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
+        {recentpost2.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+      </div>
     </div>
 
-    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.noticianuevas')}</h2>
-    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-      {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+    <div class='mt-[16px] lg:mt-[32px]'>
+      <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>{t('index.noticianuevas')}</h2>
+      <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
+        {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+      </div>
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.ultimascuriosidades')}</h2>
-    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-      {curiosidadesPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+
+    <div class='mt-[16px] lg:mt-[32px]'>
+      <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>{t('index.ultimascuriosidades')}</h2>
+      <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
+        {curiosidadesPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+      </div>
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.resenasvideogames')}</h2>
-    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-      {reseñasPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+
+    <div class='mt-[16px] lg:mt-[32px]'>
+      <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>{t('index.resenasvideogames')}</h2>
+      <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
+        {reseñasPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+      </div>
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Minecraft</h2>
-    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-      {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+
+    <div class='mt-[16px] lg:mt-[32px]'>
+      <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>{t('index.articulosde')} Minecraft</h2>
+      <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
+        {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+      </div>
     </div>
-    <h2 class='lg:text-3xl font-bold mt-8 mb-4'>{t('index.articulosde')} Geometry Dash</h2>
-    <div class='grid grid-cols-4 lg:gap-4 gap-1 relative'>
-      {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+
+    <div class='mt-[16px] lg:mt-[32px]'>
+      <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>
+        {t('index.articulosde')} Geometry Dash
+      </h2>
+      <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
+        {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
+      </div>
     </div>
   </div>
 </LayoutPrincipal>

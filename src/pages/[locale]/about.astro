@@ -14,18 +14,20 @@ export async function getStaticPaths() {
 
 const allPosts = await getCollection('blog', (data) => {
   return data?.data?.IsDraft !== true && data?.slug.startsWith(lang);
+}).then((posts) => {
+  posts.sort((a, b) => {
+    return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
+  });
+  return posts;
 });
 
-allPosts.sort((a, b) => {
-  return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
-});
 allPosts.length = 8;
 ---
 
 <LayoutPrincipal>
-  <div class='sm:grid sm:grid-cols-11 sm:gap-4 ls:max-md:mt-16'>
-    <div class='sm:col-span-7 relative mx-12 sm:mx-6 sm:text-lg ls:max-sm:mb-4'>
-      <h1 class='sm:text-5xl text-4xl font-bold my-3 sm:my-6'>{te('about.title')}</h1>
+  <div class='sm:grid sm:grid-cols-11 sm:gap-4'>
+    <div class='small-movil lss:normal-movil lg:normal-desktop sm:col-span-7 relative'>
+      <h1 class='subtitulo1-movil lss:titulo-movil lg:titulo-desktop mb-4'>{te('about.title')}</h1>
       <p>
         {te('about.1')}
       </p><br />
@@ -49,17 +51,19 @@ allPosts.length = 8;
         {te('about.7')}
       </p>
     </div>
-    <div class='h-full ls:max-sm:w-full relative sm:col-span-4'>
-      <div
-        class={`bg-slate-950 mb-1 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10 
-         w-11/12 mx-auto`}>
-        <h2 class='md:text-lg font-bold ls:max-md:text-base text-white'>{t('article.articuclosreciente')}</h2>
-        {
-          allPosts.map((post) => {
-            const { slug, data } = post;
-            return <ArticulosRamdon file={slug} data={data} locale={lang} />;
-          })
-        }
+    <div class='mx-auto ls:max-sm:w-full relative sm:col-span-4 mt-10'>
+      <div class={`bg-slate-950 rounded-2xl `}>
+        <h2 class='subtitulo3-movil md:subtitulo4-movil lg:subtitulo4-desktop text-center mb-4'>
+          {t('article.articuclosreciente')}
+        </h2>
+        <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
+          {
+            allPosts.map((post) => {
+              const { slug, data } = post;
+              return <ArticulosRamdon file={slug} data={data} locale={lang} />;
+            })
+          }
+        </div>
       </div>
     </div>
   </div>

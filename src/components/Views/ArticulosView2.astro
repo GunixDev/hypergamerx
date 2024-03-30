@@ -8,16 +8,41 @@ const { file, data, lang } = Astro.props;
 const { Image, PubDate, Title, Description } = data;
 const fileName = file.split('/').pop()?.split('.')[0];
 let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
-import Carrusel from './Carrusel.astro';
 ---
 
-<div class='relative w-full h-full group duration-500'>
-  <Carrusel
-    Image={Image}
-    Title={Title}
-    Description={Description}
-    fileName={fileName}
-    fecha={fechaFormateada}
-    lang={lang}
-  />
+<div class='relative w-full h-full'>
+  <a hreflang={lang} href={`/${lang}/blog/${fileName}/`}>
+    <div>
+      <div class='rounded-md w-full bg-gradient-to-t from-dark to-transparent absolute z-30 h-full'></div>
+      {
+        Image !== null ? (
+          <img
+            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${Image}`}
+            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_136/${Image} 256w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_272/${Image} 512w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${Image} 768w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_544/${Image} 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_680/${Image} 1280w`}
+            width='408'
+            height='230'
+            alt={`${Image}`}
+            class='rounded-md h-auto w-full aspect-auto z-0 '
+          />
+        ) : (
+          <img
+            src='/Banner.png'
+            alt='image'
+            class='rounded-l-xl w-full fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out z-0 absolute h-full'
+          />
+        )
+      }
+    </div>
+    <div class='absolute text-white bottom-0 z-50 mb-2 mx-[6px] lss:mb-[16px] lss:mx-[16px] lg:mb-4 lg:mx-6'>
+      <h3 class='z-40 subtitulo4-movil lgi:subtitulo3-movil lss:subtitulo1-movil lg:subtitulo3-desktop'>
+        {Title}
+      </h3>
+      <p class='z-40 minismaller-movil lss:small-movil lg:minismall-desktop'>{fechaFormateada}</p>
+      <p class='z-40 minismaller-movil lgi:small-movil lss:normal-movil lg:normal-desktop'>{Description}</p>
+    </div>
+  </a>
 </div>

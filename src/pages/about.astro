@@ -5,10 +5,11 @@ import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', (data) => {
   return data?.data?.IsDraft !== true && data?.slug.startsWith('en');
-});
-
-allPosts.sort((a, b) => {
-  return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
+}).then((posts) => {
+  posts.sort((a, b) => {
+    return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
+  });
+  return posts;
 });
 allPosts.length = 8;
 ---

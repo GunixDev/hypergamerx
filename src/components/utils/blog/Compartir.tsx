@@ -28,25 +28,45 @@ export default function Compartir({ path, locale }: CompartirProps) {
   const compartirGmail = generarCompartirGmail(subject, url);
 
   return (
-    <div className='grid grid-cols-6 my-2 w-52 gap-2'>
-      <a title='Whatsapp' lang={locale} href={`https://api.whatsapp.com/send?text=${articleUrl}`} target='_blank'>
-        <img width='40px' height='40px' src='/icons/share/whatsapp-svgrepo-com.svg'></img>
+    <div className=' grid grid-cols-5 gap-x-1 lg:gap-x-3 justify-end items-end'>
+      <a
+        title='Whatsapp'
+        class=''
+        lang={locale}
+        href={`https://api.whatsapp.com/send?text=${articleUrl}`}
+        target='_blank'>
+        <img
+          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          src='/icons/Logos/Whatsapp.svg'
+        />
       </a>
       <a title='Reddit' lang={locale} href={`https://www.reddit.com/submit?url=${body2}`} target='_blank'>
-        <img width='40px' height='40px' src='/icons/share/reddit-svgrepo-com.svg'></img>
+        <img
+          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          src='/icons/Logos/Reddit.svg'
+        />
       </a>
       <a
         title='Facebook'
         lang={locale}
         href={`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`}
         target='_blank'>
-        <img width='40px' height='40px' className='fill-white' src='/icons/share/facebook-svgrepo-com.svg'></img>
+        <img
+          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          src='/icons/Logos/Facebook.svg'
+        />
       </a>
       <a title='Twitter' lang={locale} href={compartirTwitter} target='_blank'>
-        <img width='40px' height='40px' className='scale-110 fill-white' src='/icons/share/twitter.svg'></img>
+        <img
+          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          src='/icons/Logos/Twitter.svg'
+        />
       </a>
       <a title='Mail' lang={locale} href={compartirGmail} target='_blank'>
-        <img width='40px' height='40px' src='/icons/share/mail-svgrepo-com.svg'></img>
+        <img
+          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          src='/icons/Logos/Email.svg'
+        />
       </a>
     </div>
   );

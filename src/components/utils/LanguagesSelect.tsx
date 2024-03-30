@@ -8,22 +8,18 @@ interface LanguagesSelectProps {
 export default function LanguagesSelect({ lang, pathname, languages }: LanguagesSelectProps) {
   const t = useTranslations(lang);
   return (
-    <div className='my-auto ls:max-md:hidden lg:ml-2 '>
-      <label for='Lang' className='text-white text-xs md:mr-1 lg:mr-2 md:text-sm lg:text-base'>
-        {t('nav.idiomas')}
-      </label>
-
+    <div className='w-full col-span-2 ls:max-lg:my-1'>
       <select
         id='Lang'
         name='Lang'
-        className='text-xs md:text-sm lg:text-base bg-gray-700 text-white'
+        className='minismall-desktop py-0.5 rounded-md w-full ls:max-lg:border-2 ls:max-lg:border-dark'
         value={`/${lang}/${pathname}`}
         onChange={(event) => {
           const selectedValue = (event.target as HTMLSelectElement)?.value;
           window.location.href = selectedValue;
         }}>
         {Object.entries(languages).map(([lang, label]) => (
-          <option key={lang} value={`/${lang}/${pathname}`}>
+          <option className='text-dark' key={lang} value={`/${lang}/${pathname}`}>
             {String(label)}
           </option>
         ))}

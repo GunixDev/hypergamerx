@@ -13,7 +13,7 @@ export default function IframeOp({ id }: IframeProps) {
         <iframe
           src={`https://www.youtube.com/embed/${id}?autoplay=1&amp;rel=0`}
           loading='lazy'
-          className='md:h-96 h-64 w-full md:w-10/12 mx-auto my-4 md:my-6'
+          className='md:h-96 h-64 w-full md:w-10/12 my-2 md:my-4 mx-auto'
           width='445'
           height='200'
           title={id}
@@ -43,7 +43,7 @@ export default function IframeOp({ id }: IframeProps) {
             alt={`${id}`}
             decoding='async'
             loading='lazy'
-            className=' w-full mx-auto my-4 md:my-6 brightness-50 group-hover:brightness-75 duration-300 '
+            className=' w-full mx-auto my-2 md:my-4 brightness-50 group-hover:brightness-75 duration-300 '
           />
         </div>
       )}

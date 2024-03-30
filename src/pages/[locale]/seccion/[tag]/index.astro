@@ -31,9 +31,13 @@ const allPosts = await getCollection('blog', (data) => {
     data?.data?.tag &&
     data?.data?.tag.some((tag: any) => [id].includes(tag.id))
   );
+}).then((posts) => {
+  posts.sort((a, b) => {
+    return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
+  });
+  return posts;
 });
 
-allPosts.sort((a, b) => new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime());
 const Posts = allPosts
   .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => [id].includes(tag.id)))
   .slice(0, 12);
@@ -64,24 +68,24 @@ const legofortnitePosts = allPosts
 
 <LayoutPrincipal>
   <main>
-    <div class='w-11/12 mx-auto'>
-      <h1 class='md:text-4xl text-base mx-auto font-bold mt-12 md:mt-2 text-white'>
+    <div>
+      <h1 class='text-center subtitulo3-movil lgi:subtitulo1-movil lg:subtitulo1-desktop lg:my-4'>
         {id === 'guia' ? t('seccion.guide') : t('seccion.news')}
       </h1>
-      <div class='w-10/12 mx-auto'>
-        <h2 class='lg:text-3xl font-bold my-4'>
+      <div>
+        <h2 class='subtitulo3-movil lss:subtitulo2-movil lg:subtitulo2-desktop my-[10px]'>
           {id === 'guia' ? t('seccion.ultimasguias') : t('index.ultimanoticias')}
         </h2>
-        <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
+        <div class='grid grid-cols-3 lss:gap-4 gap-1 relative'>
           {Posts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
         </div>
         {
           minecraftPosts.length > 2 ? (
             <>
-              <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
+              <h2 class='subtitulo3-movil lss:subtitulo2-movil lg:subtitulo2-desktop my-[10px]'>
                 {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Minecraft
               </h2>
-              <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
+              <div class='grid grid-cols-2 lss:gap-4 gap-1 relative'>
                 {minecraftPosts.map((post) => (
                   <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}
@@ -93,10 +97,10 @@ const legofortnitePosts = allPosts
         {
           geometryPosts.length > 2 ? (
             <>
-              <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
+              <h2 class='subtitulo3-movil lss:subtitulo2-movil lg:subtitulo2-desktop my-[10px]'>
                 {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Geometry Dash
               </h2>
-              <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
+              <div class='grid grid-cols-2 lss:gap-4 gap-1 relative'>
                 {geometryPosts.map((post) => (
                   <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}
@@ -107,10 +111,10 @@ const legofortnitePosts = allPosts
         {
           legofortnitePosts.length > 2 ? (
             <>
-              <h2 class='lg:text-3xl font-bold mt-10 mb-4'>
+              <h2 class='subtitulo3-movil lss:subtitulo2-movil lg:subtitulo2-desktop my-[10px]'>
                 {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Lego Fortnite
               </h2>
-              <div class='grid grid-cols-2 lg:gap-4 gap-1 relative'>
+              <div class='grid grid-cols-2 lss:gap-4 gap-1 relative'>
                 {legofortnitePosts.map((post) => (
                   <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}

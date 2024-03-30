@@ -12,13 +12,11 @@ export default function Producto(props: any) {
     <div>
       {Object.values(data).map((producto: any, index: number) => (
         <a key={index} href={producto.link} target='_blank' hreflang={locale}>
-          <div class='mt-4 group'>
-            <h3 class='text-sm ls:max-md:text-xs text-slate-200 font-extrabold group-hover:text-slate-300 duration-500'>
+          <div class='mb-4 group'>
+            <h3 class='subtitulo5-movil md:subtitulo4-movil group-hover:text-slate-300 duration-500'>
               {producto.titulo}
             </h3>
-            <p class='md:text-xs ls:max-md:hidden mt-1 text-slate-400 font-semibold group-hover:text-slate-300 duration-500'>
-              {producto.descripcion}
-            </p>
+            <p class='md:smallerb-movil mt-1 smaller-movil duration-500'>{producto.descripcion}</p>
           </div>
         </a>
       ))}

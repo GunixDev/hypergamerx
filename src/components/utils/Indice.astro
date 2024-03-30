@@ -10,17 +10,14 @@ const { data, locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<div class='bg-slate-950 rounded-2xl w-fit'>
-  <h2 class='align-middle font-bold text-white text-center text-2xl'>{t('article.indice')}</h2>
+<div class='w-fit'>
+  <h2 class='align-middle text-center subtitulo4-desktop lg:subtitulo3-desktop'>{t('article.indice')}</h2>
   <div class='grid grid-cols-1'>
     {
       data?.map((indice: any) => {
         return indice.depth === 2 ? (
-          <a
-            hreflang={locale}
-            href={`#${indice.slug}`}
-            class='text-xl font-bold text-slate-100 hover:text-slate-300 duration-300 p-1'>
-            <ol class=' list-disc ml-2'>
+          <a hreflang={locale} href={`#${indice.slug}`} class='subtitulo5-desktop lg:subtitulo4-desktop p-1.5 lg:pl-1'>
+            <ol class=' list-none ml-0'>
               <li>{indice.text}</li>
             </ol>
           </a>
@@ -28,7 +25,7 @@ const t = useTranslations(locale);
           <a
             hreflang={locale}
             href={`#${indice.slug}`}
-            class='text-lg ml-4 font-medium text-gray-300 hover:text-white duration-300 p-1'>
+            class='ml-6 my-1 lg:ml-4 subtitulo6-desktop lg:subtitulo5-desktop'>
             <ol>
               <li class=' list-none'>{indice.text}</li>
             </ol>
@@ -37,7 +34,7 @@ const t = useTranslations(locale);
           <a
             hreflang={locale}
             href={`#${indice.slug}`}
-            class='text-sm ml-8 text-gray-400 font-medium hover:text-slate-300 duration-300 p-1'>
+            class='ml-10 lg:mt-1 lg:ml-8 minismall-desktop  lg:small-desktop p-1'>
             <ol>
               <li class=' list-none'>{indice.text}</li>
             </ol>

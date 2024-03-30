@@ -2,58 +2,78 @@
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-import Redes from './utils/footer/Redes';
 ---
 
-<footer class='text-white bg-gray-900 bg-opacity-70 py-2 md:py-8 w-full font-sans mt-4 md:mt-10 ls:max-md:hidden'>
-  <div class='md:container text-slate-500 mx-auto text-center grid grid-cols-4 list-none'>
-    <div class='text-left'>
-      <p class='text-gray-400 lg:font-bold ls:max-sm:text-xs'>{t('footer.terminos')}</p>
-      <div class='ml-6 ls:max-md:text-xs'>
-        <ol>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={`/${lang}/terminos-servicios/AvisoLegal/`} hreflang={lang}>{t('footer.avisolega')}</a>
-          </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={`/${lang}/terminos-servicios/PoliticaCookies/`} hreflang={lang}>{t('footer.politicascookies')}</a>
-          </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
-            <a href={`/${lang}/terminos-servicios/Privacidad/`} hreflang={lang}>{t('footer.politicas')}</a>
-          </li>
-        </ol>
-      </div>
+<footer class='ls:max-lg:hidden bg-dark pt-[24px] px-[20px] text-white w-full grid grid-cols-2'>
+  <div class='grid grid-rows-3'>
+    <div class='flex'>
+      <img src='/icons/HyperGamerX.svg' alt='logo' class='w-[73px] h-[73px] my-auto' />
+      <img src='/icons/HyperGamerXLetter.svg' alt='logo' class='w-[320px] h-[28px] my-auto ml-[20px]' />
     </div>
-    <div class='text-left'>
-      <p class='text-gray-400 lg:font-bold ls:max-sm:text-xs'>{t('footer.contactoseconocenos')}</p>
-      <div class='ml-6 ls:max-md:text-xs'>
+    <div class='my-auto'>
+      <p>
+        &copy; 2024 HyperGamerX. {t('article.creadorpor')}
+        <a href={'https://sunrizestudios.vercel.app/'} hreflang={lang} target='_blank'>
+          {' '}
+          Sunrize Studios
+        </a>
+      </p>
+    </div>
+    <div class='w-9/12 grid grid-flow-col-dense'>
+      <a href={'https://discord.gg/KqmwVhZnfa'} hreflang={lang} target='_blank'>
+        <img src='/icons/Logos/Discord.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+      </a>
+      <a href={'https://www.youtube.com/@HyperGamerX1'} hreflang={lang} target='_blank'>
+        <img src='/icons/Logos/Youtube.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+      </a>
+      <a href={'https://www.tiktok.com/@hypergamerxofficial'} hreflang={lang} target='_blank'>
+        <img src='/icons/Logos/Tik tok.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+      </a>
+      <a href={'https://twitter.com/HyperGamerX_'} hreflang={lang} target='_blank'>
+        <img src='/icons/Logos/Twitter.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+      </a>
+      <a href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'} hreflang={lang} target='_blank'>
+        <img src='/icons/Logos/Whatsapp.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+      </a>
+      <a href={'https://www.facebook.com/Hypergamerx'} hreflang={lang} target='_blank'>
+        <img src='/icons/Logos/Facebook.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+      </a>
+    </div>
+  </div>
+  <div class='grid grid-cols-2'>
+    <div>
+      <p class='subtitulo5-desktop'>{t('footer.contactoseconocenos')}</p>
+      <div class='small-desktop text-dark-white'>
         <ol>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
+          <li>
             <a href={'https://www.paypal.com/donate/?hosted_button_id=K7PXSGWS98LXQ'} hreflang={lang}>
               {t('footer.donar')}</a
             >
           </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
+          <li>
             <a href={`/${lang}/about/`} hreflang={lang}> {t('footer.sobrehypergamerx')}</a>
           </li>
-          <li class='m-2 duration-300 lg:text-gray-200 lg:font-semibold hover:text-gray-300'>
+          <li>
             <a href={'mailto:sunrizecontact@gmail.com'} hreflang={lang}> {t('footer.contacto')}</a>
           </li>
         </ol>
       </div>
     </div>
-    <Redes lang={lang} />
     <div>
-      <p class='text-gray-400 ls:max-lg:text-xs'>
-        &copy; 2024 HyperGamerX. {t('article.creadorpor')}
-        <a
-          href={'https://sunrizestudios.vercel.app/'}
-          hreflang={lang}
-          target='_blank'
-          class='duration-300 hover:text-red-300'>
-          {' '}
-          Sunrize Studios
-        </a>
-      </p>
+      <p class='subtitulo5-desktop'>{t('footer.terminos')}</p>
+      <div class='small-desktop text-dark-white'>
+        <ol>
+          <li>
+            <a href={`/${lang}/terminos-servicios/AvisoLegal/`} hreflang={lang}>{t('footer.avisolega')}</a>
+          </li>
+          <li>
+            <a href={`/${lang}/terminos-servicios/PoliticaCookies/`} hreflang={lang}>{t('footer.politicascookies')}</a>
+          </li>
+          <li>
+            <a href={`/${lang}/terminos-servicios/Privacidad/`} hreflang={lang}>{t('footer.politicas')}</a>
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </footer>
