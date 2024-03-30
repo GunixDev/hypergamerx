@@ -24,7 +24,7 @@ export default function AsideBlog({ locale, resena, games, allPosts, gamesposts,
           resena ? 'ls:max-sm:grid ls:max-sm:grid-cols-5 ls:max-sm:p-2 ls:max-sm:gap-1' : ''
         }`}>
         {resena && (
-          <div class=' bg-dark text-white p-2 md:p-4 rounded-lg w-full h-fit ls:max-sm:col-span-3'>
+          <div class=' bg-gray text-white p-2  rounded-lg w-full h-fit ls:max-sm:col-span-3'>
             <p class='text-center subtitulo2-movil lss:subtitulo3-movil lg:subtitulo3-desktop lg:my-1'>
               {games[0].Name}
             </p>
