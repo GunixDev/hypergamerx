@@ -1,4 +1,3 @@
-import React from 'preact';
 import type { Locale } from '../../../types';
 
 interface CompartirProps {
@@ -22,8 +21,6 @@ export default function Compartir({ path, locale }: CompartirProps) {
   }`;
   const body2 = `${subject}: ${url}`;
 
-  const compartirWhatsapp = `whatsapp://send?text=${url}`;
-  const compartirFacebook = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   const compartirTwitter = `https://twitter.com/intent/tweet?url=${body2}`;
   const compartirGmail = generarCompartirGmail(subject, url);
 

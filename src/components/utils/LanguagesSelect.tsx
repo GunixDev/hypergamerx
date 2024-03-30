@@ -1,12 +1,9 @@
-import { useTranslations } from '../../i18n/utils';
-
 interface LanguagesSelectProps {
   lang: 'en' | 'es';
   pathname: string;
   languages: any;
 }
 export default function LanguagesSelect({ lang, pathname, languages }: LanguagesSelectProps) {
-  const t = useTranslations(lang);
   return (
     <div className='w-full col-span-2 ls:max-lg:my-1'>
       <select

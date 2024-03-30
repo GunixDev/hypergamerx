@@ -1,10 +1,8 @@
 import { languages } from '../../../i18n/data_essential';
 import { useTranslations } from '../../../i18n/utils';
 import { useState } from 'preact/hooks';
-import DesktopNav from './MobileNav';
 import LanguagesSelect from '../LanguagesSelect';
 import SearchWidget from '../Search';
-import Redes from '../footer/Redes';
 
 interface MobileNavProps {
   lang2: 'en' | 'es';

@@ -1,5 +1,4 @@
 ---
-import { getLangFromUrl } from 'src/i18n/utils';
 import LayoutPrincipal from '../../layouts/LayoutPrincipal.astro';
 export async function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'es' } }];
