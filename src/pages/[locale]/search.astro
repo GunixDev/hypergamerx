@@ -71,7 +71,7 @@ export async function getStaticPaths() {
     return results
       .map((result: any) => {
         const { item } = result;
-        return `<li class="my-4 lg:my-6"><a href="blog/${item.slug.slice(3)}"><h2 class="lg:subtitulo2-desktop lgi:subtitulo2-movil subtitulo3-movil lg:mb-3">${item.title}</h2><p class="smallerb-movil lgi:small-movil lg:normal-desktop">${item.description}</p></a></li>`;
+        return `<li class="my-4 lg:my-6"><a href="/${locale}/blog/${item.slug.slice(3)}"><h2 class="lg:subtitulo2-desktop lgi:subtitulo2-movil subtitulo3-movil lg:mb-3">${item.title}</h2><p class="smallerb-movil lgi:small-movil lg:normal-desktop">${item.description}</p></a></li>`;
       })
       .join('');
   }
