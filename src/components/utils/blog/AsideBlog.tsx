@@ -21,11 +21,11 @@ export default function AsideBlog({ locale, resena, games, allPosts, gamesposts,
     <aside lang={locale} class='h-full ls:max-sm:w-full relative sm:col-span-4'>
       <div
         class={`h-full relative sm:col-span-2 ${
-          resena ? 'ls:max-sm:grid ls:max-sm:grid-cols-5 ls:max-sm:p-2 ls:max-sm:gap-1' : ''
+          resena ? 'lgi:max-sm:grid lgi:max-sm:grid-cols-9 ls:max-sm:p-2 ls:max-sm:gap-1' : ''
         }`}>
         {resena && (
-          <div class=' bg-gray text-white p-2  rounded-lg w-full h-fit ls:max-sm:col-span-3'>
-            <p class='text-center subtitulo2-movil lss:subtitulo3-movil lg:subtitulo3-desktop lg:my-1'>
+          <div class=' bg-gray text-white p-2 ls:max-sm:h-full  rounded-lg w-full h-fit lgi:max-sm:col-span-4 lss:max-sm:col-span-3'>
+            <p class='text-center subtitulo3-movil lgi:subtitulo4-movil lss:subtitulo3-movil lg:subtitulo3-desktop lg:my-1'>
               {games[0].Name}
             </p>
             <img
@@ -73,33 +73,69 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
             </p>
           </div>
         )}
-        <div class={` rounded-2xl ${resena ? 'ls:max-sm:col-span-2 mt-3' : ''}`}>
-          <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
-            {t('article.articuclosreciente')}
-          </h2>
-          <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
-            {allPosts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
-          </div>
-        </div>
-        {postgames && (
-          <div class={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
-            <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
-              {t('article.articulosde')} {games[0].Name}
-            </h2>
-            <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
-              {gamesposts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+        {resena ? (
+          <>
+            {' '}
+            {postgames && (
+              <div class={`${resena ? 'lgi:max-sm:col-span-5 lss:max-sm:col-span-6' : ''} sm:mt-10`}>
+                <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+                  {t('article.articulosde')} {games[0].Name}
+                </h2>
+                <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
+                  {gamesposts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+                </div>
+              </div>
+            )}
+            <div class={` rounded-2xl ${resena ? ' lgi:max-sm:col-span-9' : ''}  mt-10`}>
+              <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+                {t('article.articuclosreciente')}
+              </h2>
+              <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
+                {allPosts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+              </div>
             </div>
-          </div>
-        )}
-        {postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
-          <div class={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
-            <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
-              {games[0].Name} {t('articulo.amazon')}
-            </h2>
-            <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-5 mt-2 lg:mt-5'>
-              <Producto juego={amazon1} locale={locale} />
+            {postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
+              <div class={`${resena ? ' ls:max-sm:col-span-9' : ''} mt-10`}>
+                <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+                  {games[0].Name} {t('articulo.amazon')}
+                </h2>
+                <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-5 mt-2 lg:mt-5'>
+                  <Producto juego={amazon1} locale={locale} />
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            <div class={` rounded-2xl ${resena ? 'ls:max-sm:col-span-2 mt-3' : ''}`}>
+              <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+                {t('article.articuclosreciente')}
+              </h2>
+              <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
+                {allPosts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+              </div>
             </div>
-          </div>
+            {postgames && (
+              <div class={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
+                <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+                  {t('article.articulosde')} {games[0].Name}
+                </h2>
+                <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
+                  {gamesposts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
+                </div>
+              </div>
+            )}
+            {postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
+              <div class={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
+                <h2 class='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
+                  {games[0].Name} {t('articulo.amazon')}
+                </h2>
+                <div class='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-5 mt-2 lg:mt-5'>
+                  <Producto juego={amazon1} locale={locale} />
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </aside>
