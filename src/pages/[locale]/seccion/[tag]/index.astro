@@ -76,7 +76,7 @@ const legofortnitePosts = allPosts
         <h2 class='subtitulo3-movil lss:subtitulo2-movil lg:subtitulo2-desktop my-[10px]'>
           {id === 'guia' ? t('seccion.ultimasguias') : t('index.ultimanoticias')}
         </h2>
-        <div class='grid grid-cols-3 lss:gap-4 gap-1 relative'>
+        <div class='grid grid-cols-3 lss:gap-4 gap-1 lg:gap-12 relative'>
           {Posts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
         </div>
         {
@@ -85,7 +85,7 @@ const legofortnitePosts = allPosts
               <h2 class='subtitulo3-movil lss:subtitulo2-movil lg:subtitulo2-desktop my-[10px]'>
                 {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Minecraft
               </h2>
-              <div class='grid grid-cols-2 lss:gap-4 gap-1 relative'>
+              <div class='grid grid-cols-2 lss:gap-4 lg:gap-16 gap-1 relative'>
                 {minecraftPosts.map((post) => (
                   <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}
@@ -100,7 +100,7 @@ const legofortnitePosts = allPosts
               <h2 class='subtitulo3-movil lss:subtitulo2-movil lg:subtitulo2-desktop my-[10px]'>
                 {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Geometry Dash
               </h2>
-              <div class='grid grid-cols-2 lss:gap-4 gap-1 relative'>
+              <div class='grid grid-cols-2 lss:gap-4 lg:gap-16 gap-1 relative'>
                 {geometryPosts.map((post) => (
                   <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}
@@ -114,7 +114,7 @@ const legofortnitePosts = allPosts
               <h2 class='subtitulo3-movil lss:subtitulo2-movil lg:subtitulo2-desktop my-[10px]'>
                 {id === 'guia' ? t('seccion.ultimasguiasde') : t('index.utlimasnoticiasde')} Lego Fortnite
               </h2>
-              <div class='grid grid-cols-2 lss:gap-4 gap-1 relative'>
+              <div class='grid grid-cols-2 lss:gap-4 lg:gap-16 gap-1 relative'>
                 {legofortnitePosts.map((post) => (
                   <ArticulosView file={post.slug} data={post.data} lang={lang} />
                 ))}
