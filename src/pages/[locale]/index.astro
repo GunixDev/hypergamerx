@@ -57,7 +57,7 @@ const geometryPosts = allPosts
   <div>
     <div>
       <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop lss:mb-4'>{t('index.ultimoarticules')}</h2>
-      <div class='lg:grid lg:grid-cols-5 ls:max-lg:w-full h-auto bg-slate-950'>
+      <div class='lg:grid lg:grid-cols-5 ls:max-lg:w-full h-auto'>
         <div class='lg:col-span-3'>
           {Ultimo.map((post) => <ArticulosView2 file={post.slug} data={post.data} lang={lang} />)}
         </div>
