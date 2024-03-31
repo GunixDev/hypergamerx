@@ -7,13 +7,14 @@
     font-family: 'Segoe-UI';
     font-style: Regular;
     src: url('/fonts/Segoe-UI.ttf') format('truetype');
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Segoe-UI-Bold';
     font-style: Bold;
-    font-display: swap;
     src: url('/fonts/Segoe-UI-Bold.ttf') format('truetype');
+    font-display: swap;
   }
 }
 

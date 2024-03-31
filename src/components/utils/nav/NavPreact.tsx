@@ -73,6 +73,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
           <div>
             <img
               src='/icons/HyperGamerXLetterDark.svg'
+              loading='lazy'
               alt='inicio'
               width='140px'
               height='240px'
