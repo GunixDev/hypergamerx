@@ -73,6 +73,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
           <div>
             <img
               src='/icons/HyperGamerXLetterDark.svg'
+              alt='inicio'
               width='140px'
               height='240px'
               class='w-[140px] sm:w-[240px] h-auto mb-1'
@@ -82,9 +83,9 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
           <div className='grid grid-rows-12 h-full'>
             <div className='row-span-9 subtitulo3-movil grid grid-rows-12'>
               <div className=' h-full row-span-6 grid subtitulo3-movil'>
-                <a className='my-auto'>
+                <div className='my-auto'>
                   <SearchWidget lang={lang2} />
-                </a>
+                </div>
                 <a lang={lang2} href={`/${lang2}/`} className='flex my-auto gap-2'>
                   <img src='/icons/Casa.svg' />
                   <span className='my-auto'> {t('nav.inicio')}</span>
@@ -188,7 +189,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
 
       <nav className='py-2 lg:px-4 grid lg:grid-cols-11 fixed z-[100] bg-dark h-auto w-full duration-500 grid-cols-7 px-[10px]'>
         <div className='lg:hidden col-span-3 my-auto' onClick={() => setIsOpen(!isOpen)}>
-          <img src='/icons/menu.svg' width='24px' height='24px' />
+          <img src='/icons/menu.svg' alt='Menu' width='24px' height='24px' />
         </div>
 
         <div className='lg:col-span-5 grid grid-cols-5 py-2 w-full gap-2 ls:max-lg:hidden'>
@@ -197,8 +198,8 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
         </div>
 
         <div className='col-span-1 mx-auto my-auto w-[24px] h-[24px] lg:w-[40px] lg:h-[40px]'>
-          <a hreflang={lang2} href={`/${lang2}/`}>
-            <img src='/icons/HyperGamerX.svg' width='40px' height='40px' />
+          <a hreflang={lang2} aria-label='inicio' href={`/${lang2}/`}>
+            <img src='/icons/HyperGamerX.svg' alt='inicio' width='40px' height='40px' />
           </a>
         </div>
 
