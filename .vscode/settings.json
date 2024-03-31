@@ -1,13 +1,18 @@
 {
     "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "node_modules": true,
-        ".vscode": true
+        "**/.git": false,
+        "**/.hg": true,
+        "**/.svn": true,
+        "**/CVS": true,
+        "**/Thumbs.db": true
     },
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "search.useGlobalIgnoreFiles": true,
+    "search.useParentIgnoreFiles": true,
+    "search.exclude": {
+        ".astro": true,
+        ".vercel": true,
+        ".vscode": true
+    }
 }
