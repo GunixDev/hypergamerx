@@ -8,6 +8,7 @@ export default function LanguagesSelect({ lang, pathname, languages }: Languages
     <div className='w-full col-span-2 ls:max-lg:my-1'>
       <select
         id='Lang'
+        aria-label='Cambiar idioma'
         name='Lang'
         className='minismall-desktop py-0.5 rounded-md w-full ls:max-lg:border-2 ls:max-lg:border-dark'
         value={`/${lang}/${pathname}`}
