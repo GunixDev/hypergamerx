@@ -4,10 +4,19 @@ interface Props {
   data: any;
   lang: any;
 }
+
+interface data {
+  Image: string;
+  PubDate: string;
+  Title: string;
+  Description: string;
+}
+
 const { file, data, lang } = Astro.props;
-const { Image, PubDate, Title, Description } = data;
+const { Image, PubDate, Title, Description }: data = data;
 const fileName = file.split('/').pop()?.split('.')[0];
 let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
+console.log(Image);
 ---
 
 <div class='relative w-full h-full'>
@@ -15,7 +24,7 @@ let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, { year: 'numeri
     <div>
       <div class='rounded-md w-full bg-gradient-to-t from-dark to-transparent absolute z-30 h-full'></div>
       {
-        Image !== null ? (
+        Image !== null && Image.trim() !== '' ? (
           <img
             src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${Image}`}
             srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_136/${Image} 256w,
@@ -29,11 +38,7 @@ let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, { year: 'numeri
             class='rounded-md h-auto w-full aspect-auto z-0 '
           />
         ) : (
-          <img
-            src='/Banner.png'
-            alt='image'
-            class='rounded-l-xl w-full fill-neutral-500 brightness-75 group-hover:brightness-50 transition-all duration-500 ease-in-out z-0 absolute h-full'
-          />
+          <img src='/Banner.png' alt='image' class='rounded-md h-auto w-full aspect-auto z-0 ' />
         )
       }
     </div>

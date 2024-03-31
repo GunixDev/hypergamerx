@@ -528,6 +528,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"en/with-these-online-casino-games-you-will-win-a-lot.mdx": {
+	id: "en/with-these-online-casino-games-you-will-win-a-lot.mdx";
+  slug: "en/with-these-online-casino-games-you-will-win-a-lot";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "en/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard.mdx": {
 	id: "en/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard.mdx";
   slug: "en/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard";
@@ -923,6 +930,13 @@ declare module 'astro:content' {
 "es/what-is-better-the-vandal-or-the-phantom.mdx": {
 	id: "es/what-is-better-the-vandal-or-the-phantom.mdx";
   slug: "es/what-is-better-the-vandal-or-the-phantom";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"es/with-these-online-casino-games-you-will-win-a-lot.mdx": {
+	id: "es/with-these-online-casino-games-you-will-win-a-lot.mdx";
+  slug: "es/with-these-online-casino-games-you-will-win-a-lot";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

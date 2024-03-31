@@ -117,13 +117,19 @@ if (amazon1 === undefined) {
             <FormattedDate date={page.data?.PubDate} locale={locale} /></span
           >
         </div>
-        <div class='flex'>
-          <img src='/icons/UpdatePage.svg' class='w-4 h-4 my-auto' /><span
-            class='ml-1 my-auto smaller-movil lss:small-movil lg:small-desktop'
-            >{t('article.creadorpor')}
-            <FormattedDate date={page.data?.PubDate} locale={locale} /></span
-          >
-        </div>
+        {
+          page.data?.UpdatedDate && (
+            <div class='flex'>
+              <>
+                <img src='/icons/UpdatePage.svg' class='w-4 h-4 my-auto' />
+                <span class='ml-1 my-auto smaller-movil lss:small-movil lg:small-desktop'>
+                  {t('article.ultimaactualizacion')}
+                  <FormattedDate date={page.data?.UpdatedDate} locale={locale} />
+                </span>
+              </>
+            </div>
+          )
+        }
       </div>
       <div class='grid grid-cols-2'>
         <div>
@@ -152,7 +158,7 @@ if (amazon1 === undefined) {
       {
         resena && games[0].TrailerVideo ? (
           <Iframeop client:load id={games[0].TrailerVideo} />
-        ) : page && page.data?.Image && page.data?.Image !== null ? (
+        ) : page && page.data?.Image && page.data?.Image !== null && page.data?.Image.trim() !== '' ? (
           <img
             src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.Image}`}
             srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data?.Image} 256w,
@@ -165,7 +171,15 @@ if (amazon1 === undefined) {
             alt={page.data?.Image}
             class='my-8 w-full h-auto mx-auto rounded-md'
           />
-        ) : null
+        ) : (
+          <img
+            src={`/Banner.png`}
+            width='479'
+            height='270'
+            alt={'Imagen de HyperGamerX'}
+            class='my-8 w-full h-auto mx-auto rounded-md'
+          />
+        )
       }
       <div class='bg-dark text-white rounded-xl md:px-8 md:py-2 ls:max-md:p-4 w-fit mt-4 ls:max-sm:hidden'>
         <Indice data={renderResult?.headings} locale={locale} />

@@ -6,7 +6,7 @@ export default function ArticulosRamdon(file: string, data: any, locale: Locale)
     <a href={`/${locale}/blog/${file.slice(3)}/`} hreflang={locale}>
       <div class='grid grid-cols-5 gap-2'>
         <div class='col-span-2'>
-          {Image !== null ? (
+          {Image !== null && Image.trim() !== '' ? (
             <img
               src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${Image}`}
               srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_55/${Image} 256w,
