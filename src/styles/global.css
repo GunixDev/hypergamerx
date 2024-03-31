@@ -28,7 +28,7 @@
     @apply font-Segoe-UI-Bold text-[36px] leading-8;
   }
   .subtitulo3-desktop {
-    @apply font-Segoe-UI-Bold text-[32px];
+    @apply font-Segoe-UI-Bold leading-8 text-[32px];
   }
   .subtitulo4-desktop {
     @apply font-Segoe-UI-Bold text-[24px];
