@@ -111,7 +111,7 @@ if (amazon1 === undefined) {
       </p>
       <div class='grid grid-rows-2 gap-0.5 lgi:mt-1 lss:mt-2'>
         <div class='flex'>
-          <img src='/icons/SendPage.svg' class='w-4 h-4 my-auto' /><span
+          <img src='/icons/SendPage.svg' alt='Pagina enviada' class='w-4 h-4 my-auto' /><span
             class='ml-1 my-auto smaller-movil lss:small-movil lg:small-desktop'
             >{t('article.creadorpor')}
             <FormattedDate date={page.data?.PubDate} locale={locale} /></span
@@ -121,7 +121,7 @@ if (amazon1 === undefined) {
           page.data?.UpdatedDate && (
             <div class='flex'>
               <>
-                <img src='/icons/UpdatePage.svg' class='w-4 h-4 my-auto' />
+                <img src='/icons/UpdatePage.svg' alt='Pagina actualizada' class='w-4 h-4 my-auto' />
                 <span class='ml-1 my-auto smaller-movil lss:small-movil lg:small-desktop'>
                   {t('article.ultimaactualizacion')}
                   <FormattedDate date={page.data?.UpdatedDate} locale={locale} />
@@ -141,6 +141,7 @@ if (amazon1 === undefined) {
                   <img
                     class=' rounded-2xl w-[16px] h-[16px] lgi:w-[24px] lgi:h-[24px]'
                     src='/Profiles/Brayan-Cordova.png'
+                    alt='author imagen'
                   />
                   <span class='minismaller-movil lgi:smaller-movil lg:minismall-desktop my-auto ml-1'>
                     {author.Name}
