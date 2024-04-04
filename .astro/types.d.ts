@@ -150,9 +150,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"en/artist-camellia-joins-the-geometry-dash-music-library.mdx": {
+	id: "en/artist-camellia-joins-the-geometry-dash-music-library.mdx";
+  slug: "en/artist-camellia-joins-the-geometry-dash-music-library";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "en/discover-why-mario-bros-is-one-of-the-most-iconic-games.mdx": {
 	id: "en/discover-why-mario-bros-is-one-of-the-most-iconic-games.mdx";
   slug: "en/discover-why-mario-bros-is-one-of-the-most-iconic-games";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"en/extraterra-the-new-artist-that-will-join-geometry-dash..mdx": {
+	id: "en/extraterra-the-new-artist-that-will-join-geometry-dash..mdx";
+  slug: "en/extraterra-the-new-artist-that-will-join-geometry-dash";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -318,6 +332,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"en/meet-the-new-artist-joining-geometry-dash.mdx": {
+	id: "en/meet-the-new-artist-joining-geometry-dash.mdx";
+  slug: "en/meet-the-new-artist-joining-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "en/minecraft.mdx": {
 	id: "en/minecraft.mdx";
   slug: "en/minecraft";
@@ -325,9 +346,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"en/new-artist-leaf-joins-geometry-dash.mdx": {
+	id: "en/new-artist-leaf-joins-geometry-dash.mdx";
+  slug: "en/new-artist-leaf-joins-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "en/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1.mdx": {
 	id: "en/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1.mdx";
   slug: "en/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"en/shirobon-knows-his-music-that-will-be-added-to-geometry-dash.mdx": {
+	id: "en/shirobon-knows-his-music-that-will-be-added-to-geometry-dash.mdx";
+  slug: "en/shirobon-knows-his-music-that-will-be-added-to-geometry-dash";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -360,9 +395,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"en/the-artist-helblinde-will-add-his-music-to-geometry-dash.mdx": {
+	id: "en/the-artist-helblinde-will-add-his-music-to-geometry-dash.mdx";
+  slug: "en/the-artist-helblinde-will-add-his-music-to-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "en/the-best-levels-of-games-recreated-in-geometry-dash.mdx": {
 	id: "en/the-best-levels-of-games-recreated-in-geometry-dash.mdx";
   slug: "en/the-best-levels-of-games-recreated-in-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"en/the-best-valorant-wallpapers-that-you-can-download.mdx": {
+	id: "en/the-best-valorant-wallpapers-that-you-can-download.mdx";
+  slug: "en/the-best-valorant-wallpapers-that-you-can-download";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -542,6 +591,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"en/xi-joins-geometry-dash-knows-its-songs.mdx": {
+	id: "en/xi-joins-geometry-dash-knows-its-songs.mdx";
+  slug: "en/xi-joins-geometry-dash-knows-its-songs";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "es/7-essential-tips-to-survive-the-first-night-in-minecraft.mdx": {
 	id: "es/7-essential-tips-to-survive-the-first-night-in-minecraft.mdx";
   slug: "es/7-essential-tips-to-survive-the-first-night-in-minecraft";
@@ -549,9 +605,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"es/artist-camellia-joins-the-geometry-dash-music-library.mdx": {
+	id: "es/artist-camellia-joins-the-geometry-dash-music-library.mdx";
+  slug: "es/artist-camellia-joins-the-geometry-dash-music-library";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "es/discover-why-mario-bros-is-one-of-the-most-iconic-games.mdx": {
 	id: "es/discover-why-mario-bros-is-one-of-the-most-iconic-games.mdx";
   slug: "es/discover-why-mario-bros-is-one-of-the-most-iconic-games";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"es/extraterra-the-new-artist-that-will-join-geometry-dash.mdx": {
+	id: "es/extraterra-the-new-artist-that-will-join-geometry-dash.mdx";
+  slug: "es/extraterra-the-new-artist-that-will-join-geometry-dash";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -717,6 +787,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"es/meet-the-new-artist-joining-geometry-dash.mdx": {
+	id: "es/meet-the-new-artist-joining-geometry-dash.mdx";
+  slug: "es/meet-the-new-artist-joining-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "es/minecraft.mdx": {
 	id: "es/minecraft.mdx";
   slug: "es/minecraft";
@@ -724,9 +801,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"es/new-artist-leaf-joins-geometry-dash.mdx": {
+	id: "es/new-artist-leaf-joins-geometry-dash.mdx";
+  slug: "es/new-artist-leaf-joins-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "es/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1.mdx": {
 	id: "es/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1.mdx";
   slug: "es/new-trades-and-cartographers-in-minecraft-1-20-2-pre-release-2-1";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"es/shirobon-knows-his-music-that-will-be-added-to-geometry-dash.mdx": {
+	id: "es/shirobon-knows-his-music-that-will-be-added-to-geometry-dash.mdx";
+  slug: "es/shirobon-knows-his-music-that-will-be-added-to-geometry-dash";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -766,9 +857,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"es/the-artist-helblinde-will-add-his-music-to-geometry-dash.mdx": {
+	id: "es/the-artist-helblinde-will-add-his-music-to-geometry-dash.mdx";
+  slug: "es/the-artist-helblinde-will-add-his-music-to-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "es/the-best-levels-of-games-recreated-in-geometry-dash.mdx": {
 	id: "es/the-best-levels-of-games-recreated-in-geometry-dash.mdx";
   slug: "es/the-best-levels-of-games-recreated-in-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"es/the-best-valorant-wallpapers-that-you-can-download.mdx": {
+	id: "es/the-best-valorant-wallpapers-that-you-can-download.mdx";
+  slug: "es/the-best-valorant-wallpapers-that-you-can-download";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -944,6 +1049,13 @@ declare module 'astro:content' {
 "es/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard.mdx": {
 	id: "es/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard.mdx";
   slug: "es/xbox-wins-the-lawsuit-against-play-station-for-the-purchase-of-activision-blizzard";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"es/xi-joins-geometry-dash-knows-its-songs.mdx": {
+	id: "es/xi-joins-geometry-dash-knows-its-songs.mdx";
+  slug: "es/xi-joins-geometry-dash-knows-its-songs";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

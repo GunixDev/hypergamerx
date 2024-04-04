@@ -13,7 +13,7 @@ export default function IframeOp({ id }: IframeProps) {
         <iframe
           src={`https://www.youtube.com/embed/${id}?autoplay=1&amp;rel=0`}
           loading='lazy'
-          className='md:h-96 h-64 w-full md:w-10/12 my-2 md:my-4 mx-auto'
+          className='md:h-96 h-64 w-full my-2 md:my-4'
           width='445'
           height='200'
           title={id}
