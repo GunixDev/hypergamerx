@@ -8,6 +8,10 @@ export default {
       gray: '#171717',
       'light-gray': '#3F3F46',
       'dark-white': '#A3A3A3',
+      green: '#00FF00',
+      red: '#FF0000',
+      yellow: '#FFFF00',
+      blue: '#0000FF',
     },
     fontFamily: {
       'Segoe-UI': ['Segoe-UI', 'sans-serif', 'Arial'],

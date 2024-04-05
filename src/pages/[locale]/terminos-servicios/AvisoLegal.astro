@@ -1,7 +1,7 @@
 ---
 import ArticulosRamdon from '@components/Views/ArticulosRamdon.astro';
-import { getLangFromUrl, useTranslations, useTranslationsSpecial } from '../../../i18n/utils';
-import LayoutPrincipal from '../../../layouts/LayoutPrincipal.astro';
+import { getLangFromUrl, useTranslations, useTranslationsSpecial } from '@i18n/utils';
+import LayoutPrincipal from '@layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {

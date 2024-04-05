@@ -1,13 +1,13 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
-import type { Locale, Blog, TagsJsonArray, GameJsonArray, AuthorsJsonArray } from '../../../types';
-import { amazon } from '../../../components/utils/blog/Amazon';
-import LayoutPrincipal from '../../../layouts/LayoutPrincipal.astro';
-import FormattedDate from '../../../components/utils/FormattedDate.astro';
-import Indice from '../../../components/utils/Indice.astro';
-import { useTranslations } from '../../../i18n/utils';
-import Iframeop from '../../../components/utils/blog/Iframeop';
-import { GetGames, GetTags, GetAuthor } from '../../../components/utils/blog/GetContent';
+import type { Locale, Blog, TagsJsonArray, GameJsonArray, AuthorsJsonArray } from '@/types';
+import { amazon } from '@components/utils/blog/Amazon';
+import LayoutPrincipal from '@layouts/LayoutPrincipal.astro';
+import FormattedDate from '@components/utils/FormattedDate.astro';
+import Indice from '@components/utils/Indice.astro';
+import { useTranslations } from '@i18n/utils';
+import Iframeop from '@components/utils/blog/Iframeop';
+import { GetGames, GetTags, GetAuthor } from '@components/utils/blog/GetContent';
 import AsideBlog from '@components/utils/blog/AsideBlog';
 import Compartir from '@components/utils/blog/Compartir';
 

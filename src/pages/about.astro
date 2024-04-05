@@ -1,6 +1,6 @@
 ---
-import ArticulosRamdon from '../components/Views/ArticulosRamdon';
-import LayoutPrincipal from '../layouts/LayoutPrincipal.astro';
+import ArticulosRamdon from '@components/Views/ArticulosRamdon';
+import LayoutPrincipal from '@layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', (data) => {
@@ -39,9 +39,9 @@ allPosts.length = 8;
       <p>
         At HyperGamerX we don't just talk about video games, we live them with passion! We understand the fire you feel
         for gaming, because we feel it too. So, join our
-        <a href={'https://discord.gg/aXmCVfcXaa'} hreflang={'en'} target='_blank' class='text-blue-600'> Discord</a>,
-        where we all share that unique excitement for video games and share opinions among them, you can also find
-        people to play with, soon we will do events among our community, with great prizes!
+        <a href={'https://discord.gg/aXmCVfcXaa'} hreflang={'en'} target='_blank' class='text-blue'> Discord</a>, where
+        we all share that unique excitement for video games and share opinions among them, you can also find people to
+        play with, soon we will do events among our community, with great prizes!
       </p>
       <p>
         <br />

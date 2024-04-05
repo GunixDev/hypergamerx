@@ -1,10 +1,10 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import ArticulosView from '../../components/Views/ArticulosView1.astro';
-import ArticulosView2 from '../../components/Views/ArticulosView2.astro';
-import LayoutPrincipal from '../../layouts/LayoutPrincipal.astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import ArticulosView from '@components/Views/ArticulosView1.astro';
+import ArticulosView2 from '@components/Views/ArticulosView2.astro';
+import LayoutPrincipal from '@layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
-import ListData from '../../components/Views/ListData.astro';
+import ListData from '@components/Views/ListData.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
