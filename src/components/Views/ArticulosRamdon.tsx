@@ -1,22 +1,22 @@
 import type { Locale } from '../../types';
 
 export default function ArticulosRamdon(file: string, data: any, locale: Locale) {
-  const { Title, Description, Image } = data;
+  const { Title, Description, ImageCover } = data;
   return (
     <a href={`/${locale}/blog/${file.slice(3)}/`} hreflang={locale}>
       <div class='grid grid-cols-5 gap-2'>
         <div class='col-span-2'>
-          {Image !== null && Image.trim() !== '' ? (
+          {ImageCover !== null && ImageCover.trim() !== '' ? (
             <img
-              src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${Image}`}
-              srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_55/${Image} 256w,
-             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_110/${Image} 512w,
-             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${Image} 768w,
-             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_220/${Image} 1024w,
-             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_573/${Image} 1280w`}
+              src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${ImageCover}`}
+              srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_55/${ImageCover} 256w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_110/${ImageCover} 512w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${ImageCover} 768w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_220/${ImageCover} 1024w,
+             https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_573/${ImageCover} 1280w`}
               width='165'
               height='93'
-              alt={`${Image}`}
+              alt={`${ImageCover}`}
               decoding='async'
               loading='lazy'
               class=' w-full h-auto aspect-auto  rounded-md'

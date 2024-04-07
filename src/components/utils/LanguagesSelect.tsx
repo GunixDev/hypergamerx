@@ -5,7 +5,7 @@ interface LanguagesSelectProps {
 }
 export default function LanguagesSelect({ lang, pathname, languages }: LanguagesSelectProps) {
   return (
-    <div className='w-full col-span-2 ls:max-lg:my-1'>
+    <div className='w-full col-span-2 ls:max-lg:my-1 text-dark'>
       <select
         id='Lang'
         aria-label='Cambiar idioma'

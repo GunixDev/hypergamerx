@@ -6,17 +6,18 @@ interface Props {
 }
 
 interface data {
-  Image: string;
+  ImageCover: string;
   PubDate: string;
   Title: string;
   Description: string;
 }
 
 const { file, data, lang } = Astro.props;
-const { Image, PubDate, Title, Description }: data = data;
+const { ImageCover, PubDate, Title, Description }: data = data;
+console.log(data);
 const fileName = file.split('/').pop()?.split('.')[0];
 let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
-console.log(Image);
+console.log(ImageCover);
 ---
 
 <div class='relative w-full h-full'>
@@ -24,17 +25,17 @@ console.log(Image);
     <div>
       <div class='rounded-md w-full bg-gradient-to-t from-dark to-transparent absolute z-30 h-full'></div>
       {
-        Image !== null && Image.trim() !== '' ? (
+        ImageCover !== null && ImageCover.trim() !== '' ? (
           <img
-            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${Image}`}
-            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_136/${Image} 256w,
-          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_272/${Image} 512w,
-          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${Image} 768w,
-          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_544/${Image} 1024w,
-          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_680/${Image} 1280w`}
+            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${ImageCover}`}
+            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_136/${ImageCover} 256w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_272/${ImageCover} 512w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${ImageCover} 768w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_544/${ImageCover} 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_680/${ImageCover} 1280w`}
             width='408'
             height='230'
-            alt={`${Image}`}
+            alt={`${ImageCover}`}
             class='rounded-md h-auto w-full aspect-auto z-0 '
           />
         ) : (

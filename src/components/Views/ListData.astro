@@ -5,7 +5,7 @@ interface Props {
   lang: any;
 }
 const { file, data, lang } = Astro.props;
-const { Image, PubDate, Title } = data;
+const { ImageCover, PubDate, Title } = data;
 const fileName = file.split('/').pop()?.split('.')[0];
 let fecha = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
 ---
@@ -14,15 +14,15 @@ let fecha = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month:
   <div class='grid grid-cols-11'>
     <div class='col-span-5'>
       {
-        Image !== null ? (
+        ImageCover !== null ? (
           <img
-            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_162/${Image}`}
-            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_54/${Image} 256w,
-           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_108/${Image} 512w,
-           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_162/${Image} 768w,
-           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_216/${Image} 1024w,
-           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_270/${Image} 1280w`}
-            alt={`${Image}`}
+            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_162/${ImageCover}`}
+            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_54/${ImageCover} 256w,
+           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_108/${ImageCover} 512w,
+           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_162/${ImageCover} 768w,
+           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_216/${ImageCover} 1024w,
+           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_50/c_scale,w_270/${ImageCover} 1280w`}
+            alt={`${ImageCover}`}
             decoding='async'
             loading='lazy'
             class='h-full w-full rounded-md aspect-auto'
@@ -32,7 +32,7 @@ let fecha = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month:
             src='/Banner.png'
             width='83'
             height='47'
-            alt={`${Image}`}
+            alt={`${ImageCover}`}
             decoding='async'
             loading='lazy'
             class='h-full w-full rounded-md aspect-auto'

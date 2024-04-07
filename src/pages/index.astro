@@ -10,7 +10,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const allPosts = await getCollection('blog', (data) => {
-  return data?.data?.IsDraft !== true && data?.slug.startsWith(lang);
+  return data?.data?.IsType === 'Complete' && data?.slug.startsWith(lang);
 }).then((posts) => {
   posts.sort((a, b) => {
     return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
@@ -22,29 +22,29 @@ const Ultimo = allPosts.slice(0, 1);
 const recentpost = allPosts.slice(1, 4);
 const recentpost2 = allPosts.slice(4, 10);
 const newsPosts = allPosts
-  .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => ['noticia'].includes(tag.id)))
+  .filter((post) => post.data?.Tags && post.data?.Tags.some((tag: any) => ['noticia'].includes(tag.id)))
   .slice(0, 9);
 
 const curiosidadesPosts = allPosts
-  .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => ['curiosidades'].includes(tag.id)))
+  .filter((post) => post.data?.Tags && post.data?.Tags.some((tag: any) => ['curiosidades'].includes(tag.id)))
   .slice(0, 6);
 
 const reseñasPosts = allPosts
-  .filter((post) => post.data?.tag && post.data?.tag.some((tag: any) => ['reseña'].includes(tag.id)))
+  .filter((post) => post.data?.Tags && post.data?.Tags.some((tag: any) => ['reseña'].includes(tag.id)))
   .slice(0, 3);
 
 const minecraftPosts = allPosts
   .filter(
     (post) =>
-      post.data?.videojuego && post.data?.videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.id)),
+      post.data?.Videojuego && post.data?.Videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.id)),
   )
   .slice(0, 9);
 
 const geometryPosts = allPosts
   .filter(
     (post) =>
-      post.data?.videojuego &&
-      post.data?.videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.id)),
+      post.data?.Videojuego &&
+      post.data?.Videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.id)),
   )
   .slice(0, 6);
 ---

@@ -4,7 +4,7 @@ import LayoutPrincipal from '@layouts/LayoutPrincipal.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', (data) => {
-  return data?.data?.IsDraft !== true && data?.slug.startsWith('en');
+  return data?.data?.IsType === 'Complete' && data?.slug.startsWith('en');
 }).then((posts) => {
   posts.sort((a, b) => {
     return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();

@@ -3,17 +3,17 @@ import { defineCollection, reference, z } from 'astro:content';
 const blog = defineCollection({
   type: 'content',
   schema: z.object({
-    IsDraft: z.boolean(),
+    IsType: z.enum(['Draft', 'Preview', 'Complete']).default('Draft'),
     Title: z.string(),
     Reference: z.string().optional(),
     Description: z.string(),
     PubDate: z.date(),
     UpdatedDate: z.date().optional(),
-    Image: z.string().optional(),
-    Video: z.string().optional(),
-    author: z.array(reference('author')),
-    tag: z.array(reference('tag')),
-    videojuego: z.array(reference('game')).optional(),
+    ImageCover: z.string().optional(),
+    VideoCover: z.string().optional(),
+    Authors: z.array(reference('author')),
+    Tags: z.array(reference('tag')),
+    Videojuego: z.array(reference('game')).optional(),
     Keywords: z.string(),
   }),
 });
@@ -22,6 +22,8 @@ const author = defineCollection({
   type: 'data',
   schema: z.object({
     Name: z.string(),
+    AuthorImage: z.string().optional(),
+    AuthorSocial: z.string().optional(),
   }),
 });
 
@@ -42,7 +44,7 @@ const game = defineCollection({
     Stars: z.number(),
     DateLaunch: z.string(),
     LastUpdatedDate: z.string().optional(),
-    LastdatedDateVersion: z.string(),
+    LastVersion: z.string(),
     Developer: z.string(),
     Multijugador: z.boolean(),
     TrailerVideo: z.string().optional(),

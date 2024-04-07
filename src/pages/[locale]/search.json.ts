@@ -9,7 +9,7 @@ async function getPosts({ params }: { params: any; request: any }) {
   const posts = (await getCollection('blog'))
     .sort((a, b) => a.data?.PubDate.valueOf() - b.data?.PubDate.valueOf())
     .filter((post) => post.slug.startsWith(locale))
-    .filter((post) => post.data?.IsDraft !== true);
+    .filter((post) => post.data?.IsType === 'Complete');
   return posts.map((post) => ({
     slug: post.slug,
     title: post.data?.Title,

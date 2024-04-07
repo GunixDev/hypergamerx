@@ -13,7 +13,7 @@ import Compartir from '@components/utils/blog/Compartir';
 
 export async function getStaticPaths() {
   let pages = await getCollection('blog', (data) => {
-    return data?.data?.IsDraft !== true;
+    return data?.data?.IsType === 'Complete';
   });
   const paths = pages.map((page) => {
     const [locale, ...slug] = page.slug.split('/');
@@ -32,14 +32,14 @@ let games: GameJsonArray = [];
 let tags: TagsJsonArray = [];
 let author: AuthorsJsonArray = [];
 
-if (Array.isArray(page?.data?.videojuego)) {
-  games = await GetGames(page.data?.videojuego);
+if (Array.isArray(page?.data?.Videojuego)) {
+  games = await GetGames(page.data?.Videojuego);
 }
-if (Array.isArray(page?.data?.tag)) {
-  tags = await GetTags(page.data?.tag);
+if (Array.isArray(page?.data?.Tags)) {
+  tags = await GetTags(page.data?.Tags);
 }
-if (Array.isArray(page?.data?.author)) {
-  author = await GetAuthor(page.data?.author);
+if (Array.isArray(page?.data?.Authors)) {
+  author = await GetAuthor(page.data?.Authors);
 }
 
 tags.map((tag: any) => {
@@ -51,7 +51,7 @@ tags.map((tag: any) => {
 const allPosts = await getCollection('blog', (data) => {
   return (
     data?.slug !== slug &&
-    data?.data?.IsDraft !== true &&
+    data?.data?.IsType === 'Complete' &&
     data?.slug.startsWith(locale) &&
     data?.data?.Title !== page.data?.Title
   );
@@ -63,7 +63,7 @@ const allPosts = await getCollection('blog', (data) => {
 });
 
 const gamesposts = allPosts.filter((post) => {
-  const postVideojuego = post?.data?.videojuego;
+  const postVideojuego = post?.data?.Videojuego;
   if (!postVideojuego || !games[0] || !games[0].id) {
     return false;
   }
@@ -90,7 +90,7 @@ if (amazon1 === undefined) {
 <LayoutPrincipal
   title={page.data?.Title}
   description={page.data?.Description}
-  image={page.data?.Image}
+  image={page.data?.ImageCover}
   autor={'HyperGamerX'}
   keywords={page.data?.Keywords}
   type='article'>
@@ -159,17 +159,17 @@ if (amazon1 === undefined) {
       {
         resena && games[0].TrailerVideo ? (
           <Iframeop client:load id={games[0].TrailerVideo} />
-        ) : page && page.data?.Image && page.data?.Image !== null && page.data?.Image.trim() !== '' ? (
+        ) : page && page.data?.ImageCover && page.data?.ImageCover !== null && page.data?.ImageCover.trim() !== '' ? (
           <img
-            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.Image}`}
-            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data?.Image} 256w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${page.data?.Image} 512w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.Image} 768w,
-                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_639/${page.data?.Image} 1024w,
-          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${page.data?.Image} 1280w`}
+            src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.ImageCover}`}
+            srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_160/${page.data?.ImageCover} 256w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_319/${page.data?.ImageCover} 512w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_479/${page.data?.ImageCover} 768w,
+                https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_639/${page.data?.ImageCover} 1024w,
+          https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_958/${page.data?.ImageCover} 1280w`}
             width='479'
             height='270'
-            alt={page.data?.Image}
+            alt={page.data?.ImageCover}
             class='my-8 w-full h-auto mx-auto rounded-md'
           />
         ) : (
