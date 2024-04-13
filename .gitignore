@@ -15,9 +15,14 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-src/pages/\[locale\]/admin/
-src/layouts/ControllerLayout.astro
-src/components/admin/contenido/Contenido.tsx
 src/components/admin/ListArticlesBlog.tsx
+src/components/admin/contenido/TextEdit.tsx
+src/components/admin/contenido/Contenido.tsx
+src/components/admin/index/ViewAdminPosts.tsx
+src/components/admin/index/YearBlogs.tsx
+src/layouts/ControllerLayout.astro
+src/pages/\[locale\]/admin/
+
+src/components/admin/contenido/ContenidoEdit.tsx
 
 src/pages/api/blogs.ts

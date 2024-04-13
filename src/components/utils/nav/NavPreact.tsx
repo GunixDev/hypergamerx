@@ -55,14 +55,14 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                   <span className='my-auto'>{t('footer.politicas')}</span>
                 </a>
               </div>
-              <div className='row-span-2 text-dark self-end'>
+              <div className='row-span-2 text-black self-end'>
                 <LanguagesSelect lang={lang2} pathname={pathname} languages={languages} />
                 <p>© 2024 HyperGamerX. Creador por Sunrize Studios</p>
               </div>
             </div>
           </div>
           <div
-            className='col-span-1 lgi:col-span-3 lss:col-span-4 bg-dark opacity-70'
+            className='col-span-1 lgi:col-span-3 lss:col-span-4 bg-black opacity-70'
             onClick={() => {
               setIsOpen(false);
               setIsOpenMas(false);
@@ -162,7 +162,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                   </a>
                 </div>
               </div>
-              <div className='row-span-3 text-dark self-end'>
+              <div className='row-span-3 text-black self-end'>
                 <div
                   onClick={() => {
                     setIsOpenMas(true);
@@ -184,7 +184,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
             </div>
           </div>
           <div
-            className='col-span-1 lgi:col-span-3 lss:col-span-4 bg-dark opacity-70'
+            className='col-span-1 lgi:col-span-3 lss:col-span-4 bg-black opacity-70'
             onClick={() => {
               setIsOpen(false);
               setIsOpenMas(false);
@@ -192,7 +192,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
         </div>
       )}
 
-      <nav className='py-2 lg:px-4 grid lg:grid-cols-11 fixed z-[100] bg-dark h-auto w-full duration-500 grid-cols-7 px-[10px]'>
+      <nav className='py-2 lg:px-4 grid lg:grid-cols-11 fixed z-[100] bg-black h-auto w-full duration-500 grid-cols-7 px-[10px]'>
         <div className='lg:hidden col-span-3 my-auto' onClick={() => setIsOpen(!isOpen)}>
           <img src='/icons/menu.svg' alt='Menu' width='24px' height='24px' />
         </div>

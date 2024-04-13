@@ -103,7 +103,7 @@ if (amazon1 === undefined) {
       <p class='smaller-movil lss:smallerb-movil lg:minismaller-desktop my-1 lss:my-2 gap-1 text-white flex'>
         {
           tags.map((tag: any) => (
-            <span class='md:px-2 md:py-1 px-1 py-0.5 bg-dark' title={locale === 'es' ? tag.Spanish : tag.English}>
+            <span class='md:px-2 md:py-1 px-1 py-0.5 bg-black' title={locale === 'es' ? tag.Spanish : tag.English}>
               {locale === 'es' ? tag.Name : tag.NameEnglish}
             </span>
           ))
@@ -182,7 +182,7 @@ if (amazon1 === undefined) {
           />
         )
       }
-      <div class='bg-dark text-white rounded-xl md:px-8 md:py-2 ls:max-md:p-4 w-fit mt-4 ls:max-sm:hidden'>
+      <div class='bg-black text-white rounded-xl md:px-8 md:py-2 ls:max-md:p-4 w-fit mt-4 ls:max-sm:hidden'>
         <Indice data={renderResult?.headings} locale={locale} />
       </div>
       <div class='contenido'>

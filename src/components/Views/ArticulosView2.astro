@@ -14,16 +14,14 @@ interface data {
 
 const { file, data, lang } = Astro.props;
 const { ImageCover, PubDate, Title, Description }: data = data;
-console.log(data);
 const fileName = file.split('/').pop()?.split('.')[0];
 let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
-console.log(ImageCover);
 ---
 
 <div class='relative w-full h-full'>
   <a hreflang={lang} href={`/${lang}/blog/${fileName}/`}>
     <div>
-      <div class='rounded-md w-full bg-gradient-to-t from-dark to-transparent absolute z-30 h-full'></div>
+      <div class='rounded-md w-full bg-gradient-to-t from-black to-transparent absolute z-30 h-full'></div>
       {
         ImageCover !== null && ImageCover.trim() !== '' ? (
           <img

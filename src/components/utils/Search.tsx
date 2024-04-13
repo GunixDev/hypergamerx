@@ -33,7 +33,7 @@ export default function SearchWidget(lang: any) {
             name='search'
             placeholder={t('articulo.searchinput')}
             className={
-              'minismaller-movil py-1.5 ls:max-lg:my-1 lg:py-0 lg:small-desktop lg:placeholder:text-dark-white lg:text-white border-[1px] border-dark lg:border-white rounded-md lg:bg-light-gray lg:ml-2.5 px-1 col-span-11 my-auto'
+              'minismaller-movil py-1.5 ls:max-lg:my-1 lg:py-0 lg:small-desktop lg:placeholder:text-black-white lg:text-white border-[1px] border-black lg:border-white rounded-md lg:bg-gray lg:ml-2.5 px-1 col-span-11 my-auto'
             }
           />
         </form>

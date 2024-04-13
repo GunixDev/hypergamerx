@@ -53,6 +53,58 @@
     @apply font-Segoe-UI font-light leading-3 text-[11px];
   }
 
+  .desktop-heading2 {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px; /* 105% */
+    @apply font-ReadexPro;
+  }
+
+  .desktop-heading3 {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 34px; /* 94.444% */
+    letter-spacing: -2.88px;
+    @apply font-ReadexPro;
+  }
+  .desktop-heading5 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 100% */
+    letter-spacing: -1px;
+    @apply font-ReadexPro;
+  }
+
+  .desktop-heading6 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px; /* 105.556% */
+    letter-spacing: -1.26px;
+    @apply font-ReadexPro;
+  }
+
+  .desktop-medium {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 16px;
+    letter-spacing: -0.54px;
+    @apply font-Segoe-UI;
+  }
+
+  .desktop-small {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 13px; /* 92.857% */
+    letter-spacing: -0.84px;
+    @apply font-Segoe-UI;
+  }
+
   .titulo-movil {
     @apply font-ReadexPro font-bold text-[36px];
   }
@@ -92,7 +144,7 @@
 }
 
 .contenido {
-  @apply text-dark;
+  @apply text-black;
 }
 
 .contenido a {

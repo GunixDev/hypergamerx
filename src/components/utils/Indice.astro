@@ -10,7 +10,7 @@ const { data, locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<div class='w-fit'>
+<div class='w-fit py-4'>
   <h2 class='align-middle text-center subtitulo4-desktop lg:subtitulo3-desktop'>{t('article.indice')}</h2>
   <div class='grid grid-cols-1'>
     {
@@ -25,7 +25,7 @@ const t = useTranslations(locale);
           <a
             hreflang={locale}
             href={`#${indice.slug}`}
-            class='ml-6 my-1 lg:ml-4 subtitulo6-desktop lg:subtitulo5-desktop'>
+            class='ml-6 my-2 lg:ml-4 subtitulo6-desktop lg:subtitulo5-desktop'>
             <ol>
               <li class=' list-none'>{indice.text}</li>
             </ol>

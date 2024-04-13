@@ -4,7 +4,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<footer class='ls:max-lg:hidden bg-dark pt-[24px] px-[20px] text-white w-full grid grid-cols-2'>
+<footer class='ls:max-lg:hidden bg-black pt-[24px] px-[20px] text-white w-full grid grid-cols-2'>
   <div class='grid grid-rows-3'>
     <div class='flex'>
       <img src='/icons/HyperGamerX.svg' loading='lazy' alt='logo' class='w-[73px] h-[73px] my-auto' />
@@ -44,7 +44,7 @@ const t = useTranslations(lang);
   <div class='grid grid-cols-2'>
     <div>
       <p class='subtitulo5-desktop'>{t('footer.contactoseconocenos')}</p>
-      <div class='small-desktop text-dark-white'>
+      <div class='small-desktop text-black-white'>
         <ol>
           <li>
             <a href={'https://www.paypal.com/donate/?hosted_button_id=K7PXSGWS98LXQ'} hreflang={lang}>
@@ -62,7 +62,7 @@ const t = useTranslations(lang);
     </div>
     <div>
       <p class='subtitulo5-desktop'>{t('footer.terminos')}</p>
-      <div class='small-desktop text-dark-white'>
+      <div class='small-desktop text-black-white'>
         <ol>
           <li>
             <a href={`/${lang}/terminos-servicios/AvisoLegal/`} hreflang={lang}>{t('footer.avisolega')}</a>
