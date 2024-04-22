@@ -4,7 +4,6 @@ import mdx from '@astrojs/mdx';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
-import playformCompress from '@playform/compress';
 import metaTags from 'astro-meta-tags';
 import cloudflare from '@astrojs/cloudflare';
 
@@ -36,13 +35,6 @@ export default defineConfig({
         item.priority = 1;
         return item;
       },
-    }),
-    playformCompress({
-      CSS: true,
-      HTML: true,
-      Image: false,
-      JavaScript: true,
-      SVG: true,
     }),
     partytown({
       config: {
