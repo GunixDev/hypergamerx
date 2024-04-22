@@ -3,7 +3,6 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
-import partytown from '@astrojs/partytown';
 import metaTags from 'astro-meta-tags';
 import cloudflare from '@astrojs/cloudflare';
 
@@ -34,11 +33,6 @@ export default defineConfig({
         item.changefreq = 'weekly';
         item.priority = 1;
         return item;
-      },
-    }),
-    partytown({
-      config: {
-        forward: ['dataLayer.push'],
       },
     }),
     metaTags(),
