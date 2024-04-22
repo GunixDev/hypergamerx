@@ -26,6 +26,7 @@
     "typescript": "^5.4.4"
   },
   "devDependencies": {
+    "@astrojs/partytown": "^2.0.4",
     "@types/dompurify": "^3.0.5"
   }
 }

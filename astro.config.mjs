@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import metaTags from 'astro-meta-tags';
 import cloudflare from '@astrojs/cloudflare';
 import playformCompress from '@playform/compress';
+import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +27,11 @@ export default defineConfig({
         item.changefreq = 'weekly';
         item.priority = 1;
         return item;
+      },
+    }),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
       },
     }),
     playformCompress({
