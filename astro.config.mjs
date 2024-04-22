@@ -5,8 +5,8 @@ import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 import playformCompress from '@playform/compress';
-import vercel from '@astrojs/vercel/serverless';
 import metaTags from 'astro-meta-tags';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
@@ -52,11 +52,7 @@ export default defineConfig({
     metaTags(),
   ],
   output: 'hybrid',
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
+  adapter: cloudflare(),
   redirects: {
     '/blog/noticia': '/es/',
     '/blog/resena': '/es/',
