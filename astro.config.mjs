@@ -30,5 +30,5 @@ export default defineConfig({
     metaTags(),
   ],
   output: 'server',
-  adapter: cloudflare({ mode: 'directory' }),
+  adapter: cloudflare(),
 });
