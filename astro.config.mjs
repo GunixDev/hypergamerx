@@ -29,6 +29,6 @@ export default defineConfig({
     }),
     metaTags(),
   ],
-  output: 'hybrid',
+  output: 'server',
   adapter: cloudflare({ mode: 'directory' }),
 });
