@@ -5,6 +5,7 @@ import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import metaTags from 'astro-meta-tags';
 import cloudflare from '@astrojs/cloudflare';
+import playformCompress from '@playform/compress';
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +27,13 @@ export default defineConfig({
         item.priority = 1;
         return item;
       },
+    }),
+    playformCompress({
+      CSS: true,
+      HTML: true,
+      Image: false,
+      JavaScript: true,
+      SVG: true,
     }),
     metaTags(),
   ],
