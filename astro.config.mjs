@@ -8,14 +8,6 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  image: {
-    domains: ['astro.build'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-      },
-    ],
-  },
   site: 'https://www.hypergamerx.com',
   integrations: [
     tailwind(),
