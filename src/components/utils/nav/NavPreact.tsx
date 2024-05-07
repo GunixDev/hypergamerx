@@ -57,7 +57,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
               </div>
               <div className='row-span-2 text-black self-end'>
                 <LanguagesSelect lang={lang2} pathname={pathname} languages={languages} />
-                <p>© 2024 HyperGamerX. Creador por Sunrize Studios</p>
+                <p>© 2024 HyperGamerX. Creado por Sunrize Studios</p>
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                 </div>
                 <LanguagesSelect lang={lang2} pathname={pathname} languages={languages} />
                 <p>
-                  &copy; 2024 HyperGamerX. {t('article.creadorpor')}
+                  &copy; 2024 HyperGamerX. Creado por
                   <a href={'https://sunrizestudios.vercel.app/'} hreflang={lang2} target='_blank'>
                     {' '}
                     Sunrize Studios
