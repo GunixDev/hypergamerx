@@ -10,7 +10,7 @@ const fileName = file.split('/').pop()?.split('.')[0];
 let fecha = new Date(PubDate).toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<a hrefLang={lang} href={`/${lang}/blog/${fileName}/`}>
+<a hreflang={lang} href={`/${lang}/blog/${fileName}/`}>
   <div class='grid grid-cols-11'>
     <div class='col-span-5'>
       {

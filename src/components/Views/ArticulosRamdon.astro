@@ -9,7 +9,7 @@ const { file, data, locale } = Astro.props;
 const { Title, Description, ImageCover } = data;
 ---
 
-<a href={`/${locale}/blog/${file.slice(3)}/`} hrefLang={locale}>
+<a href={`/${locale}/blog/${file.slice(3)}/`} hreflang={locale}>
   <div class='grid grid-cols-5 gap-2'>
     <div class='col-span-2'>
       {

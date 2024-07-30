@@ -58,7 +58,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
             <p className='ml-1 lg:ml-3 smallerb-movil lg:small-desktop my-1'>
               {resena && games[0].TrailerVideo && false ? (
                 <>
-                  <a hrefLang={locale} target='_blank' href={games[0].TrailerVideo}>
+                  <a hreflang={locale} target='_blank' href={games[0].TrailerVideo}>
                     {t('article.vertrailer')}{' '}
                   </a>
                   <img

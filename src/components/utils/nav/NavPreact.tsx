@@ -114,7 +114,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                 <div className='my-auto row-span-4 h-full grid subtitulo4-movil grid-cols-2 grid-rows-3 gap-x-1 gap-y-4'>
                   <a
                     href={'https://discord.gg/KqmwVhZnfa'}
-                    hrefLang={lang2}
+                    hreflang={lang2}
                     target='_blank'
                     className='w-full h-auto flex gap-1 my-auto'>
                     <img src='/icons/Logos/Discord.svg' width='25px' height='25px' />
@@ -122,7 +122,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                   </a>
                   <a
                     href={'https://twitter.com/HyperGamerX_'}
-                    hrefLang={lang2}
+                    hreflang={lang2}
                     target='_blank'
                     className='w-full h-auto flex gap-1 my-auto'>
                     <img src='/icons/Logos/Twitter.svg' width='25px' height='25px' />
@@ -130,7 +130,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                   </a>
                   <a
                     href={'https://www.youtube.com/@HyperGamerX1'}
-                    hrefLang={lang2}
+                    hreflang={lang2}
                     target='_blank'
                     className='w-full h-auto flex gap-1 my-auto'>
                     <img src='/icons/Logos/Youtube.svg' width='25px' height='25px' />
@@ -138,7 +138,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                   </a>
                   <a
                     href={'https://www.tiktok.com/@hypergamerxofficial'}
-                    hrefLang={lang2}
+                    hreflang={lang2}
                     target='_blank'
                     className='w-full h-auto flex gap-1 my-auto'>
                     <img src='/icons/Logos/Tik tok.svg' width='25px' height='25px' />
@@ -146,7 +146,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                   </a>
                   <a
                     href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'}
-                    hrefLang={lang2}
+                    hreflang={lang2}
                     target='_blank'
                     className='w-full h-auto flex gap-1 my-auto'>
                     <img src='/icons/Logos/Whatsapp.svg' width='25px' height='25px' />
@@ -154,7 +154,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                   </a>
                   <a
                     href={'https://www.facebook.com/Hypergamerx'}
-                    hrefLang={lang2}
+                    hreflang={lang2}
                     target='_blank'
                     className='w-full h-auto flex gap-1 my-auto'>
                     <img src='/icons/Logos/Facebook.svg' width='25px' height='25px' />
@@ -175,7 +175,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
                 <LanguagesSelect lang={lang2} pathname={pathname} languages={languages} />
                 <p>
                   &copy; 2024 HyperGamerX. Creado por
-                  <a href={'https://sunrizestudios.vercel.app/'} hrefLang={lang2} target='_blank'>
+                  <a href={'https://sunrizestudios.vercel.app/'} hreflang={lang2} target='_blank'>
                     {' '}
                     Sunrize Studios
                   </a>
@@ -203,19 +203,19 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
         </div>
 
         <div className='col-span-1 mx-auto my-auto w-[24px] h-[24px] lg:w-[40px] lg:h-[40px]'>
-          <a hrefLang={lang2} aria-label='inicio' href={`/${lang2}/`}>
+          <a hreflang={lang2} aria-label='inicio' href={`/${lang2}/`}>
             <img src='/icons/HyperGamerX.svg' alt='inicio' width='40px' height='40px' />
           </a>
         </div>
 
         <div className='lg:col-span-5 col-span-3 my-auto text-center grid grid-cols-5 subtitulo6-desktop text-white ls:max-lg:hidden'>
-          <a hrefLang={lang2} className='col-start-3' href={`/${lang2}/seccion/guides/`}>
+          <a hreflang={lang2} className='col-start-3' href={`/${lang2}/seccion/guides/`}>
             {t('seccion.guias')}
           </a>
-          <a hrefLang={lang2} href={`/${lang2}/seccion/news/`}>
+          <a hreflang={lang2} href={`/${lang2}/seccion/news/`}>
             {t('nav.noticias')}
           </a>
-          <a hrefLang={lang2} href={`/${lang2}/`}>
+          <a hreflang={lang2} href={`/${lang2}/`}>
             {t('nav.inicio')}
           </a>
         </div>
