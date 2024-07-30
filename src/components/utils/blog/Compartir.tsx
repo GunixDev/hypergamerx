@@ -28,19 +28,19 @@ export default function Compartir({ path, locale }: CompartirProps) {
     <div className=' grid grid-cols-5 gap-x-1 lg:gap-x-3 justify-end items-end'>
       <a
         title='Whatsapp'
-        class=''
+        className=''
         lang={locale}
         href={`https://api.whatsapp.com/send?text=${articleUrl}`}
         target='_blank'>
         <img
-          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          className=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
           src='/icons/Logos/Whatsapp.svg'
           alt='Whatsapp'
         />
       </a>
       <a title='Reddit' lang={locale} href={`https://www.reddit.com/submit?url=${body2}`} target='_blank'>
         <img
-          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          className=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
           src='/icons/Logos/Reddit.svg'
           alt='Reddit'
         />
@@ -51,21 +51,21 @@ export default function Compartir({ path, locale }: CompartirProps) {
         href={`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`}
         target='_blank'>
         <img
-          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          className=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
           src='/icons/Logos/Facebook.svg'
           alt='Facebook'
         />
       </a>
       <a title='Twitter' lang={locale} href={compartirTwitter} target='_blank'>
         <img
-          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          className=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
           src='/icons/Logos/Twitter.svg'
           alt='Twitter'
         />
       </a>
       <a title='Mail' lang={locale} href={compartirGmail} target='_blank'>
         <img
-          class=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
+          className=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
           src='/icons/Logos/Email.svg'
           alt='Email'
         />
