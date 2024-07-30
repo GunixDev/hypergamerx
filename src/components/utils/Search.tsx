@@ -1,5 +1,5 @@
 import DOMPurify from 'dompurify';
-import { useState } from 'preact/hooks';
+import { useState } from 'react';
 import { useTranslations } from '../../i18n/utils';
 
 export default function SearchWidget(lang: any) {

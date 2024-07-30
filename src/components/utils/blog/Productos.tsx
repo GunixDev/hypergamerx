@@ -11,7 +11,7 @@ export default function Producto(props: any) {
   return (
     <div>
       {Object.values(data).map((producto: any, index: number) => (
-        <a key={index} href={producto.link} target='_blank' hreflang={locale}>
+        <a key={index} href={producto.link} target='_blank' hrefLang={locale}>
           <div class='mb-4 group'>
             <h3 class='subtitulo5-movil md:subtitulo4-movil group-hover:text-slate-300 duration-500'>
               {producto.titulo}

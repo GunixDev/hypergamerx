@@ -10,7 +10,7 @@ const { ImageCover, Description, Title } = data;
 const fileName = file.split('/').pop()?.split('.')[0];
 ---
 
-<a href={`/${lang}/blog/${fileName}/`} hreflang={lang} class='h-full w-full group duration-500'>
+<a href={`/${lang}/blog/${fileName}/`} hrefLang={lang} class='h-full w-full group duration-500'>
   <div class='grid grid-flow-row-dense'>
     <div>
       {

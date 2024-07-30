@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState } from 'react';
 
 interface IframeProps {
   id: string;
@@ -35,7 +35,7 @@ export default function IframeOp({ id }: IframeProps) {
           <img
             onClick={() => setIsOpen(true)}
             src={`https://i3.ytimg.com/vi/${id}/maxresdefault.jpg`}
-            srcset={`https://i.ytimg.com/vi/${id}/default.jpg 256w,
+            srcSet={`https://i.ytimg.com/vi/${id}/default.jpg 256w,
             https://i3.ytimg.com/vi/${id}/mqdefault.jpg 768w,
             https://i3.ytimg.com/vi/${id}/maxresdefault.jpg 1280w`}
             width='479'
