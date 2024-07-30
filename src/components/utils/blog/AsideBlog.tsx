@@ -30,7 +30,7 @@ export default function AsideBlog({ locale, resena, games, allPosts, gamesposts,
             </p>
             <img
               src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_186/${games[0].CoverImage}`}
-              srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_62/${games[0].CoverImage} 256w,
+              srcSet={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_62/${games[0].CoverImage} 256w,
   https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_124/${games[0].CoverImage} 512w,
   https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_186/${games[0].CoverImage} 768w,
   https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_248/${games[0].CoverImage} 1024w,
@@ -58,7 +58,7 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
             <p className='ml-1 lg:ml-3 smallerb-movil lg:small-desktop my-1'>
               {resena && games[0].TrailerVideo && false ? (
                 <>
-                  <a hreflang={locale} target='_blank' href={games[0].TrailerVideo}>
+                  <a hrefLang={locale} target='_blank' href={games[0].TrailerVideo}>
                     {t('article.vertrailer')}{' '}
                   </a>
                   <img
