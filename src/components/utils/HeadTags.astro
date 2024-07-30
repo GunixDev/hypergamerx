@@ -71,15 +71,15 @@ const { title, description, image, autor, type, keywords, publishtime, updatetim
 <meta name='apple-mobile-web-app-title' content='HyperGamerX' />
 <meta name='mobile-web-app-capable' content='yes' />
 <meta name='msapplication-config' content='/browserconfig.xml' />
-<meta property='twitter:card' content='summary_large_image' />
-<meta property='twitter:url' content={Astro.url} />
-<meta property='twitter:site' content='HyperGamerX' />
-<meta property='twitter:title' content={title} />
-<meta property='twitter:description' content={description} />
+<meta name='twitter:card' content='summary_large_image' />
+<meta name='twitter:url' content={Astro.url} />
+<meta name='twitter:site' content='HyperGamerX' />
+<meta name='twitter:title' content={title} />
+<meta name='twitter:description' content={description} />
 <meta
-  property='twitter:image'
+  name='twitter:image'
   content={image && image.length > 4
     ? `https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/${image}`
-    : '/logo4.png'}
+    : 'https://www.hypergamerx.com/logo4.png'}
 />
-<meta property='twitter:image:alt' content={title} />
+<meta name='twitter:image:alt' content={title} />
