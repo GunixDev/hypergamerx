@@ -5,12 +5,12 @@ interface LanguagesSelectProps {
 }
 export default function LanguagesSelect({ lang, pathname, languages }: LanguagesSelectProps) {
   return (
-    <div className='w-full col-span-2 ls:max-lg:my-1 text-black'>
+    <div className='w-full col-span-2 ls:max-lg:my-1 text-black bg-white'>
       <select
         id='Lang'
         aria-label='Cambiar idioma'
         name='Lang'
-        className='minismall-desktop py-0.5 rounded-md w-full ls:max-lg:border-2 ls:max-lg:border-black'
+        className='minismall-desktop py-0.5 rounded-md w-full ls:max-lg:border-2 ls:max-lg:border-black bg-white'
         value={`/${lang}/${pathname}`}
         onChange={(event) => {
           const selectedValue = (event.target as HTMLSelectElement)?.value;

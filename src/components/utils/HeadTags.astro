@@ -69,6 +69,12 @@ const { title, description, image, autor, type, keywords, publishtime, updatetim
     ? `https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/${image}`
     : 'https://www.hypergamerx.com/logo4.png'}
 />
+<meta
+  property='og:image:secure_url'
+  content={image && image.length > 4
+    ? `https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/${image}`
+    : 'https://www.hypergamerx.com/logo4.png'}
+/>
 <meta property='og:image:alt' content={title} />
 <meta property='og:image:width' content={image && image.length > 4 ? '958' : '1200'} />
 <meta property='og:image:height' content={image && image.length > 4 ? '540' : '630'} />
