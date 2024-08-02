@@ -1,5 +1,6 @@
 export const ui = {
   en: {
+    'index.titulo': 'HyperGamerX your hub for video game news and reviews',
     'index.ultimoarticules': 'Recent articles',
     'index.noticianuevas': 'New news',
     'index.ultimascuriosidades': 'Latest curiosities',
@@ -52,6 +53,7 @@ export const ui = {
     'articulo.escritores': 'Writers',
   },
   es: {
+    'index.titulo': 'HyperGamerX tu centro de noticias y reseñas de Videojuegos',
     'index.ultimoarticules': 'Artículos recientes',
     'index.noticianuevas': 'Noticias nuevas',
     'index.ultimascuriosidades': 'Últimas curiosidades',
