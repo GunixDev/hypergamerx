@@ -50,8 +50,8 @@ const geometryPosts = allPosts
 ---
 
 <LayoutPrincipal>
-  <div>
-    <div>
+  <main>
+    <section>
       <h1 class='subtitulo6-movil lss:subtitulo6-movil lg:desktop-heading6 lss:mb-1 text-gray-light'>
         {t('index.titulo')}
       </h1>
@@ -70,43 +70,43 @@ const geometryPosts = allPosts
       <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
         {recentpost2.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-    </div>
+    </section>
 
-    <div class='mt-[16px] lg:mt-[32px]'>
+    <section class='mt-[16px] lg:mt-[32px]'>
       <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>{t('index.noticianuevas')}</h2>
       <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
         {newsPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-    </div>
+    </section>
 
-    <div class='mt-[16px] lg:mt-[32px]'>
+    <section class='mt-[16px] lg:mt-[32px]'>
       <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>{t('index.ultimascuriosidades')}</h2>
       <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
         {curiosidadesPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-    </div>
+    </section>
 
-    <div class='mt-[16px] lg:mt-[32px]'>
+    <section class='mt-[16px] lg:mt-[32px]'>
       <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>{t('index.resenasvideogames')}</h2>
       <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
         {reseñasPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-    </div>
+    </section>
 
-    <div class='mt-[16px] lg:mt-[32px]'>
+    <section class='mt-[16px] lg:mt-[32px]'>
       <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>{t('index.articulosde')} Minecraft</h2>
       <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
         {minecraftPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-    </div>
+    </section>
 
-    <div class='mt-[16px] lg:mt-[32px]'>
+    <section class='mt-[16px] lg:mt-[32px]'>
       <h2 class='subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop'>
         {t('index.articulosde')} Geometry Dash
       </h2>
       <div class='grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]'>
         {geometryPosts.map((post) => <ArticulosView file={post.slug} data={post.data} lang={lang} />)}
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </LayoutPrincipal>

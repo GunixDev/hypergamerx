@@ -339,6 +339,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"en/minecraft-movie-trailer-unsettling-ealistic-designs-criticized.mdx": {
+	id: "en/minecraft-movie-trailer-unsettling-ealistic-designs-criticized.mdx";
+  slug: "en/minecraft-movie-trailer-unsettling-ealistic-designs-criticized";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "en/minecraft.mdx": {
 	id: "en/minecraft.mdx";
   slug: "en/minecraft";
@@ -790,6 +797,13 @@ declare module 'astro:content' {
 "es/meet-the-new-artist-joining-geometry-dash.mdx": {
 	id: "es/meet-the-new-artist-joining-geometry-dash.mdx";
   slug: "es/meet-the-new-artist-joining-geometry-dash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"es/minecraft-movie-trailer-unsettling-ealistic-designs-criticized.mdx": {
+	id: "es/minecraft-movie-trailer-unsettling-ealistic-designs-criticized.mdx";
+  slug: "es/minecraft-movie-trailer-unsettling-ealistic-designs-criticized";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

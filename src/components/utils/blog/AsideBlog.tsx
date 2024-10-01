@@ -24,7 +24,7 @@ export default function AsideBlog({ locale, resena, games, allPosts, gamesposts,
           resena ? 'lgi:max-sm:grid lgi:max-sm:grid-cols-9 ls:max-sm:p-2 ls:max-sm:gap-1' : ''
         }`}>
         {resena && (
-          <div className=' bg-gray text-white p-2 ls:max-sm:h-full  rounded-lg w-full h-fit lgi:max-sm:col-span-4 lss:max-sm:col-span-3'>
+          <section className=' bg-gray text-white p-2 ls:max-sm:h-full  rounded-lg w-full h-fit lgi:max-sm:col-span-4 lss:max-sm:col-span-3'>
             <p className='text-center subtitulo3-movil lgi:subtitulo4-movil lss:subtitulo3-movil lg:subtitulo3-desktop lg:my-1'>
               {games[0].Name}
             </p>
@@ -71,69 +71,69 @@ https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_310/${
                 </>
               ) : null}
             </p>
-          </div>
+          </section>
         )}
         {resena ? (
           <>
             {' '}
             {postgames && (
-              <div className={`${resena ? 'lgi:max-sm:col-span-5 lss:max-sm:col-span-6' : ''} sm:mt-10`}>
+              <section className={`${resena ? 'lgi:max-sm:col-span-5 lss:max-sm:col-span-6' : ''} sm:mt-10`}>
                 <h2 className='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
                   {t('article.articulosde')} {games[0].Name}
                 </h2>
                 <div className='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
                   {gamesposts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
                 </div>
-              </div>
+              </section>
             )}
-            <div className={` rounded-2xl ${resena ? ' lgi:max-sm:col-span-9' : ''}  mt-10`}>
+            <section className={` rounded-2xl ${resena ? ' lgi:max-sm:col-span-9' : ''}  mt-10`}>
               <h2 className='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
                 {t('article.articuclosreciente')}
               </h2>
               <div className='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
                 {allPosts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
               </div>
-            </div>
+            </section>
             {postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
-              <div className={`${resena ? ' ls:max-sm:col-span-9' : ''} mt-10`}>
+              <section className={`${resena ? ' ls:max-sm:col-span-9' : ''} mt-10`}>
                 <h2 className='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
                   {games[0].Name} {t('articulo.amazon')}
                 </h2>
                 <div className='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-5 mt-2 lg:mt-5'>
                   <Producto juego={amazon1} locale={locale} />
                 </div>
-              </div>
+              </section>
             )}
           </>
         ) : (
           <>
-            <div className={` rounded-2xl ${resena ? 'ls:max-sm:col-span-2 mt-3' : ''}`}>
+              <section className={` rounded-2xl ${resena ? 'ls:max-sm:col-span-2 mt-3' : ''}`}>
               <h2 className='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
                 {t('article.articuclosreciente')}
               </h2>
               <div className='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
                 {allPosts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
               </div>
-            </div>
+              </section>
             {postgames && (
-              <div className={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
+                <section className={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
                 <h2 className='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
                   {t('article.articulosde')} {games[0].Name}
                 </h2>
                 <div className='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5'>
                   {gamesposts.map((post: any) => ArticulosRamdon(post.slug, post.data, locale))}
                 </div>
-              </div>
+                </section>
             )}
             {postgames && amazon1 !== null && amazon1 !== undefined && amazon1.length > 0 && (
-              <div className={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
+                <section className={`${resena ? ' ls:max-sm:col-span-6' : ''} mt-10`}>
                 <h2 className='subtitulo3-movil md:subtitulo3-movil lg:subtitulo4-desktop text-center mb-4'>
                   {games[0].Name} {t('articulo.amazon')}
                 </h2>
                 <div className='grid grid-cols-1 gap-2 sm:gap-3 lg:gap-5 mt-2 lg:mt-5'>
                   <Producto juego={amazon1} locale={locale} />
                 </div>
-              </div>
+                </section>
             )}
           </>
         )}

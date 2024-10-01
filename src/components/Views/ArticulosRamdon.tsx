@@ -3,6 +3,7 @@ import type { Locale } from '../../types';
 export default function ArticulosRamdon(file: string, data: any, locale: Locale) {
   const { Title, Description, ImageCover } = data;
   return (
+    <article>
     <a href={`/${locale}/blog/${file.slice(3)}/`} hrefLang={locale}>
       <div className='grid grid-cols-5 gap-2'>
         <div className='col-span-2'>
@@ -42,6 +43,7 @@ export default function ArticulosRamdon(file: string, data: any, locale: Locale)
           </p>
         </div>
       </div>
-    </a>
+      </a>
+    </article>
   );
 }

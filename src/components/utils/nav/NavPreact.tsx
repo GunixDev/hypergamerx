@@ -17,7 +17,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
   return (
     <>
       {isOpenMas && (
-        <div className={`${isOpenMas ? '' : 'hidden'} lg:hidden grid grid-cols-8 fixed w-full h-full z-[250]`}>
+        <nav className={`${isOpenMas ? '' : 'hidden'} lg:hidden grid grid-cols-8 fixed w-full h-full z-[250]`}>
           <div className='bg-white col-span-7 lgi:col-span-5 lss:col-span-4 px-[8px] py-[10px]'>
             <div>
               <img
@@ -67,11 +67,11 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
               setIsOpen(false);
               setIsOpenMas(false);
             }}></div>
-        </div>
+        </nav>
       )}
 
       {isOpen && (
-        <div className={`${isOpen ? '' : 'hidden'} lg:hidden grid grid-cols-8 fixed w-full h-full z-[200]`}>
+        <nav className={`${isOpen ? '' : 'hidden'} lg:hidden grid grid-cols-8 fixed w-full h-full z-[200]`}>
           <div className='bg-white col-span-7 lgi:col-span-5 lss:col-span-4 px-[8px] py-[10px]'>
             <div>
               <img
@@ -189,7 +189,7 @@ export default function NavPreact({ lang2, pathname }: MobileNavProps) {
               setIsOpen(false);
               setIsOpenMas(false);
             }}></div>
-        </div>
+        </nav>
       )}
 
       <nav className='py-2 lg:px-4 grid lg:grid-cols-11 fixed z-[100] bg-black h-auto w-full duration-500 grid-cols-7 px-[10px]'>
