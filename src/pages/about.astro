@@ -1,16 +1,18 @@
 ---
-import ArticulosRamdon from '@components/Views/ArticulosRamdon';
+import ArticulosRamdon from "@components/Views/ArticulosRamdon.astro";
 import LayoutPrincipal from '@layouts/LayoutPrincipal.astro';
 import {getCollection} from 'astro:content';
 
-const allPosts = await getCollection('blog', (data) => {
-    return data?.data?.IsType === 'Complete' && data?.slug.startsWith('en');
+
+const allPosts = await getCollection("blog", (data) => {
+    return data?.data?.IsType === "Complete" && data?.slug.startsWith('en');
 }).then((posts) => {
     posts.sort((a, b) => {
         return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
     });
     return posts;
 });
+
 allPosts.length = 8;
 ---
 
@@ -54,8 +56,19 @@ allPosts.length = 8;
       <div
               class={`mb-1 md:p-5 ls:max-md:p-3 rounded-2xl md:mt-10
          w-11/12 mx-auto`}>
-        <h2 class="md:text-lg font-bold ls:max-md:text-base text-white">Recent articles</h2>
-          {allPosts.map((post) => ArticulosRamdon(post.slug, post.data, 'en'))}
+        <h2 class="subtitulo3-movil md:subtitulo4-movil lg:subtitulo4-desktop text-center mb-4">
+          Recent articles
+        </h2>
+        <div class="grid grid-cols-1 gap-2 sm:gap-3 lg:gap-4 mt-2 lg:mt-5">
+          <!-- @formatter:off -->
+          {
+            allPosts.map((post) => {
+              const {slug, data} = post;
+              return <ArticulosRamdon file={slug} data={data} locale={'en'}/>;
+            })
+          }
+          <!-- @formatter:on -->
+        </div>
       </div>
     </aside>
   </div>

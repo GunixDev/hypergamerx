@@ -9,8 +9,9 @@ export async function getStaticPaths() {
 }
 
 const lang = getLangFromUrl(Astro.url);
+
 const allPosts = await getCollection("blog", (data) => {
-    return data?.data?.IsType !== "Complete" && data?.slug.startsWith(lang);
+    return data?.data?.IsType === "Complete" && data?.slug.startsWith(lang);
 }).then((posts) => {
     posts.sort((a, b) => {
         return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
