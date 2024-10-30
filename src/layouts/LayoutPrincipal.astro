@@ -1,9 +1,9 @@
 ---
-import HeadTags from '../components/utils/HeadTags.astro';
-import Footer from '../components/Footer.astro';
-import Nav from '../components/Nav.astro';
-import '../styles/global.css';
-import { ViewTransitions } from 'astro:transitions';
+import HeadTags from "../components/utils/HeadTags.astro";
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import "../styles/global.css";
+import {ViewTransitions} from "astro:transitions";
 
 interface Props {
   title?: string;
@@ -15,42 +15,71 @@ interface Props {
 }
 
 const {
-  title = 'HyperGamerX: Tu Destino para Noticias de Videojuegos',
-  description = 'Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información.',
-  image = '',
-  autor = 'Sunrize Studios',
-  type = 'website',
-  keywords = 'videojuegos, noticias, reseñas, análisis, avances, curiosidades, HyperGamerX, HyperGamerX.com',
+  title = "HyperGamerX: Tu Destino para Noticias de Videojuegos",
+  description = "Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información.",
+  image = "",
+  autor = "Sunrize Studios",
+  type = "website",
+  keywords = "videojuegos, noticias, reseñas, análisis, avances, curiosidades, HyperGamerX, HyperGamerX.com",
 } = Astro.props;
 
-import { getLangFromUrl } from '../i18n/utils';
+import {getLangFromUrl} from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 ---
 
 <html lang={lang}>
-  <head>
-    <HeadTags
-      title={title}
-      description={description}
-      image={image}
-      autor={autor}
-      type={type}
-      keywords={keywords}
-      publishtime={new Date().toISOString()}
-      updatetime={new Date().toISOString()}
-      lang={lang}
-    />
-    <link rel='sitemap' href='/sitemap-index.xml' />
-    <ViewTransitions />
-    <meta name='publisuites-verify-code' content='aHR0cHM6Ly93d3cuaHlwZXJnYW1lcnguY29t' />
-  </head>
-  <body class='text-black font-Segoe-UI flex flex-col bg-white'>
-    <Nav />
-    <div
-      lang={lang}
-      class='lg:mx-[48px] lga:mx-[32px] mx-[16px] xl:mx-[50px] lg:pt-[90px] pt-[67px] lg:mb-[64px] mb-[32px]'>
-      <slot />
-    </div>
-    <Footer />
-  </body>
+<head>
+  <HeadTags
+          title={title}
+          description={description}
+          image={image}
+          autor={autor}
+          type={type}
+          keywords={keywords}
+          publishtime={new Date().toISOString()}
+          updatetime={new Date().toISOString()}
+          lang={lang}
+  />
+  <link rel='sitemap' href='/sitemap-index.xml'/>
+  <ViewTransitions/>
+
+  <script async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8225968446465041'
+          crossorigin='anonymous'></script>
+  <script type='text/partytown' async
+          src='https://www.googletagmanager.com/gtag/js?id=G-KW6PKZ3FV9'></script>
+  <script type='text/partytown'>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-KW6PKZ3FV9");
+  </script>
+  <script type='text/javascript'>
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "k72kfj6bzg");
+  </script>
+  <script type='text/partytown' src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'></script>
+  <meta name='publisuites-verify-code' content='aHR0cHM6Ly93d3cuaHlwZXJnYW1lcnguY29t'/>
+</head>
+<body class='text-black font-Segoe-UI flex flex-col bg-white'>
+<Nav/>
+<div lang={lang}
+     class='lg:mx-[48px] lga:mx-[32px] mx-[16px] xl:mx-[50px] lg:pt-[90px] pt-[67px] lg:mb-[64px] mb-[32px]'>
+  <slot/>
+</div>
+<Footer/>
+</body>
 </html>

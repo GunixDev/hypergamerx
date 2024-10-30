@@ -1,52 +1,57 @@
 ---
 interface Props {
-	file: string;
-	data: any;
-	lang: any;
+  file: string;
+  data: any;
+  lang: any;
 }
 
 interface data {
-	ImageCover: string;
-	PubDate: string;
-	Title: string;
-	Description: string;
+  ImageCover: string;
+  PubDate: string;
+  Title: string;
+  Description: string;
 }
 
-const { file, data, lang } = Astro.props;
-const { ImageCover, PubDate, Title, Description }: data = data;
+const {file, data, lang} = Astro.props;
+const {ImageCover, PubDate, Title, Description}: data = data;
 const fileName = file.split("/").pop()?.split(".")[0];
-let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, { year: "numeric", month: "long", day: "numeric" });
+let fechaFormateada = new Date(PubDate).toLocaleDateString(lang, {
+  year: "numeric",
+  month: "long",
+  day: "numeric"
+});
 ---
 
 <article class="relative w-full h-full">
-	<a hreflang={lang} href={`/${lang}/blog/${fileName}/`}>
-		<div>
-			<div class="rounded-md w-full bg-gradient-to-t from-black to-transparent absolute z-30 h-full"></div>
-			{
-				ImageCover !== null && ImageCover.trim() !== "" ? (
-					<img
-						src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${ImageCover}`}
-						srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_136/${ImageCover} 256w,
+  <a hreflang={lang} href={`/${lang}/blog/${fileName}/`}>
+    <div>
+      <div class="rounded-md w-full bg-gradient-to-t from-black to-transparent absolute z-30 h-full"></div>
+      {
+        ImageCover !== null && ImageCover.trim() !== "" ? (
+                <img
+                        src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${ImageCover}`}
+                        srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_136/${ImageCover} 256w,
           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_272/${ImageCover} 512w,
           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_408/${ImageCover} 768w,
           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_544/${ImageCover} 1024w,
           https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_680/${ImageCover} 1280w`}
-						width="408"
-						height="230"
-						alt={`${ImageCover}`}
-						class="rounded-md h-auto w-full aspect-auto z-0 "
-					/>
-				) : (
-					<img src="/Banner.png" alt="image" class="rounded-md h-auto w-full aspect-auto z-0 " />
-				)
-			}
-		</div>
-		<div class="absolute text-white bottom-0 z-50 mb-2 mx-[6px] lss:mb-[16px] lss:mx-[16px] lg:mb-4 lg:mx-6">
-			<h3 class="z-40 subtitulo4-movil lgi:subtitulo3-movil lss:subtitulo1-movil lg:subtitulo3-desktop">
-				{Title}
-			</h3>
-			<p class="z-40 minismaller-movil lss:small-movil lg:minismall-desktop">{fechaFormateada}</p>
-			<p class="z-40 minismaller-movil lgi:small-movil lss:normal-movil lg:normal-desktop">{Description}</p>
-		</div>
-	</a>
+                        width="408"
+                        height="230"
+                        alt={`${ImageCover}`}
+                        class="rounded-md h-auto w-full aspect-auto z-0 "
+                />
+        ) : (
+                <img src="/Banner.png" alt="image"
+                     class="rounded-md h-auto w-full aspect-auto z-0 "/>
+        )
+      }
+    </div>
+    <div class="absolute text-white bottom-0 z-50 mb-2 mx-[6px] lss:mb-[16px] lss:mx-[16px] lg:mb-4 lg:mx-6">
+      <h3 class="z-40 subtitulo4-movil lgi:subtitulo3-movil lss:subtitulo1-movil lg:subtitulo3-desktop">
+        {Title}
+      </h3>
+      <p class="z-40 minismaller-movil lss:small-movil lg:minismall-desktop">{fechaFormateada}</p>
+      <p class="z-40 minismaller-movil lgi:small-movil lss:normal-movil lg:normal-desktop">{Description}</p>
+    </div>
+  </a>
 </article>

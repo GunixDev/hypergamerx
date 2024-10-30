@@ -3,7 +3,8 @@ interface LanguagesSelectProps {
   pathname: string;
   languages: any;
 }
-export default function LanguagesSelect({ lang, pathname, languages }: LanguagesSelectProps) {
+
+export default function LanguagesSelect({lang, pathname, languages}: LanguagesSelectProps) {
   return (
     <div className='w-full col-span-2 ls:max-lg:my-1 text-black bg-white'>
       <select

@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 interface IframeProps {
   id: string;
 }
 
-export default function IframeOp({ id }: IframeProps) {
+export default function IframeOp({id}: IframeProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -21,7 +21,8 @@ export default function IframeOp({ id }: IframeProps) {
           allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'></iframe>
       ) : (
         <div className='group relative' onClick={() => setIsOpen(true)}>
-          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20'>
+          <div
+            className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20'>
             <img
               src='/icons/youtube.svg'
               width='20'

@@ -1,12 +1,12 @@
 ---
-import type { Locale } from '../../types';
+import type {Locale} from '../../types';
 
 interface Props {
   date: Date | undefined;
   locale: Locale;
 }
 
-const { date, locale } = Astro.props;
+const {date, locale} = Astro.props;
 ---
 
 <time datetime={date?.toISOString()}>

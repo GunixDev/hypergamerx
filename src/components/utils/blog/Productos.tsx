@@ -1,5 +1,5 @@
 export default function Producto(props: any) {
-  const { juego, locale } = props;
+  const {juego, locale} = props;
 
   if (!juego || typeof juego !== 'object') {
     return <div>Error: El objeto de juego no es válido.</div>;
@@ -13,10 +13,12 @@ export default function Producto(props: any) {
       {Object.values(data).map((producto: any, index: number) => (
         <a key={index} href={producto.link} target='_blank' hrefLang={locale}>
           <div className='mb-4 group'>
-            <h3 className='subtitulo5-movil md:subtitulo4-movil group-hover:text-slate-300 duration-500'>
+            <h3
+              className='subtitulo5-movil md:subtitulo4-movil group-hover:text-slate-300 duration-500'>
               {producto.titulo}
             </h3>
-            <p className='md:smallerb-movil mt-1 smaller-movil duration-500'>{producto.descripcion}</p>
+            <p
+              className='md:smallerb-movil mt-1 smaller-movil duration-500'>{producto.descripcion}</p>
           </div>
         </a>
       ))}

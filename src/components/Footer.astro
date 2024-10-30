@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import {getLangFromUrl, useTranslations} from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -7,8 +7,10 @@ const t = useTranslations(lang);
 <footer class='ls:max-lg:hidden bg-black pt-[24px] px-[20px] text-white w-full grid grid-cols-2'>
   <div class='grid grid-rows-3'>
     <div class='flex'>
-      <img src='/icons/HyperGamerX.svg' loading='lazy' alt='logo' class='w-[73px] h-[73px] my-auto' />
-      <img src='/icons/HyperGamerXLetter.svg' loading='lazy' alt='logo' class='w-[320px] h-[28px] my-auto ml-[20px]' />
+      <img src='/icons/HyperGamerX.svg' loading='lazy' alt='logo'
+           class='w-[73px] h-[73px] my-auto'/>
+      <img src='/icons/HyperGamerXLetter.svg' loading='lazy' alt='logo'
+           class='w-[320px] h-[28px] my-auto ml-[20px]'/>
     </div>
 
     <div class='my-auto'>
@@ -22,22 +24,23 @@ const t = useTranslations(lang);
     </div>
     <div class='w-9/12 grid grid-flow-col-dense'>
       <a href={'https://discord.gg/KqmwVhZnfa'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Discord.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+        <img src='/icons/Logos/Discord.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
       <a href={'https://www.youtube.com/@HyperGamerX1'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Youtube.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+        <img src='/icons/Logos/Youtube.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
       <a href={'https://www.tiktok.com/@hypergamerxofficial'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Tik tok.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+        <img src='/icons/Logos/Tik tok.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
       <a href={'https://twitter.com/HyperGamerX_'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Twitter.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+        <img src='/icons/Logos/Twitter.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
-      <a href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Whatsapp.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+      <a href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'} hreflang={lang}
+         target='_blank'>
+        <img src='/icons/Logos/Whatsapp.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
       <a href={'https://www.facebook.com/Hypergamerx'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Facebook.svg' alt='logo' class='w-[42px] h-[42px] my-auto' />
+        <img src='/icons/Logos/Facebook.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
     </div>
   </div>
@@ -47,7 +50,8 @@ const t = useTranslations(lang);
       <div class='small-desktop text-black-white'>
         <ol>
           <li>
-            <a href={'https://www.paypal.com/donate/?hosted_button_id=K7PXSGWS98LXQ'} hreflang={lang}>
+            <a href={'https://www.paypal.com/donate/?hosted_button_id=K7PXSGWS98LXQ'}
+               hreflang={lang}>
               {t('footer.donar')}</a
             >
           </li>
@@ -65,13 +69,16 @@ const t = useTranslations(lang);
       <div class='small-desktop text-black-white'>
         <ol>
           <li>
-            <a href={`/${lang}/terminos-servicios/AvisoLegal/`} hreflang={lang}>{t('footer.avisolega')}</a>
+            <a href={`/${lang}/terminos-servicios/AvisoLegal/`}
+               hreflang={lang}>{t('footer.avisolega')}</a>
           </li>
           <li>
-            <a href={`/${lang}/terminos-servicios/PoliticaCookies/`} hreflang={lang}>{t('footer.politicascookies')}</a>
+            <a href={`/${lang}/terminos-servicios/PoliticaCookies/`}
+               hreflang={lang}>{t('footer.politicascookies')}</a>
           </li>
           <li>
-            <a href={`/${lang}/terminos-servicios/Privacidad/`} hreflang={lang}>{t('footer.politicas')}</a>
+            <a href={`/${lang}/terminos-servicios/Privacidad/`}
+               hreflang={lang}>{t('footer.politicas')}</a>
           </li>
         </ol>
       </div>

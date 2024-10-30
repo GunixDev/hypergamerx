@@ -1,6 +1,6 @@
 import DOMPurify from 'dompurify';
-import { useState } from 'react';
-import { useTranslations } from '../../i18n/utils';
+import {useState} from 'react';
+import {useTranslations} from '../../i18n/utils';
 
 export default function SearchWidget(lang: any) {
   const [value, setValue] = useState('');
@@ -20,7 +20,7 @@ export default function SearchWidget(lang: any) {
       <search>
         <form className='form grid grid-cols-12 my-auto' onSubmit={HandleForm}>
           <div className={`col-span-1 my-auto ls:max-lg:hidden`}>
-            <img src='/icons/Search.svg' alt='Buscar' />
+            <img src='/icons/Search.svg' alt='Buscar'/>
           </div>
           <input
             type='search'

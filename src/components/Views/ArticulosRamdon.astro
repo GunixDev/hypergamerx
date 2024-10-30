@@ -1,47 +1,48 @@
 ---
 interface Props {
-	file: string;
-	data: any;
-	locale: any;
+  file: string;
+  data: any;
+  locale: any;
 }
 
-const { file, data, locale } = Astro.props;
-const { Title, Description, ImageCover } = data;
+const {file, data, locale} = Astro.props;
+const {Title, Description, ImageCover} = data;
 ---
 
 <article>
-	<a href={`/${locale}/blog/${file.slice(3)}/`} hreflang={locale}>
-		<div class="grid grid-cols-5 gap-2">
-			<div class="col-span-2">
-				{
-					ImageCover !== null && ImageCover.trim() !== "" ? (
-						<img
-							src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${ImageCover}`}
-							srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_55/${ImageCover} 256w,
+  <a href={`/${locale}/blog/${file.slice(3)}/`} hreflang={locale}>
+    <div class="grid grid-cols-5 gap-2">
+      <div class="col-span-2">
+        {
+          ImageCover !== null && ImageCover.trim() !== "" ? (
+                  <img
+                          src={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${ImageCover}`}
+                          srcset={`https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_55/${ImageCover} 256w,
              https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_110/${ImageCover} 512w,
              https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_165/${ImageCover} 768w,
              https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_220/${ImageCover} 1024w,
              https://res.cloudinary.com/de4wvqywn/image/upload/f_webp/q_auto/c_scale,w_573/${ImageCover} 1280w`}
-							width="165"
-							height="93"
-							alt={`${ImageCover}`}
-							decoding="async"
-							loading="lazy"
-							class=" w-full h-auto aspect-auto  rounded-md"
-						/>
-					) : (
-						<img src={`/Banner.png`} width="165" height="93" alt={`sin imagen`} decoding="async" loading="lazy" class=" w-full h-full" />
-					)
-				}
-			</div>
-			<div class="col-span-3">
-				<h3 class="subtitulo4-movil sm:subtitulo6-movil lg:subtitulo6-desktop">
-					{Title}
-				</h3>
-				<p class="mt-1 smallerb-movil sm:minismaller-movil lg:minismaller-desktop">
-					{Description}
-				</p>
-			</div>
-		</div>
-	</a>
+                          width="165"
+                          height="93"
+                          alt={`${ImageCover}`}
+                          decoding="async"
+                          loading="lazy"
+                          class=" w-full h-auto aspect-auto  rounded-md"
+                  />
+          ) : (
+                  <img src={`/Banner.png`} width="165" height="93" alt={`sin imagen`}
+                       decoding="async" loading="lazy" class=" w-full h-full"/>
+          )
+        }
+      </div>
+      <div class="col-span-3">
+        <h3 class="subtitulo4-movil sm:subtitulo6-movil lg:subtitulo6-desktop">
+          {Title}
+        </h3>
+        <p class="mt-1 smallerb-movil sm:minismaller-movil lg:minismaller-desktop">
+          {Description}
+        </p>
+      </div>
+    </div>
+  </a>
 </article>

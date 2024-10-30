@@ -1,4 +1,4 @@
-import type { Locale } from '../../../types';
+import type {Locale} from '../../../types';
 
 interface CompartirProps {
   path: string;
@@ -11,7 +11,7 @@ function generarCompartirGmail(subject: string, body: string) {
   return `mailto:?subject=${subjectEncoded}&body=${bodyEncoded}`;
 }
 
-export default function Compartir({ path, locale }: CompartirProps) {
+export default function Compartir({path, locale}: CompartirProps) {
   const url = `https://www.hypergamerx.com/${locale}/blog/${path}/`;
   const articleUrl = encodeURIComponent(url);
   const subject = `${
@@ -38,7 +38,8 @@ export default function Compartir({ path, locale }: CompartirProps) {
           alt='Whatsapp'
         />
       </a>
-      <a title='Reddit' lang={locale} href={`https://www.reddit.com/submit?url=${body2}`} target='_blank'>
+      <a title='Reddit' lang={locale} href={`https://www.reddit.com/submit?url=${body2}`}
+         target='_blank'>
         <img
           className=' w-[24px] h-[24px] lgi:w-[28px] lgi:h-[28px] lg:w-[32px] lg:h-[32px]'
           src='/icons/Logos/Reddit.svg'

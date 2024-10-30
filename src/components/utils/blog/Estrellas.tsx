@@ -1,5 +1,5 @@
-import { useTranslations } from '../../../i18n/utils';
-import type { Locale } from '../../../types';
+import {useTranslations} from '../../../i18n/utils';
+import type {Locale} from '../../../types';
 
 export default function Estrellas(cantidad: number, locale: Locale) {
   const t = useTranslations(locale);
@@ -10,7 +10,8 @@ export default function Estrellas(cantidad: number, locale: Locale) {
         <span className='inline-block align-middle mr-0 lg:mr-2 smallerb-movil lg:small-desktop'>
           {t('article.estrellas')}:
         </span>
-        <span className='ml-1 lg:ml-2 text-xs sm:text-base align-middle text-black-white'>{cantidad + '  '}</span>
+        <span
+          className='ml-1 lg:ml-2 text-xs sm:text-base align-middle text-black-white'>{cantidad + '  '}</span>
         {cantidad >= 4.5 ? (
           <>
             <img
