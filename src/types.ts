@@ -1,5 +1,5 @@
-import { languages } from './i18n/data_essential';
-import type { CollectionEntry } from 'astro:content';
+import {languages} from '@i18n/dataTermsConditions.ts';
+import type {CollectionEntry} from 'astro:content';
 
 export type Locale = keyof typeof languages;
 export type Blog = CollectionEntry<'blog'>;

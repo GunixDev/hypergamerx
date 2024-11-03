@@ -1,5 +1,5 @@
-import { ui } from './data';
-import { ui_essential, defaultLang } from './data_essential';
+import {ui} from './data';
+import {defaultLang, ui_essential} from './dataTermsConditions.ts';
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
