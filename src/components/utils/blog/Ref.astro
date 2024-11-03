@@ -16,10 +16,10 @@ const descripcion = data?.data?.Description;
 const arial = `ir al articulo de ${data?.data?.Title}`;
 ---
 
-<span class='relative group'>
+<span class="relative group">
   <a
-          class='font-bold duration-300 group'
-          style='color: rgb(30 58 138)'
+          class="font-bold duration-300 group"
+          style="color: #1e3a8a;"
           onmouseover="this.style.color='rgb(29 78 216)'"
           onmouseout="this.style.color='rgb(30 58 138)'"
           href={external ? `${url}` : `/${lang}/blog/${url}/`}
@@ -30,8 +30,8 @@ const arial = `ir al articulo de ${data?.data?.Title}`;
           <></> : <a href={external ? `${url}` : `/${lang}/blog/${url}/`} aria-label={arial}
                      hreflang={lang}>
     <span
-            class='absolute left-0 w-80 p-2 mt-6 text-white opacity-90 bg-black rounded shadow-lg hidden group-hover:inline transition duration-500 text-xs z-50 ls:max-sm:hidden'>
-      <span class='font-bold lg:text-sm text-white no-underline'>{titulo}</span><br/>{descripcion}
+            class="absolute left-0 w-80 p-2 mt-6 text-white opacity-90 bg-black rounded shadow-lg hidden group-hover:inline transition duration-500 text-xs z-50 ls:max-sm:hidden">
+      <span class="font-bold lg:text-sm text-white no-underline">{titulo}</span><br/>{descripcion}
     </span>
           </a>}
 
