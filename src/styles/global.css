@@ -6,14 +6,14 @@
   @font-face {
     font-family: 'Segoe-UI';
     font-style: normal;
-    src: url('public/fonts/Segoe-UI.ttf') format('truetype');
+    src: url('/fonts/Segoe-UI.ttf') format('truetype');
     font-display: swap;
   }
   
   @font-face {
     font-family: 'Segoe-UI-Bold';
     font-style: normal;
-    src: url('public/fonts/Segoe-UI-Bold.ttf') format('truetype');
+    src: url('/fonts/Segoe-UI-Bold.ttf') format('truetype');
     font-display: swap;
   }
 }
@@ -309,10 +309,10 @@ input:hover {
 hr {
   @media screen and (min-width: 1024px) {
     background-image: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0),
-            rgba(255, 255, 255, 0.95),
-            rgba(255, 255, 255, 0)
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0)
     );
     width: 100%;
     border: 0;
