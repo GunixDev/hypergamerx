@@ -8,6 +8,8 @@ import playformCompress from '@playform/compress';
 import vercel from '@astrojs/vercel/serverless';
 import metaTags from 'astro-meta-tags';
 
+import auth from 'auth-astro';
+
 // https://astro.build/config
 export default defineConfig({
   image: {
@@ -19,39 +21,31 @@ export default defineConfig({
     ],
   },
   site: 'https://www.hypergamerx.com',
-  integrations: [
-    tailwind(),
-    mdx(),
-    sitemap({
-      i18n: {
-        defaultLocale: 'en',
-        locales: {
-          en: 'en',
-          es: 'es',
-        },
+  integrations: [tailwind(), mdx(), sitemap({
+    i18n: {
+      defaultLocale: 'en',
+      locales: {
+        en: 'en',
+        es: 'es',
       },
-      serialize(item) {
-        item.changefreq = 'weekly';
-        item.priority = 1;
-        return item;
-      },
-    }),
-    playformCompress({
-      CSS: true,
-      HTML: true,
-      Image: false,
-      JavaScript: true,
-      SVG: true,
-    }),
-    partytown({
-      config: {
-        forward: ['dataLayer.push'],
-      },
-    }),
-    metaTags(),
-    react(),
-  ],
-  output: 'hybrid',
+    },
+    serialize(item) {
+      item.changefreq = 'weekly';
+      item.priority = 1;
+      return item;
+    },
+  }), playformCompress({
+    CSS: true,
+    HTML: true,
+    Image: false,
+    JavaScript: true,
+    SVG: true,
+  }), partytown({
+    config: {
+      forward: ['dataLayer.push'],
+    },
+  }), metaTags(), react(), auth()],
+  output: 'server',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
