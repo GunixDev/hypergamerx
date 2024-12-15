@@ -45,7 +45,7 @@ export default defineConfig({
       forward: ['dataLayer.push'],
     },
   }), metaTags(), react(), auth()],
-  output: 'server',
+  output: 'hybrid',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
