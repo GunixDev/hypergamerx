@@ -8,8 +8,6 @@ import playformCompress from '@playform/compress';
 import vercel from '@astrojs/vercel/serverless';
 import metaTags from 'astro-meta-tags';
 
-import auth from 'auth-astro';
-
 // https://astro.build/config
 export default defineConfig({
   image: {
@@ -44,7 +42,7 @@ export default defineConfig({
     config: {
       forward: ['dataLayer.push'],
     },
-  }), metaTags(), react(), auth()],
+  }), metaTags(), react()],
   output: 'hybrid',
   adapter: vercel({
     webAnalytics: {
