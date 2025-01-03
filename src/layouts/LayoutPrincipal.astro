@@ -25,6 +25,8 @@ const {
 
 import {getLangFromUrl} from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
+
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 ---
 
 <html lang={lang}>
@@ -32,6 +34,7 @@ const lang = getLangFromUrl(Astro.url);
   <HeadTags title={title} description={description} image={image} autor={autor} type={type} keywords={keywords} publishtime={new Date().toISOString()} updatetime={new Date().toISOString()} lang={lang}/>
   <link rel="sitemap" href="/sitemap-index.xml"/>
   <ViewTransitions/>
+  <SpeedInsights/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8225968446465041" crossorigin="anonymous"/>
   <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-KW6PKZ3FV9"/>
   <script type="text/partytown">
