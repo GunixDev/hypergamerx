@@ -1,0 +1,46 @@
+---
+import type {Locale} from '@/types';
+
+interface Props {
+  path: string;
+  locale: Locale;
+}
+
+
+const {path, locale} = Astro.props
+function generarCompartirGmail(subject: string, body: string) {
+  const subjectEncoded = encodeURIComponent(subject);
+  const bodyEncoded = encodeURIComponent(body);
+  return `mailto:?subject=${subjectEncoded}&body=${bodyEncoded}`;
+}
+
+const url = `https://www.hypergamerx.com/${locale}/blog/${path}/`;
+const articleUrl = encodeURIComponent(url);
+const subject = `${
+  locale === 'es'
+    ? '⭐ Mira este artículo que vi en HyperGamerX 🎮'
+    : '⭐ Check out this article I saw on HyperGamerX 🎮'
+}`;
+const body2 = `${subject}: ${url}`;
+
+const compartirTwitter = `https://twitter.com/intent/tweet?url=${body2}`;
+const compartirGmail = generarCompartirGmail(subject, url);
+---
+<div class='flex justify-center items-start gap-0.5 sm:gap-1 ml-auto'>
+  <a title='Twitter' lang={locale} href={compartirTwitter}>
+    <img class='w-4 h-4 sm:w-6 sm:h-6' src='/logos/twitter.svg' alt='Twitter'/>
+  </a>
+  <a title='Reddit' lang={locale} href={`https://www.reddit.com/submit?url=${body2}`}>
+    <img class='w-4 h-4 sm:w-6 sm:h-6' src='/logos/reddit.svg' alt='Reddit'/>
+  </a>
+  <a title='Whatsapp'  lang={locale} href={`https://api.whatsapp.com/send?text=${articleUrl}`}>
+    <img class='w-4 h-4 sm:w-6 sm:h-6' src='/logos/whatsapp.svg' alt='Whatsapp'/>
+  </a>
+  <a title='Facebook' lang={locale} href={`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`}>
+    <img class='w-4 h-4 sm:w-6 sm:h-6' src='/logos/facebook.svg' alt='Facebook'/>
+  </a>
+  <a title='Mail' lang={locale} href={compartirGmail}>
+    <img class='w-4 h-4 sm:w-6 sm:h-6' src='/logos/email.svg' alt='Email'
+    />
+  </a>
+</div>

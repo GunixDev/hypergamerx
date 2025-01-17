@@ -1,0 +1,25 @@
+---
+import {getLangFromUrl} from "../../../../i18n/utils";
+import type {Locale} from "../../../../types";
+import {getPostsByTag} from "../../../../components/blogArticles";
+
+type Tag ="noticias" | "curiosidades" | "guias" | "eventos" | "criticas" | "tops" | "influencers" | "mods" | "tecnologias";
+
+export async function getStaticPaths() {
+  const locales: Locale[] = ["en", "es"];
+  const tags: Tag[] = ["noticias", "curiosidades", "guias", "eventos", "criticas", "tops", "influencers", "mods", "tecnologias"]
+  let paths: any = [];
+
+  for (const locale of locales) {
+    for (const tag of tags) {
+      paths.push({params: {locale, tag}});
+    }
+  }
+
+  return paths
+}
+
+const locale = getLangFromUrl(Astro.url);
+const tag = Astro.url.pathname.split('/')[3];
+return Astro.rewrite(`/${locale}/blog/${tag}/1`);
+---

@@ -1,0 +1,9 @@
+---
+interface Props {
+  image: string;
+}
+const {image} = Astro.props;
+
+import { CldImage } from 'astro-cloudinary';
+---
+<CldImage src={image} alt={image} class="rounded self-stretch shadow shadow-neutral-950/50 my-4" />

@@ -1,84 +1,82 @@
 ---
 import {getLangFromUrl, useTranslations} from '../i18n/utils';
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const locale = getLangFromUrl(Astro.url);
+const t = useTranslations(locale);
 ---
 
-<footer class='ls:max-lg:hidden bg-black pt-[24px] px-[20px] text-white w-full grid grid-cols-2'>
-  <div class='grid grid-rows-3'>
-    <div class='flex'>
-      <img src='/icons/HyperGamerX.svg' loading='lazy' alt='logo'
-           class='w-[73px] h-[73px] my-auto'/>
-      <img src='/icons/HyperGamerXLetter.svg' loading='lazy' alt='logo'
-           class='w-[320px] h-[28px] my-auto ml-[20px]'/>
+<footer class='hidden xl:grid bg-black pt-[24px] px-[20px] text-white w-full grid-cols-2'>
+  <div class='grid grid-rows-3 mx-16 gap-4'>
+    <div class='grid grid-cols-8'>
+      <img src='/logos/hyperGamerX.svg' loading='lazy' alt='logo' width="28" height="28" class='my-auto col-span-2 w-full max-h-16'/>
+      <img src='/logos/hyperGamerXLetter.svg' loading='lazy' alt='logo' height="72" class='max-h-16 my-auto aspect-auto w-96 col-span-6'/>
     </div>
 
-    <div class='my-auto'>
+    <div class='my-auto mx-10'>
       <p>
         &copy; 2024 HyperGamerX. Creado por
-        <a href={'https://sunrizestudios.vercel.app/'} hreflang={lang} target='_blank'>
+        <a href={'https://sunrizestudios.vercel.app/'} hreflang={locale} target='_blank'>
           {' '}
           Sunrize Studios
         </a>
       </p>
     </div>
-    <div class='w-9/12 grid grid-flow-col-dense'>
-      <a href={'https://discord.gg/KqmwVhZnfa'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Discord.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
+    <div class='w-9/12 grid grid-flow-col-dense mx-10'>
+      <a href={'https://discord.gg/KqmwVhZnfa'} hreflang={locale} target='_blank'>
+        <img src='/logos/discord.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
-      <a href={'https://www.youtube.com/@HyperGamerX1'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Youtube.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
+      <a href={'https://www.youtube.com/@HyperGamerX1'} hreflang={locale} target='_blank'>
+        <img src='/logos/youtube.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
-      <a href={'https://www.tiktok.com/@hypergamerxofficial'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Tik tok.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
+      <a href={'https://www.tiktok.com/@hypergamerxofficial'} hreflang={locale} target='_blank'>
+        <img src='/logos/tiktok.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
-      <a href={'https://twitter.com/HyperGamerX_'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Twitter.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
+      <a href={'https://x.com/HyperGamerX_'} hreflang={locale} target='_blank'>
+        <img src='/logos/twitter.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
-      <a href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'} hreflang={lang}
+      <a href={'https://whatsapp.com/channel/0029VaH91EaAO7RD5tegmL1z'} hreflang={locale}
          target='_blank'>
-        <img src='/icons/Logos/Whatsapp.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
+        <img src='/logos/whatsapp.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
-      <a href={'https://www.facebook.com/Hypergamerx'} hreflang={lang} target='_blank'>
-        <img src='/icons/Logos/Facebook.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
+      <a href={'https://www.facebook.com/Hypergamerx'} hreflang={locale} target='_blank'>
+        <img src='/logos/facebook.svg' alt='logo' class='w-[42px] h-[42px] my-auto'/>
       </a>
     </div>
   </div>
   <div class='grid grid-cols-2'>
     <div>
-      <p class='subtitulo5-desktop'>{t('footer.contactoseconocenos')}</p>
-      <div class='small-desktop text-black-white'>
+      <p class='font-lg'>{t('nav.about')}</p>
+      <div class='font-sm underline'>
         <ol>
           <li>
             <a href={'https://www.paypal.com/donate/?hosted_button_id=K7PXSGWS98LXQ'}
-               hreflang={lang}>
-              {t('footer.donar')}</a
+               hreflang={locale}>
+              {t('nav.donate')}</a
             >
           </li>
           <li>
-            <a href={`/${lang}/about/`} hreflang={lang}> {t('footer.sobrehypergamerx')}</a>
+            <a href={`/${locale}/conocenos/sobre-hypergamerx/`} hreflang={locale}> {t('nav.about.hgx')}</a>
           </li>
           <li>
-            <a href={'mailto:sunrizecontact@gmail.com'} hreflang={lang}> {t('footer.contacto')}</a>
+            <a href={`/${locale}/conocenos/contacto/`} hreflang={locale}> {t('nav.contact_advertise')}</a>
           </li>
         </ol>
       </div>
     </div>
     <div>
-      <p class='subtitulo5-desktop'>{t('footer.terminos')}</p>
-      <div class='small-desktop text-black-white'>
+      <p class='font-lg'>{t('nav.legal_notices')}</p>
+      <div class='font-sm underline'>
         <ol>
           <li>
-            <a href={`/${lang}/terminos-servicios/AvisoLegal/`}
-               hreflang={lang}>{t('footer.avisolega')}</a>
+            <a href={`/${locale}/avisos-y-politicas/privacidad/`}
+               hreflang={locale}>{t('nav.privacy_policy')}</a>
           </li>
           <li>
-            <a href={`/${lang}/terminos-servicios/PoliticaCookies/`}
-               hreflang={lang}>{t('footer.politicascookies')}</a>
+            <a href={`/${locale}/avisos-y-politicas/politica-de-cookies/`}
+               hreflang={locale}>{t('nav.cookies_policy')}</a>
           </li>
           <li>
-            <a href={`/${lang}/terminos-servicios/Privacidad/`}
-               hreflang={lang}>{t('footer.politicas')}</a>
+            <a href={`/${locale}/avisos-y-politicas/aviso-legal/`}
+               hreflang={locale}>{t('nav.legal_notice')}</a>
           </li>
         </ol>
       </div>

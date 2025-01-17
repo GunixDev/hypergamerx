@@ -1,122 +1,105 @@
 ---
-import {getLangFromUrl, useTranslations} from '@i18n/utils';
-import ArticulosView from '@components/Views/ArticulosView1.astro';
-import ArticulosView2 from '@components/Views/ArticulosView2.astro';
-import LayoutPrincipal from '@layouts/LayoutPrincipal.astro';
-import {getCollection} from 'astro:content';
-import ListData from '@components/Views/ListData.astro';
-export const prerender = false;
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
+import Layout from "../../layouts/Layout.astro";
+import VerMas from "../../components/VerMas.astro";
+import ViewArticle from "../../components/ViewArticle.astro";
+import {CldImage} from "astro-cloudinary";
+import {getLastPost, getPosts, getPostsByTag, getRecentPosts} from "../../components/blogArticles";
+import type {Locale} from "../../types";
+import FormatDate from "../../components/FormatDate.astro";
 
-const allPosts = await getCollection('blog', (data) => {
-    return data?.data?.IsType === 'Complete' && data?.slug.startsWith(lang);
-}).then((posts) => {
-    posts.sort((a, b) => {
-        return new Date(b.data?.PubDate).getTime() - new Date(a.data?.PubDate).getTime();
-    });
-    return posts;
-});
+export async function getStaticPaths() {
+  return [{params: {locale: "en"}}, {params: {locale: "es"}}];
+}
 
-const Ultimo = allPosts.slice(0, 1);
-const recentpost = allPosts.slice(1, 4);
-const recentpost2 = allPosts.slice(4, 10);
-const newsPosts = allPosts
-    .filter((post) => post.data?.Tags && post.data?.Tags.some((tag: any) => ['noticia'].includes(tag.id)))
-    .slice(0, 9);
-
-const curiosidadesPosts = allPosts
-    .filter((post) => post.data?.Tags && post.data?.Tags.some((tag: any) => ['curiosidades'].includes(tag.id)))
-    .slice(0, 6);
-
-const reseñasPosts = allPosts
-    .filter((post) => post.data?.Tags && post.data?.Tags.some((tag: any) => ['reseña'].includes(tag.id)))
-    .slice(0, 3);
-
-const minecraftPosts = allPosts
-    .filter(
-        (post) =>
-            post.data?.Videojuego && post.data?.Videojuego.some((videojuego: any) => ['minecraft'].includes(videojuego.id)),
-    )
-    .slice(0, 9);
-
-const geometryPosts = allPosts
-    .filter(
-        (post) =>
-            post.data?.Videojuego &&
-            post.data?.Videojuego.some((videojuego: any) => ['geometry-dash'].includes(videojuego.id)),
-    )
-    .slice(0, 6);
+const {locale} = Astro.params as { locale: Locale };
+const t = useTranslations(locale);
+const ultimoPost = await getLastPost(locale)
+const recentPosts = await getRecentPosts(locale, 1, 9)
+const newsPosts = await getPostsByTag(locale, "noticias", 12)
+const curiositiesPosts = await getPostsByTag(locale, "curiosidades", 6)
+const guidesPosts = await getPostsByTag(locale, "guias", 6)
 ---
 
-<LayoutPrincipal>
+<Layout>
   <main>
-    <section>
-      <h1 class="subtitulo6-movil lss:subtitulo6-movil lg:desktop-heading6 lss:mb-1 text-gray-light">
-          {t('index.titulo')}
-      </h1>
-      <h2 class="subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop lss:mb-4">{t('index.ultimoarticules')}</h2>
-      <div class="lg:grid lg:grid-cols-5 ls:max-lg:w-full h-auto">
-        <div class="lg:col-span-3">
-            {Ultimo.map((post) =>
-                    <ArticulosView2 file={post.slug} data={post.data} lang={lang}/>)}
+    <h1 class="font-heading1 xl:font-heading4">{t('index.title')}</h1>
+    <div class="gap-6 lg:gap-16 w-full flex flex-col items-start">
+      <div class="flex flex-col items-start gap-2.5 self-stretch">
+        <VerMas title={t('blog_recentposts')} pahtto="./blog/1" locale={locale}/>
+
+        <div class="xl:grid xl:grid-cols-12 w-full xl:gap-2">
+          <a href={`/${locale}/blog/${ultimoPost.id.substring(3)}/`} class="relative w-full rounded overflow-hidden xl:col-span-7">
+            <div class="w-full">
+              <CldImage src={`${ultimoPost.data.ImageCover}`} alt={ultimoPost.data.ImageCover} class="w-full h-auto lg:rounded-lg "/>
+            </div>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-950"></div>
+
+            <div class="absolute inset-0 w-full flex p-1 flex-col justify-end items-start self-stretch text-neutral-50 sm:mx-5 sm:my-2.5">
+              <h2 transition:name={`title-${ultimoPost.id}-${ultimoPost.data.Title}`} class="font-heading3">{ultimoPost.data.Title}</h2>
+              <div class="hidden sm:block">
+                <FormatDate date={ultimoPost.data.PubDate} locale={locale}/>
+              </div>
+              <p transition:name={`desc-${ultimoPost.id}-${ultimoPost.data.Title}`} class="font-sm sm:font-base">{ultimoPost.data.Description}</p>
+            </div>
+          </a>
+          <div class="col-span-5 flex-col justify-between self-stretch hidden xl:flex">
+            {recentPosts.slice(0, 3).map((post, index) => (
+              <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="list" slug={post.id} locale={locale} principal={true} animate={true} class={`mb-4 ${index === 1 ? 'mt-auto mb-auto' : ''}`}/>
+            ))}
+          </div>
         </div>
-        <div class="ls:max-lg:hidden lg:col-span-2 lg:ml-[4px] lg:w-full lg:h-full lg:grid grid-flow-row-dense gap-3.5">
-            {recentpost.map((post) =>
-                    <ListData file={post.slug} data={post.data} lang={lang}/>)}
+      </div>
+
+      <div class="flex flex-col items-start gap-2.5 self-stretch xl:hidden">
+        {
+          recentPosts.map((post) => (
+            <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="list" slug={post.id} locale={locale} animate={true}/>
+          ))
+        }
+      </div>
+
+      <div class="flex-col items-start gap-2.5 self-stretch hidden xl:grid grid-cols-2 ">
+        {
+          recentPosts.slice(3, 16).map((post) => (
+            <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="list" slug={post.id} locale={locale} animate={true}/>
+          ))
+        }
+      </div>
+
+      <div class="flex flex-col items-start gap-2.5 xl:ga self-stretch">
+        <VerMas title={t("blog_recentnews")} pahtto="./blog/noticias/1" locale={locale}/>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 xl:gap-14 self-stretch">
+          {
+            newsPosts.map((post) => (
+              <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="card" locale={locale} slug={post.id} animate={true}/>
+            ))
+          }
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-1 lss:gap-2 relative mt-[8px] lg:hidden">
-          {recentpost.map((post) =>
-                  <ArticulosView file={post.slug} data={post.data} lang={lang}/>)}
-      </div>
-      <div class="grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]">
-          {recentpost2.map((post) =>
-                  <ArticulosView file={post.slug} data={post.data} lang={lang}/>)}
-      </div>
-    </section>
 
-    <section class="mt-[16px] lg:mt-[32px]">
-      <h2 class="subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop">{t('index.noticianuevas')}</h2>
-      <div class="grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]">
-          {newsPosts.map((post) =>
-                  <ArticulosView file={post.slug} data={post.data} lang={lang}/>)}
+      <div class="flex flex-col items-start gap-2.5 self-stretch">
+        <VerMas title={t("blog_curiositieslast")} pahtto="./blog/curiosidades/1" locale={locale}/>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-2.5 xl:gap-14 self-stretch">
+          {
+            curiositiesPosts.map((post) => (
+              <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="card" locale={locale} slug={post.id} animate={true}/>
+            ))
+          }
+        </div>
       </div>
-    </section>
 
-    <section class="mt-[16px] lg:mt-[32px]">
-      <h2 class="subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop">{t('index.ultimascuriosidades')}</h2>
-      <div class="grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]">
-          {curiosidadesPosts.map((post) =>
-                  <ArticulosView file={post.slug} data={post.data} lang={lang}/>)}
+      <div class="flex flex-col items-start gap-2.5 self-stretch">
+        <VerMas title={t("blog_guideslast")} pahtto="./blog/guias/1" locale={locale}/>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-2.5  xl:gap-14 self-stretch">
+          {
+            guidesPosts.map((post) => (
+              <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="card" locale={locale} slug={post.id} animate={true}/>
+            ))
+          }
+        </div>
       </div>
-    </section>
-
-    <section class="mt-[16px] lg:mt-[32px]">
-      <h2 class="subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop">{t('index.resenasvideogames')}</h2>
-      <div class="grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]">
-          {reseñasPosts.map((post) =>
-                  <ArticulosView file={post.slug} data={post.data} lang={lang}/>)}
-      </div>
-    </section>
-
-    <section class="mt-[16px] lg:mt-[32px]">
-      <h2 class="subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop">{t('index.articulosde')}
-        Minecraft</h2>
-      <div class="grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]">
-          {minecraftPosts.map((post) =>
-                  <ArticulosView file={post.slug} data={post.data} lang={lang}/>)}
-      </div>
-    </section>
-
-    <section class="mt-[16px] lg:mt-[32px]">
-      <h2 class="subtitulo3-movil lss:subtitulo1-movil lg:subtitulo1-desktop">
-          {t('index.articulosde')} Geometry Dash
-      </h2>
-      <div class="grid grid-cols-3 gap-1 lss:gap-2 lg:gap-5 relative mt-[8px] lg:mt-[16px]">
-          {geometryPosts.map((post) =>
-                  <ArticulosView file={post.slug} data={post.data} lang={lang}/>)}
-      </div>
-    </section>
+    </div>
   </main>
-</LayoutPrincipal>
+</Layout>

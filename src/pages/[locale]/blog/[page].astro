@@ -1,0 +1,63 @@
+---
+import Layout from "@layouts/Layout.astro";
+import {getRecentPosts} from "@components/blogArticles";
+import {getLangFromUrl, useTranslations} from "@i18n/utils";
+import ViewArticle from "@components/ViewArticle.astro";
+import type {Locale} from "@/types";
+import Pagination from "@components/Pagination.astro";
+
+interface PostData {
+  id: string;
+  data: {
+    Title: string;
+    Description: string;
+    ImageCover: string;
+    PubDate: Date;
+  }
+}
+
+interface PageData {
+  data: PostData[];
+  currentPage: number;
+  url: {
+    first: string;
+    last: string;
+    prev: string;
+    next: string;
+  };
+}
+
+export async function getStaticPaths({paginate}: any) {
+  const locales: Locale[] = ["en", "es"];
+  let paths:any = [];
+
+  for (const locale of locales) {
+    const recentPosts = await getRecentPosts(locale, 0, 100);
+    const paginatedPaths = paginate(recentPosts, {
+      pageSize: 16,
+      params: {locale},
+    });
+    paths = paths.concat(paginatedPaths);
+  }
+
+  return paths;
+}
+
+const {page} = Astro.props as {page: PageData};
+const {locale}= Astro.params as {locale: Locale};
+const t = useTranslations(locale);
+---
+<Layout>
+  <main class="w-full flex flex-col items-start gap-6 xl:gap-12">
+    <h1 class="font-heading1">{t("blog_recentposts")}</h1>
+
+    <div class="flex flex-col items-start gap-2.5 self-stretch xl:grid xl:grid-cols-2 xl:gap-14">
+      {
+        page.data.map((post) => (
+          <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="list" locale={locale} slug={post.id} animate={true} />
+        ))
+      }
+    </div>
+    <Pagination first={page.url.first} last={page.url.last} prevUrl={page.url.prev} nextUrl={page.url.next} currentPage={page.currentPage} transition:persist />
+  </main>
+</Layout>

@@ -1,0 +1,62 @@
+---
+import FormatDate from "./FormatDate.astro";
+import type { Locale } from "../types";
+import { CldImage } from 'astro-cloudinary';
+
+interface Props {
+  title: string;
+  description: string;
+  imageCover?: string;
+  autor?: string;
+  animate?: boolean,
+  aside?: boolean,
+  principal?: boolean,
+  date: Date;
+  locale: Locale;
+  layout?: "list" | "card";
+  slug: string
+}
+
+const {
+  title,
+  description,
+  imageCover = "/Banner.png",
+  autor = "HyperGamerX",
+  animate = false,
+  aside = false,
+  principal = false,
+  date,
+  locale,
+  layout = "list",
+  slug
+} = Astro.props;
+---
+<a href={`/${locale}/blog/${slug.substring(3)}/`}  class=`block w-full`  >
+  {layout === "list" ? (
+    <article class="gap-1 sm:gap-2 w-full grid grid-cols-11 sm:grid-cols-12">
+      <div class={`relative w-fit flex-shrink-0 col-span-5 sm:col-span-5 lg:col-span-5`}>
+        <CldImage src={imageCover} alt={imageCover} class="w-full h-auto rounded sm:rounded-lg" />
+        <span class={`absolute bottom-0 font-xs ${aside ? "xl:font-xs" : "lg:font-sm"}  text-white bg-neutral-950/50 px-1 py-0.5 rounded`}>
+          <FormatDate date={date} locale={locale} />
+        </span>
+      </div>
+      <div class="flex flex-col gap-0.5 w-full col-span-6 sm:col-span-7 lg:col-span-7">
+        <h2 class={`${principal ? "font-lato font-bold text-base leading-5 " : aside ? "font-heading4 xl:max-2xl:font-xs xl:font-bold 2xl:font-sm 2xl:leading-6": "font-heading4"} line-clamp-3 xl:line-clamp-6`} transition:name={animate ? `title-${slug}-${title}` : ""}>{title}</h2>
+        <p class={`font-sm line-clamp-1 sm:line-clamp-3 md:line-clamp-3 ${principal ? "xl:line-clamp-3 xl:font-xs" : aside ? "xl:max-2xl:line-clamp-3 xl:font-xs" : "line-clamp-3 xl:max-2xl:font-xs"} text-gray-600`} transition:name={animate ? `desc-${slug}-${title}` : ""}>{description}</p>
+      </div>
+    </article>
+  ) : (
+    <article class="flex flex-col items-center gap-1 sm:gap-2 w-full">
+      <div class="w-full relative flex flex-col g">
+        <CldImage  src={imageCover} alt={imageCover} class="w-full lg:w-fit h-auto rounded sm:rounded-lg"/>
+        <span class="absolute bottom-0 font-xs lg:font-sm text-white bg-neutral-950/50 px-1 py-0.5 rounded">
+          <FormatDate date={date} locale={locale} />
+        </span>
+      </div>
+      <div class="flex flex-col items-start self-stretch gap-1 w-full">
+        <h2 class="font-heading4">{title}</h2>
+        <p class="font-sm ">{description}</p>
+      </div>
+    </article>
+  )}
+</a>

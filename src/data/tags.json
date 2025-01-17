@@ -1,0 +1,65 @@
+[
+	{
+		"id": "noticias",
+		"nameTag": "Noticias",
+		"nameTagEnglish": "News",
+		"descES": "Como su mismo nombre lo indica son noticias de una actualización o filtración comprobada del videojuego, esto se habla en todo un artículo",
+		"descEN": "As its name suggests, these are news about an update or verified leak of the video game, this is discussed in an entire article"
+	},
+	{
+		"id": "curiosidades",
+		"nameTag": "Curiosidades",
+		"nameTagEnglish": "Curiosities",
+		"descES": "Estos artículos representan a datos importantes o datos que no sabias sobre el videojuego que se habla en concreto",
+		"descEN": "These articles represent important facts or information you didn't know about the specific video game being discussed"
+	},
+	{
+		"id": "guias",
+		"nameTag": "Guías",
+		"nameTagEnglish": "Guides",
+		"descES": "Son guías para indicarte algo, enseñarte o llegar a algún objetivo concreto al leer el artículo completo",
+		"descEN": "These are guides to indicate something to you, teach you, or reach a specific objective by reading the complete article"
+	},
+	{
+		"id": "eventos",
+		"nameTag": "Eventos",
+		"nameTagEnglish": "Events",
+		"descES": "Es cuando se habla sobre un evento de un videojuego, ya sea un evento virtual o presencial, en todo el artículo se habla sobre este evento",
+		"descEN": "It is when one talks about an event of a video game, whether it is a virtual or in-person event, throughout the article, this event is discussed"
+	},
+	{
+		"id": "criticas",
+		"nameTag": "Criticas",
+		"nameTagEnglish": "Reviews",
+		"descES": "Critica es lo que se hace a un videojuego para saber lo que tiene o de que trata esta misma",
+		"descEN": "A review is what is done to a video game to understand what it contains or what it is about"
+	},
+	{
+		"id": "tops",
+		"nameTag": "Tops",
+		"nameTagEnglish": "Tops",
+		"descES": "Esta es una lista de diferentes cosas sobre un videojuego, ya sea un top de niveles o top de jugadores, no siempre irán ordenadas y no puede llegar a ser de lo mejor de lo que se habla en el artículo",
+		"descEN": "This is a list of different things about a video game, whether it's a top of levels or top of players, they won't always be ordered and it can't necessarily be the best of what is discussed in the article"
+	},
+	{
+		"id": "influencers",
+		"nameTag": "Influencers",
+		"nameTagEnglish": "Influencers",
+		"descES": "Esto se refiere a un artículo en dónde se habla de un influencer o artista en específico o se hace referencia a un influencer o artista",
+		"descEN": "This refers to an article where a specific influencer or artist is discussed or referenced"
+	},
+	{
+		"id": "mods",
+		"nameTag": "Mods",
+		"nameTagEnglish": "Mods",
+		"descES": "Cuando se hace referencia a una modificación de un juego o se habla sobre las modificaciones de un videojuego",
+		"descEN": "When referring to a modification of a game or discussing modifications of a video game"
+	},
+	{
+		"id": "tecnologias",
+		"nameTag": "Tecnologías",
+		"nameTagEnglish": "Technologies",
+		"descES": "Esta etiqueta se usa por si el artículo incluye alguna referencia a la tecnología como memoria ram o realidad virtual o algo referente a tu computador o móvil",
+		"descEN": "This tag is used in case the article includes any reference to technology such as RAM memory or virtual reality or something related to your computer or mobile device"
+	}
+]

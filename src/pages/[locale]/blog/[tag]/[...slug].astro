@@ -1,0 +1,149 @@
+---
+import {getCollection, render} from 'astro:content';
+import type {CollectionEntry} from 'astro:content';
+import type {Locale} from "@/types";
+import Layout from "@layouts/Layout.astro";
+import {getEntries} from 'astro:content';
+import FormatDate from "@components/FormatDate.astro";
+import {useTranslations} from "@i18n/utils";
+import {getEntry} from 'astro:content';
+import {CldImage} from 'astro-cloudinary';
+import Share from "@components/Share.astro";
+import {slide} from "astro:transitions";
+import {getPostsByGame, getRecentPosts} from "@components/blogArticles";
+import ViewArticle from "@components/ViewArticle.astro";
+import VerMas from "@components/VerMas.astro";
+import YtVideo from "@components/markdown/YtVideo";
+import Indice from "@components/Indice.astro";
+import {amazonData} from "@/data/amazon"
+
+export async function getStaticPaths() {
+  const pages = await getCollection("blog", ({data}: any) => data?.IsType === "Complete");
+  return pages.map((page: any) => {
+    const [locale, tag, ...slug] = page.id.split("/");
+    return {params: {locale: locale as Locale, tag, slug: slug.join("/") || undefined}, props: {post: page}};
+  });
+}
+
+const {post} = Astro.props as { post: CollectionEntry<'blog'> };
+const tags = await getEntries(post.data.Tags);
+const author = await getEntry(post.data.Authors);
+const game = post.data.Videojuego ? await getEntry(post.data.Videojuego[0]) : null;
+
+const {locale, tag, slug} = Astro.params;
+const {Content, headings} = await render(post);
+
+const gamePosts = game ? await getPostsByGame(locale, game.id, 3, post.id) : [];
+const recentPosts = await getRecentPosts(locale, 0, 8, post.id);
+
+let critica: boolean = false
+
+if (tag === "criticas") {
+  critica = true
+}
+
+const t = useTranslations(locale);
+
+function getRandomItems(array: any[], count: number) {
+  const shuffled = array.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
+
+let amazon = amazonData[locale][game?.id ? game?.id : "minecraft"];
+
+if (amazon && amazon.length > 0) {
+  amazon = getRandomItems(amazon, 3);
+} else {
+  amazon = [];
+}
+---
+<Layout title={post.data.Title} description={post.data.Description} image={post.data.ImageCover} autor={"HyperGamerX"} keywords={post.data.Keywords} type="article">
+  <div class="w-full overflow-y-hidden xl:grid xl:grid-cols-12 xl:gap-4">
+    <main data-pagefind-body class=" px-2 mb-8 flex flex-col items-start self-stretch w-full gap-6 xl:col-span-7">
+      <div class="flex flex-col items-start gap-2.5 w-full">
+        <div data-pagefind-weight="7" class="flex flex-col justify-center items-center gap-1.5 w-full">
+          <h1 transition:name={`title-${post.id}-${post.data.Title}`} class="w-full font-heading1" data-pagefind-meta="title">{post.data.Title}</h1>
+          <p transition:name={`desc-${post.id}-${post.data.Title}`} class="w-full font-sm">{post.data.Description}</p>
+        </div>
+        <div data-pagefind-ignore class="flex items-center content-center gap-1 w-full flex-wrap">
+          {tags.map((tag) => (
+            <span title={locale === "es" ? tag.data.descES : tag.data.descEN} class="flex px-1 py-0.5 justify-center items-center rounded-sm bg-neutral-950 text-neutral-50 font-xs">{locale === "es" ? tag.data.nameTag : tag.data.nameTagEnglish}</span>
+          ))}
+        </div>
+        <div class="flex items-start gap-0.5 sm:gap-1 w-full">
+          <img src="/icons/sendPage.svg" alt="sendpage" class="w-3 h-4 sm:h-5 sm:w-4 flex items-center justify-center px-[1.13px] py-[0.38px]"/>
+          <span class="font-xs my-auto">{t('blog_created')}
+            <FormatDate date={post.data.PubDate} locale={locale}/>
+            {post.data.UpdatedDate && (
+              <span>({t('blog_updated')}
+                <FormatDate date={post.data.UpdatedDate} locale={locale}/>)</span>)
+            }
+          </span>
+        </div>
+        <div data-pagefind-ignore class="flex content-between items-end self-stretch w-full">
+          <div class="flex flex-col items-start gap-0.5 font-xs">
+            <span>{t('blog_writerby')}</span>
+            <p class="flex items-center gap-0.5"><img src=`/profiles/${author.data.AuthorImage}` alt="author-image" class=" rounded-lg  w-4 h-4"/>{author.data.Name}</p>
+          </div>
+          <Share path={post.id.substring(3)} locale={locale}/>
+        </div>
+        {critica && game && game.data.TrailerVideo ? (
+          <YtVideo id={game.data.TrailerVideo} client:load/>
+        ) : (
+          <CldImage data-pagefind-meta="image[src], image_alt[alt]"
+                    src={`${post.data.ImageCover}`}
+                    alt={post.data.Title}
+                    class="rounded self-stretch shadow sm:shadow-lg shadow-neutral-950/50 sm:rounded-lg"/>
+        )
+        }
+      </div>
+
+      <Indice data={headings} locale={locale}/>
+
+      <div class="contenido flex flex-col justify-center self-stretch w-full overflow-hidden">
+        <Content/>
+      </div>
+    </main>
+
+    <aside class="flex flex-col md:max-xl:justify-center gap-4 self-stretch xl:col-span-5 xl:gap-12" >
+      {game && gamePosts && gamePosts.length >= 3 && (
+        <div class="gap-2.5 flex flex-col items-start self-stretch">
+          <h2 class="font-heading2 xl:font-heading4">{t('blog_articlesof')} {game?.data.Name}</h2>
+          <div class="flex flex-col items-start gap-2.5 self-stretch">
+            {
+              gamePosts.map((post) => (
+                <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="list" slug={post.id} locale={locale} aside={true} animate={false}/>
+              ))
+            }
+          </div>
+        </div>
+      )}
+      <div class="gap-2.5 flex flex-col items-start self-stretch">
+        <VerMas title={t("blog_recentposts")} pahtto="./blog/1/" locale={locale} aside={true}/>
+        <div class="flex flex-col items-start gap-2.5 self-stretch">
+          {
+            recentPosts.map((post) => (
+              <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="list" slug={post.id} locale={locale} aside={true} animate={false}/>
+            ))
+          }
+        </div>
+      </div>
+
+      {
+        amazon.length > 0 && (
+          <div class="flex flex-col items-start gap-2.5 self-stretch">
+            <h2 class="font-heading2">{game?.data.Name} {t("blog_amazon")} </h2>
+            {
+              amazon.map((item) => (
+                <a href={item.link} class="flex flex-col items-start gap-1">
+                    <h3 class="font-sm font-bold">{item.titulo}</h3>
+                  <p class="font-sm">{item.descripcion}</p>
+                </a>
+              ))
+            }
+          </div>
+        )
+      }
+    </aside>
+  </div>
+</Layout>

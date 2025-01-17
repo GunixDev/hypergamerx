@@ -1,0 +1,19 @@
+---
+import type {Locale} from "../types";
+interface Props {
+  date: Date | undefined;
+  locale: Locale;
+}
+
+const {date, locale} = Astro.props;
+---
+
+<time datetime={date?.toISOString()}>
+  {
+    date?.toLocaleDateString(locale, {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    })
+  }
+</time>

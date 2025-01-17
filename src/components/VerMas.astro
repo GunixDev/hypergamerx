@@ -1,0 +1,20 @@
+---
+import {useTranslations} from "../i18n/utils";
+import type {Locale} from "../types";
+interface Props {
+  title: string,
+  locale: Locale,
+  pahtto: string,
+  aside?: boolean
+}
+
+const {title, locale, pahtto, aside = false} = Astro.props
+const t = useTranslations(locale);
+---
+<div class="flex justify-between items-center self-stretch w-full">
+  <span class=`${aside ? "font-heading4" : "font-heading2"}`>{title}</span>
+  <a class="flex justify-end items-center gap-2" hreflang={locale} href={`/${locale}/${pahtto}`}>
+      <div class="w-0.5 h-4 bg-neutral-400"></div>
+    <span class=`${aside ? "font-xs": "font-sm"} `>{t('com_vermas')}</span>
+  </a>
+</div>

@@ -1,25 +1,22 @@
-import {defineConfig} from 'astro/config';
+import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import react from '@astrojs/react';
-import mdx from '@astrojs/mdx';
+import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
-import partytown from '@astrojs/partytown';
-import playformCompress from '@playform/compress';
-import vercel from '@astrojs/vercel/serverless';
-import metaTags from 'astro-meta-tags';
+import vercel from '@astrojs/vercel';
+import pagefind from "astro-pagefind";
+import mdx from '@astrojs/mdx';
 
-// https://astro.build/config
 export default defineConfig({
-  image: {
-    domains: ['astro.build'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-      },
-    ],
+  site: "https://localhost:4321",
+  i18n: {
+    locales: ["es", "en"],
+    defaultLocale: "en",
+    routing: {
+      prefixDefaultLocale: true
+    }
   },
-  site: 'https://www.hypergamerx.com',
-  integrations: [tailwind(), mdx(), sitemap({
+
+  integrations: [tailwind(), pagefind(), mdx(), preact({ devtools: true }), sitemap({
     i18n: {
       defaultLocale: 'en',
       locales: {
@@ -28,25 +25,26 @@ export default defineConfig({
       },
     },
     serialize(item) {
-      item.changefreq = 'weekly';
-      item.priority = 1;
-      return item;
+      if (item.url.includes('blog/preview/')) {
+        return null;
+      } else if(item.url.includes('blog/')) {
+        item.changefreq = 'daily';
+        item.priority = 1;
+        return item;
+      } else {
+        item.changefreq = 'weekly';
+        item.priority = 0.8;
+        return item;
+      }
     },
-  }), playformCompress({
-    CSS: true,
-    HTML: true,
-    Image: false,
-    JavaScript: true,
-    SVG: true,
-  }), partytown({
-    config: {
-      forward: ['dataLayer.push'],
-    },
-  }), metaTags(), react()],
-  output: 'hybrid',
+    filter: (page) =>
+      page !== 'https://hypergamerx/blog/preview/'
+  })],
+
+  output: 'static',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
     },
-  }),
+  })
 });

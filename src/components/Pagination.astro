@@ -1,0 +1,31 @@
+---
+const { prevUrl, nextUrl, currentPage, first, last } = Astro.props;
+---
+
+<div aria-label="Blog pages" class="mx-auto flex gap-2 self center text-white">
+  {
+    first && (
+      <a href={first} class="py-2 px-1.5 xl:py-3.5 xl:px-2.5 self-center bg-neutral-950 border-neutral-300 border-2 rounded duration-500 hover:bg-neutral-700 active:bg-neutral-300"><img src="/icons/paginationPrevDouble.svg" alt="first" height="20" width="20" class="w-5 h-5 xl:w-8 xl:h-8"/></a>
+    )
+  }
+  {
+    prevUrl && (
+    <a href={prevUrl} class="py-2 px-1.5 xl:py-3.5 xl:px-2.5 self-center bg-neutral-950 border-neutral-300 border-2 rounded duration-500 hover:bg-neutral-700 active:bg-neutral-300"><img src="/icons/paginationPrev.svg" alt="prev" height="20" width="20" class="w-5 h-5 xl:w-8 xl:h-8"/></a>
+    )
+  }
+  {
+    currentPage && (
+      <span class="py-1 px-3 xl:px-5 font-lg leading-relaxed font-bold items-center bg-neutral-950 border-neutral-300 border-2 duration-500 rounded">{currentPage}</span>
+    )
+  }
+  {
+    nextUrl && (
+      <a href={nextUrl} class="py-2 px-1.5 xl:py-3.5 xl:px-2.5 self-center bg-neutral-950 border-neutral-300 border-2 rounded duration-500 hover:bg-neutral-700 active:bg-neutral-300"><img src="/icons/paginationNext.svg" alt="next" height="20" width="20" class="w-5 h-5 xl:w-8 xl:h-8"/></a>
+    )
+  }
+  {
+    last && (
+      <a href={last} class="py-2 px-1.5 xl:py-3.5 xl:px-2.5 self-center bg-neutral-950 border-neutral-300 border-2 rounded duration-500 hover:bg-neutral-700 active:bg-neutral-300"><img src="/icons/paginationNextDouble.svg" alt="next" height="20" width="20" class="w-5 h-5 xl:w-8 xl:h-8"/></a>
+    )
+  }
+</div>

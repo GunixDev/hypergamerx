@@ -1,0 +1,88 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import {uiAvisos} from "../../../i18n/ui-avisos"
+import {defaultLang} from "../../../i18n/ui";
+import type {Locale} from "../../../types";
+import VerMas from "../../../components/VerMas.astro";
+import ViewArticle from "../../../components/ViewArticle.astro";
+import {getRecentPosts} from "../../../components/blogArticles";
+
+export async function getStaticPaths() {
+  return [{params: {locale: "en"}}, {params: {locale: "es"}}];
+}
+
+const {locale} = Astro.params as { locale: Locale };
+function t(key: keyof typeof uiAvisos[typeof defaultLang]) {
+  return uiAvisos[locale][key] || uiAvisos[defaultLang][key];
+}
+
+const recentPosts = await getRecentPosts(locale, 0, 8)
+---
+<Layout>
+  <div class="xl:grid xl:grid-cols-12 xl:gap-4">
+    <main class="flex mx-2 flex-col items-start gap-6 sm:gap-8 self-stretch xl:col-span-7">
+      <div class="flex flex-col justify-center items-center gap-1.5 sm:gap-5 self-stretch">
+        <h1 class="font-heading1">{t("cookie.1")}</h1>
+        <p class="font-sm">
+          {t("cookie.2")}
+        </p>
+      </div>
+      <div class="flex flex-col items-start gap-1.5 self-stretch">
+        <h2 class="font-heading2">{t("cookie.3")}</h2>
+        <p class="font-sm">{t("cookie.4")}</p>
+        <p class="font-sm">{t("cookie.5")}</p>
+        <p class="font-sm">{t("cookie.6")}</p>
+        <p class="font-sm">{t("cookie.7")}</p>
+      </div>
+
+      <div class="flex flex-col items-start gap-1.5 self-stretch">
+        <h2 class="font-heading2">{t("cookie.8")}</h2>
+        <p class="font-sm">{t("cookie.9")}</p>
+        <p class="font-sm">{t("cookie.10")}</p>
+        <p class="font-sm">{t("cookie.11")}</p>
+      </div>
+
+      <div class="flex flex-col items-start gap-1.5 self-stretch">
+        <h2 class="font-heading2">{t("cookie.12")}</h2>
+        <p class="font-sm">{t("cookie.13")}</p>
+        <p class="font-sm">{t("cookie.14")}</p>
+        <p class="font-sm">{t("cookie.15")}</p>
+        <p class="font-sm">{t("cookie.16")}</p>
+      </div>
+
+      <div class="flex flex-col items-start gap-1.5 self-stretch">
+        <h2 class="font-heading2">{t("cookie.17")}</h2>
+        <p class="font-sm">{t("cookie.18")}</p>
+      </div>
+
+      <div class="flex flex-col items-start gap-1.5 self-stretch">
+        <h2 class="font-heading2">{t("cookie.19")}</h2>
+        <p class="font-sm">{t("cookie.20")}</p>
+        <p class="font-sm">{t("cookie.21")}</p>
+        <p class="font-sm">{t("cookie.22")}</p>
+      </div>
+
+      <div class=" flex flex-col items-start gap-1.5 self-stretch">
+        <h2 class="font-heading2">{t("cookie.23")}</h2>
+        <p class="font-sm">{t("cookie.24")}</p>
+        <p class="font-sm">{t("cookie.25")}</p>
+        <p class="font-sm">{t("cookie.26")}</p>
+        <p class="font-sm">{t("cookie.27")}</p>
+      </div>
+
+      <div class="flex flex-col items-start gap-1.5 self-stretch">
+        <p class="font-sm font-semibold">{t("cookie.28")}</p>
+      </div>
+    </main>
+    <aside class="flex flex-col items-start gap-2.5 sm:gap-6 self-stretch xl:col-span-5">
+      <VerMas title={t("blog_recentposts")} pahtto="./blog/1" locale={locale} aside={true}/>
+      <div class="flex flex-col items-start gap-2.5 self-stretch">
+        {
+          recentPosts.map((post) => (
+            <ViewArticle title={post.data.Title} description={post.data.Description} imageCover={post.data.ImageCover} autor="HyperGamerX" date={post.data.PubDate} layout="list" slug={post.id} locale={locale} aside={true} animate={true}/>
+          ))
+        }
+      </div>
+    </aside>
+  </div>
+</Layout>

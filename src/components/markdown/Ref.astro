@@ -1,0 +1,14 @@
+---
+import type {Locale} from "../../types";
+
+interface Props {
+  url: string;
+  text: string;
+  external: boolean;
+}
+
+const {url, text, external} = Astro.props;
+const arial = `ir al articulo de ${text}`;
+const locale = Astro.params.locale as Locale;
+---
+<a href={external ? `${url}` : `/${locale}/blog/${url}/`} aria-label={arial} hreflang={locale}>{text}</a>

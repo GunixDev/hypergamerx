@@ -1,0 +1,183 @@
+---
+import '@fontsource/lato';
+import '@fontsource-variable/assistant'
+import {getLangFromUrl} from "../i18n/utils";
+import Nav from "../components/Nav";
+import MetaTags from "../components/MetaTags.astro";
+
+const locale = getLangFromUrl(Astro.url)
+import {ClientRouter} from 'astro:transitions';
+import Footer from "../components/Footer.astro";
+let pathname = Astro.url.pathname.replace(/\/[a-z]{2}\//, '');
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  autor?: string;
+  type?: string;
+  keywords?: string;
+}
+
+const {
+  title = "HyperGamerX: Tu Destino para Noticias de Videojuegos",
+  description = "Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información.",
+  image = "",
+  autor = "Sunrize Studios",
+  type = "website",
+  keywords = "videojuegos, noticias, reseñas, análisis, avances, curiosidades, HyperGamerX, HyperGamerX.com",
+} = Astro.props;
+---
+<!doctype html>
+<html lang={locale}>
+<head>
+  <link rel="sitemap" href="/sitemap-index.xml"/>
+  <ClientRouter/>
+  <MetaTags title={title} description={description} image={image} autor={autor} type={type} keywords={keywords} publishtime={new Date().toISOString()} updatetime={new Date().toISOString()} lang={locale}/>
+</head>
+<body class="text-neutral-950 bg-neutral-50 flex flex-col xl:min-h-screen items-start gap-2.5 sm:gap-4 lg:gap-6 font-base overflow-x-hidden">
+<Nav locale={locale} pathname={pathname} client:load transition:persist/>
+<div class="flex flex-col items-start px-2 gap-6 mb-8 w-full sm:px-4 sm:mb-12 sm:gap-8 md:px-16 lg:px-36 xl:px-16 lg:mb-16 lg:gap-12 xl:flex-grow">
+  <slot/>
+</div>
+<Footer class="w-full"/>
+</body>
+</html>
+
+<style is:global>
+  bodyl {
+    font-family: 'Assistant Variable', sans-serif;
+  }
+
+  #search {
+    width: 100%;
+    font-family: Assistant Variable, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .pagefind-ui__result-link.svelte-j9e30{
+    color: #010101;
+    font-family: Lato, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.100;
+    font-weight: 700;
+    font-size: 1.5rem
+  }
+
+  .pagefind-ui__search-input.svelte-e9gkc3{
+    font-family: Assistant Variable, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  @media (min-width: 1280px) {
+    #search {
+      width: 100%;
+      font-family: Assistant Variable, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+    }
+
+    .pagefind-ui__result-link.svelte-j9e30{
+      color: #010101;
+      font-family: Lato, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      line-height: 1.100;
+      font-weight: 700;
+      font-size: 2rem
+    }
+
+    .pagefind-ui__search-input.svelte-e9gkc3{
+      font-family: Assistant Variable, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 20px;
+      line-height: 16px;
+    }
+
+  }
+
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer components {
+    .font-heading1 {
+      @apply font-lato font-bold text-2xl sm:text-4xl xl:text-6xl
+    }
+
+    .font-heading2 {
+      @apply font-lato font-bold text-xl sm:text-3xl xl:text-4xl
+    }
+
+    .font-heading3 {
+      @apply font-lato font-bold text-base leading-5 sm:text-2xl xl:text-4xl
+    }
+
+    .font-heading4 {
+      @apply font-lato font-bold text-xs leading-4 sm:text-xl sm:leading-6 xl:text-xl xl:leading-6
+    }
+
+    .font-xl {
+      @apply font-assistant text-lg leading-6 font-light sm:text-2xl xl:text-4xl
+    }
+
+    .font-lg {
+      @apply font-assistant text-base leading-5 font-light sm:text-xl xl:text-3xl
+    }
+
+    .font-base {
+      @apply font-assistant text-sm leading-4 font-light sm:text-lg xl:text-2xl
+    }
+
+    .font-sm {
+      @apply font-assistant text-xs leading-4 font-light sm:text-sm xl:text-xl
+    }
+
+    .font-xs {
+      @apply font-assistant text-[10px] leading-[10px] font-light sm:text-xs xl:text-sm xl:leading-5
+    }
+
+    .contenido h2 {
+      @apply font-heading2 mb-3.5
+    }
+
+    .contenido h3 {
+      @apply font-heading3 mb-3.5
+    }
+
+    .contenido h4 {
+      @apply font-heading4 mb-3.5
+    }
+
+    .contenido p {
+      @apply font-sm mb-3.5
+    }
+
+    .contenido a {
+      @apply font-sm underline text-blue-800 hover:text-blue-500 focus:text-blue-200 duration-500
+    }
+
+    .contenido table {
+      @apply block overflow-x-auto bg-neutral-950 text-neutral-50 my-5 w-full place-items-stretch;
+    }
+
+    .contenido table th,
+    .contenido table td {
+      @apply border p-2 border-neutral-800 text-center break-words;
+    }
+
+    .contenido table tbody tr:nth-child(odd) {
+      @apply bg-neutral-900 hover:bg-neutral-700 duration-300;
+    }
+
+    .contenido table tbody tr:nth-child(even) {
+      @apply hover:bg-neutral-700 duration-300;
+    }
+
+    .contenido ol {
+      @apply list-inside font-sm font-bold mb-3.5 list-decimal
+    }
+
+    .contenido ul {
+      @apply list-inside font-sm font-bold mb-3.5 list-disc
+    }
+  }
+</style>
