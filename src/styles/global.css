@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme  {
+  --font-heading: var(--font-space-grotes);
+  --font-body: var(--font-inter);
+  --default-transition-duration: 300ms;
+  --color-background: var(--color-neutral-50);
+  --color-foreground: var(--color-neutral-950);
+  --color-fullBlack: var(--color-neutral-950);
+  --color-full-white: var(--color-neutral-50);
+  --color-primary: var(--color-green-600);
+  --color-muted: var(--color-neutral-600)
+}
+
+.dark { 
+  --color-primary: var(--color-green-400);
+  --color-background: var(--color-zinc-900);
+  --color-foreground: var(--color-neutral-50);
+  --color-muted: var(--color-neutral-400)
+}
+
+@layer base {
+  h1 {
+    @apply font-heading font-bold lg:text-4xl text-2xl;
+  }
+  h2 {
+    @apply font-heading font-bold lg:text-3xl text-xl;
+  }
+
+  h3 {
+    @apply font-heading font-bold lg:text-2xl text-lg;
+  }
+
+  h4 {
+    @apply font-heading font-bold lg:text-xl text-lg;
+  }
+
+  p {
+    @apply font-body lg:text-lg text-base;
+  }
+
+  a{
+    @apply font-body lg:text-lg text-base hover:text-primary focus-visible:text-primary transition-colors;
+  }
+}
+
+@utility font-sm {
+  @apply text-base;
+}
+
+@utility font-xs {
+  @apply text-sm;
+}
+
+@utility body-rounded {
+  @apply rounded md:rounded-md lg:rounded-lg xl:rounded-lg;
+}
+
+@utility body-rounded-t {
+  @apply rounded-t md:rounded-t-md lg:rounded-t-lg xl:rounded-t-lg;
+}
+
+@utility body-rounded-b {
+  @apply rounded-b md:rounded-b-md lg:rounded-b-lg xl:rounded-b-lg;
+}
+
+@utility body-rounded-tr {
+  @apply rounded-tr md:rounded-tr-md lg:rounded-tr-lg xl:rounded-tr-lg;
+}
+
+@utility body-rounded-tl {
+  @apply rounded-tl md:rounded-tl-md lg:rounded-tl-lg xl:rounded-tl-lg;
+}
+
+@utility body-rounded-bl {
+  @apply rounded-bl md:rounded-bl-md lg:rounded-bl-lg xl:rounded-bl-lg;
+}
+
+@utility body-rounded-br {
+  @apply rounded-br md:rounded-br-md lg:rounded-br-lg xl:rounded-br-lg;
+}
+
+@utility body-px {
+  @apply px-2 md:px-12 lg:px-10 xl:px-14;
+}
+
+@utility body-mt {
+  @apply mt-5 md:mt-8 lg:mt-11 xl:mt-16;
+}
+
+@utility body-mb {
+  @apply mb-5 md:mb-8 lg:mb-11 xl:mb-16;
+}
+
+@utility body-gap {
+  @apply gap-4 md:gap-5 lg:gap-4 xl:gap-4;
+}
+
+.contenido h2 {
+  @apply mb-3.5 mt-2;
+}
+
+.contenido h3 {
+  @apply mb-3.5 mt-2;
+}
+
+.contenido h4 {
+  @apply mb-3.5 mt-2;
+}
+
+.contenido p {
+  @apply mb-6;
+}
+
+.contenido a {
+  @apply font-sm text-blue-800 underline transition-none duration-75 hover:text-blue-500 focus:text-blue-200 dark:text-blue-500 dark:hover:text-blue-400;
+}
+
+.contenido ol {
+  @apply mb-3.5 list-inside list-decimal font-sm font-bold;
+}
+
+.contenido ul {
+  @apply mb-3.5 list-inside list-disc font-sm font-bold;
+}
+
+.hyper-search {
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+
+  --emdash-search-bg: #ffffff;
+  --emdash-search-text: #18181b;
+  --emdash-search-muted: #71717a;
+  --emdash-search-border: #e4e4e7;
+  --emdash-search-hover: #f4f4f5;
+  --emdash-search-highlight: #18181b;
+  --emdash-search-overlay: rgb(0 0 0 / 45%);
+}
+
+.dark .hyper-search {
+  --emdash-search-bg: #18181b;
+  --emdash-search-text: #f4f4f5;
+  --emdash-search-muted: #a1a1aa;
+  --emdash-search-border: #35353e;
+  --emdash-search-hover: #27272a;
+  --emdash-search-highlight: #ffffff;
+  --emdash-search-overlay: rgb(0 0 0 / 60%);
+}
+
+/* El input no debe tener el borde verde */
+.hyper-search .hyper-search-input {
+  width: 100%;
+  max-width: none;
+  border-color: var(--emdash-search-border);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.hyper-search .hyper-search-input:focus {
+  border-color: var(--search-border);
+  box-shadow: 0 0 0 2px var(--search-border);
+}
+
+/* Resultados */
+.hyper-search .hyper-search-results {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--emdash-search-border);
+  background: var(--emdash-search-bg);
+  color: var(--emdash-search-text);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 12%);
+}
+
+/* Cada opción */
+.hyper-search .hyper-search-result {
+  color: var(--emdash-search-text);
+  background: var(--emdash-search-bg);
+  border-color: var(--emdash-search-border);
+}
+
+.hyper-search .hyper-search-result:hover,
+.hyper-search .hyper-search-result:focus-visible {
+  color: var(--emdash-search-text);
+  background: var(--emdash-search-hover);
+  outline-color: var(--emdash-search-border);
+}
+
+/* Texto y coincidencias */
+.hyper-search .hyper-search-results h2,
+.hyper-search .hyper-search-results h3,
+.hyper-search .hyper-search-results strong,
+.hyper-search .hyper-search-results a {
+  color: var(--emdash-search-text);
+}
+
+.hyper-search .hyper-search-results p,
+.hyper-search .hyper-search-results small {
+  color: var(--emdash-search-muted);
+}
+
+.hyper-search .hyper-search-results mark {
+  color: var(--emdash-search-text);
+  background: var(--emdash-search-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hyper-search,
+  .hyper-search * {
+    transition: none !important;
+  }
+}
+
+/* La tabla */
+.contenido table {
+  @apply my-0 w-full min-w-max border-collapse;
+  display: table;
+}
+
+/* Scroll horizontal en móvil: lo hace el contenedor directo de la tabla */
+.contenido :is(figure, div):has(> table) {
+  @apply my-5 overflow-x-auto;
+}
+
+/* Celdas: borde, espaciado y color de texto por modo */
+.contenido table :is(th, td) {
+  @apply border border-neutral-300 p-2 text-center wrap-break-word text-neutral-950! dark:border-neutral-800 dark:text-neutral-50!;
+}
+
+/* El texto anidado (párrafos, enlaces, negritas) hereda el color de la celda */
+.contenido table :is(th, td) :is(p, span, strong, em) {
+  @apply m-0;
+  color: inherit !important;
+}
+
+/* Cabecera */
+.contenido table thead :is(th, td),
+.contenido table th {
+  @apply bg-neutral-200! font-bold dark:bg-neutral-800!;
+}
+
+/* Filas pares e impares (el fondo va en las celdas, no en la fila) */
+.contenido table tbody tr:nth-child(odd) > :is(th, td) {
+  @apply bg-neutral-100! dark:bg-neutral-900!;
+}
+
+.contenido table tbody tr:nth-child(even) > :is(th, td) {
+  @apply bg-white! dark:bg-neutral-950!;
+}
+
+/* Hover: va al final para que gane a las dos reglas de arriba */
+.contenido table tbody tr:hover > :is(th, td) {
+  @apply bg-neutral-300! duration-300 dark:bg-neutral-700!;
+}

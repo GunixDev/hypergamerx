@@ -1,0 +1,44 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import VerMas from "../../components/VerMas.astro";
+import Card from "@/components/ui/Card.astro";
+import { gestPosts } from "@/utils/article-toc";
+
+const recentPosts = await gestPosts(8, Astro.cache);
+---
+
+<Layout robots="noindex, nofollow" class="pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 items-start content-start flex lg:grid lg:grid-cols-12">
+  <div class="flex flex-col items-start gap-4 flex-[1 0 0] w-full lg:col-span-7">
+    <div class="flex flex-col justify-center items-center gap-1.5 sm:gap-5 self-stretch">
+      <h1>Bienvenido a HyperGamerX!</h1>
+      <p class="font-sm xl:font-lg">¡Hey que tal gamer! Sabia que HyperGamerX es como el paraíso para todos los fanáticos de los videojuegos, ¡y te va a encantar! descubre todo lo que tenemos para ti, desde noticias de última hora hasta reseñas de los juegos</p>
+      <p class="font-sm xl:font-lg">
+        Imagínate un lugar donde te enteras de todas las noticias más nuevas de tus juegos favoritos ya sea Minecraft, Geometry Dash, Fortnite, entre otros. Pues bien, eso es lo que te ofrece HyperGamerX. Desde lanzamientos épicos hasta eventos emocionantes, aquí te mantenemos en
+        la onda de todo lo que está pasando en el mundo de los videojuegos.
+      </p>
+      <p class="font-sm xl:font-lg">¿Te sientes trabado en ese nivel complicado? ¿Necesitas algunos consejos para brillar en tus juegos? En HyperGamerX tiene guías detalladas y trucos que te convertirán en el rey de los protips y puedas ganarle a tus amigos.</p>
+      <p class="font-sm xl:font-lg">
+        Nuestras reseñas son como esas conversaciones con amigos en las que todos dan su opinión sincera. Analizamos cada juego de arriba a abajo, desde la jugabilidad hasta los gráficos y la trama, para que tengas toda la info que necesitas antes de lanzarte a la aventura.
+      </p>
+      <p class="font-sm xl:font-lg">
+        En HyperGamerX no solo hablamos de videojuegos, ¡los vivimos con pasión! Entendemos el fuego que sientes por el gaming, porque nosotros también lo sentimos. Así que, únete a nuestro
+        <a href={"https://discord.gg/aXmCVfcXaa"} target="_blank" class="text-blue"> Discord</a>, donde todos compartimos esa emoción única por los videojuegos y compartimos opiniones entre los mismos, ademas de que podras encontrar personas con las que puedes jugar, pronto
+        haremos eventos entre nuestra comunidad, con grandes premios!.
+      </p>
+      <p class="font-sm xl:font-lg">
+        No te pierdas ni un solo detalle en este viaje alucinante. ¿Preparado para sumergirte? Visita HyperGamerX hoy mismo y vive la experiencia suprema para los verdaderos apasionados de los videojuegos. ¡Te esperamos con los controles listos! 🎮✨
+      </p>
+    </div>
+  </div>
+
+  <aside class="flex flex-col justify-center items-start col-span-5 gap-2.5">
+    <VerMas title={"Artículos recientes"} pahtto="./blog/pagina/1/" aside={true} />
+    <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
+      {recentPosts.map((post, index) => <Card modo="list" post={post} loading={index < 3 ? "eager" : "lazy"} />)}
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:hidden items-start gap-2.5 self-stretch">
+      {recentPosts.map((post) => <Card modo="card" post={post} />)}
+    </div>
+  </aside>
+</Layout>

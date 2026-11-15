@@ -1,0 +1,144 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import VerMas from "../../components/VerMas.astro";
+import { getEmDashCollection } from "emdash";
+import Card from "@/components/ui/Card.astro";
+
+const { entries: recentPosts, error } = await getEmDashCollection("posts", {
+  status: "published",
+  orderBy: { published_at: "desc" },
+  limit: 8,
+});
+
+if (error) {
+  console.error("Error al obtener artículos recientes:", error);
+  throw new Error("No se pudieron cargar los artículos recientes.");
+}
+---
+
+<Layout robots="noindex, nofollow" class="pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 items-start content-start flex lg:grid lg:grid-cols-12">
+  <div class="flex flex-col items-start gap-4 flex-[1_0_0] w-full lg:col-span-7">
+    <div class="flex flex-col justify-center items-center gap-1.5 sm:gap-5 self-stretch">
+      <h1>Politica de Cookies</h1>
+      <p class="font-sm">
+        Esta Política de Cookies detallada tiene como objetivo brindar una descripción exhaustiva de cómo HyperGamerX (nosotros, nuestro o sitio web) utiliza cookies y otras tecnologías similares para recopilar y almacenar información valiosa cuando visitas nuestro sitio web,
+        HyperGamerX. Queremos que estés plenamente informado sobre cómo se manejan tus datos y cómo se utilizan estas tecnologías en nuestra plataforma. HyperGamerX es un sitio web creado y respaldado por Sunrize Studios, una reconocida empresa dedicada a proporcionar artículos
+        especializados sobre videojuegos y todo lo relacionado con ellos. En esta política, también te explicaremos detalladamente cómo puedes tener el control total sobre el uso de cookies y las diversas opciones que tienes a tu disposición en relación con ellas. Nos tomamos muy
+        en serio la protección de tu privacidad y la seguridad de tus datos personales, y a través de esta política te ofrecemos la transparencia y la información necesaria para que puedas tomar decisiones informadas sobre tu experiencia en HyperGamerX.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-start gap-1.5 self-stretch">
+      <h2>¿Qué son las cookies?</h2>
+      <p class="font-sm">
+        Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Estas cookies desempeñan un papel fundamental en la experiencia de navegación en línea al permitir que los sitios web recuerden tus acciones y preferencias.
+        Almacenando información como tus preferencias de idioma, inicio de sesión, temas de diseño y otras configuraciones, las cookies contribuyen a mejorar la funcionalidad del sitio web y ofrecerte una experiencia más personalizada.
+      </p>
+      <p class="font-sm">
+        Además de mejorar la funcionalidad, las cookies también son utilizadas para recopilar datos estadísticos y de análisis sobre cómo los usuarios interactúan con los sitios web. Estos datos ayudan a los propietarios de los sitios a comprender mejor el comportamiento de los
+        visitantes y a realizar mejoras en el contenido y la estructura del sitio para adaptarse a las necesidades de los usuarios.
+      </p>
+      <p class="font-sm">
+        Es importante destacar que las cookies pueden ser utilizadas tanto por el propio sitio web que visitas (cookies de origen) como por terceros que tienen componentes integrados en el sitio web, como herramientas de análisis o publicidad (cookies de terceros). Estos terceros
+        pueden utilizar las cookies para recopilar información sobre tus actividades en línea y mostrarte anuncios relevantes en función de tus intereses.
+      </p>
+      <p class="font-sm">
+        Sin embargo, es crucial mencionar que las cookies no son programas maliciosos y no pueden ejecutar código ni transmitir virus. Además, tienes el control sobre cómo se utilizan las cookies en tu dispositivo. Puedes configurar tu navegador para aceptar o rechazar cookies,
+        así como para eliminar las cookies existentes. Ten en cuenta que al desactivar o rechazar las cookies, es posible que algunas funciones de los sitios web no funcionen correctamente o que se vea afectada tu experiencia de navegación.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-start gap-1.5 self-stretch">
+      <h2>Tipos de cookies utilizadas</h2>
+      <p class="font-sm">
+        Cookies necesarias: Estas cookies son absolutamente fundamentales para el funcionamiento básico de nuestro sitio web. Sin ellas, no podríamos brindarle los servicios y funciones esenciales que ofrece nuestra plataforma. Estas cookies nos permiten autenticar usuarios,
+        prevenir fraudes y garantizar la seguridad total de nuestro sitio. Son esenciales para proteger su información personal y mantener la integridad de nuestras operaciones.
+      </p>
+      <p class="font-sm">
+        Cookies de rendimiento y análisis: Además de las cookies necesarias, también utilizamos cookies de rendimiento y análisis para recopilar información valiosa sobre cómo los usuarios interactúan con nuestro sitio web. Estas cookies, que incluyen Vercel Analytics, nos
+        proporcionan datos detallados sobre diversas métricas, como el país de origen de los usuarios, la cantidad de clics realizados, la duración de la visita, la referencia de origen (por ejemplo, Twitter), el sistema operativo utilizado y el navegador utilizado.
+      </p>
+      <p class="font-sm">
+        La información recopilada a través de estas cookies nos brinda una visión profunda sobre cómo los usuarios utilizan nuestro sitio web, lo cual resulta fundamental para mejorar continuamente nuestra plataforma y optimizar la experiencia del usuario. Al comprender las
+        preferencias y comportamientos de nuestros usuarios, podemos adaptar nuestro contenido, diseño y funciones para satisfacer mejor sus necesidades y brindarles una experiencia más personalizada y satisfactoria en cada visita. Estas cookies también nos ayudan a identificar
+        posibles problemas técnicos y mejorar la funcionalidad general de nuestro sitio.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-start gap-1.5 self-stretch">
+      <h2>Consentimiento para el uso de cookies:</h2>
+      <p class="font-sm">
+        Al visitar nuestro sitio web, te mostraremos un aviso de cookies detallado y fácil de entender que te brindará información clara sobre el uso de cookies en nuestra plataforma. Este aviso se presenta con el objetivo de garantizar tu privacidad y cumplir con las
+        regulaciones y leyes vigentes.
+      </p>
+      <p class="font-sm">Dicho aviso te solicitará amablemente tu consentimiento para el uso de cookies no necesarias. Reconocemos la importancia de tu privacidad y, por eso, queremos asegurarnos de que estés completamente informado antes de tomar una decisión.</p>
+      <p class="font-sm">
+        Si decides dar tu consentimiento, nos autorizas a utilizar cookies de acuerdo con los términos de nuestra política de cookies. Nuestra política describe en detalle qué son las cookies, cómo las utilizamos, qué información recopilamos y cómo la protegemos.
+      </p>
+      <p class="font-sm">
+        Queremos que tengas plena confianza en que tu privacidad está protegida y que solo utilizaremos cookies de manera responsable y segura. Estamos comprometidos en ofrecerte una experiencia en nuestro sitio web que sea transparente, personalizada y ajustada a tus
+        preferencias.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-start gap-1.5 self-stretch">
+      <h2>Control de cookies</h2>
+      <p class="font-sm">
+        Puedes tener un control total y una gestión precisa de las cookies en tu navegador. La amplia mayoría de navegadores te ofrecen la opción de rechazar o aceptar cookies, además de brindarte la capacidad de eliminar las cookies ya almacenadas en tu dispositivo. No obstante,
+        es importante tener en cuenta que si decides deshabilitar o eliminar ciertas cookies, es posible que algunas partes de nuestro sitio web no funcionen correctamente o que tu experiencia como usuario se vea afectada de alguna manera. Por lo tanto, te recomendamos considerar
+        cuidadosamente tus preferencias y necesidades antes de realizar cualquier modificación en la configuración de las cookies. Nuestro objetivo es ofrecerte una experiencia en línea óptima y personalizada, y el uso adecuado de las cookies puede ser fundamental para lograrlo.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-start gap-1.5 self-stretch">
+      <h2>Cookies de terceros</h2>
+      <p class="font-sm">
+        Es importante destacar que nuestro sitio web puede contener cookies de terceros, tales como las utilizadas por anunciantes, redes de publicidad y proveedores de servicios de análisis. Estas cookies son gestionadas directamente por dichos terceros, por lo que no tenemos
+        control total sobre ellas.
+      </p>
+      <p class="font-sm">
+        Recomendamos encarecidamente que revises las políticas de privacidad de estos terceros para obtener información más detallada acerca de sus prácticas de cookies. Al hacerlo, podrás comprender mejor cómo utilizan estas cookies y cómo afectan tu experiencia en nuestro sitio
+        web.
+      </p>
+      <p class="font-sm">
+        Queremos asegurarte que velamos por la protección de tus datos personales y tu privacidad. Sin embargo, debemos señalar que no asumimos responsabilidad alguna por las cookies de terceros, ya que están sujetas a sus propias políticas y prácticas. Te recomendamos que
+        siempre estés informado y tomes las medidas necesarias para proteger tu privacidad en línea.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-start gap-1.5 self-stretch">
+      <h2>Cambios en nuestra política de cookies</h2>
+      <p class="font-sm">
+        Nos reservamos el derecho de modificar esta Política de Cookies en cualquier momento, con el objetivo de mantenernos actualizados y adaptarnos a las necesidades y regulaciones vigentes. Queremos asegurarnos de que estés al tanto de estos cambios y cómo pueden afectarte.
+        Por lo tanto, te informamos de que cualquier modificación que realicemos será efectiva de inmediato después de que publiquemos la política actualizada en nuestro sitio web.
+      </p>
+      <p class="font-sm">
+        Valoramos tu privacidad y transparencia, por lo que te recomendamos encarecidamente que revises periódicamente esta página para estar plenamente informado sobre cualquier cambio en nuestra Política de Cookies. Entendemos que es importante para ti estar al tanto de cómo
+        utilizamos las cookies y cómo pueden afectar a tu experiencia en nuestro sitio web.
+      </p>
+      <p class="font-sm">
+        Si continúas utilizando nuestros servicios después de que se hayan realizado cambios en la Política de Cookies, consideraremos que has aceptado dichos cambios. Sin embargo, si no estás de acuerdo con las modificaciones realizadas, te ofrecemos la opción de discontinuar el
+        uso de nuestro sitio web.
+      </p>
+      <p class="font-sm">
+        Queremos asegurarnos de que estés informado y puedas tomar decisiones informadas sobre tu privacidad y la forma en que utilizamos las cookies en nuestro sitio web. Apreciamos tu confianza en nosotros y nos comprometemos a mantener altos estándares de protección de datos y
+        transparencia en todo momento.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-start gap-1.5 self-stretch">
+      <p class="font-sm font-semibold">Última actualización: 17/07/2023</p>
+    </div>
+  </div>
+
+  <aside class="flex flex-col justify-center items-start col-span-5 gap-2.5">
+    <VerMas title={"Artículos recientes"} pahtto="./blog/pagina/1/" aside={true} />
+    <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
+      {recentPosts.map((post, index) => <Card modo="list" post={post} loading={index < 3 ? "eager" : "lazy"} />)}
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:hidden items-start gap-2.5 self-stretch">
+      {recentPosts.map((post) => <Card modo="card" post={post} />)}
+    </div>
+  </aside>
+</Layout>

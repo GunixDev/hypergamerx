@@ -1,0 +1,49 @@
+---
+import Twitter from "../../../public/logos/twitter.svg";
+import Reddit from "../../../public/logos/reddit.svg";
+import Whatsapp from "../../../public/logos/whatsapp.svg";
+import Facebook from "../../../public/logos/facebook.svg";
+import Email from "../../../public/logos/email.svg";
+import Flipboard from "../../../public/logos/flipboard.svg";
+
+interface Props {
+  path: string;
+  title: string;
+}
+
+const { path, title } = Astro.props;
+function generarCompartirGmail(subject: string, body: string) {
+  const subjectEncoded = encodeURIComponent(subject);
+  const bodyEncoded = encodeURIComponent(body);
+  return `mailto:?subject=${subjectEncoded}&body=${bodyEncoded}`;
+}
+
+const url = `https://www.hypergamerx.com${path}/`;
+const articleUrl = encodeURIComponent(url);
+const subject = `⭐ Mira este artículo que vi en HyperGamerX 🎮`;
+const body2 = `${subject}: ${url}`;
+
+const compartirTwitter = `https://twitter.com/intent/tweet?url=${body2}`;
+const compartirGmail = generarCompartirGmail(subject, url);
+---
+
+<div class="flex justify-center items-start gap-1.5 ml-auto">
+  <a title="Twitter" lang={"es"} href={compartirTwitter} aria-label="Compartir en Twitter">
+    <Twitter class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+  </a>
+  <a title="Reddit" lang={"es"} href={`https://www.reddit.com/submit?url=${body2}`} aria-label="Compartir en Reddit">
+    <Reddit class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+  </a>
+  <a title="Whatsapp" lang={"es"} href={`https://api.whatsapp.com/send?text=${articleUrl}`} aria-label="Compartir en Whatsapp">
+    <Whatsapp class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+  </a>
+  <a title="Facebook" lang={"es"} href={`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`} aria-label="Compartir en Facebook">
+    <Facebook class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+  </a>
+  <a title="Mail" lang={"es"} href={compartirGmail} aria-label="Compartir por correo electrónico">
+    <Email class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+  </a>
+  <a title="Flipboard" lang={"es"} href={`https://share.flipboard.com/bookmarklet/popout?v=2&url=${url}&title=${title}`} target="_blank" rel="noopener noreferrer" aria-label="Compartir en Flipboard">
+    <Flipboard class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+  </a>
+</div>

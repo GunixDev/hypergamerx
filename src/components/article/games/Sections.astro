@@ -1,0 +1,33 @@
+---
+type Section = "guias" | "noticias" | "info" | "analisis" | "tops";
+
+interface Props {
+  gameSlug: string;
+  active: Section;
+  availableSections: Set<Section>;
+}
+
+const { gameSlug, active, availableSections } = Astro.props;
+
+const sections: { id: Section; label: string; path: string }[] = [
+  { id: "info", label: "INFO", path: `/juegos/${gameSlug}/` },
+  { id: "analisis", label: "ANÁLISIS", path: `/juegos/${gameSlug}/analisis/1/` },
+  { id: "noticias", label: "NOTICIAS", path: `/juegos/${gameSlug}/noticias/1/` },
+  { id: "guias", label: "GUÍAS", path: `/juegos/${gameSlug}/guias/1/` },
+  { id: "tops", label: "TOPS", path: `/juegos/${gameSlug}/tops/1/` },
+];
+---
+
+{
+  sections
+    .filter((section) => availableSections.has(section.id))
+    .map((section) =>
+      section.id === active ? (
+        <div class="px-3 py-2 bg-neutral-50 dark:text-neutral-950 border-2 border-neutral-950 items-center body-rounded">{section.label}</div>
+      ) : (
+        <a href={section.path} class="px-3 py-2 bg-neutral-950 border-2 border-neutral-50 text-neutral-50 items-center body-rounded">
+          {section.label}
+        </a>
+      ),
+    )
+}

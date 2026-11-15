@@ -1,0 +1,168 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/ui/Card.astro";
+import FormatDate from "@/components/utils/FormatDate.astro";
+import Pagination from "@/components/article/Pagination.astro";
+import Sections from "@/components/article/games/Sections.astro";
+import { decodeSlug, getEmDashEntry } from "emdash";
+import { Image } from "emdash/ui";
+import { gestPosts } from "@/utils/article-toc";
+
+const validTags = ["guias", "noticias", "analisis", "tops"] as const;
+type Category = (typeof validTags)[number];
+
+const sectionLabels: Record<Category, string> = {
+  guias: "Guías",
+  noticias: "Noticias",
+  analisis: "Análisis",
+  tops: "Tops",
+};
+
+const isCategory = (value: unknown): value is Category => typeof value === "string" && (validTags as readonly string[]).includes(value);
+
+const { game: gameParam, tag: tagParam, page } = Astro.params;
+
+if (!gameParam || !isCategory(tagParam)) {
+  return Astro.rewrite("/404");
+}
+
+const gameSlug = decodeSlug(gameParam);
+
+if (!gameSlug) {
+  return Astro.rewrite("/404");
+}
+
+if (page === undefined) {
+  return Astro.redirect(`/juegos/${gameParam}/${tagParam}/1/`, 301);
+}
+
+const tag = tagParam;
+const currentPage = Number(page);
+
+if (!Number.isSafeInteger(currentPage) || currentPage < 1) {
+  return Astro.rewrite("/404");
+}
+
+const notFound = () => {
+  Astro.cache?.set(false);
+  return Astro.rewrite("/404");
+};
+
+const isOthers = gameSlug === "otros";
+const perPage = 12;
+
+const [gameResult, gamePosts] = await Promise.all([isOthers ? Promise.resolve(null) : getEmDashEntry("games", gameSlug), gestPosts(100, Astro.cache, { primary_game: gameSlug })]);
+
+if (gameResult?.error) {
+  console.error("Failed to load game:", gameResult.error);
+  return new Response("Unable to load game", { status: 500 });
+}
+
+const game = gameResult?.entry ?? null;
+
+if (!game && !isOthers) return notFound();
+
+if (Astro.cache?.enabled && gameResult?.cacheHint) {
+  Astro.cache.set(gameResult.cacheHint);
+}
+
+const filteredPosts = gamePosts.filter((post) => post.data.primary_category === tag);
+const totalPages = Math.ceil(filteredPosts.length / perPage);
+
+if (totalPages === 0 || currentPage > totalPages) return notFound();
+
+const posts = filteredPosts.slice((currentPage - 1) * perPage, currentPage * perPage);
+
+const sections = validTags.filter((category) => gamePosts.some((post) => post.data.primary_category === category));
+const availableSections = new Set<Category | "info">(isOthers ? sections : ["info", ...sections]);
+
+const data = game?.data;
+const name = data?.name ?? "Otros juegos";
+const platform = data?.platform ?? [];
+const gender = data?.gender ?? [];
+const sectionTitle = sectionLabels[tag];
+
+const pageTitle = `${sectionTitle} de ${name}${currentPage > 1 ? ` · Página ${currentPage}` : ""}`;
+const description = `Todas las ${sectionTitle.toLowerCase()} de ${name} en HyperGamerX.`;
+
+const basePath = `/juegos/${gameSlug}/${tag}`;
+
+const pagination = {
+  first: `${basePath}/1/`,
+  last: `${basePath}/${totalPages}/`,
+  prev: currentPage > 1 ? `${basePath}/${currentPage - 1}/` : undefined,
+  next: currentPage < totalPages ? `${basePath}/${currentPage + 1}/` : undefined,
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={description}
+  autor="HyperGamerX"
+  type="article"
+  class="pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 items-start content-start flex lg:grid lg:grid-cols-12"
+  robots={currentPage > 1 ? "noindex, follow" : "index, follow"}
+>
+  <div class:list={["flex flex-col items-start gap-4 flex-[1_0_0] w-full", game ? "lg:col-span-7" : "lg:col-span-12"]}>
+    <div class="w-full">
+      <h1 class="w-full">{sectionTitle} de {name}</h1>
+    </div>
+
+    <div class="flex items-start w-full gap-2 font-sm font-bold overflow-x-auto">
+      <Sections gameSlug={gameSlug} active={tag} availableSections={availableSections} />
+    </div>
+
+    <div class="flex flex-col items-start gap-4 self-stretch w-full">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 w-full">
+        {posts.map((post) => <Card modo="card" post={post} heading="h2" />)}
+      </div>
+
+      <Pagination first={pagination.first} last={pagination.last} prevUrl={pagination.prev} nextUrl={pagination.next} currentPage={currentPage} transition:persist />
+    </div>
+  </div>
+
+  {
+    game && (
+      <aside class="flex flex-col justify-center items-center lg:col-span-5 gap-4 w-full">
+        <div class="gap-2.5 flex flex-col items-start self-stretch">
+          <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold body-rounded">SOBRE EL JUEGO</div>
+
+          <div class="flex gap-3 w-full">
+            <Image image={data?.cover} alt={name} class="body-rounded w-32 shrink-0 aspect-3/4 object-cover" />
+
+            <div class="flex flex-col font-sm grow min-w-0">
+              <p class="w-full wrap-break-word">
+                <span class="font-bold">Plataformas disponibles: </span>
+                {platform.length > 0 ? platform.join(", ") : "No especificado"}
+              </p>
+
+              <p class="w-full wrap-break-word">
+                <span class="font-bold">Género: </span>
+                {gender.length > 0 ? gender.join(", ") : "No especificado"}
+              </p>
+
+              <p class="w-full wrap-break-word">
+                <span class="font-bold">Desarrollador: </span>
+                {data?.developer ?? "Desconocido"}
+              </p>
+
+              <p class="w-full wrap-break-word">
+                <span class="font-bold">Multijugador: </span>
+                {data?.multiplayer ? "Sí" : "No"}
+              </p>
+
+              <p class="w-full wrap-break-word">
+                <span class="font-bold">Lanzamiento: </span>
+                <FormatDate date={data?.datelaunch} />
+              </p>
+
+              <a href={`/juegos/${gameSlug}/`} class="mt-2 underline font-bold">
+                Ver toda la información de {name}
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    )
+  }
+</Layout>

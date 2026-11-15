@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_emdash/admin
+
+Sitemap: https://hypergamerx.com/sitemap.xml

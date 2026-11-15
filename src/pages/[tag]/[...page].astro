@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Pagination from "@components/article/Pagination.astro";
+import Card from "@/components/ui/Card.astro";
+import { getTerm } from "emdash";
+import { gestPosts } from "@/utils/article-toc";
+
+const { tag, page } = Astro.params;
+const currentPage = Number(page ?? "1");
+const pageSize = 16;
+
+if (!tag || !Number.isInteger(currentPage) || currentPage < 1) {
+  return Astro.rewrite("/404");
+}
+
+const [term, posts] = await Promise.all([getTerm("category", tag), gestPosts(200, Astro.cache, { category: tag })]);
+
+if (!term) {
+  Astro.cache?.set(false);
+  return Astro.rewrite("/404");
+}
+
+const tagName = term.label;
+const totalPages = Math.max(1, Math.ceil(posts.length / pageSize));
+
+if (currentPage > totalPages) {
+  Astro.cache?.set(false);
+  return Astro.rewrite("/404");
+}
+
+const startIndex = (currentPage - 1) * pageSize;
+const pagePosts = posts.slice(startIndex, startIndex + pageSize);
+
+const baseUrl = `/${tag}/`;
+const first = `${baseUrl}/1/`;
+const last = `${baseUrl}/${totalPages}/`;
+const prevUrl = currentPage > 1 ? `${baseUrl}/${currentPage - 1}/` : undefined;
+const nextUrl = currentPage < totalPages ? `${baseUrl}/${currentPage + 1}/` : undefined;
+---
+
+<Layout robots="noindex, nofollow">
+  <h1>Artículos de {tagName}</h1>
+
+  <div class="flex flex-col lg:grid lg:grid-cols-2 items-start gap-2 self-stretch">
+    {
+      pagePosts.map((post) => {
+        return <Card modo="list" post={post} heading="h2" />;
+      })
+    }
+  </div>
+
+  {pagePosts.length === 0 && <p class="py-8 text-center">Todavía no hay artículos publicados en esta categoría.</p>}
+
+  <Pagination first={first} last={last} prevUrl={prevUrl} nextUrl={nextUrl} currentPage={currentPage} transition:persist />
+</Layout>

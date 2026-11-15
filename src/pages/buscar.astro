@@ -1,0 +1,102 @@
+---
+import Card from "@/components/ui/Card.astro";
+import VerMas from "@/components/VerMas.astro";
+import Layout from "@/layouts/Layout.astro";
+import { gestPosts } from "@/utils/article-toc";
+
+const recentPosts = await gestPosts(4, Astro.cache);
+---
+
+<Layout robots="noindex, nofollow" class="pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 items-start content-start flex lg:grid lg:grid-cols-12">
+  <div class="hyper-search col-span-7 min-w-0 w-full relative">
+    <input type="search" id="hyper-search-input" placeholder="Buscar artículos, juegos y noticias..." class="hyper-search-input w-full p-4" autocomplete="off" />
+    <div id="hyper-search-results" class="hyper-search-results hidden absolute top-full left-0 right-0 z-50 mt-2 bg-neutral-900 border border-neutral-800 rounded-lg shadow-xl overflow-hidden"></div>
+  </div>
+
+  <aside class="flex flex-col justify-center items-start col-span-5 gap-2.5">
+    <VerMas title="Artículos recientes" pahtto="/blog/pagina/1/" aside={true} />
+
+    <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
+      {
+        recentPosts.map((post, index) => {
+          return <Card modo="list" post={post} loading={index < 3 ? "eager" : "lazy"} />;
+        })
+      }
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:hidden items-start gap-2.5 self-stretch">
+      {
+        recentPosts.map((post) => {
+          return <Card modo="card" post={post} />;
+        })
+      }
+    </div>
+  </aside>
+</Layout>
+
+<script>
+  function setupSearch() {
+    const input = document.getElementById("hyper-search-input") as HTMLInputElement;
+    const resultsContainer = document.getElementById("hyper-search-results");
+
+    if (!input || !resultsContainer) return;
+
+    let timer: number | undefined;
+    let controller: AbortController | undefined;
+
+    input.addEventListener("input", () => {
+      clearTimeout(timer);
+      const query = input.value.trim();
+
+      if (query.length < 3) {
+        resultsContainer.innerHTML = "";
+        resultsContainer.classList.add("hidden");
+        return;
+      }
+
+      timer = window.setTimeout(async () => {
+        controller?.abort();
+        controller = new AbortController();
+
+        try {
+          const res = await fetch(`/_emdash/api/search?q=${encodeURIComponent(query)}`, {
+            signal: controller.signal,
+          });
+
+          if (!res.ok) return;
+
+          const json = await res.json();
+          const items = json.data?.items || json.items || [];
+
+          if (items.length > 0) {
+            resultsContainer.innerHTML = items
+              .map((item: any) => {
+                const slug = item.slug || item.id || "";
+                const title = item.title || "Sin título";
+                const url = `/blog/${slug}/`;
+                return `<a href="${url}" class="hyper-search-result block p-3 hover:bg-neutral-800 transition-colors border-b border-neutral-800/50 last:border-none text-sm text-neutral-200">${title}</a>`;
+              })
+              .join("");
+          } else {
+            resultsContainer.innerHTML = '<div class="hyper-search-result p-3 text-sm text-neutral-400">No se encontraron resultados.</div>';
+          }
+
+          resultsContainer.classList.remove("hidden");
+        } catch (err: any) {
+          if (err.name !== "AbortError") {
+            console.error("Error en la búsqueda:", err);
+          }
+        }
+      }, 700);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!input.contains(e.target as Node) && !resultsContainer.contains(e.target as Node)) {
+        resultsContainer.classList.add("hidden");
+      }
+    });
+  }
+
+  setupSearch();
+  document.addEventListener("astro:page-load", setupSearch);
+</script>

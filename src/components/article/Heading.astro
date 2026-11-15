@@ -1,0 +1,34 @@
+---
+interface Props {
+  node: {
+    style?: string;
+    _tocId?: string;
+  };
+}
+
+const { node } = Astro.props;
+
+const Tag = ["h2", "h3", "h4"].includes(node.style ?? "") ? node.style : "h2";
+---
+
+{
+  Tag === "h2" && (
+    <h2 id={node._tocId}>
+      <slot />
+    </h2>
+  )
+}
+{
+  Tag === "h3" && (
+    <h3 id={node._tocId}>
+      <slot />
+    </h3>
+  )
+}
+{
+  Tag === "h4" && (
+    <h4 id={node._tocId}>
+      <slot />
+    </h4>
+  )
+}

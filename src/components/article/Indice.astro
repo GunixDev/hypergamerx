@@ -1,0 +1,27 @@
+---
+import type { TocItem } from "@/utils/article-toc";
+
+interface Props {
+  data: TocItem[];
+}
+
+const { data } = Astro.props;
+---
+
+{
+  data.length > 0 && (
+    <nav aria-label="Índice del artículo" class="flex flex-col items-start gap-1 self-stretch bg-neutral-950 text-neutral-50 px-6 py-4 my-4 body-rounded">
+      <p class="text-xl font-bold">Índice</p>
+
+      <ul class="flex flex-col items-start gap-0.5 self-stretch ml-4">
+        {data.map((indice) => (
+          <li>
+            <a href={`#${indice.slug}`} class:list={[indice.depth === 2 && "text-lg font-bold", indice.depth === 3 && "text-base ml-4", indice.depth === 4 && "text-sm ml-8"]}>
+              {indice.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

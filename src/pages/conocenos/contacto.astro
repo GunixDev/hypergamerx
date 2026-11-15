@@ -1,0 +1,96 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import VerMas from "@/components/VerMas.astro";
+import { PUBLIC_TURNSTILE_SITE_KEY } from "astro:env/client";
+import Card from "@/components/ui/Card.astro";
+import { gestPosts } from "@/utils/article-toc";
+
+const recentPosts = await gestPosts(8, Astro.cache);
+---
+
+<Layout
+  robots="noindex, nofollow"
+  title="Contacto"
+  description="Contáctanos para cualquier duda o consulta."
+  class="pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 items-start content-start flex lg:grid lg:grid-cols-12"
+>
+  <div class="flex mx-2 flex-col items-start gap-6 xl:gap-12 self-stretch lg:col-span-7">
+    <div class="flex flex-col items-start gap-1.5 self-stretch">
+      <h1 class="mx-auto">Contacto</h1>
+      <p class="font-sm">Bienvenido a nuestra sección de contacto en donde podrás comunicarte con nosotros, ya sea el motivo seleccionado y el mensaje que usted nos mande lo revisaremos máximo en 7 días hábiles.</p>
+    </div>
+    <form method="post" class="flex flex-col items-start gap-1.5 xl:gap-2 self-stretch">
+      <label for="name" class="font-sm">Nombre Completo/Nombre de empresa</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="flex px-1 py-2 flex-col items-start gap-2.5 self-stretch rounded border-neutral-400 bg-neutral-50 dark:bg-zinc-900 text-neutral-950 dark:text-neutral-50 border-2 invalid:text-red-500 invalid:border-red-500 font-xs"
+        placeholder={"Nombre completo"}
+        required
+      />
+
+      <label for="email" class="font-sm">Correo Electrónico</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="flex px-1 py-2 flex-col items-start gap-2.5 self-stretch rounded border-neutral-400 bg-neutral-50 dark:bg-zinc-900 text-neutral-950 dark:text-neutral-50 border-2 invalid:text-red-500 invalid:border-red-500 font-xs"
+        placeholder={"example@gmail.com"}
+        required
+      />
+
+      <label for="subject" class="font-sm">Titulo del mensaje</label>
+      <input
+        type="text"
+        id="subject"
+        name="subject"
+        class="flex px-1 py-2 flex-col items-start gap-2.5 self-stretch rounded border-neutral-400 bg-neutral-50 dark:bg-zinc-900 text-neutral-950 dark:text-neutral-50 border-2 invalid:text-red-500 invalid:border-red-500 font-xs"
+        minlength="15"
+        maxlength="500"
+        placeholder={"Titulo del mensaje"}
+        required
+      />
+
+      <label for="message" class="font-sm">Mensaje</label>
+      <textarea id="message" name="message" class="flex min-h-24 max-h-40 px-2 py-1 flex-col items-start gap-2.5 w-full bg-neutral-50 dark:bg-zinc-900 text-neutral-950 dark:text-neutral-50 rounded border-2 border-neutral-400 font-xs" placeholder={"Mensaje"} required></textarea>
+      <div class="cf-turnstile" data-sitekey={PUBLIC_TURNSTILE_SITE_KEY} data-theme="dark" data-language={"es"}></div>
+      <button type="submit" class="flex px-2.5 py-2 justify-center items-center gap-2.5 w-full bg-neutral-950 text-neutral-50 body-rounded cursor-pointer font-sm font-bold">Enviar mensaje</button>
+    </form>
+  </div>
+
+  <aside class="flex flex-col justify-center items-start col-span-5 gap-2.5">
+    <VerMas title={"Artículos recientes"} pahtto="./blog/pagina/1/" aside={true} />
+    <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
+      {recentPosts.map((post, index) => <Card modo="list" post={post} loading={index < 3 ? "eager" : "lazy"} />)}
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:hidden items-start gap-2.5 self-stretch">
+      {recentPosts.map((post) => <Card modo="card" post={post} />)}
+    </div>
+  </aside>
+</Layout>
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+  import { actions } from "astro:actions";
+  const form = document.querySelector("form") as HTMLFormElement;
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const { error } = await actions.send(formData);
+
+      if (!error) {
+        form.reset();
+        alert("¡Mensaje enviado con éxito!");
+      } else {
+        console.error(error);
+        alert(`Error: ${error.message}`);
+      }
+    } catch (e) {
+      console.error("Error crítico enviando el formulario:", e);
+    }
+  });
+</script>

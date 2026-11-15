@@ -1,0 +1,18 @@
+---
+import { getEmDashEntry } from "emdash";
+
+const slug = Astro.params.slug ?? "";
+const { entry: post, error } = await getEmDashEntry("posts", slug);
+
+if (error) {
+  console.error("Error al buscar el artículo:", error);
+  return new Response("Unable to load post", { status: 500 });
+}
+
+if (!post || post.data.status !== "published") {
+  Astro.cache?.set(false);
+  return Astro.rewrite("/404");
+}
+
+return Astro.redirect(`/blog/${post.data.slug}/`, 301);
+---

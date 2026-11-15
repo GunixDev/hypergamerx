@@ -1,0 +1,175 @@
+---
+import HyperGamerXLetter from "@public/logos/hyperGamerXLetter.svg";
+import X from "@public/icons/x.svg";
+import HyperGamerX from "@public/logos/hyperGamerX.svg";
+import { FOOTER, NAV_ITEMS, NETWORKS } from "@/data";
+import { Search, Sun, Moon, Menu } from "@lucide/astro";
+---
+
+<div id="background-close" class="fixed top-0 inset-0 bg-neutral-950 opacity-0 pointer-events-none z-50 transition-opacity"></div>
+
+<aside id="navigation" class="h-full ease-in-out fixed top-0 z-80 bg-background -left-full w-full sm:w-7/12 overflow-y-auto flex flex-col justify-start items-center gap-2.5 lg:hidden transition-[left]">
+  <div class="flex px-5 justify-between items-center w-full bg-fullBlack py-8">
+    <HyperGamerXLetter class="w-42.5 h-auto" />
+      <X id="close-button" class="h-4 w-4 cursor-pointer text-" />
+  </div>
+
+  <nav aria-label="Navegación móvil" class="flex px-2 flex-col items-start gap-2.5 self-stretch h-full text-neutral-700 dark:text-neutral-200">
+    {
+      NAV_ITEMS.map((item) => {
+        const isActive = Astro.url.pathname === item.href;
+        return (
+          <a
+            href={item.href}
+            aria-current={isActive ? "page" : undefined}
+            class:list={["font-bold hover:text-primary focus-visible:text-primary duration-300 after:content-[''] after:block after:h-0.5 after:bg-primary after:transition-all after:duration-300", isActive ? "text-primary after:w-full" : "after:w-0 hover:after:w-full"]}
+          >
+            {item.name}
+          </a>
+        );
+      })
+    }
+  </nav>
+
+  <div class="flex px-2 flex-col items-start gap-2 self-stretch pb-4">
+    <div class="flex flex-col justify-center items-start gap-0.5 self-stretch">
+      <p class="w-full font-bold">Redes</p>
+      <div class="grid grid-cols-2 justify-between w-full items-center gap-x-2 gap-y-2">
+        {
+          NETWORKS.map((network) => (
+            <a href={network.url} aria-label={network.name} class="flex items-center gap-1 w-full">
+              <network.icon class="rounded w-6 h-6" />
+              <span class="font-xs text-muted">{network.name}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 self-stretch">
+      {
+        FOOTER.map((item) => {
+          return (
+            <div>
+              <p class="w-full font-bold">{item.title}</p>
+              {
+                item.items.map((link) => {
+                const isActive = Astro.url.pathname === link.href;
+                  if(link.href === "cookies") return <p data-cc='show-preferencesModal' transition:persist class="flex items-center gap-0.5 w-full cursor-pointer font-xs text-muted">{link.name}</p>;
+                  return <a href={link.href} class:list={["flex items-center gap-0.5 w-full font-xs text-muted", isActive ? "text-primary" : "hover:text-primary"]}>
+                    {link.name}
+                  </a>;
+                })
+              }
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</aside>
+
+<header id="mainNav" class="flex sticky top-0 w-full h-auto justify-between items-center bg-fullBlack text-full-white px-7 py-6 self-stretch z-50">
+  <div class="block lg:hidden w-full">
+      <button id="menu" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
+    <Menu class="w-8 h-8" />
+  </button>
+  </div>
+
+  <div class="flex items-center gap-4 relative lg:w-full">
+    <a href="/" class="flex items-center gap-3" aria-label="HyperGamerX Inicio">
+      <HyperGamerX class="w-8 h-8" aria-hidden="true" />
+      <HyperGamerXLetter class="hidden xl:block w-47.5 h-5 aspect-19/2" aria-hidden="true" />
+    </a>
+  </div>
+
+  <nav aria-label="Navegación principal" class="hidden lg:flex items-center gap-8">
+    {
+      NAV_ITEMS.map((item) => {
+        const isActive = Astro.url.pathname === item.href;
+        return (
+          <a
+            href={item.href}
+            aria-current={isActive ? "page" : undefined}
+            class:list={["font-bold after:content-[''] after:block after:h-0.5 after:bg-primary after:transition-all after:duration-300", isActive ? "text-primary after:w-full" : "after:w-0 hover:after:w-full"]}
+          >
+            {item.name}
+          </a>
+        );
+      })
+    }
+  </nav>
+
+  <div class="relative flex gap-4 w-full justify-end items-center lg:w-full">
+    <button id="theme-toggle" type="button" class="items-center gap-2 cursor-pointer w-8 hover:text-primary focus-visible:text-primary duration-300" aria-label="Cambiar el tema de colores de la página">
+      <Sun id="sun-icon" class="w-8 h-8 hidden" aria-hidden="true" />
+      <Moon id="moon-icon" class="w-8 h-8 hidden" aria-hidden="true" />
+    </button>
+    <a href="/buscar" class="flex items-center gap-2" aria-label="Buscar artículos">
+      <Search class="w-8 h-8" aria-hidden="true" />
+    </a>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const themeToggle = document.getElementById("theme-toggle") as HTMLButtonElement;
+    const sunIcon = document.getElementById("sun-icon") as HTMLElement;
+    const moonIcon = document.getElementById("moon-icon") as HTMLElement;
+
+    function changeTheme(theme: string) {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+        sunIcon.classList.remove("hidden");
+        moonIcon.classList.add("hidden");
+        themeToggle.ariaLabel = "Cambia el tema de la página a modo claro";
+      } else {
+        document.documentElement.classList.remove("dark");
+        sunIcon.classList.add("hidden");
+        moonIcon.classList.remove("hidden");
+        themeToggle.ariaLabel = "Cambia el tema de la página a modo oscuro";
+      }
+    }
+
+    (() => {
+      const isDark = (localStorage.getItem("theme") ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")) === "dark";
+      changeTheme(isDark ? "dark" : "light");
+    })();
+
+    themeToggle.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      const newTheme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      changeTheme(newTheme);
+    });
+
+    const menu = document.getElementById("menu") as HTMLImageElement;
+    const navigation = document.getElementById("navigation") as HTMLElement;
+    const backgroundClose = document.getElementById("background-close") as HTMLDivElement;
+    const closeButton = document.getElementById("close-button") as HTMLImageElement;
+    const mainNav = document.getElementById("mainNav") as HTMLElement;
+    const closes = document.querySelectorAll("#close-button, #background-close") as NodeListOf<HTMLElement>;
+
+    if (menu && navigation && backgroundClose && closeButton && mainNav) {
+      menu.addEventListener("click", () => {
+        navigation.classList.remove("left-[-100%]");
+        navigation.classList.add("left-0");
+        backgroundClose.classList.add("opacity-50");
+        backgroundClose.classList.remove("opacity-0");
+        backgroundClose.classList.remove("pointer-events-none");
+        backgroundClose.classList.add("pointer-events-auto");
+      });
+
+      closes.forEach((closeButton) => {
+        closeButton.addEventListener("click", () => {
+          navigation.classList.add("left-[-100%]");
+          navigation.classList.remove("left-0");
+          backgroundClose.classList.add("opacity-0");
+          backgroundClose.classList.remove("opacity-50");
+          backgroundClose.classList.add("pointer-events-none");
+          backgroundClose.classList.remove("pointer-events-auto");
+        });
+      });
+    }
+  });
+</script>

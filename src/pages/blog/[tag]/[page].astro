@@ -1,0 +1,9 @@
+---
+const { tag, page } = Astro.params;
+
+if (!tag || !page || !/^\d+$/.test(page)) {
+  return Astro.rewrite("/404");
+}
+
+return Astro.redirect(`/${encodeURIComponent(tag)}/${page}/`, 301);
+---

@@ -1,0 +1,108 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FormatDate from "@/components/utils/FormatDate.astro";
+import Sections from "@/components/article/games/Sections.astro";
+import { getEmDashEntry, decodeSlug } from "emdash";
+import { Image } from "emdash/ui";
+import { gestPosts } from "@/utils/article-toc";
+import MediaImage from "@/components/ui/MediaImage.astro";
+
+const categories = ["guias", "noticias", "analisis", "tops"] as const;
+
+const gameSlug = decodeSlug(Astro.params.game ?? "");
+
+if (!gameSlug) {
+  return Astro.rewrite("/404");
+}
+
+const isOthers = gameSlug === "otros";
+
+// La ficha del juego y qué categorías tienen artículos, todo en paralelo
+const [gameResult, found] = await Promise.all([isOthers ? Promise.resolve(null) : getEmDashEntry("games", gameSlug), Promise.all(categories.map((category) => gestPosts(1, Astro.cache, { primary_game: gameSlug, primary_category: category })))]);
+
+const sections = categories.filter((_, index) => found[index].length > 0);
+
+// "Otros" no tiene ficha: va directo a su primera sección con artículos
+if (isOthers) {
+  return Astro.redirect(`/juegos/otros/${sections[0] ?? "guias"}/1/`);
+}
+
+if (gameResult?.error) {
+  console.error("Error al obtener el juego:", gameResult.error);
+  return new Response("Unable to load game", { status: 500 });
+}
+
+const game = gameResult?.entry;
+
+if (!game) {
+  Astro.cache?.set(false); // no cachear el 404
+  return Astro.rewrite("/404");
+}
+
+if (Astro.cache?.enabled && gameResult?.cacheHint) {
+  Astro.cache.set(gameResult.cacheHint);
+}
+
+const gameData = game.data;
+const platform = gameData.platform ?? [];
+const gender = gameData.gender ?? [];
+
+const availableSections = new Set<"info" | (typeof categories)[number]>(["info", ...sections]);
+---
+
+<Layout
+  title={`${gameData.name}: información, guías y noticias`}
+  description={gameData.description}
+  autor="HyperGamerX"
+  type="article"
+  class="pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 items-start content-start flex lg:grid lg:grid-cols-12"
+  robots="index, follow"
+>
+  <div class="flex flex-col items-start gap-4 flex-[1_0_0] w-full lg:col-span-7">
+    <div class="w-full">
+      <h1 class="w-full">{gameData.name}</h1>
+    </div>
+
+    <div class="flex items-start w-full gap-2 font-sm font-bold overflow-x-auto">
+      <Sections gameSlug={gameSlug} active="info" availableSections={availableSections} />
+    </div>
+
+    <div class="flex flex-col items-start gap-4 self-stretch">
+      <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold body-rounded">DESCRIPCIÓN</div>
+      <p class="w-full font-base">{gameData.description}</p>
+    </div>
+  </div>
+
+  <aside class="flex flex-col justify-center items-center lg:col-span-5 gap-4 w-full">
+    <div class="gap-2.5 flex flex-col items-start self-stretch">
+      <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold body-rounded">SOBRE EL JUEGO</div>
+
+      <div class="flex gap-3 w-full">
+        <MediaImage image={gameData.cover} alt={gameData.name} class="body-rounded w-32 shrink-0 aspect-3/4 object-cover" sizes="128px" widths={[256, 384]} />
+
+        <div class="flex flex-col font-sm grow min-w-0">
+          <p class="w-full wrap-break-word">
+            <span class="font-bold">Plataformas disponibles: </span>
+            {platform.length > 0 ? platform.join(", ") : "No especificado"}
+          </p>
+          <p class="w-full wrap-break-word">
+            <span class="font-bold">Género: </span>
+            {gender.length > 0 ? gender.join(", ") : "No especificado"}
+          </p>
+          <p class="w-full wrap-break-word">
+            <span class="font-bold">Desarrollador: </span>
+            {gameData.developer ?? "Desconocido"}
+          </p>
+          <p class="w-full wrap-break-word">
+            <span class="font-bold">Multijugador: </span>
+            {gameData.multiplayer ? "Sí" : "No"}
+          </p>
+          <p class="w-full wrap-break-word">
+            <span class="font-bold">Lanzamiento: </span>
+            <FormatDate date={gameData.datelaunch} />
+          </p>
+        </div>
+      </div>
+    </div>
+  </aside>
+</Layout>

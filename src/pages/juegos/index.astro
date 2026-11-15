@@ -1,0 +1,55 @@
+---
+import FormatDate from "@/components/utils/FormatDate.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getGames } from "@/utils/article-toc";
+import { decodeSlug } from "emdash";
+import { Image } from "emdash/ui";
+
+const allGames = await getGames(100, Astro.cache);
+const games = Array.isArray(allGames) ? allGames.filter((game) => game.data.slug !== "otros") : [];
+---
+
+<Layout robots="noindex, nofollow">
+  <h1 class=" mb-2">Juegos en HyperGamerX</h1>
+
+  <div class="grid md:grid-cols-2 w-full gap-4">
+    {
+      games.map((game) => (
+        <a href={`/juegos/${decodeSlug(game.data.slug ?? game.id)}/`} class="flex flex-col items-start gap-4 self-stretch group">
+          <h2 class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold body-rounded group-hover:bg-neutral-50 group-hover:text-neutral-950 duration-500 transition-all border-2 border-neutral-950">{game.data.name}</h2>
+
+          <div class="flex gap-3 group-hover:gap-4 duration-500 transition-all">
+            <Image width={600} height={972} image={game.data.cover} alt={game.data.name} class="body-rounded w-32" />
+
+            <div class="flex flex-col font-sm">
+              <p>
+                <span class="font-bold">Plataformas disponibles: </span>
+                {game.data.platform.join(", ")}
+              </p>
+
+              <p>
+                <span class="font-bold">Género: </span>
+                {game.data.gender.join(", ")}
+              </p>
+
+              <p>
+                <span class="font-bold">Desarrollador: </span>
+                {game.data.developer}
+              </p>
+
+              <p>
+                <span class="font-bold">Multijugador: </span>
+                {game.data.multiplayer ? "Sí" : "No"}
+              </p>
+
+              <p>
+                <span class="font-bold">Lanzamiento: </span>
+                <FormatDate date={game.data.datelaunch} />
+              </p>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</Layout>

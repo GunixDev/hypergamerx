@@ -1,0 +1,39 @@
+---
+interface Props {
+  image?: {
+    src?: string;
+    width?: number;
+    height?: number;
+    alt?: string;
+    meta?: { storageKey?: string };
+  } | null;
+  alt?: string;
+  class?: string;
+  loading?: "lazy" | "eager";
+  fetchpriority?: "high" | "low" | "auto";
+  sizes?: string;
+  widths?: number[];
+  quality?: number;
+  [key: string]: unknown;
+}
+
+const { image, alt, class: className, loading = "lazy", fetchpriority, sizes = "100vw", widths = [480, 800, 1200], quality = 80, ...rest } = Astro.props;
+
+const storageKey = image?.meta?.storageKey;
+const original = (storageKey ? Astro.locals.emdash?.getPublicMediaUrl?.(storageKey) : undefined) ?? image?.src;
+
+const CDN = "https://media.hypergamerx.com/";
+const isCdn = typeof original === "string" && original.startsWith(CDN);
+
+const naturalWidth = image?.width;
+const available = [...new Set(widths.map((w) => (naturalWidth ? Math.min(w, naturalWidth) : w)))].sort((a, b) => a - b);
+
+const variant = (w: number) => (isCdn ? `${CDN}cdn-cgi/image/width=${w},quality=${quality},format=auto/${original!.slice(CDN.length)}` : original!);
+
+const src = original && available.length ? variant(available[available.length - 1]) : original;
+const srcset = original && available.length ? available.map((w) => `${variant(w)} ${w}w`).join(", ") : undefined;
+
+const fallback = isCdn && original ? `this.onerror=null;this.removeAttribute('srcset');this.src='${original}'` : undefined;
+---
+
+{src && <img src={src} srcset={srcset} sizes={srcset ? sizes : undefined} alt={alt ?? image?.alt ?? ""} width={image?.width} height={image?.height} class={className} loading={loading} fetchpriority={fetchpriority} decoding="async" onerror={fallback} {...rest} />}

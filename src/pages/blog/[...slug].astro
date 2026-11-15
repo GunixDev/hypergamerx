@@ -1,0 +1,217 @@
+---
+import { decodeSlug, getEmDashEntry } from "emdash";
+import { gestPosts, prepareArticleContent } from "@/utils/article-toc";
+import Layout from "@/layouts/Layout.astro";
+import Tag from "@/components/article/Tag.astro";
+import FormatDate from "@/components/utils/FormatDate.astro";
+import Indice from "@/components/article/Indice.astro";
+import { Image, PortableText } from "emdash/ui";
+import Heading from "@/components/article/Heading.astro";
+import YtVideoBlock from "@/components/markdown/YtVideoBlock.astro";
+import Card from "@/components/ui/Card.astro";
+import VerMas from "@/components/VerMas.astro";
+import SendPage from "../../../public/icons/sendPage.svg";
+import Share from "@/components/article/Share.astro";
+import MediaImage from "@/components/ui/MediaImage.astro";
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.rewrite("/404");
+}
+
+if (slug === "buscar") {
+  return Astro.redirect("/buscar/", 301);
+}
+
+if (/^\d+$/.test(slug)) {
+  return Astro.redirect(`/blog/pagina/${slug}/`);
+}
+
+const postSlug = decodeSlug(slug);
+
+if (!postSlug) {
+  return Astro.rewrite("/404");
+}
+
+const [{ entry: post, error: postError, cacheHint: postHint }, latestPosts] = await Promise.all([getEmDashEntry("posts", postSlug), gestPosts(9, Astro.cache)]);
+
+if (postError) {
+  console.error("Failed to load article:", postError);
+  return new Response("Unable to load article", { status: 500 });
+}
+
+if (!post || post.data.status !== "published") {
+  Astro.cache?.set(false);
+  return Astro.rewrite("/404");
+}
+
+if (Astro.cache?.enabled && postHint) {
+  Astro.cache.set(postHint);
+}
+
+const { title, description, publishedAt, cover, terms, updatedAt, byline, content } = post.data;
+
+// La ficha del juego y sus posts: en paralelo entre sí
+const gameSlug = post.data.primary_game;
+
+const [gameResult, gameCandidates] = await Promise.all([gameSlug ? getEmDashEntry("games", gameSlug) : Promise.resolve(null), gameSlug ? gestPosts(4, Astro.cache, { primary_game: gameSlug }) : Promise.resolve([])]);
+
+const game = gameResult?.entry ?? null;
+
+const tags = terms?.category ?? [];
+const { content: articleContent, toc } = prepareArticleContent(content);
+
+const gamePosts = gameCandidates.length >= 4 ? gameCandidates.filter((entry) => entry.data.id !== post.data.id).slice(0, 3) : [];
+const recentPosts = latestPosts.filter((entry) => entry.data.id !== post.data.id).slice(0, 8);
+
+const coverUrl = (() => {
+  const source = cover?.src;
+
+  if (typeof source !== "string" || !source.trim()) {
+    return undefined;
+  }
+
+  try {
+    const url = new URL(source, Astro.url);
+
+    return url.protocol === "http:" || url.protocol === "https:" ? url.toString() : undefined;
+  } catch {
+    return undefined;
+  }
+})();
+
+const authorAvatarUrl = byline?.avatarStorageKey ? Astro.locals.emdash?.getPublicMediaUrl?.(byline.avatarStorageKey) : undefined;
+---
+
+<Layout
+  title={title}
+  description={description}
+  imageUrl={coverUrl}
+  imageAlt={cover?.alt || title}
+  pubDate={publishedAt?.toISOString()}
+  updatedDate={updatedAt?.toISOString()}
+  autor="HyperGamerX"
+  type="article"
+  class="pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 items-start content-start flex flex-col lg:grid lg:grid-cols-12"
+>
+  <div data-pagefind-body class="flex flex-col items-start gap-4 w-full lg:col-span-7">
+    <div class="flex flex-col items-start gap-2.5 self-stretch">
+      <div data-pagefind-weight="7" class="flex flex-col justify-center items-center gap-1.5 w-full">
+        <h1 class="w-full" data-pagefind-meta="title">
+          {title}
+        </h1>
+
+        <p class="w-full font-sm">{description}</p>
+      </div>
+
+      <div class="flex items-center content-center gap-1 w-full flex-wrap">
+        {tags.map((item) => <Tag tag={item} />)}
+      </div>
+
+      <div class="flex items-center gap-0.5 self-stretch">
+        <SendPage width={12} height={10} class="w-3 h-3 lg:w-4 lg:h-4 fill-neutral-950 dark:fill-neutral-50" />
+
+        <span class="font-xs my-auto">
+          Creado el <FormatDate date={publishedAt} />
+          <span>
+            {" "}(Actualizado el <FormatDate date={updatedAt} />)
+          </span>
+        </span>
+      </div>
+
+      <div class="flex justify-between items-end self-stretch">
+        <div class="flex flex-col items-start gap-0.5">
+          <span class="font-sm font-bold">Escrito por:</span>
+
+          <p class="flex items-center gap-1 font-sm underline">
+            {
+              authorAvatarUrl && (
+                <img
+                  src={authorAvatarUrl}
+                  alt={byline?.avatarAlt || `Foto de ${byline?.displayName}`}
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                  decoding="async"
+                  class="rounded-full w-4 h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6"
+                  style={byline?.avatarDominantColor ? `background-color: ${byline.avatarDominantColor}` : undefined}
+                />
+              )
+            }
+
+            {byline?.displayName}
+          </p>
+        </div>
+
+        <div class="flex justify-center items-start gap-0.5">
+          <Share path={`/blog/${post.data.slug}`} title={title} />
+        </div>
+      </div>
+
+      <div class="flex flex-col items-start w-full">
+        <MediaImage
+          image={cover}
+          alt={cover?.alt || title}
+          class="shadow sm:shadow-lg shadow-neutral-950/50 body-rounded w-full aspect-auto object-cover"
+          data-pagefind-meta="image[src], image_alt[alt]"
+          loading="eager"
+          fetchpriority="high"
+          sizes="(min-width: 1024px) 700px, 100vw"
+          widths={[480, 958, 1200]}
+          quality={100}
+        />
+
+        <Indice data={toc} />
+
+        <div class="contenido mt-4 flex flex-col justify-center self-stretch w-full overflow-hidden">
+          <PortableText
+            value={articleContent}
+            components={{
+              block: {
+                h2: Heading,
+                h3: Heading,
+                h4: Heading,
+              },
+              type: { iframe: YtVideoBlock },
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="flex flex-col justify-center items-center lg:col-span-5 w-full gap-4">
+    {
+      gamePosts.length > 0 && (
+        <div class="gap-2.5 flex flex-col items-start self-stretch">
+          <p class="font-lg font-bold">Artículos de {game?.data.name ?? "Otros"}</p>
+
+          <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
+            {gamePosts.map((relatedPost) => (
+              <Card modo="list" post={relatedPost} />
+            ))}
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:hidden items-start gap-2.5 self-stretch">
+            {gamePosts.map((relatedPost) => (
+              <Card modo="card" post={relatedPost} />
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <div class="gap-2.5 flex flex-col items-start self-stretch">
+      <VerMas title="Artículos recientes" pahtto="blog/pagina/1" aside={true} />
+
+      <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
+        {recentPosts.map((recentPost) => <Card modo="list" post={recentPost} />)}
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:hidden items-start gap-2.5 self-stretch">
+        {recentPosts.map((recentPost) => <Card modo="card" post={recentPost} />)}
+      </div>
+    </div>
+  </aside>
+</Layout>

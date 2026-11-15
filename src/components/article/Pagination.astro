@@ -1,0 +1,55 @@
+---
+import PaginationPrevDouble from "../../../public/icons/paginationPrevDouble.svg";
+import PaginationPrev from "../../../public/icons/paginationPrev.svg";
+import PaginationNext from "../../../public/icons/paginationNext.svg";
+import PaginationNextDouble from "../../../public/icons/paginationNextDouble.svg";
+
+const { prevUrl, nextUrl, currentPage, first, last } = Astro.props;
+
+const showFirst = first && prevUrl;
+const showPrev = Boolean(prevUrl);
+const showNext = Boolean(nextUrl);
+const showLast = last && nextUrl;
+---
+
+<div aria-label="Blog pages" class="flex justify-center items-start gap-2 self-stretch">
+  {
+    showFirst && (
+      <a href={first} rel="prev" aria-label="Primera página" class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center body-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group">
+        <PaginationPrevDouble class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300" />
+      </a>
+    )
+  }
+
+  {
+    showPrev && (
+      <a href={prevUrl} rel="prev" aria-label="Página anterior" class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center body-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group">
+        <PaginationPrev class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300" />
+      </a>
+    )
+  }
+
+  {
+    currentPage && (
+      <span class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center body-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group text-white">
+        <span class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300 text-center justify-center leading-snug font-sm group-hover:font-base font-bold group-active:text-neutral-950">{currentPage}</span>
+      </span>
+    )
+  }
+
+  {
+    showNext && (
+      <a href={nextUrl} rel="next" aria-label="Siguiente página" class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center body-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group">
+        <PaginationNext class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300" />
+      </a>
+    )
+  }
+
+  {
+    showLast && (
+      <a href={last} rel="next" aria-label="Última página" class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center body-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group">
+        <PaginationNextDouble class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300" />
+      </a>
+    )
+  }
+</div>
