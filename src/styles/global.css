@@ -7,7 +7,7 @@
   --default-transition-duration: 300ms;
   --color-background: var(--color-neutral-50);
   --color-foreground: var(--color-neutral-950);
-  --color-fullBlack: var(--color-neutral-950);
+  --color-full-black: var(--color-neutral-950);
   --color-full-white: var(--color-neutral-50);
   --color-primary: var(--color-green-600);
   --color-muted: var(--color-neutral-600)

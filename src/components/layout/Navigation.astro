@@ -9,7 +9,7 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
 <div id="background-close" aria-hidden="true" class="fixed top-0 inset-0 bg-neutral-950 opacity-0 pointer-events-none z-50 transition-opacity"></div>
 
 <aside id="navigation" aria-label="Menú de navegación móvil" aria-hidden="true" class="h-full ease-in-out fixed top-0 z-80 bg-background -left-full w-full sm:w-7/12 overflow-y-auto flex flex-col justify-start items-center gap-2.5 lg:hidden transition-[left]">
-  <div class="flex px-5 justify-between items-center w-full bg-fullBlack py-8">
+  <div class="flex px-5 justify-between items-center w-full bg-full-black py-8">
     <HyperGamerXLetter class="w-42.5 h-auto" aria-hidden="true" />
     <button id="close-button" type="button" aria-label="Cerrar menú de navegación" class="flex items-center justify-center">
         <X class="h-4 w-4" aria-hidden="true" />
@@ -58,7 +58,7 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
                 const isActive = Astro.url.pathname === link.href;
                 if (link.href === "cookies")
                   return (
-                    <button type="button" data-cc="show-preferencesModal" transition:persist class="flex items-center gap-0.5 w-full cursor-pointer font-xs text-muted">
+                    <button type="button" data-cc="show-preferencesModal" transition:persist class="flex items-center gap-0.5 w-full cursor-pointer font-xs text-muted transition-colors hover:text-primary focus-visible:text-primary">
                       {link.name}
                     </button>
                   );
@@ -76,7 +76,7 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
   </div>
 </aside>
 
-<header id="mainNav" class="flex sticky top-0 w-full h-auto justify-between items-center bg-fullBlack text-full-white px-7 py-6 self-stretch z-50">
+<header id="mainNav" class="flex sticky top-0 w-full h-auto justify-between items-center bg-full-black text-full-white px-7 py-6 self-stretch z-50">
   <div class="block lg:hidden w-full">
     <button id="menu" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
       <Menu class="w-8 h-8" aria-hidden="true" />
