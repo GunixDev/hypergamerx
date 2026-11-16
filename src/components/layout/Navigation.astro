@@ -76,16 +76,16 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
   </div>
 </aside>
 
-<header id="mainNav" class="flex sticky top-0 w-full h-auto justify-between items-center bg-full-black text-full-white px-7 py-6 self-stretch z-50">
+<header id="mainNav" class="flex sticky top-0 w-full h-auto justify-between items-center bg-full-black text-full-white px-4 py-3 lg:px-7 lg:py-6 self-stretch z-50">
   <div class="block lg:hidden w-full">
     <button id="menu" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
-      <Menu class="w-8 h-8" aria-hidden="true" />
+      <Menu class="size-4 md:size-8" aria-hidden="true" />
     </button>
   </div>
 
   <div class="flex items-center gap-4 relative lg:w-full">
     <a href="/" class="flex items-center gap-3" aria-label="HyperGamerX Inicio">
-      <HyperGamerX class="w-8 h-8" aria-hidden="true" />
+      <HyperGamerX class="size-4 md:size-8" aria-hidden="true" />
       <HyperGamerXLetter class="hidden xl:block w-47.5 h-5 aspect-19/2" aria-hidden="true" />
     </a>
   </div>
@@ -103,13 +103,13 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
     }
   </nav>
 
-  <div class="relative flex gap-4 w-full justify-end items-center lg:w-full">
-    <button id="theme-toggle" type="button" class="items-center gap-2 cursor-pointer w-8 hover:text-primary focus-visible:text-primary duration-300" aria-label="Cambiar el tema de colores de la página">
-      <Sun id="sun-icon" class="w-8 h-8 hidden" aria-hidden="true" />
-      <Moon id="moon-icon" class="w-8 h-8 hidden" aria-hidden="true" />
+  <div class="relative flex gap-2 lg:gap-4 w-full justify-end items-center lg:w-full">
+    <button id="theme-toggle" type="button" class="items-center gap-2 cursor-pointer w-4 md:w-8 hover:text-primary focus-visible:text-primary duration-300" aria-label="Cambiar el tema de colores de la página">
+      <Sun id="sun-icon" class="size-4 md:size-8 hidden" aria-hidden="true" />
+      <Moon id="moon-icon" class="size-4 md:size-8 hidden" aria-hidden="true" />
     </button>
     <a href="/buscar" class="flex items-center gap-2" aria-label="Buscar artículos">
-      <Search class="w-8 h-8" aria-hidden="true" />
+      <Search class="size-4 md:size-8" aria-hidden="true" />
     </a>
   </div>
 </header>
