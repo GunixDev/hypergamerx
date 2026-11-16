@@ -9,7 +9,7 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
 <div id="background-close" aria-hidden="true" class="fixed top-0 inset-0 bg-neutral-950 opacity-0 pointer-events-none z-50 transition-opacity"></div>
 
 <aside id="navigation" aria-label="Menú de navegación móvil" aria-hidden="true" class="h-full ease-in-out fixed top-0 z-80 bg-background -left-full w-full sm:w-7/12 overflow-y-auto flex flex-col justify-start items-center gap-2.5 lg:hidden transition-[left]">
-  <div class="flex px-5 justify-between items-center w-full bg-full-black py-8">
+  <div class="flex px-5 justify-between items-center w-full bg-full-black py-5">
     <HyperGamerXLetter class="w-42.5 h-auto" aria-hidden="true" />
     <button id="close-button" type="button" aria-label="Cerrar menú de navegación" class="flex items-center justify-center">
         <X class="h-4 w-4" aria-hidden="true" />
@@ -79,13 +79,13 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
 <header id="mainNav" class="flex sticky top-0 w-full h-auto justify-between items-center bg-full-black text-full-white px-4 py-3 lg:px-7 lg:py-6 self-stretch z-50">
   <div class="block lg:hidden w-full">
     <button id="menu" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
-      <Menu class="size-4 md:size-8" aria-hidden="true" />
+      <Menu class="size-6 md:size-8" aria-hidden="true" />
     </button>
   </div>
 
   <div class="flex items-center gap-4 relative lg:w-full">
     <a href="/" class="flex items-center gap-3" aria-label="HyperGamerX Inicio">
-      <HyperGamerX class="size-4 md:size-8" aria-hidden="true" />
+      <HyperGamerX class="size-6 md:size-8" aria-hidden="true" />
       <HyperGamerXLetter class="hidden xl:block w-47.5 h-5 aspect-19/2" aria-hidden="true" />
     </a>
   </div>
@@ -104,12 +104,12 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
   </nav>
 
   <div class="relative flex gap-2 lg:gap-4 w-full justify-end items-center lg:w-full">
-    <button id="theme-toggle" type="button" class="items-center gap-2 cursor-pointer w-4 md:w-8 hover:text-primary focus-visible:text-primary duration-300" aria-label="Cambiar el tema de colores de la página">
-      <Sun id="sun-icon" class="size-4 md:size-8 hidden" aria-hidden="true" />
-      <Moon id="moon-icon" class="size-4 md:size-8 hidden" aria-hidden="true" />
+    <button id="theme-toggle" type="button" class="items-center gap-2 cursor-pointer w-6 md:w-8 hover:text-primary focus-visible:text-primary duration-300" aria-label="Cambiar el tema de colores de la página">
+      <Sun id="sun-icon" class="size-6 md:size-8 hidden" aria-hidden="true" />
+      <Moon id="moon-icon" class="size-6 md:size-8 hidden" aria-hidden="true" />
     </button>
     <a href="/buscar" class="flex items-center gap-2" aria-label="Buscar artículos">
-      <Search class="size-4 md:size-8" aria-hidden="true" />
+      <Search class="size-6 md:size-8" aria-hidden="true" />
     </a>
   </div>
 </header>
