@@ -1,26 +1,11 @@
-import { defineConfig, envField, memoryCache, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import cloudflare from "@astrojs/cloudflare";
-import emdash, { local, memoryCache as emdashMemoryCache } from "emdash/astro";
-import { sqlite } from "emdash/db";
+import emdash from "emdash/astro";
 import { d1, r2, kvCache } from "@emdash-cms/cloudflare";
-import node from "@astrojs/node";
 import { cacheCloudflare } from "@astrojs/cloudflare/cache";
-
-const isCloudflare = process.env.DEPLOY_TARGET === "cloudflare" || process.env.WORKERS_CI === "1";
-const isLocal = !isCloudflare;
-
-const database = isLocal ? sqlite({ url: "file:./data.db" }) : d1({ binding: "DB", session: "auto", coalesce: true });
-const objectCache = isLocal ? emdashMemoryCache() : kvCache({ binding: "CACHE" });
-
-const storage = isLocal
-  ? local({
-      directory: "./uploads",
-      baseUrl: "/_emdash/api/media/file",
-    })
-  : r2({ binding: "MEDIA", publicUrl: "https://media.hypergamerx.com" });
 
 export default defineConfig({
   env: {
@@ -34,13 +19,24 @@ export default defineConfig({
   site: "https://hypergamerx.com",
   trailingSlash: "never",
 
-  integrations: [mdx(), react(), emdash({ database, storage, objectCache })],
+  integrations: [
+    mdx(),
+    react(),
+    emdash({
+      database: d1({ binding: "DB", session: "auto", coalesce: true }),
+      storage: r2({
+        binding: "MEDIA",
+        publicUrl: import.meta.env.PROD ? "https://media.hypergamerx.com" : undefined,
+      }),
+      objectCache: kvCache({ binding: "CACHE" }),
+    }),
+  ],
 
   output: "server",
-  adapter: isLocal ? node({ mode: "standalone" }) : cloudflare(),
+  adapter: cloudflare(),
 
   cache: {
-    provider: isLocal ? memoryCache() : cacheCloudflare(),
+    provider: cacheCloudflare(),
   },
 
   fonts: [
@@ -76,7 +72,7 @@ export default defineConfig({
     "/avisos-y-politicas/*": { maxAge: 604800, swr: 2592000 },
     "/conocenos/*": { maxAge: 604800, swr: 2592000 },
   },
-  
+
   prefetch: {
     prefetchAll: true,
     defaultStrategy: "hover",
