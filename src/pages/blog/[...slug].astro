@@ -65,29 +65,21 @@ const { content: articleContent, toc } = prepareArticleContent(content);
 const gamePosts = gameCandidates.length >= 4 ? gameCandidates.filter((entry) => entry.data.id !== post.data.id).slice(0, 3) : [];
 const recentPosts = latestPosts.filter((entry) => entry.data.id !== post.data.id).slice(0, 8);
 
-const coverUrl = (() => {
-  const source = cover?.src;
-
-  if (typeof source !== "string" || !source.trim()) {
-    return undefined;
-  }
-
-  try {
-    const url = new URL(source, Astro.url);
-
-    return url.protocol === "http:" || url.protocol === "https:" ? url.toString() : undefined;
-  } catch {
-    return undefined;
-  }
-})();
-
 const authorAvatarUrl = byline?.avatarStorageKey ? Astro.locals.emdash?.getPublicMediaUrl?.(byline.avatarStorageKey) : undefined;
+
+const storageKey = typeof cover?.meta?.storageKey === "string" ? cover.meta.storageKey : undefined;
+const original = (storageKey ? Astro.locals.emdash?.getPublicMediaUrl?.(storageKey) : undefined) ?? cover?.src;
+
+const CDN = "https://media.hypergamerx.com/";
+const coverUrl = original
+  ? `${CDN}cdn-cgi/image/width=${cover?.width ?? 1200},quality=80,format=auto/${original.slice(CDN.length)}`
+  : undefined;
 ---
 
 <Layout
   title={title}
   description={description}
-  imageUrl={coverUrl}
+  image={coverUrl}
   imageAlt={cover?.alt || title}
   pubDate={publishedAt?.toISOString()}
   updatedDate={updatedAt?.toISOString()}

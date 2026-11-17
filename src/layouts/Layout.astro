@@ -7,27 +7,16 @@ import CookieConsent from "@components/CookieConsent.astro";
 import "@/styles/global.css";
 import Navigation from "@/components/layout/Navigation.astro";
 import Footer from "@/components/layout/Footer.astro";
-import Banner from "@/components/layout/Banner.astro";
 import { Font } from "astro:assets";
-
-const allImageModules = import.meta.glob<{ default: ImageMetadata }>("/src/assets/blog/img/*.{jpeg,jpg,png,gif,webp,svg,avif}");
 
 interface Props {
   title?: string;
   description?: string;
-  /** ID de una imagen registrada en imagesData. */
   image?: string;
-  /** URL de imagen externa o de EmDash. */
-  imageUrl?: string;
   imageAlt?: string;
-  imageWidth?: string;
-  imageHeight?: string;
-  imageType?: string;
   autor?: string;
   type?: string;
   class?: string;
-  banner?: boolean;
-  bannerTitle?: string;
   robots?: string;
   pubDate?: string;
   updatedDate?: string;
@@ -37,73 +26,14 @@ const {
   class: className,
   title = "HyperGamerX: Tu Destino para Noticias de Videojuegos",
   description = "Descubre las últimas noticias y curiosidades en el mundo de los videojuegos. Reseñas, avances, análisis y más, HyperGamerX tu fuente de información.",
-  image: heroImageId,
-  imageUrl,
-  imageAlt,
-  imageWidth,
-  imageHeight,
-  imageType,
+  image = "/img/logo4.png",
+  imageAlt = "Logo de HyperGamerX",
   autor = "Brayan Cordova",
   type = "website",
-  banner = false,
-  bannerTitle = "Página en vista previa, luego sera movida",
   robots = "index, follow",
   pubDate,
   updatedDate,
 } = Astro.props;
-
-const siteUrl = Astro.site ?? new URL("https://www.hypergamerx.com");
-
-const defaultOgImage = {
-  url: new URL("/img/logo4.png", siteUrl).toString(),
-  alt: "Logo de HyperGamerX",
-  width: "1200",
-  height: "630",
-  type: "image/png",
-};
-
-let ogImageUrl = defaultOgImage.url;
-let ogImageAlt = defaultOgImage.alt;
-let ogImageWidth = defaultOgImage.width;
-let ogImageHeight = defaultOgImage.height;
-let ogImageType: string | undefined = defaultOgImage.type;
-
-/**
- * Una URL explícita tiene prioridad sobre la imagen local.
- * Esto permite que las portadas de EmDash usen su propio almacenamiento.
- */
-if (imageUrl) {
-  try {
-    const resolvedUrl = new URL(imageUrl, Astro.url);
-
-    if (resolvedUrl.protocol === "http:" || resolvedUrl.protocol === "https:") {
-      ogImageUrl = resolvedUrl.toString();
-      ogImageAlt = imageAlt || title;
-      ogImageWidth = imageWidth || "1200";
-      ogImageHeight = imageHeight || "675";
-
-      // No adivinamos el formato si el llamador no lo proporciona.
-      if (imageType) {
-        ogImageType = imageType;
-      } else {
-        const pathname = resolvedUrl.pathname.toLowerCase();
-
-        if (pathname.endsWith(".png")) ogImageType = "image/png";
-        else if (pathname.endsWith(".webp")) ogImageType = "image/webp";
-        else if (pathname.endsWith(".avif")) ogImageType = "image/avif";
-        else if (pathname.endsWith(".gif")) ogImageType = "image/gif";
-        else if (pathname.endsWith(".svg")) ogImageType = "image/svg+xml";
-        else if (/\.(jpe?g)$/.test(pathname)) ogImageType = "image/jpeg";
-        else ogImageType = undefined;
-      }
-    }
-  } catch (error) {
-    console.error("[Layout.astro] No se pudo resolver la URL de la imagen SEO:", imageUrl, error);
-  }
-}
-
-const finalPubDate = pubDate;
-const finalUpdateDate = updatedDate || pubDate;
 ---
 
 <html lang={"es"}>
@@ -112,13 +42,12 @@ const finalUpdateDate = updatedDate || pubDate;
     <Font cssVariable="--font-space-grotesk" />
     <title>{title}</title>
     <ClientRouter />
-    {ogImageUrl !== defaultOgImage.url && <link rel="preload" as="image" href={ogImageUrl} />}
+    <link rel="preload" as="image" href={image} />
     <meta name="publisuites-verify-code" content="aHR0cHM6Ly93d3cuaHlwZXJnYW1lcnguY29t" />
-    <MetaTags title={title} description={description} image={ogImageUrl} imageAlt={ogImageAlt} imageWidth={ogImageWidth} imageHeight={ogImageHeight} imageType={ogImageType} autor={autor} type={type} publishtime={finalPubDate} updatetime={finalUpdateDate} robots={robots} />
+    <MetaTags title={title} description={description} image={image} imageAlt={imageAlt} autor={autor} type={type} pubDate={pubDate} updatedDate={updatedDate} robots={robots} />
 
     <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-KW6PKZ3FV9"></script>
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="de119c59-9634-41f2-923a-e260ce3ff8c5"></script>
-    
+
     <script>
       declare global {
         interface Window {
@@ -144,9 +73,9 @@ const finalUpdateDate = updatedDate || pubDate;
     </script>
   </head>
 
-  <body class="bg-background text-foreground transition-none flex flex-col min-h-screen items-start font-base overflow-x-hidden w-dvw">
+  <body class="bg-background text-foreground flex flex-col">
     <div transition:persist id="cc-container" class="cc--darkmode">
-      <CookieConsent transition:persist />
+      <CookieConsent />
       <script is:inline>
         document.addEventListener("astro:before-preparation", (_event) => {
           const htmlClassName = window.document.documentElement.className;
@@ -159,19 +88,9 @@ const finalUpdateDate = updatedDate || pubDate;
       </script>
     </div>
     <Navigation />
-    {banner && <Banner title={bannerTitle} />}
-    <main
-      class="flex flex-col items-start w-full flex-grow text-neutral-950 dark:text-neutral-50 duration-300"
-      class:list={[className || "pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 md:gap-5 lg:gap-4", className]}
-    >
+    <main class="flex flex-col" class:list={[className || "pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 md:gap-5 lg:gap-4", className]}>
       <slot />
     </main>
-    <Footer transition:persist />
+    <Footer />
   </body>
 </html>
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>

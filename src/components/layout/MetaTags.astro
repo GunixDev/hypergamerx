@@ -1,32 +1,27 @@
 ---
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   image?: string;
   imageAlt?: string;
-  imageWidth?: string;
-  imageHeight?: string;
-  imageType?: string;
-  autor: string;
-  type: string;
-  publishtime?: string;
-  updatetime?: string;
-  robots: string;
-  pathname?: string;
+  autor?: string;
+  type?: string;
+  class?: string;
+  robots?: string;
+  pubDate?: string;
+  updatedDate?: string;
 }
 
-const { title, description, image, imageAlt, imageWidth, imageHeight, imageType, autor, type, publishtime, updatetime, robots, pathname } = Astro.props;
+const { title, description, image, imageAlt, autor, type, robots, pubDate, updatedDate } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://hypergamerx.com");
-
-const currentPath = pathname || Astro.url.pathname;
+const currentPath = Astro.url.pathname;
 const cleanPath = currentPath !== "/" && currentPath.endsWith("/") ? currentPath.slice(0, -1) : currentPath;
-
 const canonicalURL = new URL(cleanPath, siteUrl);
-canonicalURL.search = "";
-canonicalURL.hash = "";
 
 const imageURL = image ? new URL(image, siteUrl).toString() : undefined;
+
+console.log(imageURL)
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -45,8 +40,8 @@ const articleSchema =
         description,
         url: canonicalURL.toString(),
         ...(imageURL ? { image: [imageURL] } : {}),
-        ...(publishtime ? { datePublished: publishtime } : {}),
-        ...(updatetime || publishtime ? { dateModified: updatetime || publishtime } : {}),
+        ...(pubDate ? { datePublished: pubDate } : {}),
+        ...(updatedDate ? { dateModified: updatedDate } : {}),
         inLanguage: "es-PE",
         author: {
           "@type": "Person",
@@ -110,10 +105,16 @@ const articleSchema =
 <meta property="og:locale" content="es_PE" />
 <meta property="og:site_name" content="HyperGamerX" />
 
-{type === "article" && publishtime && <meta property="article:published_time" content={publishtime} />}
-{type === "article" && updatetime && <meta property="article:modified_time" content={updatetime} />}
-{type === "article" && <meta property="article:author" content={autor} />}
-{type === "article" && <meta property="article:section" content="Videojuegos" />}
+{
+  type === "article" && (
+    <>
+      {pubDate && <meta property="article:published_time" content={pubDate} />}
+      {updatedDate && <meta property="article:modified_time" content={updatedDate} />}
+      <meta property="article:author" content={autor} />
+      <meta property="article:section" content="Videojuegos" />
+    </>
+  )
+}
 
 {
   imageURL && (
@@ -121,9 +122,11 @@ const articleSchema =
       <meta property="og:image" content={imageURL} />
       <meta property="og:image:secure_url" content={imageURL} />
       {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
-      {imageWidth && <meta property="og:image:width" content={imageWidth} />}
-      {imageHeight && <meta property="og:image:height" content={imageHeight} />}
-      {imageType && <meta property="og:image:type" content={imageType} />}
+      <meta property="og:image:width" content="958" />
+      <meta property="og:image:height" content="540" />
+      <meta property="og:image:type" content="image/webp" />
+      <meta name="twitter:image" content={imageURL} />
+      {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
     </>
   )
 }
@@ -134,15 +137,6 @@ const articleSchema =
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:creator" content="@HyperGamerX_" />
-
-{
-  imageURL && (
-    <>
-      <meta name="twitter:image" content={imageURL} />
-      {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
-    </>
-  )
-}
 
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAFAFA" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#010101" />

@@ -21,6 +21,10 @@
 }
 
 @layer base {
+  :root{
+    scroll-behavior: smooth;
+  }
+  
   h1 {
     @apply font-heading font-bold lg:text-4xl md:text-2xl text-xl;
   }
