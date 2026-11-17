@@ -71,9 +71,9 @@ const storageKey = typeof cover?.meta?.storageKey === "string" ? cover.meta.stor
 const original = (storageKey ? Astro.locals.emdash?.getPublicMediaUrl?.(storageKey) : undefined) ?? cover?.src;
 
 const CDN = "https://media.hypergamerx.com/";
-const coverUrl = original
-  ? `${CDN}cdn-cgi/image/width=${cover?.width ?? 1200},quality=80,format=auto/${original.slice(CDN.length)}`
-  : undefined;
+const isCdn = original?.startsWith(CDN);
+
+const coverUrl = isCdn ? `${CDN}cdn-cgi/image/width=${cover?.width ?? 1200},quality=80,format=auto/${original!.slice(CDN.length)}` : original;
 ---
 
 <Layout
