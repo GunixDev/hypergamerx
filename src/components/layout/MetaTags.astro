@@ -27,6 +27,11 @@ const websiteSchema = {
   name: "HyperGamerX",
   url: siteUrl.toString(),
   inLanguage: "es-PE",
+  sameAs: [
+    "https://www.facebook.com/hypergamerx",
+    "https://x.com/HyperGamerX_",
+    "https://flipboard.com/@HyperGamerX"
+  ]
 };
 
 const articleSchema =
@@ -49,6 +54,10 @@ const articleSchema =
           "@type": "Organization",
           name: "HyperGamerX",
           url: siteUrl.toString(),
+          logo: {
+    "@type": "ImageObject",
+    url: new URL("/img/logo4.png", siteUrl).toString(),
+  },
         },
         mainEntityOfPage: {
           "@type": "WebPage",
@@ -81,7 +90,7 @@ const articleSchema =
 <meta name="application-name" content="HyperGamerX" />
 <meta name="generator" content={Astro.generator} />
 <meta name="robots" content={robots} />
-<meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
+<meta name="googlebot" content={`${robots}, max-video-preview:-1, max-image-preview:large, max-snippet:-1`} />
 <meta http-equiv="Content-Language" content="es" />
 <meta name="format-detection" content="telephone=no, address=no, email=no" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -92,9 +101,7 @@ const articleSchema =
 
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="mask-icon" href="/favicon.ico" color="#8D46E7" />
-
-<meta property="fb:profile_id" content="https://www.facebook.com/hypergamerx" />
+<link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
 
 <meta property="og:type" content={type === "article" ? "article" : "website"} />
 <meta property="og:url" content={canonicalURL.toString()} />
@@ -120,9 +127,6 @@ const articleSchema =
       <meta property="og:image" content={imageURL} />
       <meta property="og:image:secure_url" content={imageURL} />
       {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
-      <meta property="og:image:width" content="958" />
-      <meta property="og:image:height" content="540" />
-      <meta property="og:image:type" content="image/webp" />
       <meta name="twitter:image" content={imageURL} />
       {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
     </>
