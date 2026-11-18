@@ -1,9 +1,8 @@
 ---
-import { getEmDashEntry, type ContentEntry, type ReferencePages } from "emdash";
+import { type ContentEntry, type ReferencePages } from "emdash";
 import type { Post } from "../../../emdash-env";
-import { Image } from "emdash/ui";
-import FormatDate from "../utils/FormatDate.astro";
-import MediaImage from "./MediaImage.astro";
+import FormatDate from "@components/utils/FormatDate.astro";
+import MediaImage from "@components/ui/MediaImage.astro";
 
 interface Props {
   modo: "main" | "list" | "card";
@@ -15,7 +14,7 @@ interface Props {
 const { loading = "lazy", modo, heading = "none", post } = Astro.props;
 const { title, description, publishedAt, slug } = post.data;
 
-const slugPath = `/blog/${slug}/`;
+const slugPath = `/blog/${slug}`;
 
 const sizesByMode = {
   main: "(min-width: 1024px) 700px, 100vw",
@@ -24,43 +23,43 @@ const sizesByMode = {
 };
 ---
 
-<a href={slugPath} class=`block w-full dark:text-neutral-50`>
+<a href={slugPath} class=`flex`>
   {
     modo === "main" ? (
-      <article class="w-full h-auto body-rounded relative inline-flex flex-col justify-end items-start overflow-hidden group">
-        <MediaImage image={post.data.cover} alt={title} class="w-full h-auto aspect-auto object-cover group-hover:saturate-150 group-hover:contrast-125 duration-700 transition-all" loading={loading} sizes={sizesByMode.main} widths={[480, 800, 1200]} />
+      <article class="card-rounded relative inline-flex flex-col justify-end group">
+        <MediaImage image={post.data.cover} alt={title} class="object-cover group-hover:saturate-150 group-hover:contrast-125 transition-all" loading={loading} sizes={sizesByMode.main} widths={[480, 800, 1200]} />
         <div class="absolute inset-0 bg-linear-to-t from-neutral-950" />
 
-        <div class="m-2.5 absolute text-neutral-50 w-auto h-fit font-xs gap-1 md:gap-1.5 lg:gap-2">
+        <div class="m-4 absolute font-xs gap-1 md:gap-1.5 lg:gap-2 text-full-white">
           {heading === "h3" ? <h3 class="font-bold">{title}</h3> : heading === "h2" ? <h2 class="font-bold">{title}</h2> : <span class="font-bold">{title}</span>}
           <FormatDate date={publishedAt} />
-          <p class="font-xs w-full">{description}</p>
+          <p class="font-xs">{description}</p>
         </div>
       </article>
     ) : modo === "list" ? (
-      <article class="w-full body-rounded grid grid-cols-2 items-start gap-1 md:gap-1.5 lg:gap-2 overflow-hidden h-fit duration-200 group">
-        <div class="relative w-full">
-          <span class="flex px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-px md:py-0.5 xl:py-1 justify-center items-center absolute bottom-0 left-0 z-10 text-neutral-50 bg-neutral-950 body-rounded-tr font-xs">
+      <article class="card-rounded grid grid-cols-2 gap-1 md:gap-1.5 lg:gap-2 overflow-hidden group">
+        <div class="relative">
+          <span class="flex px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-px md:py-0.5 xl:py-1 justify-center items-center absolute bottom-0 left-0 z-10 bg-full-black card-rounded-tr font-xs text-full-white">
             <FormatDate date={publishedAt} />
           </span>
-          <MediaImage image={post.data.cover} alt={title} class="block w-full aspect-video object-cover body-rounded group-hover:saturate-150 group-hover:contrast-125 duration-700 transition-all" loading={loading} sizes={sizesByMode.list} widths={[360, 720]} />
+          <MediaImage image={post.data.cover} alt={title} class="block w-full aspect-video object-cover card-rounded group-hover:saturate-150 group-hover:contrast-125 duration-700 transition-all" loading={loading} sizes={sizesByMode.list} widths={[360, 720]} />
         </div>
-        <div class="flex flex-col items-start gap-1 self-stretch min-w-0">
+        <div class="flex flex-col gap-1">
           {heading === "h3" ? <h3 class="font-bold">{title}</h3> : heading === "h2" ? <h2 class="font-bold">{title}</h2> : <span class="font-bold">{title}</span>}
-          <p class="font-xs overflow-hidden text-ellipsis line-clamp-2 md:line-clamp-3 lg:line-clamp-4">{description}</p>
+          <p class="font-xs line-clamp-2 xl:line-clamp-none">{description}</p>
         </div>
       </article>
     ) : (
-      <article class="w-full body-rounded flex flex-col items-start gap-1 md:gap-1.5 lg:gap-2 group">
-        <div class="relative w-full">
-          <span class="flex px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-px md:py-0.5 xl:py-1 justify-center items-center absolute bottom-0 left-0 z-10 text-neutral-50 bg-neutral-950 body-rounded-tr font-xs">
+      <article class="card-rounded flex flex-col gap-1 md:gap-1.5 lg:gap-2 group">
+        <div class="relative">
+          <span class="flex px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-px md:py-0.5 xl:py-1 justify-center items-center absolute bottom-0 left-0 z-10 bg-full-black card-rounded-tr font-xs text-full-white">
             <FormatDate date={publishedAt} />
           </span>
-          <MediaImage image={post.data.cover} alt={title} class="block w-full aspect-video object-cover body-rounded group-hover:saturate-150 group-hover:contrast-125 duration-700 transition-all" loading={loading} sizes={sizesByMode.card} widths={[360, 720, 1080]} />
+          <MediaImage image={post.data.cover} alt={title} class="object-cover card-rounded group-hover:saturate-150 group-hover:contrast-125 transition-all" loading={loading} sizes={sizesByMode.card} widths={[360, 720, 1080]} />
         </div>
-        <div class="flex flex-col items-start gap-1 self-stretch w-full min-w-0">
+        <div class="flex flex-col gap-1">
           {heading === "h3" ? <h3 class="font-bold">{title}</h3> : heading === "h2" ? <h2 class="font-bold">{title}</h2> : <span class="font-bold">{title}</span>}
-          <p class="font-xs overflow-hidden text-ellipsis">{description}</p>
+          <p class="font-xs">{description}</p>
         </div>
       </article>
     )

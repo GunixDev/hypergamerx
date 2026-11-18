@@ -15,6 +15,6 @@ const term = await getTerm("category", tag.slug, {
 const description = term?.description ?? tag.description ?? tag.label;
 ---
 
-<a href={`/${tag.slug}/1/`} title={description} class="flex justify-center items-center body-rounded bg-neutral-950 text-neutral-50 font-xs px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-0.5 md:py-1 underline hover:bg-neutral-800 duration-300">
+<a href={`/${tag.slug}/1/`} title={description} class="flex justify-center items-center card-rounded bg-neutral-950 text-neutral-50 font-xs px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-0.5 md:py-1 underline hover:bg-neutral-800 duration-300">
   {tag.label}
 </a>

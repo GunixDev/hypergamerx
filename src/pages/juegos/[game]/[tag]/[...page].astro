@@ -1,12 +1,12 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Card from "@/components/ui/Card.astro";
-import FormatDate from "@/components/utils/FormatDate.astro";
-import Pagination from "@/components/article/Pagination.astro";
-import Sections from "@/components/article/games/Sections.astro";
+import Layout from "@layouts/Layout.astro";
+import Card from "@components/ui/Card.astro";
+import FormatDate from "@components/utils/FormatDate.astro";
+import Pagination from "@components/article/Pagination.astro";
+import Sections from "@components/article/games/Sections.astro";
 import { decodeSlug, getEmDashEntry } from "emdash";
 import { Image } from "emdash/ui";
-import { gestPosts } from "@/utils/article-toc";
+import { gestPosts } from "@src/utils/article-toc";
 
 const validTags = ["guias", "noticias", "analisis", "tops"] as const;
 type Category = (typeof validTags)[number];
@@ -125,10 +125,10 @@ const pagination = {
     game && (
       <aside class="flex flex-col justify-center items-center lg:col-span-5 gap-4 w-full">
         <div class="gap-2.5 flex flex-col items-start self-stretch">
-          <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold body-rounded">SOBRE EL JUEGO</div>
+          <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold card-rounded">SOBRE EL JUEGO</div>
 
           <div class="flex gap-3 w-full">
-            <Image image={data?.cover} alt={name} class="body-rounded w-32 shrink-0 aspect-3/4 object-cover" />
+            <Image image={data?.cover} alt={name} class="card-rounded w-32 shrink-0 aspect-3/4 object-cover" />
 
             <div class="flex flex-col font-sm grow min-w-0">
               <p class="w-full wrap-break-word">

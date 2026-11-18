@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import VerMas from "../components/VerMas.astro";
-import Card from "@/components/ui/Card.astro";
-import { gestPosts } from "@/utils/article-toc";
+import Card from "@components/ui/Card.astro";
+import { gestPosts } from "@src/utils/article-toc";
 
 const [recentPosts, newsPosts, guidesPosts, curiositiesPosts] =
   await Promise.all([
@@ -35,11 +35,8 @@ const lastPost = recentPosts[0];
       </div>
     </div>
     <div class="flex lg:hidden flex-col items-start gap-2 self-stretch">
-      {recentPosts.slice(0, 4).map((post) => (
+      {recentPosts.slice(1, 3).map((post) => (
         <Card modo="list" post={post} loading={"eager"} heading="h3" />
-      ))}
-      {recentPosts.slice(4, 8).map((post) => (
-        <Card modo="list" post={post} heading="h3" />
       ))}
     </div>
     <div class="hidden md:grid md:grid-cols-2 items-start gap-2 self-stretch">

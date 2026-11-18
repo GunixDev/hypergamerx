@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
-import { gestPosts } from "@/utils/article-toc";
+import { gestPosts } from "@src/utils/article-toc";
 
 export const GET: APIRoute = async (context) => {
   const posts = await gestPosts(50);

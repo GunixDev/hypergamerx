@@ -1,5 +1,5 @@
 ---
-import type { TocItem } from "@/utils/article-toc";
+import type { TocItem } from "@src/utils/article-toc";
 
 interface Props {
   data: TocItem[];
@@ -10,7 +10,7 @@ const { data } = Astro.props;
 
 {
   data.length > 0 && (
-    <nav aria-label="Índice del artículo" class="flex flex-col items-start gap-1 self-stretch bg-neutral-950 text-neutral-50 px-6 py-4 my-4 body-rounded">
+    <nav aria-label="Índice del artículo" class="flex flex-col items-start gap-1 self-stretch bg-neutral-950 text-neutral-50 px-6 py-4 my-4 card-rounded">
       <p class="text-xl font-bold">Índice</p>
 
       <ul class="flex flex-col items-start gap-0.5 self-stretch ml-4">

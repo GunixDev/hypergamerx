@@ -1,11 +1,11 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import FormatDate from "@/components/utils/FormatDate.astro";
-import Sections from "@/components/article/games/Sections.astro";
+import Layout from "@layouts/Layout.astro";
+import FormatDate from "@components/utils/FormatDate.astro";
+import Sections from "@components/article/games/Sections.astro";
 import { getEmDashEntry, decodeSlug } from "emdash";
 import { Image } from "emdash/ui";
-import { gestPosts } from "@/utils/article-toc";
-import MediaImage from "@/components/ui/MediaImage.astro";
+import { gestPosts } from "@src/utils/article-toc";
+import MediaImage from "@components/ui/MediaImage.astro";
 
 const categories = ["guias", "noticias", "analisis", "tops"] as const;
 
@@ -68,17 +68,17 @@ const availableSections = new Set<"info" | (typeof categories)[number]>(["info",
     </div>
 
     <div class="flex flex-col items-start gap-4 self-stretch">
-      <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold body-rounded">DESCRIPCIÓN</div>
+      <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold card-rounded">DESCRIPCIÓN</div>
       <p class="w-full font-base">{gameData.description}</p>
     </div>
   </div>
 
   <aside class="flex flex-col justify-center items-center lg:col-span-5 gap-4 w-full">
     <div class="gap-2.5 flex flex-col items-start self-stretch">
-      <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold body-rounded">SOBRE EL JUEGO</div>
+      <div class="flex px-3 py-2 bg-neutral-950 self-stretch text-neutral-50 font-base font-bold card-rounded">SOBRE EL JUEGO</div>
 
       <div class="flex gap-3 w-full">
-        <MediaImage image={gameData.cover} alt={gameData.name} class="body-rounded w-32 shrink-0 aspect-3/4 object-cover" sizes="128px" widths={[256, 384]} />
+        <MediaImage image={gameData.cover} alt={gameData.name} class="card-rounded w-32 shrink-0 aspect-3/4 object-cover" sizes="128px" widths={[256, 384]} />
 
         <div class="flex flex-col font-sm grow min-w-0">
           <p class="w-full wrap-break-word">

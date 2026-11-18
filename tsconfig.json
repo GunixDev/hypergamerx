@@ -19,7 +19,7 @@
     "incremental": true,
     "isolatedModules": true,
     "paths": {
-      "@/*": ["./src/*"],
+      "@src/*": ["./src/*"],
       "@i18n/*": ["./src/i18n/*"],
       "@pages/*": ["./src/pages/*"],
       "@components/*": ["./src/components/*"],
