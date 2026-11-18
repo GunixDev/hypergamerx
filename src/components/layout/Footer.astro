@@ -34,7 +34,7 @@ import { FOOTER, NETWORKS } from "@src/data";
           return (
             <div>
               <p class="w-full font-bold text-primary">{item.title}</p>
-              <ul class="flex flex-col gap-1">
+              <ul class="flex flex-col gap-2">
                 {item.items.map((link) => {
                   const isActive = Astro.url.pathname === link.href;
                   if (link.href === "cookies")
