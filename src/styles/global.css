@@ -57,48 +57,12 @@
   @apply text-sm;
 }
 
-@utility body-rounded {
+@utility card-rounded {
   @apply rounded md:rounded-md lg:rounded-lg xl:rounded-lg;
 }
 
-@utility body-rounded-t {
-  @apply rounded-t md:rounded-t-md lg:rounded-t-lg xl:rounded-t-lg;
-}
-
-@utility body-rounded-b {
-  @apply rounded-b md:rounded-b-md lg:rounded-b-lg xl:rounded-b-lg;
-}
-
-@utility body-rounded-tr {
-  @apply rounded-tr md:rounded-tr-md lg:rounded-tr-lg xl:rounded-tr-lg;
-}
-
-@utility body-rounded-tl {
-  @apply rounded-tl md:rounded-tl-md lg:rounded-tl-lg xl:rounded-tl-lg;
-}
-
-@utility body-rounded-bl {
-  @apply rounded-bl md:rounded-bl-md lg:rounded-bl-lg xl:rounded-bl-lg;
-}
-
-@utility body-rounded-br {
-  @apply rounded-br md:rounded-br-md lg:rounded-br-lg xl:rounded-br-lg;
-}
-
-@utility body-px {
-  @apply px-2 md:px-12 lg:px-10 xl:px-14;
-}
-
-@utility body-mt {
-  @apply mt-5 md:mt-8 lg:mt-11 xl:mt-16;
-}
-
-@utility body-mb {
-  @apply mb-5 md:mb-8 lg:mb-11 xl:mb-16;
-}
-
-@utility body-gap {
-  @apply gap-4 md:gap-5 lg:gap-4 xl:gap-4;
+@utility card-rounded-tr {
+  @apply rounded-tr-sm md:rounded-tr-md lg:rounded-tr-lg xl:rounded-tr-lg;
 }
 
 .contenido h2 {
