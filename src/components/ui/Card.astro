@@ -30,7 +30,7 @@ const sizesByMode = {
         <MediaImage image={post.data.cover} alt={title} class="object-cover group-hover:saturate-150 group-hover:contrast-125 transition-all" loading={loading} sizes={sizesByMode.main} widths={[480, 800, 1200]} />
         <div class="absolute inset-0 bg-linear-to-t from-neutral-950" />
 
-        <div class="m-4 absolute font-xs gap-1 md:gap-1.5 lg:gap-2">
+        <div class="m-4 absolute font-xs gap-1 md:gap-1.5 lg:gap-2 text-full-white">
           {heading === "h3" ? <h3 class="font-bold">{title}</h3> : heading === "h2" ? <h2 class="font-bold">{title}</h2> : <span class="font-bold">{title}</span>}
           <FormatDate date={publishedAt} />
           <p class="font-xs">{description}</p>
@@ -39,7 +39,7 @@ const sizesByMode = {
     ) : modo === "list" ? (
       <article class="card-rounded grid grid-cols-2 gap-1 md:gap-1.5 lg:gap-2 overflow-hidden group">
         <div class="relative">
-          <span class="flex px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-px md:py-0.5 xl:py-1 justify-center items-center absolute bottom-0 left-0 z-10 bg-full-black card-rounded-tr font-xs">
+          <span class="flex px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-px md:py-0.5 xl:py-1 justify-center items-center absolute bottom-0 left-0 z-10 bg-full-black card-rounded-tr font-xs text-full-white">
             <FormatDate date={publishedAt} />
           </span>
           <MediaImage image={post.data.cover} alt={title} class="block w-full aspect-video object-cover card-rounded group-hover:saturate-150 group-hover:contrast-125 duration-700 transition-all" loading={loading} sizes={sizesByMode.list} widths={[360, 720]} />
@@ -52,7 +52,7 @@ const sizesByMode = {
     ) : (
       <article class="card-rounded flex flex-col gap-1 md:gap-1.5 lg:gap-2 group">
         <div class="relative">
-          <span class="flex px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-px md:py-0.5 xl:py-1 justify-center items-center absolute bottom-0 left-0 z-10 bg-full-black card-rounded-tr font-xs">
+          <span class="flex px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-px md:py-0.5 xl:py-1 justify-center items-center absolute bottom-0 left-0 z-10 bg-full-black card-rounded-tr font-xs text-full-white">
             <FormatDate date={publishedAt} />
           </span>
           <MediaImage image={post.data.cover} alt={title} class="object-cover card-rounded group-hover:saturate-150 group-hover:contrast-125 transition-all" loading={loading} sizes={sizesByMode.card} widths={[360, 720, 1080]} />
