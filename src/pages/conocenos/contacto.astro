@@ -1,9 +1,9 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import VerMas from "@/components/VerMas.astro";
+import Layout from "@layouts/Layout.astro";
+import VerMas from "@components/VerMas.astro";
 import { PUBLIC_TURNSTILE_SITE_KEY } from "astro:env/client";
-import Card from "@/components/ui/Card.astro";
-import { gestPosts } from "@/utils/article-toc";
+import Card from "@components/ui/Card.astro";
+import { gestPosts } from "@src/utils/article-toc";
 
 const recentPosts = await gestPosts(8, Astro.cache);
 ---

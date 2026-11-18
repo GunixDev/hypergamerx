@@ -1,9 +1,8 @@
 ---
-import { getEmDashEntry, type ContentEntry, type ReferencePages } from "emdash";
+import { type ContentEntry, type ReferencePages } from "emdash";
 import type { Post } from "../../../emdash-env";
-import { Image } from "emdash/ui";
-import FormatDate from "../utils/FormatDate.astro";
-import MediaImage from "./MediaImage.astro";
+import FormatDate from "@components/utils/FormatDate.astro";
+import MediaImage from "@components/ui/MediaImage.astro";
 
 interface Props {
   modo: "main" | "list" | "card";
@@ -24,7 +23,7 @@ const sizesByMode = {
 };
 ---
 
-<a href={slugPath} class=`block w-full dark:text-neutral-50`>
+<a href={slugPath} class=`w-full`>
   {
     modo === "main" ? (
       <article class="w-full h-auto body-rounded relative inline-flex flex-col justify-end items-start overflow-hidden group">

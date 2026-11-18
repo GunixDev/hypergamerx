@@ -1,9 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Pagination from "@components/article/Pagination.astro";
-import Card from "@/components/ui/Card.astro";
+import Card from "@components/ui/Card.astro";
 import { getTerm } from "emdash";
-import { gestPosts } from "@/utils/article-toc";
+import { gestPosts } from "@src/utils/article-toc";
 
 const { tag, page } = Astro.params;
 const currentPage = Number(page ?? "1");

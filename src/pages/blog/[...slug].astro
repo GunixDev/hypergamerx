@@ -1,18 +1,18 @@
 ---
 import { decodeSlug, getEmDashEntry } from "emdash";
-import { gestPosts, prepareArticleContent } from "@/utils/article-toc";
-import Layout from "@/layouts/Layout.astro";
-import Tag from "@/components/article/Tag.astro";
-import FormatDate from "@/components/utils/FormatDate.astro";
-import Indice from "@/components/article/Indice.astro";
+import { gestPosts, prepareArticleContent } from "@src/utils/article-toc";
+import Layout from "@layouts/Layout.astro";
+import Tag from "@components/article/Tag.astro";
+import FormatDate from "@components/utils/FormatDate.astro";
+import Indice from "@components/article/Indice.astro";
 import { Image, PortableText } from "emdash/ui";
-import Heading from "@/components/article/Heading.astro";
-import YtVideoBlock from "@/components/markdown/YtVideoBlock.astro";
-import Card from "@/components/ui/Card.astro";
-import VerMas from "@/components/VerMas.astro";
-import SendPage from "../../../public/icons/sendPage.svg";
-import Share from "@/components/article/Share.astro";
-import MediaImage from "@/components/ui/MediaImage.astro";
+import Heading from "@components/article/Heading.astro";
+import YtVideoBlock from "@components/markdown/YtVideoBlock.astro";
+import Card from "@components/ui/Card.astro";
+import VerMas from "@components/VerMas.astro";
+import SendPage from "@public/icons/sendPage.svg";
+import Share from "@components/article/Share.astro";
+import MediaImage from "@components/ui/MediaImage.astro";
 
 const { slug } = Astro.params;
 

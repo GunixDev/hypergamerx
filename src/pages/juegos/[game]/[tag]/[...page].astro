@@ -1,12 +1,12 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Card from "@/components/ui/Card.astro";
-import FormatDate from "@/components/utils/FormatDate.astro";
-import Pagination from "@/components/article/Pagination.astro";
-import Sections from "@/components/article/games/Sections.astro";
+import Layout from "@layouts/Layout.astro";
+import Card from "@components/ui/Card.astro";
+import FormatDate from "@components/utils/FormatDate.astro";
+import Pagination from "@components/article/Pagination.astro";
+import Sections from "@components/article/games/Sections.astro";
 import { decodeSlug, getEmDashEntry } from "emdash";
 import { Image } from "emdash/ui";
-import { gestPosts } from "@/utils/article-toc";
+import { gestPosts } from "@src/utils/article-toc";
 
 const validTags = ["guias", "noticias", "analisis", "tops"] as const;
 type Category = (typeof validTags)[number];
