@@ -29,21 +29,21 @@ const compartirGmail = generarCompartirGmail(subject, url);
 
 <div class="flex justify-center items-start gap-1.5 ml-auto">
   <a title="Twitter" lang={"es"} href={compartirTwitter} aria-label="Compartir en Twitter">
-    <Twitter class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+    <Twitter class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
   </a>
   <a title="Reddit" lang={"es"} href={`https://www.reddit.com/submit?url=${body2}`} aria-label="Compartir en Reddit">
-    <Reddit class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+    <Reddit class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
   </a>
   <a title="Whatsapp" lang={"es"} href={`https://api.whatsapp.com/send?text=${articleUrl}`} aria-label="Compartir en Whatsapp">
-    <Whatsapp class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+    <Whatsapp class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
   </a>
   <a title="Facebook" lang={"es"} href={`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`} aria-label="Compartir en Facebook">
-    <Facebook class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+    <Facebook class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
   </a>
   <a title="Mail" lang={"es"} href={compartirGmail} aria-label="Compartir por correo electrónico">
-    <Email class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+    <Email class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
   </a>
   <a title="Flipboard" lang={"es"} href={`https://share.flipboard.com/bookmarklet/popout?v=2&url=${url}&title=${title}`} target="_blank" rel="noopener noreferrer" aria-label="Compartir en Flipboard">
-    <Flipboard class="body-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+    <Flipboard class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
   </a>
 </div>

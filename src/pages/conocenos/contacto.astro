@@ -55,7 +55,7 @@ const recentPosts = await gestPosts(8, Astro.cache);
       <label for="message" class="font-sm">Mensaje</label>
       <textarea id="message" name="message" class="flex min-h-24 max-h-40 px-2 py-1 flex-col items-start gap-2.5 w-full bg-neutral-50 dark:bg-zinc-900 text-neutral-950 dark:text-neutral-50 rounded border-2 border-neutral-400 font-xs" placeholder={"Mensaje"} required></textarea>
       <div class="cf-turnstile" data-sitekey={PUBLIC_TURNSTILE_SITE_KEY} data-theme="dark" data-language={"es"}></div>
-      <button type="submit" class="flex px-2.5 py-2 justify-center items-center gap-2.5 w-full bg-neutral-950 text-neutral-50 body-rounded cursor-pointer font-sm font-bold">Enviar mensaje</button>
+      <button type="submit" class="flex px-2.5 py-2 justify-center items-center gap-2.5 w-full bg-neutral-950 text-neutral-50 card-rounded cursor-pointer font-sm font-bold">Enviar mensaje</button>
     </form>
   </div>
 

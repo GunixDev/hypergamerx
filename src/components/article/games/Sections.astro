@@ -23,9 +23,9 @@ const sections: { id: Section; label: string; path: string }[] = [
     .filter((section) => availableSections.has(section.id))
     .map((section) =>
       section.id === active ? (
-        <div class="px-3 py-2 bg-neutral-50 dark:text-neutral-950 border-2 border-neutral-950 items-center body-rounded">{section.label}</div>
+        <div class="px-3 py-2 bg-neutral-50 dark:text-neutral-950 border-2 border-neutral-950 items-center card-rounded">{section.label}</div>
       ) : (
-        <a href={section.path} class="px-3 py-2 bg-neutral-950 border-2 border-neutral-50 text-neutral-50 items-center body-rounded">
+        <a href={section.path} class="px-3 py-2 bg-neutral-950 border-2 border-neutral-50 text-neutral-50 items-center card-rounded">
           {section.label}
         </a>
       ),

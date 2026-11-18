@@ -21,40 +21,41 @@
 }
 
 @layer base {
-  :root{
+  :root {
     scroll-behavior: smooth;
   }
-  
+
   h1 {
-    @apply font-heading font-bold lg:text-4xl md:text-2xl text-xl;
+    @apply font-heading font-bold text-2xl md:text-3xl lg:text-4xl;
   }
+
   h2 {
-    @apply font-heading font-bold lg:text-3xl md:text-xl text-lg;
+    @apply font-heading font-bold text-xl md:text-2xl lg:text-3xl;
   }
 
   h3 {
-    @apply font-heading font-bold lg:text-2xl md:text-lg text-sm;
+    @apply font-heading font-bold text-lg md:text-xl lg:text-2xl;
   }
 
   h4 {
-    @apply font-heading font-bold lg:text-xl md:text-lg text-base;
+    @apply font-heading font-bold text-base md:text-lg lg:text-xl;
   }
 
   p {
-    @apply font-body lg:text-lg md:text-base text-sm;
+    @apply font-body text-base lg:text-lg leading-relaxed;
   }
 
-  a{
-    @apply font-body lg:text-lg md:text-base text-sm hover:text-primary focus-visible:text-primary transition-colors;
+  a {
+    @apply hover:text-primary focus-visible:text-primary transition-colors;
   }
 }
 
 @utility font-sm {
-  @apply text-base;
+  @apply text-sm;
 }
 
 @utility font-xs {
-  @apply text-sm;
+  @apply text-xs;
 }
 
 @utility card-rounded {
