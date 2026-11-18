@@ -8,7 +8,7 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
 
 <div id="background-close" aria-hidden="true" class="fixed top-0 inset-0 bg-neutral-950 opacity-0 pointer-events-none z-50 transition-opacity"></div>
 
-<aside id="navigation" aria-label="Menú de navegación móvil" aria-hidden="true" class="h-full ease-in-out fixed top-0 z-80 bg-background -left-full w-full sm:w-7/12 overflow-y-auto flex flex-col justify-start items-center gap-2.5 lg:hidden transition-[left]">
+<aside id="navigation" aria-label="Menú de navegación móvil" class="h-full ease-in-out fixed top-0 z-80 bg-background -left-full w-full sm:w-7/12 overflow-y-auto flex flex-col justify-start items-center gap-2.5 lg:hidden transition-[left]">
   <div class="flex px-5 justify-between items-center w-full bg-full-black py-5">
     <HyperGamerXLetter class="w-42.5 h-auto" aria-hidden="true" />
     <button id="close-button" type="button" aria-label="Cerrar menú de navegación" class="flex items-center justify-center">
@@ -54,6 +54,7 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
           return (
             <div>
               <p class="w-full font-bold">{item.title}</p>
+              <div class="flex flex-col gap-2">
               {item.items.map((link) => {
                 const isActive = Astro.url.pathname === link.href;
                 if (link.href === "cookies")
@@ -68,6 +69,7 @@ import { Search, Sun, Moon, Menu } from "@lucide/astro";
                   </a>
                 );
               })}
+              </div>
             </div>
           );
         })
