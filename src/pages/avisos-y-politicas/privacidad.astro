@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import VerMas from "../../components/VerMas.astro";
+import ShowMore from "@components/ui/ShowMore.astro";
 import { getEmDashCollection } from "emdash";
 import Card from "@components/ui/Card.astro";
 
@@ -126,7 +126,7 @@ if (error) {
   </div>
 
   <aside class="flex flex-col justify-center items-start col-span-5 gap-2.5">
-    <VerMas title={"Artículos recientes"} pahtto="./blog/pagina/1/" aside={true} />
+    <ShowMore title={"Artículos recientes"} pahtto="./blog/pagina/1/" aside={true} />
     <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
       {recentPosts.map((post, index) => <Card modo="list" post={post} loading={index < 3 ? "eager" : "lazy"} />)}
     </div>

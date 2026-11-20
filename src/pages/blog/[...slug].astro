@@ -3,13 +3,13 @@ import { decodeSlug, getEmDashEntry } from "emdash";
 import { gestPosts, prepareArticleContent } from "@src/utils/article-toc";
 import Layout from "@layouts/Layout.astro";
 import Tag from "@components/article/Tag.astro";
-import FormatDate from "@components/utils/FormatDate.astro";
-import Indice from "@components/article/Indice.astro";
-import { Image, PortableText } from "emdash/ui";
+import FormatDate from "@components/ui/FormatDate.astro";
+import TableOfContents from "@components/article/TableOfContents.astro";
+import { PortableText } from "emdash/ui";
 import Heading from "@components/article/Heading.astro";
 import YtVideoBlock from "@components/markdown/YtVideoBlock.astro";
 import Card from "@components/ui/Card.astro";
-import VerMas from "@components/VerMas.astro";
+import ShowMore from "@components/ui/ShowMore.astro";
 import SendPage from "@public/icons/sendPage.svg";
 import Share from "@components/article/Share.astro";
 import MediaImage from "@components/ui/MediaImage.astro";
@@ -154,7 +154,7 @@ const coverUrl = isCdn ? `${CDN}cdn-cgi/image/width=${cover?.width ?? 1200},qual
           quality={100}
         />
 
-        <Indice data={toc} />
+        <TableOfContents data={toc} />
 
         <div class="contenido mt-4 flex flex-col justify-center self-stretch w-full overflow-hidden">
           <PortableText
@@ -195,7 +195,7 @@ const coverUrl = isCdn ? `${CDN}cdn-cgi/image/width=${cover?.width ?? 1200},qual
     }
 
     <div class="gap-2.5 flex flex-col items-start self-stretch">
-      <VerMas title="Artículos recientes" pahtto="blog/pagina/1" aside={true} />
+      <ShowMore title="Artículos recientes" pahtto="blog/pagina/1" aside={true} />
 
       <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
         {recentPosts.map((recentPost) => <Card modo="list" post={recentPost} />)}
