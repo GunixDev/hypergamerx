@@ -42,7 +42,7 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.fontsource(),
-      name: "space-grotesk",
+      name: "Space Grotesk",
       cssVariable: "--font-space-grotesk",
     },
     {
