@@ -20,9 +20,8 @@ const lastPost = recentPosts[0];
   <div class="flex flex-col items-start gap-2 self-stretch">
     <div class="flex flex-col items-start gap-2 self-stretch">
       <ShowMore
-        heading={true}
         title={"Artículos Recientes"}
-        pahtto={`/blog/pagina/1`}
+        path={`/blog/pagina/1`}
       />
 
       <div class="md:grid lg:grid-cols-2 items-start gap-3 self-stretch">
@@ -47,11 +46,7 @@ const lastPost = recentPosts[0];
   </div>
 
   <div class="flex flex-col items-start gap-2 self-stretch">
-    <ShowMore
-      heading={true}
-      title={"Noticias Recientes"}
-      pahtto={`/noticias/1`}
-    />
+    <ShowMore title={"Noticias Recientes"} path={`/noticias/1`}/>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start content-start gap-3 self-stretch">
       {newsPosts.map((post) => (
         <Card modo="card" post={post} heading="h3" />
@@ -60,7 +55,7 @@ const lastPost = recentPosts[0];
   </div>
 
   <div class="flex flex-col items-start gap-2 self-stretch">
-    <ShowMore heading={true} title={"Guías Recientes"} pahtto={`/guias/1`} />
+    <ShowMore title={"Guías Recientes"} path={`/guias/1`} />
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start content-start gap-3 self-stretch">
       {guidesPosts.map((post) => (
         <Card modo="card" post={post} heading="h3" />
@@ -69,11 +64,7 @@ const lastPost = recentPosts[0];
   </div>
 
   <div class="flex flex-col items-start gap-2 self-stretch">
-    <ShowMore
-      heading={true}
-      title={"Curiosidades Recientes"}
-      pahtto={`/curiosidades/1`}
-    />
+    <ShowMore title={"Curiosidades Recientes"} path={`/curiosidades/1`}/>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start content-start gap-3 self-stretch">
       {curiositiesPosts.map((post) => (
         <Card modo="card" post={post} heading="h3" />

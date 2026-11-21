@@ -195,7 +195,7 @@ const coverUrl = isCdn ? `${CDN}cdn-cgi/image/width=${cover?.width ?? 1200},qual
     }
 
     <div class="gap-2.5 flex flex-col items-start self-stretch">
-      <ShowMore title="Artículos recientes" pahtto="blog/pagina/1" aside={true} />
+      <ShowMore title="Artículos recientes" path="/blog/pagina/1" aside={true} />
 
       <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
         {recentPosts.map((recentPost) => <Card modo="list" post={recentPost} />)}

@@ -1,18 +1,22 @@
 ---
 interface Props {
 	title: string;
-	pahtto: string;
+	path: string;
 	aside?: boolean;
-	heading?: boolean;
 }
 
-const { title, pahtto, aside = false, heading = false } = Astro.props;
+const { title, path, aside = false } = Astro.props;
 ---
 
-<div class='flex justify-between items-center self-stretch w-full'>
-	{heading ? <h2 class={`${aside ? "font-lg" : ""} font-bold`}>{title}</h2> : <span class={`${aside ? "font-lg" : ""} font-bold`}>{title}</span>}
-	<a class='flex justify-end items-center gap-2' href={`/${pahtto}/`}>
-		<div class='w-0.5 h-3 lg:h-4 bg-neutral-400 justify-center'></div>
-		<span class=`${aside ? "font-xs": "font-sm"}`>Ver más {title}</span>
+<div class="flex justify-between items-center self-stretch w-full">
+	<h2 class:list={["font-bold", { "font-lg": aside }]}>
+		{title}
+	</h2>
+
+	<a href={path} class="flex justify-end items-center gap-2 transition-colors">
+		<span aria-hidden="true" class="w-0.5 h-3 lg:h-4 bg-neutral-400"></span>
+		<span class:list={[aside ? "font-xs" : "font-sm"]}>
+			Ver más <span class="sr-only">{title}</span>
+		</span>
 	</a>
 </div>
