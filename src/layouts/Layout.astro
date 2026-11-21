@@ -74,7 +74,7 @@ const {
     </script>
   </head>
 
-  <body class="bg-background text-foreground flex flex-col">
+  <body class="bg-background text-foreground flex flex-col min-h-dvh">
     <div transition:persist id="cc-container" class="cc--darkmode">
       <CookieConsent />
       <script is:inline>
@@ -89,7 +89,7 @@ const {
       </script>
     </div>
     <Navigation />
-    <main class="flex flex-col" class:list={[className || "pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 md:gap-5 lg:gap-4", className]}>
+    <main class="flex flex-col flex-1" class:list={[className || "pt-5 md:pt-8 lg:pt-11 xl:pt-16 pb-5 md:pb-8 lg:pb-11 xl:pb-16 pl-2 md:pl-12 lg:pl-10 xl:pl-14 pr-2 md:pr-12 lg:pr-10 xl:pr-14 gap-4 md:gap-5 lg:gap-4", className]}>
       <slot />
     </main>
     <Footer />
