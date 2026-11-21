@@ -88,10 +88,10 @@ const description = `Todas las ${sectionTitle.toLowerCase()} de ${name} en Hyper
 const basePath = `/juegos/${gameSlug}/${tag}`;
 
 const pagination = {
-  first: `${basePath}/1/`,
-  last: `${basePath}/${totalPages}/`,
-  prev: currentPage > 1 ? `${basePath}/${currentPage - 1}/` : undefined,
-  next: currentPage < totalPages ? `${basePath}/${currentPage + 1}/` : undefined,
+  first: `${basePath}/1`,
+  last: `${basePath}/${totalPages}`,
+  prev: currentPage > 1 ? `${basePath}/${currentPage - 1}` : undefined,
+  next: currentPage < totalPages ? `${basePath}/${currentPage + 1}` : undefined,
 };
 ---
 

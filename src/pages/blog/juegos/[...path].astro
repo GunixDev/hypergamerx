@@ -5,11 +5,11 @@ const [game, tag, third] = segments.map(encodeURIComponent);
 let target = "/juegos/";
 
 if (segments.length === 1) {
-  target = `/juegos/${game}/`;
+  target = `/juegos/${game}`;
 } else if (segments.length === 2) {
-  target = `/juegos/${game}/${tag}/1/`;
+  target = `/juegos/${game}/${tag}/1`;
 } else if (segments.length >= 3) {
-  target = /^\d+$/.test(third) ? `/juegos/${game}/${tag}/${third}/` : `/blog/${third}/`;
+  target = /^\d+$/.test(third) ? `/juegos/${game}/${tag}/${third}` : `/blog/${third}`;
 }
 
 return Astro.redirect(target, 301);

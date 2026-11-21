@@ -26,10 +26,10 @@ const startIndex = (currentPage - 1) * pageSize;
 const pagePosts = posts.slice(startIndex, startIndex + pageSize);
 
 const baseUrl = "/blog";
-const first = `${baseUrl}/1/`;
-const last = `${baseUrl}/${totalPages}/`;
-const prevUrl = currentPage > 1 ? `${baseUrl}/${currentPage - 1}/` : undefined;
-const nextUrl = currentPage < totalPages ? `${baseUrl}/${currentPage + 1}/` : undefined;
+const first = `${baseUrl}/1`;
+const last = `${baseUrl}/${totalPages}`;
+const prevUrl = currentPage > 1 ? `${baseUrl}/${currentPage - 1}` : undefined;
+const nextUrl = currentPage < totalPages ? `${baseUrl}/${currentPage + 1}` : undefined;
 ---
 
 <Layout robots="noindex, nofollow">

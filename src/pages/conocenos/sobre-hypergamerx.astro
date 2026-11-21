@@ -32,7 +32,7 @@ const recentPosts = await gestPosts(8, Astro.cache);
   </div>
 
   <aside class="flex flex-col justify-center items-start col-span-5 gap-2.5">
-    <ShowMore title={"Artículos recientes"} path="./blog/pagina/1/" aside={true} />
+    <ShowMore title={"Artículos recientes"} path="./blog/pagina/1" aside={true} />
     <div class="hidden lg:flex flex-col items-start gap-2.5 self-stretch">
       {recentPosts.map((post, index) => <Card modo="list" post={post} loading={index < 3 ? "eager" : "lazy"} />)}
     </div>

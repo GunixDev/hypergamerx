@@ -8,7 +8,7 @@ interface Props {
 const { title, path, aside = false } = Astro.props;
 ---
 
-<div class="flex justify-between items-center self-stretch w-full">
+<div class="flex justify-between items-center w-full">
 	<h2 class:list={["font-bold", { "font-lg": aside }]}>
 		{title}
 	</h2>

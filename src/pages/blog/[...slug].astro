@@ -21,11 +21,11 @@ if (!slug) {
 }
 
 if (slug === "buscar") {
-  return Astro.redirect("/buscar/", 301);
+  return Astro.redirect("/buscar", 301);
 }
 
 if (/^\d+$/.test(slug)) {
-  return Astro.redirect(`/blog/pagina/${slug}/`);
+  return Astro.redirect(`/blog/pagina/${slug}`);
 }
 
 const postSlug = decodeSlug(slug);

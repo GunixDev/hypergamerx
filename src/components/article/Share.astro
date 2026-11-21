@@ -12,38 +12,61 @@ interface Props {
 }
 
 const { path, title } = Astro.props;
-function generarCompartirGmail(subject: string, body: string) {
-  const subjectEncoded = encodeURIComponent(subject);
-  const bodyEncoded = encodeURIComponent(body);
-  return `mailto:?subject=${subjectEncoded}&body=${bodyEncoded}`;
-}
 
-const url = `https://www.hypergamerx.com${path}/`;
-const articleUrl = encodeURIComponent(url);
-const subject = `⭐ Mira este artículo que vi en HyperGamerX 🎮`;
-const body2 = `${subject}: ${url}`;
+const cleanPath = path.startsWith("/") ? path : `/${path}`;
+const url = `https://hypergamerx.com${cleanPath}`;
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+const shareText = encodeURIComponent(`⭐ ${title} - HyperGamerX 🎮`);
+const emailSubject = encodeURIComponent(`⭐ Mira este artículo en HyperGamerX: ${title}`);
+const emailBody = encodeURIComponent(`Te comparto este artículo de HyperGamerX:\n\n${title}\n${url}`);
 
-const compartirTwitter = `https://twitter.com/intent/tweet?url=${body2}`;
-const compartirGmail = generarCompartirGmail(subject, url);
+const links = [
+  {
+    name: "Compartir en X (Twitter)",
+    href: `https://twitter.com/intent/tweet?text=${shareText}&url=${encodedUrl}`,
+    Icon: Twitter,
+    external: true,
+  },
+  {
+    name: "Compartir en Reddit",
+    href: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
+    Icon: Reddit,
+    external: true,
+  },
+  {
+    name: "Compartir en WhatsApp",
+    href: `https://api.whatsapp.com/send?text=${shareText}%20${encodedUrl}`,
+    Icon: Whatsapp,
+    external: true,
+  },
+  {
+    name: "Compartir en Facebook",
+    href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+    Icon: Facebook,
+    external: true,
+  },
+  {
+    name: "Compartir por correo electrónico",
+    href: `mailto:?subject=${emailSubject}&body=${emailBody}`,
+    Icon: Email,
+    external: false,
+  },
+  {
+    name: "Compartir en Flipboard",
+    href: `https://share.flipboard.com/bookmarklet/popout?v=2&url=${encodedUrl}&title=${encodedTitle}`,
+    Icon: Flipboard,
+    external: true,
+  },
+];
 ---
 
-<div class="flex justify-center items-start gap-1.5 ml-auto">
-  <a title="Twitter" lang={"es"} href={compartirTwitter} aria-label="Compartir en Twitter">
-    <Twitter class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-  </a>
-  <a title="Reddit" lang={"es"} href={`https://www.reddit.com/submit?url=${body2}`} aria-label="Compartir en Reddit">
-    <Reddit class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-  </a>
-  <a title="Whatsapp" lang={"es"} href={`https://api.whatsapp.com/send?text=${articleUrl}`} aria-label="Compartir en Whatsapp">
-    <Whatsapp class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-  </a>
-  <a title="Facebook" lang={"es"} href={`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`} aria-label="Compartir en Facebook">
-    <Facebook class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-  </a>
-  <a title="Mail" lang={"es"} href={compartirGmail} aria-label="Compartir por correo electrónico">
-    <Email class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-  </a>
-  <a title="Flipboard" lang={"es"} href={`https://share.flipboard.com/bookmarklet/popout?v=2&url=${url}&title=${title}`} target="_blank" rel="noopener noreferrer" aria-label="Compartir en Flipboard">
-    <Flipboard class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-  </a>
+<div role="group" aria-label="Compartir artículo" class="flex justify-center items-center gap-1 ml-auto">
+  {
+    links.map(({ name, href, Icon, external }) => (
+      <a href={href} aria-label={name} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} class="p-1 rounded hover:opacity-80 focus-visible:outline-2 focus-visible:outline-primary transition-opacity">
+        <Icon class="card-rounded w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" aria-hidden="true" />
+      </a>
+    ))
+  }
 </div>

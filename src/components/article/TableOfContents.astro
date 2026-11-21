@@ -10,18 +10,20 @@ const { data } = Astro.props;
 
 {
   data.length > 0 && (
-    <nav aria-label="Índice del artículo" class="flex flex-col items-start gap-1 self-stretch bg-neutral-950 text-neutral-50 px-6 py-4 my-4 card-rounded">
-      <p class="text-xl font-bold">Índice</p>
+    <nav aria-labelledby="toc-heading" class="flex flex-col items-start gap-2 self-stretch bg-full-black text-full-white px-6 py-4 my-4 card-rounded">
+      <p id="toc-heading" class="text-xl font-bold">
+        Índice del artículo
+      </p>
 
-      <ul class="flex flex-col items-start gap-0.5 self-stretch ml-4">
+      <ol class="flex flex-col items-start gap-1 self-stretch w-full">
         {data.map((indice) => (
-          <li>
-            <a href={`#${indice.slug}`} class:list={[indice.depth === 2 && "text-lg font-bold", indice.depth === 3 && "text-base ml-4", indice.depth === 4 && "text-sm ml-8"]}>
+          <li class:list={["w-full", indice.depth === 3 && "pl-4", indice.depth === 4 && "pl-8", ]}>
+            <a href={`#${indice.slug}`} class:list={["inline-block py-0.5 transition-colors", indice.depth === 2 && "text-lg font-bold", indice.depth === 3 && "text-base", indice.depth === 4 && "text-sm text-muted",]}>
               {indice.text}
             </a>
           </li>
         ))}
-      </ul>
+      </ol>
     </nav>
   )
 }

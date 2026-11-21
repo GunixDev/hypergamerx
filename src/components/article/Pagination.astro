@@ -1,55 +1,67 @@
 ---
-import PaginationPrevDouble from "@public/icons/paginationPrevDouble.svg";
-import PaginationPrev from "@public/icons/paginationPrev.svg";
-import PaginationNext from "@public/icons/paginationNext.svg";
-import PaginationNextDouble from "@public/icons/paginationNextDouble.svg";
+import { ChevronsLeft, ChevronLeft, ChevronRight, ChevronsRight } from "@lucide/astro";
+
+interface Props {
+  prevUrl?: string;
+  nextUrl?: string;
+  currentPage?: number;
+  first?: string;
+  last?: string;
+}
 
 const { prevUrl, nextUrl, currentPage, first, last } = Astro.props;
 
-const showFirst = first && prevUrl;
+const showFirst = Boolean(first && prevUrl && first !== prevUrl);
 const showPrev = Boolean(prevUrl);
 const showNext = Boolean(nextUrl);
-const showLast = last && nextUrl;
+const showLast = Boolean(last && nextUrl && last !== nextUrl);
 ---
 
-<div aria-label="Blog pages" class="flex justify-center items-start gap-2 self-stretch">
-  {
-    showFirst && (
-      <a href={first} rel="prev" aria-label="Primera página" class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center card-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group">
-        <PaginationPrevDouble class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300" />
-      </a>
-    )
-  }
+{
+  (showPrev || showNext) && (
+    <nav aria-label="Paginación" class="flex justify-center gap-2">
+      {
+        showFirst && (
+          <a href={first} aria-label="Primera página" class="flex p-3 self-center justify-center items-center card-rounded bg-full-black text-full-white transition-colors hover:text-primary focus-visible:text-primary">
+            <ChevronsLeft class="w-5 h-5 xl:w-7 xl:h-7" aria-hidden="true" />
+          </a>
+        )
+      }
 
-  {
-    showPrev && (
-      <a href={prevUrl} rel="prev" aria-label="Página anterior" class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center card-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group">
-        <PaginationPrev class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300" />
-      </a>
-    )
-  }
+      {
+        showPrev && (
+          <a href={prevUrl} rel="prev"  aria-label="Página anterior" class="flex p-3 self-center justify-center items-center card-rounded bg-full-black text-full-white transition-colors hover:text-primary focus-visible:text-primary">
+            <ChevronLeft class="w-5 h-5 xl:w-7 xl:h-7" aria-hidden="true" />
+          </a>
+        )
+      }
 
-  {
-    currentPage && (
-      <span class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center card-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group text-white">
-        <span class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300 text-center justify-center leading-snug font-sm group-hover:font-base font-bold group-active:text-neutral-950">{currentPage}</span>
-      </span>
-    )
-  }
+      {
+        currentPage && (
+          <span aria-current="page" class="flex p-3 card-rounded bg-neutral-950">
+            <span class="w-5 h-5 xl:w-7 xl:h-7 text-center font-bold max-sm:text-xs text-primary">
+              <span class="sr-only">Página </span>
+              {currentPage}
+            </span>
+          </span>
+        )
+      }
 
-  {
-    showNext && (
-      <a href={nextUrl} rel="next" aria-label="Siguiente página" class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center card-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group">
-        <PaginationNext class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300" />
-      </a>
-    )
-  }
+      {
+        showNext && (
+          <a href={nextUrl} rel="next" aria-label="Siguiente página" class="flex p-3 self-center justify-center items-center card-rounded bg-full-black text-full-white transition-colors hover:text-primary focus-visible:text-primary">
+            <ChevronRight class="w-5 h-5 xl:w-7 xl:h-7" aria-hidden="true" />
+          </a>
+        )
+      }
 
-  {
-    showLast && (
-      <a href={last} rel="next" aria-label="Última página" class="flex px-2 py-2 xl:px-4 xl:py-4 self-center justify-center items-center card-rounded bg-neutral-950 duration-300 hover:bg-neutral-800 active:bg-neutral-200 group">
-        <PaginationNextDouble class="w-4 h-4 group-hover:w-5 group-hover:h-5 xl:w-7 xl:h-7 xl:group-hover:w-8 xl:group-hover:h-8 duration-300" />
-      </a>
-    )
-  }
-</div>
+      {
+        showLast && (
+          <a href={last} aria-label="Última página" class="flex p-3 self-center justify-center items-center card-rounded bg-full-black text-full-white transition-colors hover:text-primary focus-visible:text-primary">
+            <ChevronsRight class="w-5 h-5 xl:w-7 xl:h-7" aria-hidden="true" />
+          </a>
+        )
+      }
+    </nav>
+  )
+}

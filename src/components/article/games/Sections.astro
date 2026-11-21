@@ -10,24 +10,31 @@ interface Props {
 const { gameSlug, active, availableSections } = Astro.props;
 
 const sections: { id: Section; label: string; path: string }[] = [
-  { id: "info", label: "INFO", path: `/juegos/${gameSlug}/` },
-  { id: "analisis", label: "ANÁLISIS", path: `/juegos/${gameSlug}/analisis/1/` },
-  { id: "noticias", label: "NOTICIAS", path: `/juegos/${gameSlug}/noticias/1/` },
-  { id: "guias", label: "GUÍAS", path: `/juegos/${gameSlug}/guias/1/` },
-  { id: "tops", label: "TOPS", path: `/juegos/${gameSlug}/tops/1/` },
+  { id: "info", label: "Info", path: `/juegos/${gameSlug}` },
+  { id: "analisis", label: "Análisis", path: `/juegos/${gameSlug}/analisis/1` },
+  { id: "noticias", label: "Noticias", path: `/juegos/${gameSlug}/noticias/1` },
+  { id: "guias", label: "Guías", path: `/juegos/${gameSlug}/guias/1` },
+  { id: "tops", label: "Tops", path: `/juegos/${gameSlug}/tops/1` },
 ];
+
+const visibleSections = sections.filter((section) => availableSections.has(section.id));
 ---
 
 {
-  sections
-    .filter((section) => availableSections.has(section.id))
-    .map((section) =>
-      section.id === active ? (
-        <div class="px-3 py-2 bg-neutral-50 dark:text-neutral-950 border-2 border-neutral-950 items-center card-rounded">{section.label}</div>
-      ) : (
-        <a href={section.path} class="px-3 py-2 bg-neutral-950 border-2 border-neutral-50 text-neutral-50 items-center card-rounded">
-          {section.label}
-        </a>
-      ),
-    )
+  visibleSections.length > 0 && (
+    <nav aria-label="Secciones del juego">
+      <ul class="flex flex-wrap items-center gap-2">
+        {visibleSections.map((section) => {
+          const isActive = section.id === active;
+          return (
+            <li>
+              <a href={section.path} aria-current={isActive ? "page" : undefined} class:list={["inline-flex items-center px-3 py-2 border font-bold uppercase card-rounded transition-colors focus-visible:outline-2 focus-visible:outline-primary", isActive ? "bg-full-white text-full-black" : "bg-full-black text-full-white border-full-white hover:text-shadow-primary focus-visible:text-primary",]}>
+                {section.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  )
 }

@@ -1,11 +1,11 @@
 ---
 import YtVideo from "./YtVideo";
-import { Iframe } from "emdash/ui";
 
 const { node } = Astro.props;
-const source: string = node.url ?? node.src ?? node.code ?? "";
+const source: string = node?.url ?? node?.src ?? node?.code ?? "";
+const videoTitle: string | undefined = node?.title;
 
 const id = source.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/)?.[1];
 ---
 
-{id ? <YtVideo client:visible id={id} /> : <iframe {...Astro.props} />}
+{id ? <YtVideo client:visible id={id} title={videoTitle} /> : <iframe title={videoTitle ?? "Contenido incrustado"} {...Astro.props} />}

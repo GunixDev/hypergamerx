@@ -7,14 +7,16 @@ interface Props {
 
 const { tag } = Astro.props;
 
-const term = await getTerm("category", tag.slug, {
-  locale: tag.locale,
-  includeCounts: false,
-});
+const term = !tag.description ? await getTerm("category", tag.slug, { locale: tag.locale, includeCounts: false }) : null;
 
-const description = term?.description ?? tag.description ?? tag.label;
+const description = tag.description ?? term?.description;
+const href = `/${tag.slug}/1`;
 ---
 
-<a href={`/${tag.slug}/1/`} title={description} class="flex justify-center items-center card-rounded bg-neutral-950 text-neutral-50 font-xs px-1 md:px-1.5 lg:px-2 xl:px-2.5 py-0.5 md:py-1 underline hover:bg-neutral-800 duration-300">
+<a
+  href={href}
+  aria-label={description && description !== tag.label ? `${tag.label}: ${description}` : undefined}
+  class="inline-flex justify-center items-center card-rounded font-xs px-2 md:px-2.5 py-1 transition-colors focus-visible:outline-2 focus-visible:outline-primary bg-full-black text-full-white hover:text-primary focus-visible:text-primary"
+>
   {tag.label}
 </a>
