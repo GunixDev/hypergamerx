@@ -26,8 +26,8 @@ const sizesByMode = {
 <a href={slugPath} aria-label={title} class="flex">
   {
     modo === "main" ? (
-      <article class="card-rounded relative inline-flex flex-col justify-end group">
-        <MediaImage image={post.data.cover} alt={post.data.cover.alt} class="object-cover group-hover:saturate-150 group-hover:contrast-125 transition-all" loading={loading} sizes={sizesByMode.main} widths={[480, 800, 1200]} />
+      <article class="card-rounded relative inline-flex flex-col justify-end group w-full">
+        <MediaImage image={post.data.cover} alt={post.data.cover.alt} class="object-cover group-hover:saturate-150 group-hover:contrast-125 transition-all w-full" loading={loading} sizes={sizesByMode.main} widths={[480, 800, 1200]} />
         <div class="absolute inset-0 bg-linear-to-t from-neutral-950" />
 
         <div class="m-4 absolute font-xs gap-1 md:gap-1.5 lg:gap-2 text-full-white">
@@ -46,7 +46,7 @@ const sizesByMode = {
         </div>
         <div class="flex flex-col gap-1">
           {heading === "h3" ? <h3 class="font-bold">{title}</h3> : heading === "h2" ? <h2 class="font-bold">{title}</h2> : <span class="font-bold">{title}</span>}
-          <p class="font-xs line-clamp-2 xl:line-clamp-none">{description}</p>
+          <p class="hidden sm:block font-xs line-clamp-2 xl:line-clamp-none">{description}</p>
         </div>
       </article>
     ) : (
